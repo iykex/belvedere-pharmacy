@@ -25,11 +25,6 @@ export const rootMetadata: Metadata = {
     address: false,
     telephone: false,
   },
-  // viewport: {
-  //   width: "device-width",
-  //   initialScale: 1,
-  //   maximumScale: 1,
-  // },
   robots: {
     index: true,
     follow: true,
