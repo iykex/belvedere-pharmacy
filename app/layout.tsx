@@ -17,7 +17,7 @@ export default function RootLayout({
       <body
         className={`${openSans.className} ${montserrat.variable} antialiased`}
       >
-        <header className="fixed top-0 w-full">
+        <header className="fixed top-0 w-full z-50">
           <Menu />
         </header>
         <main> {children}</main>

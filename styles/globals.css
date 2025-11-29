@@ -195,6 +195,18 @@
   @apply lg:justify-between  lg:w-full xl:w-5/6 2xl:w-2/3 lg:mx-auto mt-0 lg:backdrop-blur-3xl lg:bg-transparent lg:text-white lg:rounded-4xl;
 }
 
-.nav-menu.scroll-up{
+.nav-menu.scroll-up {
   @apply lg:justify-between lg:w-full xl:w-full 2xl:w-full lg:m-0 lg:backdrop-blur-3xl lg:bg-transparent lg:text-white lg:rounded-none;
+}
+
+::-webkit-scrollbar {
+  @apply bg-background w-1 h-1;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/60 rounded-4xl border-0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-accent cursor-grab;
 }
