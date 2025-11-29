@@ -60,56 +60,40 @@
 :root {
   --radius: 0.625rem;
 
-  /* --- BRAND FOUNDATION (Light Mode) --- */
-  /* Clinical White Background */
   --background: #ffffff;
-  /* Deep Navy for Text */
   --foreground: #002f4b;
 
-  /* --- CARDS & PANELS --- */
   --card: #ffffff;
   --card-foreground: #002f4b;
   --popover: #ffffff;
   --popover-foreground: #002f4b;
 
-  /* --- ACTIONS --- */
-  /* Primary Action: Care Orange (Buttons) */
   --primary: #ff9900;
   --primary-foreground: #ffffff;
 
-  /* Secondary Action: Light Gray background */
   --secondary: #f4f6f8;
   --secondary-foreground: #002f4b;
 
-  /* Destructive/Error: Vitality Red */
   --destructive: #ff0000;
   --destructive-foreground: #ffffff;
 
-  /* --- UI ELEMENTS --- */
-  /* Muted backgrounds */
   --muted: #f4f6f8;
-  /* Slate Gray text for subtitles */
   --muted-foreground: #64748b;
 
-  /* Accent: Very light Cyan for hover states */
   --accent: #e6f7ff;
   --accent-foreground: #002f4b;
 
-  /* Borders: Light Gray */
   --border: #dde2e6;
   --input: #dde2e6;
 
-  /* Focus Ring: Trust Cyan */
   --ring: #00bfff;
 
-  /* --- CHARTS (From your Logo) --- */
-  --chart-1: #ff9900; /* Orange */
-  --chart-2: #00bfff; /* Cyan */
-  --chart-3: #33cc00; /* Green */
-  --chart-4: #ff0000; /* Red */
-  --chart-5: #002f4b; /* Navy */
+  --chart-1: #ff9900;
+  --chart-2: #00bfff;
+  --chart-3: #33cc00;
+  --chart-4: #ff0000;
+  --chart-5: #002f4b;
 
-  /* --- SIDEBAR --- */
   --sidebar: #f4f6f8;
   --sidebar-foreground: #002f4b;
   --sidebar-primary: #002f4b;
@@ -123,16 +107,16 @@
   /* Body Text: Scales from 16px (mobile) to 18px (desktop) */
   --text-base: clamp(1rem, 0.34vw + 0.91rem, 1.125rem);
 
-  /* Small Text: Captions/Footer (13px to 14px) */
+  /*Captions/Footer (13px to 14px) */
   --text-sm: clamp(0.8125rem, 0.17vw + 0.76rem, 0.875rem);
 
-  /* H1: Main Page Titles (36px to 56px) */
+  /*Main Page Titles (36px to 56px) */
   --text-h1: clamp(2.25rem, 5vw + 1rem, 3.5rem);
 
-  /* H2: Section Headers (28px to 40px) */
+  /*Section Headers (28px to 40px) */
   --text-h2: clamp(1.75rem, 3vw + 1rem, 2.5rem);
 
-  /* H3: Card Titles (22px to 30px) */
+  /*Card Titles (22px to 30px) */
   --text-h3: clamp(1.375rem, 1.5vw + 1rem, 1.875rem);
 
   /* Line Heights */
@@ -147,27 +131,20 @@
 }
 
 .dark {
-  /* --- BRAND FOUNDATION (Dark Mode) --- */
-  /* Deep Navy Background */
   --background: #002f4b;
   --foreground: #ffffff;
 
-  /* Slightly lighter navy for cards */
   --card: #003b5c;
   --card-foreground: #ffffff;
   --popover: #003b5c;
   --popover-foreground: #ffffff;
 
-  /* --- ACTIONS --- */
-  /* Keep Orange for Primary in Dark Mode for visibility */
   --primary: #ff9900;
   --primary-foreground: #ffffff;
 
-  /* Darker Navy for secondary */
   --secondary: #004d73;
   --secondary-foreground: #ffffff;
 
-  /* --- UI ELEMENTS --- */
   --muted: #004d73;
   --muted-foreground: #94a3b8;
 
@@ -176,20 +153,17 @@
 
   --destructive: #990000;
 
-  /* Borders: Lighter Navy */
   --border: #1a4d6e;
   --input: #1a4d6e;
 
   --ring: #00bfff;
 
-  /* --- CHARTS (Adjusted for Dark Mode) --- */
   --chart-1: #ff9900;
   --chart-2: #00bfff;
   --chart-3: #33cc00;
   --chart-4: #ff5555;
   --chart-5: #ffffff;
 
-  /* --- SIDEBAR --- */
   --sidebar: #00253b;
   --sidebar-foreground: #ffffff;
   --sidebar-primary: #ff9900;
@@ -207,4 +181,20 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.nav-menu {
+  @apply w-full flex justify-between gap-x-5 px-5 items-center py-2 text-white backdrop-blur-xs z-40 font-semibold transition-all duration-700 ease-in-out;
+}
+
+.nav-menu.scrolling-down {
+  @apply lg:justify-between  lg:w-[98%] xl:w-4/5 2xl:w-3/5  lg:mx-auto lg:rounded-4xl lg:bg-accent lg:text-foreground lg:mt-1;
+}
+
+.nav-menu.pause {
+  @apply lg:justify-between  lg:w-full xl:w-5/6 2xl:w-2/3 lg:mx-auto mt-0 lg:backdrop-blur-3xl lg:bg-transparent lg:text-white lg:rounded-4xl;
+}
+
+.nav-menu.scroll-up{
+  @apply lg:justify-between lg:w-full xl:w-full 2xl:w-full lg:m-0 lg:backdrop-blur-3xl lg:bg-transparent lg:text-white lg:rounded-none;
 }

@@ -17,10 +17,10 @@ export default function RootLayout({
       <body
         className={`${openSans.className} ${montserrat.variable} antialiased`}
       >
-        <header className="fixed top-0 w-full text-white backdrop-blur-xs z-40 font-semibold">
+        <header className="fixed top-0 w-full">
           <Menu />
         </header>
-        {children}
+        <main> {children}</main>
         <footer></footer>
       </body>
     </html>

@@ -1,3 +1,4 @@
+"use client";
 import { MENU_LINKS } from "@/lib/constants";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,8 +12,9 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { MenuIcon } from "lucide-react";
-import { ReactNode } from "react";
+import { ReactNode, useRef } from "react";
 import { cn } from "@/lib/utils";
+import useMenuScroll from "@/hooks/use-menu-scroll";
 
 export function MenuButtons({
   outlineButtonClassName,
@@ -53,8 +55,11 @@ export function MenuButtons({
 }
 
 export default function Menu() {
+  const navMenu = useRef<HTMLDivElement>(null);
+  useMenuScroll(navMenu);
+
   return (
-    <div className="flex justify-between gap-x-5 px-5 items-center py-2">
+    <div className="nav-menu" ref={navMenu}>
       {/* Brand */}
       <div className="flex gap-x-2 items-center">
         <Link href="/">
