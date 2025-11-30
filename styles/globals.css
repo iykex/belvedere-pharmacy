@@ -188,11 +188,11 @@
 }
 
 .nav-menu.scrolling-down {
-  @apply lg:justify-between  lg:w-[98%] xl:w-4/5 2xl:w-3/5  lg:mx-auto lg:rounded-4xl lg:bg-accent lg:text-foreground lg:mt-1;
+  @apply lg:justify-between  lg:w-[98%] xl:w-4/5 2xl:w-3/5  lg:mx-auto lg:rounded-4xl  lg:bg-linear-to-br from-primary/60 to-chart-2/70 lg:text-foreground;
 }
 
 .nav-menu.pause {
-  @apply lg:justify-between  lg:w-full xl:w-5/6 2xl:w-2/3 lg:mx-auto mt-0 lg:backdrop-blur-3xl lg:bg-transparent lg:text-white lg:rounded-4xl;
+  @apply lg:justify-between  lg:w-full xl:w-5/6 2xl:w-2/3  mt-0 lg:backdrop-blur-3xl lg:mx-auto  lg:bg-linear-to-br from-primary/60 to-chart-2/70 lg:text-white lg:rounded-4xl;
 }
 
 .nav-menu.scroll-up {
@@ -209,4 +209,69 @@
 
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-accent cursor-grab;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-in {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.card-animate {
+  opacity: 0;
+}
+
+.card-animate.animate-in {
+  animation: fadeInScale 0.6s ease-out forwards;
+}
+
+.slide-transition {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+.animate-scroll {
+  animation: scroll 60s linear infinite;
+}
+
+.paused {
+  animation-play-state: paused;
 }

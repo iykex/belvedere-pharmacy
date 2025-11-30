@@ -11,7 +11,7 @@ export default function WidthConstraint({
   return (
     <div
       className={cn(
-        "max-w-(--container) mx-auto px-(--spacing-horizontal) w-full",
+        "max-w-(--container) mx-auto px-(--spacing-horizontal) w-full overflow-hidden",
         className
       )}
     >

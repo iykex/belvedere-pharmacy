@@ -4,6 +4,7 @@ import { getMetadata } from "@/lib/metadata";
 import { ReactNode } from "react";
 import { montserrat, openSans } from "@/lib/fonts";
 import Menu from "@/components/general/navigation-menu";
+import { Footer } from "@/components/general/footer";
 
 export const metadata: Metadata = getMetadata();
 
@@ -21,7 +22,9 @@ export default function RootLayout({
           <Menu />
         </header>
         <main> {children}</main>
-        <footer></footer>
+        <footer className="w-full bg-foreground">
+          <Footer />
+        </footer>
       </body>
     </html>
   );
