@@ -29,7 +29,7 @@ export default function useMenuScroll(
             navMenu.current.classList.remove("scrolling-down");
           }
         }, 5000);
-      } else if (newScrollPosition < scrollPosition) {
+      } else if (newScrollPosition < scrollPosition && newScrollPosition > 0) {
         menu.classList.add("scroll-up");
         menu.classList.remove("scrolling-down", "pause");
 
@@ -39,6 +39,8 @@ export default function useMenuScroll(
             navMenu.current.classList.add("pause");
           }
         }, 5000);
+      } else {
+        menu.classList.remove("scrolling-down", "pause", "scroll-up");
       }
 
       scrollPosition = newScrollPosition;

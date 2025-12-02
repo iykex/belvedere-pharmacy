@@ -76,7 +76,11 @@ export default function Menu() {
       {/* Navigation Links Desktop Only */}
       <div className="hidden lg:flex gap-x-6">
         {MENU_LINKS.map((item) => (
-          <Link key={item.href} href={item.href} className="text-center">
+          <Link
+            key={item.href}
+            href={item.href}
+            className="text-center nav-links"
+          >
             {item.label}
           </Link>
         ))}

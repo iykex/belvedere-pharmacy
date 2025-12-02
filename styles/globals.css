@@ -183,7 +183,7 @@
   }
 }
 
-.nav-menu {
+/* .nav-menu {
   @apply w-full flex justify-between gap-x-5 px-5 items-center py-2 text-white backdrop-blur-xs z-40 font-semibold transition-all duration-700 ease-in-out;
 }
 
@@ -197,6 +197,86 @@
 
 .nav-menu.scroll-up {
   @apply lg:justify-between lg:w-full xl:w-11/12 mx-auto lg:backdrop-blur-3xl lg:bg-transparent lg:text-white lg:rounded-4xl;
+} */
+
+/* ============================================
+   PREMIUM NAVBAR - BELVEDERE PHARMACY
+   A sophisticated, glass-morphism navbar design
+   ============================================ */
+
+.nav-menu {
+  @apply w-full flex justify-between items-center gap-x-6
+         px-6 lg:px-15 py-2 backdrop-blur-lg
+         text-white font-semibold
+         z-40
+         transition-all duration-700 ease-in-out;
+}
+
+.nav-menu.scrolling-down {
+  @apply lg:w-[95%] xl:w-[92%] 2xl:w-[88%]
+         lg:mx-auto 
+         lg:rounded-4xl
+         lg:py-2
+         text-foreground
+         shadow-[0_8px_32px_rgba(0,47,75,0.12)]
+         border border-white/20;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 0 8px 32px rgba(0, 47, 75, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.nav-menu.pause {
+  @apply lg:w-[93%] xl:w-[90%] 2xl:w-[86%]
+         lg:mx-auto lg:my-2
+         lg:rounded-4xl
+         lg:py-2
+         text-foreground;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  box-shadow: 0 12px 48px rgba(0, 47, 75, 0.15),
+    0 0 0 1px rgba(255, 153, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  transform: translateY(-1px);
+}
+
+.nav-menu.scroll-up {
+  @apply lg:w-full
+         lg:mx-auto
+         text-foreground
+         border-b border-white/10 backdrop-blur-3xl bg-white;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.nav-menu .nav-links {
+  @apply relative transition-all duration-300;
+}
+
+.nav-menu .nav-links:hover {
+  @apply text-primary -translate-y-1;
+}
+
+.nav-menu .nav-links::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background-image: linear-gradient(
+    to right,
+    var(--tw-gradient-from),
+    var(--tw-gradient-to)
+  );
+  --tw-gradient-from: theme("colors.primary");
+  --tw-gradient-to: theme("colors.chart.2");
+  border-radius: 9999px;
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-menu .nav-links:hover::after {
+  width: 100%;
 }
 
 ::-webkit-scrollbar {
