@@ -4,20 +4,20 @@ import Banner from "@/components/general/landing-page-banner";
 import NewsletterSection from "@/components/general/newsletter";
 import { OurProcessSection } from "@/components/general/our-process-section";
 import { NHSPharmacyFirstSection } from "@/components/general/pharmacy-first-services-section";
-import PharmacyServicesMarquee from "@/components/general/trust-badges-marquee-section";
+import PharmacyServicesMarquee from "@/components/general/pharmacy-services-marquee-section";
 import Testimonials from "@/components/general/testimonials-section";
 
 export default function LandingPage() {
   return (
-    <div>
+    <div className="space-y-20 overflow-hidden">
       <Banner />
-      <KeyBenefits />
-      <Testimonials />
-      <NewsletterSection />
-      <DownloadAppSection />
-      <OurProcessSection />
-      <NHSPharmacyFirstSection />
       <PharmacyServicesMarquee />
+      <NHSPharmacyFirstSection />
+      <KeyBenefits />
+      <OurProcessSection />
+      <Testimonials />
+      <DownloadAppSection />
+      <NewsletterSection />
     </div>
   );
 }

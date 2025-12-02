@@ -22,7 +22,7 @@ export default function RootLayout({
           <Menu />
         </header>
         <main> {children}</main>
-        <footer className="w-full bg-foreground">
+        <footer className="w-full bg-foreground mt-20">
           <Footer />
         </footer>
       </body>

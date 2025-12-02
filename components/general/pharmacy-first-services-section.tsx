@@ -6,144 +6,145 @@ import WidthConstraint from "../shared/width-constraint";
 
 export function NHSPharmacyFirstSection() {
   return (
-    <WidthConstraint className="bg-linear-to-br from-accent/30 via-background to-accent/20 relative overflow-hidden">
+    <section className="w-full relative">
       {/* Decorative background elements */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-chart-2/5 rounded-full blur-3xl"></div>
-
-      <div className="container relative z-10">
-        {/* Header Section */}
-        <div className="text-center max-w-4xl mx-auto mb-12 md:mb-16">
-          <div className="inline-flex items-center gap-2 bg-card border-2 border-primary/20 px-4 py-2 rounded-full mb-6 shadow-sm">
-            <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-              <span className="text-sm font-bold text-primary-foreground">
-                NHS
+      <WidthConstraint>
+        <div className="container relative z-10">
+          {/* Header Section */}
+          <div className="text-center max-w-4xl mx-auto mb-12 md:mb-16">
+            <div className="inline-flex items-center gap-2 bg-card mb-6 border-2 rounded-4xl px-2 py-1">
+              <div className="size-10 bg-[#003087] rounded-full flex items-center justify-center">
+                <span className="text-sm font-bold text-primary-foreground">
+                  NHS
+                </span>
+              </div>
+              <span className="text- font-bold text-[#003087]">
+                Pharmacy First Services
               </span>
             </div>
-            <span className="text-sm font-semibold text-foreground">
-              Pharmacy First Services
-            </span>
+
+            <h2 className="text-section-header font-bold tracking-tight text-foreground mb-4 leading-tight">
+              Can't get to the GP?{" "}
+              <span className="text-primary">We can help</span>
+            </h2>
+
+            <div className="flex w-24 mx-auto mb-6">
+              <hr className="w-1/2 bg-chart-3 h-1 border-0" />
+              <hr className="w-1/2 bg-chart-2 h-1 border-0" />
+            </div>
+
+            <p className="text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+              Access free NHS treatment for common conditions without waiting
+              for a GP appointment. Our qualified pharmacists are here to help.
+            </p>
           </div>
 
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground mb-4 leading-tight">
-            Can't get to the GP?{" "}
-            <span className="text-primary">We can help</span>
-          </h2>
-
-          <div className="flex w-24 mx-auto mb-6">
-            <hr className="w-1/2 bg-chart-3 h-1 border-0" />
-            <hr className="w-1/2 bg-chart-2 h-1 border-0" />
-          </div>
-
-          <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-            Access free NHS treatment for common conditions without waiting for
-            a GP appointment. Our qualified pharmacists are here to help.
-          </p>
-        </div>
-
-        {/* Services Grid */}
-        <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mb-12">
-          {NHS_PHARMACY_FIRST_SERVICES.map((service, index) => {
-            const Icon = service.icon;
-            return (
-              <div
-                key={index}
-                className="flex flex-col justify-between relative group bg-card rounded-2xl border-2 border-border p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-primary/50"
-              >
-                {/* Free badge */}
-                <div className="absolute -top-3 -right-3 bg-linear-to-r from-chart-3 to-chart-3/80 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg ring-4 ring-background">
-                  FREE
-                </div>
-
-                {/* Optional secondary badge */}
-                {service.badge && (
-                  <div className="absolute -top-3 -left-3 bg-linear-to-r from-chart-2 to-chart-2/80 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg ring-4 ring-background">
-                    {service.badge}
-                  </div>
-                )}
-
-                {/* Icon */}
+          {/* Services Grid */}
+          <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mb-12">
+            {NHS_PHARMACY_FIRST_SERVICES.map((service, index) => {
+              const Icon = service.icon;
+              return (
                 <div
-                  className={`${service.bgColor} w-14 h-14 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
+                  key={index}
+                  className="flex flex-col justify-between relative group bg-card rounded-2xl border-2 border-border p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-primary/50"
                 >
-                  <Icon className={`w-7 h-7 ${service.color}`} />
-                </div>
+                  {/* Free badge */}
+                  <div className="absolute -top-4 right-0 bg-linear-to-r from-chart-3 to-chart-3/80 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg ring-4 ring-background">
+                    FREE
+                  </div>
 
-                {/* Content */}
-                <h3 className="text-lg font-bold mb-2 text-foreground group-hover:text-primary transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-sm text-muted-foreground mb-6 leading-relaxed min-h-12">
-                  {service.description}
-                </p>
+                  {/* Optional secondary badge */}
+                  {service.badge && (
+                    <div className="absolute -top-4 -left-0.5 bg-linear-to-r from-chart-2 to-chart-2/80 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg ring-4 ring-background">
+                      {service.badge}
+                    </div>
+                  )}
 
-                {/* Book Now Button */}
-                <Button
-                  asChild
-                  size="sm"
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-xl group/btn"
-                >
-                  <Link
-                    href="/book-consultation"
-                    className="flex items-center justify-center gap-2"
+                  {/* Icon */}
+                  <div
+                    className={`${service.bgColor} size-14 rounded-xl flex items-center justify-center my-3 group-hover:scale-110 transition-transform duration-300`}
                   >
-                    <Calendar className="w-4 h-4" />
-                    Book Now
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
-                  </Link>
-                </Button>
-              </div>
-            );
-          })}
-        </div>
+                    <Icon className={`w-7 h-7 ${service.color}`} />
+                  </div>
 
-        {/* Bottom CTA Section */}
-        <div className="text-center bg-card/50 backdrop-blur-sm border-2 border-border rounded-2xl p-8 md:p-10">
-          <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3">
-            Need help with a different condition?
-          </h3>
-          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-            We treat many more NHS Pharmacy First conditions. View our complete
-            list of services or speak with our team for guidance.
-          </p>
+                  {/* Content */}
+                  <h6 className="text-[20px] font-bold my-2 text-foreground group-hover:text-primary transition-colors">
+                    {service.title}
+                  </h6>
+                  <p className="text-sm text-muted-foreground mb-6 leading-relaxed min-h-12">
+                    {service.description}
+                  </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button
-              asChild
-              size="lg"
-              className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group"
-            >
-              <Link href="/nhs-services" className="flex items-center gap-2">
-                View All Conditions
-                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </Button>
+                  {/* Book Now Button */}
+                  <Button
+                    asChild
+                    size="sm"
+                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-xl group/btn"
+                  >
+                    <Link
+                      href="/book-consultation"
+                      className="flex items-center justify-center gap-2"
+                    >
+                      <Calendar className="w-4 h-4" />
+                      Book Now
+                      <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                    </Link>
+                  </Button>
+                </div>
+              );
+            })}
+          </div>
 
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold px-8 rounded-full transition-all duration-300 group"
-            >
-              <Link href="/contact" className="flex items-center gap-2">
-                Speak to a Pharmacist
-                <Users className="w-5 h-5" />
-              </Link>
-            </Button>
+          {/* Bottom CTA Section */}
+          <div className="text-center">
+            <h3 className="text-card-title font-bold text-foreground mb-3">
+              Need help with a different condition?
+            </h3>
+            <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+              We treat many more NHS Pharmacy First conditions. View our
+              complete list of services or speak with our team for guidance.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Button
+                asChild
+                size="lg"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group"
+              >
+                <Link href="/nhs-services" className="flex items-center gap-2">
+                  View All Conditions
+                  <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </Button>
+
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="text-primary hover:bg-primary hover:text-primary-foreground font-semibold px-8 rounded-full transition-all duration-300 group"
+              >
+                <Link href="/contact" className="flex items-center gap-2">
+                  Speak to a Pharmacist
+                  <Users className="w-5 h-5" />
+                </Link>
+              </Button>
+            </div>
+          </div>
+
+          {/* Info Banner */}
+          <div className="mt-8 text-center italic">
+            <p className="text-sm text-foreground/80">
+              <span className="font-semibold text-foreground">
+                NHS Pharmacy First
+              </span>{" "}
+              is a free service funded by the NHS. No prescription charges apply
+              for eligible conditions.
+            </p>
           </div>
         </div>
-
-        {/* Info Banner */}
-        <div className="mt-8 bg-accent/50 border border-chart-2/20 rounded-xl p-6 text-center">
-          <p className="text-sm text-foreground/80">
-            <span className="font-semibold text-foreground">
-              NHS Pharmacy First
-            </span>{" "}
-            is a free service funded by the NHS. No prescription charges apply
-            for eligible conditions.
-          </p>
-        </div>
-      </div>
-    </WidthConstraint>
+      </WidthConstraint>
+    </section>
   );
 }

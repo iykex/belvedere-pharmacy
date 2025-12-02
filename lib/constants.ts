@@ -282,7 +282,7 @@ export const APP_DOWNLOAD_BUTTONS = [
 
 export const OUR_PROCESS_STEPS = [
   {
-    number: "01",
+    number: "1",
     title: "Prescriptions",
     description:
       "Order your prescriptions online or in-person with our easy-to-use system.",
@@ -291,7 +291,7 @@ export const OUR_PROCESS_STEPS = [
     bgColor: "bg-primary/10",
   },
   {
-    number: "02",
+    number: "2",
     title: "Health Advice",
     description:
       "Get expert health advice from our qualified pharmacists and healthcare team.",
@@ -300,7 +300,7 @@ export const OUR_PROCESS_STEPS = [
     bgColor: "bg-chart-2/10",
   },
   {
-    number: "03",
+    number: "3",
     title: "Vaccinations",
     description:
       "Schedule your vaccinations with our professional healthcare providers.",
@@ -309,7 +309,7 @@ export const OUR_PROCESS_STEPS = [
     bgColor: "bg-chart-3/10",
   },
   {
-    number: "04",
+    number: "4",
     title: "Consultations",
     description:
       "Book a consultation with our healthcare professionals for personalized care.",

@@ -14,10 +14,10 @@ export default function NewsletterSection() {
     useNewsletter();
 
   return (
-    <WidthConstraint className="w-full rounded-2xl shadow-xl md:p-0 bg-card border border-border overflow-hidden">
+    <WidthConstraint className="w-full md:rounded-2xl shadow-xl md:p-0 md:bg-card md:border border-border overflow-hidden">
       <div className="grid md:grid-cols-2">
         {/* Left Column - Features with accent background */}
-        <div className="px-8 py-12 md:px-12 bg-accent">
+        <div className="px-8 py-12 md:px-12 bg-accent rounded-4xl md:rounded-none">
           <div className="mb-8">
             <h2 className="text-section-header font-bold mb-3 text-foreground">
               Stay Healthy & Informed
@@ -122,14 +122,14 @@ export default function NewsletterSection() {
                     </Field>
                   )}
                 />
-                <p className="text-xs px-2 text-muted-foreground">
+                <p className="text-xs px-2 text-muted-foreground leading-6 text-center italic">
                   By subscribing, you agree to our Privacy Policy and consent to
                   receive updates from our pharmacy.
                 </p>
               </FieldGroup>
             </form>
             {/* Trust Badges */}
-            <div className="mt-8 flex flex-wrap justify-center items-center gap-6 text-sm text-muted-foreground">
+            <div className="mt-8 flex flex-wrap md:justify-center items-center gap-6 text-sm text-muted-foreground">
               {[
                 "No spam, ever",
                 "Unsubscribe anytime",

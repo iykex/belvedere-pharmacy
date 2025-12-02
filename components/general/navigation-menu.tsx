@@ -85,7 +85,7 @@ export default function Menu() {
       {/* Action Buttons Desktop Only */}
       <MenuButtons
         wrapperClassName="hidden lg:flex gap-x-2"
-        outlineButtonClassName="hover:text-[#002f4b] bg-transparent font-black"
+        outlineButtonClassName="font-black bg-transparent border-0 shadow-none backdrop-blur-3xl"
       />
 
       {/* Mobile Only */}
