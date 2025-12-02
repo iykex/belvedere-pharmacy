@@ -1,11 +1,10 @@
-"use client";
 import { ForwardRefExoticComponent, RefAttributes } from "react";
 import { Card, CardContent } from "../ui/card";
 import { IconProps, Icon } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
 import { TRUST_BADGES_MARQUEE } from "@/lib/constants";
-import { useServiceMarquee } from "@/hooks/use-service-marquee";
 import WidthConstraint from "../shared/width-constraint";
+import SectionHeader from "./section-header";
 
 export const TrustBadgeCard = ({
   title,
@@ -44,25 +43,16 @@ export const TrustBadgeCard = ({
 };
 
 export default function PharmacyServicesMarquee() {
-  const { isVisible, sectionRef } = useServiceMarquee();
-
   return (
-    <section ref={sectionRef} className="relative">
+    <section className="observer-target relative">
       {/* Background Decorations */}
       <div className="absolute inset-0 -z-10 bg-[linear-linear(to_right,#dde2e612_1px,transparent_1px),linear-linear(to_bottom,#dde2e612_1px,transparent_1px)] bg-cover"></div>
       <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[400px] w-[400px] rounded-full bg-primary/10 blur-[120px]"></div>
       <WidthConstraint>
-        <div
-          className={cn(
-            "px-4 md:px-6 mx-auto transition-all duration-1000 ease-out transform",
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-          )}
-        >
+        <div className={cn("px-4 md:px-6 mx-auto")}>
           {/* Header */}
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="inline-block text-sm font-semibold text-primary bg-primary/10 px-4 py-2 rounded-full mb-4 border border-primary/20">
-              Why Choose Us
-            </span>
+            <SectionHeader heading="Why Choose Us" />
             <h2 className="text-section-header font-bold tracking-tight mb-4 text-foreground">
               Trusted <span className="text-primary">Healthcare Partner</span>
             </h2>

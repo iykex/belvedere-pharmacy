@@ -4,11 +4,13 @@ import Image from "next/image";
 import WidthConstraint from "../shared/width-constraint";
 import { APP_DOWNLOAD_BUTTONS, DOWNLOAD_APP_FEATURES } from "@/lib/constants";
 import { cn } from "@/lib/utils";
+import SectionHeader from "./section-header";
 
 export default function DownloadAppSection() {
   return (
-    <section>
-      <WidthConstraint className="observer-target grid gap-12 md:grid-cols-2 items-center bg-linear-to-br from-accent/50 via-background to-secondary/30 md:rounded-3xl p-8 md:p-12 lg:p-16 md:shadow-sm overflow-hidden relative">
+    <section className="observer-target">
+      <SectionHeader heading="App Download" />
+      <WidthConstraint className="mt-10 grid gap-12 md:grid-cols-2 items-center bg-linear-to-br from-accent/50 via-background to-secondary/30 md:rounded-3xl p-8 md:p-12 lg:p-16 md:shadow-sm overflow-hidden relative">
         {/* Decorative background elements */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -z-10"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-chart-2/5 rounded-full blur-3xl -z-10"></div>

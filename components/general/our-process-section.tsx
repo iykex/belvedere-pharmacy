@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { OUR_PROCESS_STEPS } from "@/lib/constants";
 import WidthConstraint from "../shared/width-constraint";
+import SectionHeader from "./section-header";
 
 export function OurProcessSection() {
   return (
@@ -13,9 +14,7 @@ export function OurProcessSection() {
       <WidthConstraint className="observer-target bg-linear-to-b from-background via-accent/20 to-background relative overflow-hidden">
         <div className="container relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
-            <span className="inline-block text-sm font-semibold text-primary bg-primary/10 px-4 py-2 rounded-full mb-4 border border-primary/20">
-              Our Process
-            </span>
+            <SectionHeader heading="Our Process" />
             <h2 className="text-section-header font-bold tracking-tight text-foreground mb-4">
               How We <span className="text-primary">Help You</span>
             </h2>

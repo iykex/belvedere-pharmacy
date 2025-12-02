@@ -1,12 +1,14 @@
 import Image from "next/image";
 import WidthConstraint from "../shared/width-constraint";
 import TestimonialsSlide from "./testimonials-slide";
+import SectionHeader from "./section-header";
 
 export default function Testimonials() {
   return (
-    <section>
+    <section className="observer-target">
       <WidthConstraint>
-        <div className="observer-target grid min-[1070px]:grid-cols-2 place-items-center xl:p-0 rounded-2xl gap-2 bg-foreground/80 pb-5 min-[1070px]:pb-0 ">
+        <SectionHeader heading="Testimonials" />
+        <div className="mt-10 grid min-[1070px]:grid-cols-2 place-items-center xl:p-0 rounded-2xl gap-2 bg-foreground/80 pb-5 min-[1070px]:pb-0 ">
           <Image
             src="/testimonial-image.svg"
             alt="testimonial"

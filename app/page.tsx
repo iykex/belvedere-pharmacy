@@ -12,8 +12,8 @@ export default function LandingPage() {
   return (
     <div className="space-y-20 overflow-hidden">
       <Banner />
-      <PharmacyServicesMarquee />
       <IntersectionWrapper selector=".observer-target">
+        <PharmacyServicesMarquee />
         <NHSPharmacyFirstSection />
         <KeyBenefits />
         <OurProcessSection />

@@ -290,3 +290,7 @@
   opacity: 1;
   transform: translateY(0) scale(1);
 }
+
+.clip-hexagon {
+  clip-path: polygon(8% 0%, 92% 0%, 100% 50%, 92% 100%, 8% 100%, 0% 50%);
+}

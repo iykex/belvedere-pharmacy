@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { NHS_PHARMACY_FIRST_SERVICES } from "@/lib/constants";
 import WidthConstraint from "../shared/width-constraint";
+import SectionHeader from "./section-header";
 
 export function NHSPharmacyFirstSection() {
   return (
@@ -14,16 +15,20 @@ export function NHSPharmacyFirstSection() {
         <div className="container relative z-10">
           {/* Header Section */}
           <div className="text-center max-w-4xl mx-auto mb-12 md:mb-16">
-            <div className="inline-flex items-center gap-2 bg-card mb-6 border-2 rounded-4xl px-2 py-1">
-              <div className="size-10 bg-[#003087] rounded-full flex items-center justify-center">
-                <span className="text-sm font-bold text-primary-foreground">
-                  NHS
-                </span>
-              </div>
-              <span className="text- font-bold text-[#003087]">
-                Pharmacy First Services
-              </span>
-            </div>
+            <SectionHeader
+              heading={
+                <div className="flex items-center gap-1">
+                  <div className="bg-[#003087] rounded-4xl px-2 py-0.5 flex items-center justify-center">
+                    <span className="text-sm font-bold text-primary-foreground">
+                      NHS
+                    </span>
+                  </div>
+                  <span className="text-white font-bold">
+                    Pharmacy First Services
+                  </span>
+                </div>
+              }
+            />
 
             <h2 className="text-section-header font-bold tracking-tight text-foreground mb-4 leading-tight">
               Can't get to the GP?{" "}

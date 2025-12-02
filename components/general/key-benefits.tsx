@@ -4,6 +4,7 @@ import { KEY_BENEFITS_IMGS, KEY_BENEFITS_TEXTS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { ChevronsRight, Check } from "lucide-react";
 import Image from "next/image";
+import SectionHeader from "./section-header";
 
 export default function KeyBenefits() {
   return (
@@ -15,9 +16,7 @@ export default function KeyBenefits() {
       <WidthConstraint className="z-10 observer-target">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto">
-          <span className="inline-block text-sm font-semibold text-primary bg-primary/10 px-4 py-2 rounded-full mb-4 border border-primary/20">
-            Why Choose Us
-          </span>
+          <SectionHeader heading="Why Choose Us" />
           <h2 className="text-section-header font-bold text-foreground mb-4">
             Key <span className="text-primary">Benefits</span>
           </h2>
