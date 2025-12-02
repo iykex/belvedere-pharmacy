@@ -15,7 +15,7 @@ export default function NewsletterSection() {
 
   return (
     <WidthConstraint className="w-full md:rounded-2xl shadow-xl md:p-0 md:bg-card md:border border-border overflow-hidden">
-      <div className="grid md:grid-cols-2">
+      <div className="observer-target grid md:grid-cols-2">
         {/* Left Column - Features with accent background */}
         <div className="px-8 py-12 md:px-12 bg-accent rounded-4xl md:rounded-none">
           <div className="mb-8">

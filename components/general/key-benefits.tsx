@@ -12,7 +12,7 @@ export default function KeyBenefits() {
       <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-chart-2/5 rounded-full blur-3xl"></div>
 
-      <WidthConstraint className="z-10">
+      <WidthConstraint className="z-10 observer-target">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto">
           <span className="inline-block text-sm font-semibold text-primary bg-primary/10 px-4 py-2 rounded-full mb-4 border border-primary/20">

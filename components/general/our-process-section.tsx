@@ -10,7 +10,7 @@ export function OurProcessSection() {
       {/* Decorative background elements */}
       <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-chart-2/5 rounded-full blur-3xl"></div>
-      <WidthConstraint className="bg-linear-to-b from-background via-accent/20 to-background relative overflow-hidden">
+      <WidthConstraint className="observer-target bg-linear-to-b from-background via-accent/20 to-background relative overflow-hidden">
         <div className="container relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
             <span className="inline-block text-sm font-semibold text-primary bg-primary/10 px-4 py-2 rounded-full mb-4 border border-primary/20">

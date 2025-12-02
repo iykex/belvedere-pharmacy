@@ -6,7 +6,7 @@ export default function Testimonials() {
   return (
     <section>
       <WidthConstraint>
-        <div className="grid min-[1070px]:grid-cols-2 place-items-center xl:p-0 rounded-2xl gap-2 bg-foreground/80 pb-5 min-[1070px]:pb-0 ">
+        <div className="observer-target grid min-[1070px]:grid-cols-2 place-items-center xl:p-0 rounded-2xl gap-2 bg-foreground/80 pb-5 min-[1070px]:pb-0 ">
           <Image
             src="/testimonial-image.svg"
             alt="testimonial"

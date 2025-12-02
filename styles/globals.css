@@ -196,7 +196,7 @@
 }
 
 .nav-menu.scroll-up {
-  @apply lg:justify-between lg:w-full xl:w-full 2xl:w-full lg:m-0 lg:backdrop-blur-3xl lg:bg-transparent lg:text-white lg:rounded-none;
+  @apply lg:justify-between lg:w-full xl:w-11/12 mx-auto lg:backdrop-blur-3xl lg:bg-transparent lg:text-white lg:rounded-4xl;
 }
 
 ::-webkit-scrollbar {
@@ -276,4 +276,17 @@
 
 .animate-scroll:hover {
   animation-play-state: paused;
+}
+
+.observer-target {
+  opacity: 0;
+  transform: translateY(30px) scale(0.98);
+  transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 1),
+    transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 1);
+  will-change: opacity, transform;
+}
+
+.observer-target.in-view {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }

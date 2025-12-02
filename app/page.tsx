@@ -6,18 +6,21 @@ import { OurProcessSection } from "@/components/general/our-process-section";
 import { NHSPharmacyFirstSection } from "@/components/general/pharmacy-first-services-section";
 import PharmacyServicesMarquee from "@/components/general/pharmacy-services-marquee-section";
 import Testimonials from "@/components/general/testimonials-section";
+import IntersectionWrapper from "@/components/wrappers/use-intersection-wrapper";
 
 export default function LandingPage() {
   return (
     <div className="space-y-20 overflow-hidden">
       <Banner />
       <PharmacyServicesMarquee />
-      <NHSPharmacyFirstSection />
-      <KeyBenefits />
-      <OurProcessSection />
-      <Testimonials />
-      <DownloadAppSection />
-      <NewsletterSection />
+      <IntersectionWrapper selector=".observer-target">
+        <NHSPharmacyFirstSection />
+        <KeyBenefits />
+        <OurProcessSection />
+        <Testimonials />
+        <DownloadAppSection />
+        <NewsletterSection />
+      </IntersectionWrapper>
     </div>
   );
 }
