@@ -1,57 +1,133 @@
 "use client";
+
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-import { GSDevTools } from "gsap/GSDevTools";
 import { SplitText } from "gsap/SplitText";
-import { CustomBounce } from "gsap/CustomBounce";
-import { CustomEase } from "gsap/CustomEase";
 import { RefObject } from "react";
-gsap.registerPlugin(useGSAP, GSDevTools, SplitText, CustomBounce, CustomEase);
 
-export function useBannerAnimation(
-  animationScope: RefObject<HTMLDivElement | null>
-) {
+gsap.registerPlugin(SplitText);
+
+export function useBannerAnimation(scope: RefObject<HTMLDivElement | null>) {
   useGSAP(
     () => {
-      const splitTitle = SplitText.create("#title", {
-        type: "words, chars",
-      });
-      const splitDescription = SplitText.create("#description", {
-        type: "words, chars",
+      const titleSplit = new SplitText("#title", {
+        type: "words,chars",
+        wordsClass: "word",
+        charsClass: "char",
       });
 
-      gsap.set("#title", { autoAlpha: 1 });
-      gsap.set("#description", { autoAlpha: 1 });
-      gsap.set("#info-badges", { autoAlpha: 1 });
-      gsap.set(".solid-button", { autoAlpha: 1, scale: 1 });
-      gsap
-        .timeline({ defaults: { autoAlpha: 0, duration: 1 } })
-        .from(splitTitle.words, { y: 200, stagger: 0.08 })
-        .from(
-          splitDescription.chars,
-          { x: 5000, stagger: 0.01, duration: 0.7 },
-          "<0.3"
-        )
-        .from(
-          ".solid-button",
-          {
-            y: -400,
-            duration: 0.5,
-          },
-          "<0.1"
-        )
-        .from(
-          ".outline-button",
-          { y: -500, ease: "bounce.out()", duration: 0.5 },
-          "<0.2"
-        )
-        .from("#info-badges", {
-          scale: 0,
+      const descSplit = new SplitText("#description", {
+        type: "words,chars",
+        wordsClass: "word",
+        charsClass: "char",
+      });
+
+      gsap.set(["#title", "#description"], {
+        opacity: 1,
+        visibility: "visible",
+      });
+
+      gsap.set(titleSplit.words, {
+        opacity: 0,
+        y: 600,
+        x: 250,
+      });
+
+      gsap.set(descSplit.chars, {
+        opacity: 0,
+        x: 5000,
+        y: -500,
+      });
+
+      gsap.set(
+        ["#menu-solid-btn", "#menu-outline-btn", "#info-badges", "#NHS-badge"],
+        {
+          visibility: "visible",
+          opacity: 0,
+        }
+      );
+
+      gsap.set("#menu-solid-btn", { y: -1000 });
+      gsap.set("#menu-outline-btn", { y: -1000 });
+      gsap.set("#info-badges", { scale: 0 });
+      gsap.set("#NHS-badge", { x: -5000 });
+
+      const tl = gsap.timeline();
+
+      tl.to(titleSplit.words, {
+        opacity: 1,
+        y: 0,
+        x: 0,
+        stagger: 0.1,
+        duration: 1,
+        ease: "power3.out",
+      });
+
+      tl.to(
+        descSplit.chars,
+        {
+          opacity: 1,
+          x: 0,
+          y: 0,
+          stagger: 0.01,
+          duration: 0.1,
+          ease: "power3.out",
+        },
+        "-=0.7"
+      );
+
+      tl.to(
+        "#menu-solid-btn",
+        {
+          opacity: 1,
+          y: 0,
+          ease: "elastic.out(1,0.3)",
+        },
+        "-=0.4"
+      );
+
+      tl.to(
+        "#menu-outline-btn",
+        {
+          opacity: 1,
+          y: 0,
+          ease: "bounce.out",
+        },
+        "-=0.3"
+      );
+
+      tl.to(
+        "#info-badges",
+        {
+          opacity: 1,
+          scale: 1,
           ease: "back.out(1.7)",
           transformOrigin: "center center",
-        })
-        .from("#NHS-badge", { x: -5000, ease: "back.out(1)" });
+          duration: 0.5,
+        },
+        "-=0.2"
+      );
+
+      tl.to(
+        "#NHS-badge",
+        {
+          opacity: 1,
+          x: 0,
+          ease: "back.out(1.1)",
+          duration: 0.7,
+        },
+        "-=0.3"
+      );
+
+      return () => {
+        titleSplit.revert();
+        descSplit.revert();
+      };
     },
-    { scope: animationScope }
+    {
+      scope,
+      dependencies: [],
+      revertOnUpdate: true,
+    }
   );
 }

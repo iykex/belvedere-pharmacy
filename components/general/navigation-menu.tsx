@@ -33,23 +33,28 @@ export function MenuButtons({
 }) {
   return (
     <div className={cn(wrapperClassName)}>
-      <Button variant={"outline"} className={outlineButtonClassName}>
-        <Link
-          href="https://app.belvederepharmacy.net/#/auth/signin"
-          className="font-semibold hover:text-foreground"
-        >
-          {outlineButtonText || "Order Prescriptions"}
-        </Link>
-      </Button>
-      <Button className={solidButtonClassName}>
-        <Link
-          href="https://shop.belvederepharmacy.net/appointments/viewallservices/all?pharmacy=378&type=redirection"
-          className="font-semibold flex items-center gap-x-2 hover:gap-x-4 transition-all duration-300 ease-in-out"
-        >
-          {solidButtonText || "Book Now"}
-          {solidButtonIcon}
-        </Link>
-      </Button>
+      <div>
+        <Button variant="outline" className={outlineButtonClassName}>
+          <Link
+            href="https://app.belvederepharmacy.net/#/auth/signin"
+            className="font-semibold hover:text-foreground"
+          >
+            {outlineButtonText || "Order Prescriptions"}
+          </Link>
+        </Button>
+      </div>
+
+      <div>
+        <Button className={solidButtonClassName}>
+          <Link
+            href="https://shop.belvederepharmacy.net/appointments/viewallservices/all?pharmacy=378&type=redirection"
+            className="font-semibold flex items-center gap-x-2 hover:gap-x-4 transition-all duration-300 ease-in-out"
+          >
+            {solidButtonText || "Book Now"}
+            {solidButtonIcon}
+          </Link>
+        </Button>
+      </div>
     </div>
   );
 }

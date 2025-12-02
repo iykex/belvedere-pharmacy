@@ -3,9 +3,10 @@ import WidthConstraint from "@/components/shared/width-constraint";
 import { Badge } from "@/components/ui/badge";
 import { ABOUT_US_INFO_BANNER } from "@/lib/constants";
 import { ArrowRight, BadgeCheckIcon } from "lucide-react";
-import { MenuButtons } from "@/components/general/navigation-menu";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useBannerAnimation } from "@/hooks/use-gsap";
+import { Button } from "../ui/button";
+import Link from "next/link";
 
 export default function Banner() {
   const animationScope = useRef<HTMLDivElement>(null);
@@ -21,49 +22,74 @@ export default function Banner() {
           <Badge
             id="NHS-badge"
             variant="secondary"
-            className="bg-blue-500 text-white dark:bg-blue-600 invisible"
+            className="dark:bg-blue-600 mb-8 p-2 text-sm md:text-base font-bold bg-[#00BFFF] text-[#002f4b] hover:bg-[#00BFFF]/90 border-0 px-4"
           >
-            <BadgeCheckIcon />
+            <BadgeCheckIcon className="size-5! mr-2 stroke-3" />
             NHS Services Available
           </Badge>
-          <div className="max-w-xl">
-            <h1 id="title" className="text-title invisible">
-              Welcome to Belvedere Pharmacy
+
+          <div className="max-w-4xl space-y-8">
+            <h1
+              id="title"
+              className="text-5xl md:text-6xl lg:text-8xl font-black text-white tracking-tight leading-[1.1] drop-shadow-xl font-sans"
+            >
+              Welcome to <br />
+              <span className="text-[#FF9900]">Belvedere Pharmacy</span>
             </h1>
-            <p id="description" className="text-base invisible">
+            <p
+              id="description"
+              className="text-base max-w-2xl font-medium leading-relaxed "
+            >
               Accessible healthcare for our community with expert advice,
               prescription services, and personalized care.
             </p>
           </div>
-          <MenuButtons
-            wrapperClassName="flex flex-col sm:flex-row gap-5 mt-5 px-5 sm:px-0"
-            solidButtonClassName="block order-first flex group gap-x-1 transition-all duration-500 ease-in-out solid-button invisible"
-            outlineButtonClassName="flex bg-transparent hover:text-[#002f4b] outline-button invisible"
-            solidButtonIcon={
-              <ArrowRight className=" hidden stroke-3 animate-bounce group-hover:block" />
-            }
-            solidButtonText="Book an Appointment"
-          />
-          <div
-            id="info-badges"
-            className="my-10 flex flex-col sm:flex-row gap-5  invisible"
-          >
+          <div className="flex flex-col sm:flex-row gap-5 mt-12 px-5 sm:px-0">
+            <Button
+              id="menu-outline-btn"
+              variant="outline"
+              className="flex items-center justify-center bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#002f4b] h-16 px-10 rounded-full text-xl font-bold transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+            >
+              <Link
+                href="https://app.belvederepharmacy.net/#/auth/signin"
+                className="font-semibold hover:text-foreground"
+              >
+                Order Prescriptions
+              </Link>
+            </Button>
+
+            <Button
+              id="menu-solid-btn"
+              className="flex items-center justify-center bg-[#FF9900] text-white hover:bg-[#FF9900]/90 h-16 px-10 rounded-full text-xl font-bold transition-all duration-300 shadow-xl hover:shadow-orange-500/30 hover:-translate-y-1 group border-2 border-[#FF9900]"
+            >
+              <Link
+                href="https://shop.belvederepharmacy.net/appointments/viewallservices/all?pharmacy=378&type=redirection"
+                className="font-semibold flex items-center gap-x-2 hover:gap-x-4 transition-all duration-300 ease-in-out"
+              >
+                Book an Appointment{" "}
+                <ArrowRight className="ml-3 size-6 stroke-3 transition-transform group-hover:translate-x-1 group-hover:animate-bounce" />
+              </Link>
+            </Button>
+          </div>
+
+          <div id="info-badges" className="mt-20 flex flex-wrap gap-5">
             {ABOUT_US_INFO_BANNER.map((item) => {
               const Icon = item.icon;
               return (
-                <Badge
+                <div
                   key={item.description}
-                  variant={"secondary"}
-                  className="rounded-sm gap-x-2 items-center justify-center hover:scale-105 transition-transform ease-initial duration-400"
+                  className="flex items-center gap-4 backdrop-blur-xs  rounded-2xl p-0.5 hover:px-2 hover:bg-[#002f4b]/70 hover:border-[#00BFFF]/50 transition-all duration-500 group cursor-default"
                 >
-                  <div className="bg-primary rounded-full p-1">
-                    <Icon className="text-white stroke-2" />
+                  <div className="bg-[#00BFFF] p-3 rounded-xl shadow-lg group-hover:scale-110 transition-transform">
+                    <Icon className="size-6 text-[#002f4b] stroke-3" />
                   </div>
                   <div>
-                    <p className="font-bold">{item.title}</p>
-                    <p>{item.description}</p>
+                    <p className="font-bold text-white leading-relaxed">
+                      {item.title}
+                    </p>
+                    <p className="text-sm text-gray-300">{item.description}</p>
                   </div>
-                </Badge>
+                </div>
               );
             })}
           </div>
