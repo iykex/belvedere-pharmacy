@@ -36,7 +36,7 @@ export function MenuButtons({
       <Button variant={"outline"} className={outlineButtonClassName}>
         <Link
           href="https://app.belvederepharmacy.net/#/auth/signin"
-          className="font-semibold"
+          className="font-semibold hover:text-foreground"
         >
           {outlineButtonText || "Order Prescriptions"}
         </Link>
