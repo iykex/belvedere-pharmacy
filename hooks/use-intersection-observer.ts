@@ -3,8 +3,8 @@ import { useEffect } from "react";
 
 const observerOptions = {
   root: null,
-  rootMargin: "0px 0px -20% 0px",
-  threshold: 0.15,
+  rootMargin: "0px 0px -15% 0px",
+  threshold: 0.1,
 };
 
 export function useIntersectionObserver(selector: string) {
@@ -16,7 +16,7 @@ export function useIntersectionObserver(selector: string) {
           element.target.style.transitionDelay = `${index * 80}ms`;
           element.target.classList.add("in-view");
         } else {
-          element.target.classList.remove("in-view");
+          // element.target.classList.remove("in-view");
         }
       });
     }, observerOptions);

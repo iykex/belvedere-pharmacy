@@ -17,7 +17,7 @@ export default function Banner() {
       className="bg-[url('/banner.png')] bg-cover bg-center min-h-screen overflow-x-hidden"
       ref={animationScope}
     >
-      <div className="w-full h-full bg-linear-to-r from-[#002f4b] from-2% flex items-center text-white overflow-hidden lg:pt-20">
+      <div className="w-full h-full min-h-screen bg-linear-to-r from-[#002f4b] from-2% flex items-center text-white overflow-hidden pt-10 lg:pt-20">
         <WidthConstraint className="space-y-8 my-10">
           <div className="max-w-4xl space-y-4 w-full">
             <Badge

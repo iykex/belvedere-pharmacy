@@ -74,7 +74,7 @@ export const KEY_BENEFITS_TEXTS = [
       "We deliver within 24hrs of request",
       "We guarantee speedily response",
     ],
-    order: "order-3 sm:order-4",
+    order: "order-3 md:order-4",
   },
   {
     title: "Set up your profile and get refill easily",
@@ -92,7 +92,7 @@ export const KEY_BENEFITS_IMGS = [
     url: "/key-benefits/all-medicine.svg",
     order: " order-2  scale-110",
   },
-  { url: "/key-benefits/delivery.svg", order: "order-4 sm:order-3 scale-90" },
+  { url: "/key-benefits/delivery.svg", order: "order-4 md:order-3 scale-90" },
   { url: "/key-benefits/profile.svg", order: " order-6  scale-110" },
 ];
 

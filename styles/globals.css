@@ -176,33 +176,13 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
   }
 }
 
-/* .nav-menu {
-  @apply w-full flex justify-between gap-x-5 px-5 items-center py-2 text-white backdrop-blur-xs z-40 font-semibold transition-all duration-700 ease-in-out;
-}
-
-.nav-menu.scrolling-down {
-  @apply lg:justify-between  lg:w-[98%] xl:w-11/12 2xl:w-3/4  lg:mx-auto lg:rounded-4xl  lg:bg-linear-to-br from-primary/60 to-chart-2/40 lg:text-foreground;
-}
-
-.nav-menu.pause {
-  @apply lg:justify-between  lg:w-full xl:w-[95%] 2xl:w-2/3  mt-0 lg:backdrop-blur-3xl lg:mx-auto  lg:bg-linear-to-br from-primary/60 to-chart-2/40 lg:text-white lg:rounded-4xl;
-}
-
-.nav-menu.scroll-up {
-  @apply lg:justify-between lg:w-full xl:w-11/12 mx-auto lg:backdrop-blur-3xl lg:bg-transparent lg:text-white lg:rounded-4xl;
-} */
-
-/* ============================================
-   PREMIUM NAVBAR - BELVEDERE PHARMACY
-   A sophisticated, glass-morphism navbar design
-   ============================================ */
 
 .nav-menu {
   @apply w-full flex justify-between items-center gap-x-6

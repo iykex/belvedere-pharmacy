@@ -15,7 +15,7 @@ export default function NewsletterSection() {
     useNewsletter();
 
   return (
-    <section className="observer-target">
+    <section className="observer-target md:px-10">
       <SectionHeader heading="Newsletter" />
       <WidthConstraint className="w-full mt-10 md:rounded-2xl shadow-xl md:p-0 md:bg-card md:border border-border overflow-hidden">
         <div className="grid md:grid-cols-2">

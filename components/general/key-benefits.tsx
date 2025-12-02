@@ -30,7 +30,7 @@ export default function KeyBenefits() {
         </div>
 
         {/* Benefits Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 w-full place-items-center">
           {KEY_BENEFITS_TEXTS.map((item, index) => {
             return (
               <div

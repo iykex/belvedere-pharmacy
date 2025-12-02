@@ -14,7 +14,7 @@ export default function Testimonials() {
             alt="testimonial"
             width={648}
             height={466}
-            className="rounded-2xl min-[1070px]:rounded-r-none max-[1070px]:md"
+            className="rounded-2xl min-[1070px]:rounded-r-none max-[1070px]:md w-full"
           />
           <TestimonialsSlide />
         </div>

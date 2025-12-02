@@ -12,7 +12,7 @@ export function NHSPharmacyFirstSection() {
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-chart-2/5 rounded-full blur-3xl"></div>
       <WidthConstraint className="observer-target">
-        <div className="container relative z-10">
+        <div className="container relative z-10 mx-auto">
           {/* Header Section */}
           <div className="text-center max-w-4xl mx-auto mb-12 md:mb-16">
             <SectionHeader
