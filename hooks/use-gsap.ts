@@ -54,15 +54,17 @@ export function useBannerAnimation(scope: RefObject<HTMLDivElement | null>) {
 
       const tl = gsap.timeline();
 
+      // Title animation
       tl.to(titleSplit.words, {
         opacity: 1,
         y: 0,
         x: 0,
         stagger: 0.1,
-        duration: 1,
+        duration: 1.2,
         ease: "power3.out",
       });
 
+      // Description animation
       tl.to(
         descSplit.chars,
         {
@@ -70,12 +72,13 @@ export function useBannerAnimation(scope: RefObject<HTMLDivElement | null>) {
           x: 0,
           y: 0,
           stagger: 0.01,
-          duration: 0.1,
+          duration: 0.7,
           ease: "power3.out",
         },
-        "-=0.7"
+        "-=0.8"
       );
 
+      // Buttons
       tl.to(
         "#menu-solid-btn",
         {
@@ -83,7 +86,7 @@ export function useBannerAnimation(scope: RefObject<HTMLDivElement | null>) {
           y: 0,
           ease: "elastic.out(1,0.3)",
         },
-        "-=0.4"
+        "<0.2"
       );
 
       tl.to(
@@ -93,9 +96,10 @@ export function useBannerAnimation(scope: RefObject<HTMLDivElement | null>) {
           y: 0,
           ease: "bounce.out",
         },
-        "-=0.3"
+        "<0.2"
       );
 
+      // Info badges
       tl.to(
         "#info-badges",
         {
@@ -103,18 +107,19 @@ export function useBannerAnimation(scope: RefObject<HTMLDivElement | null>) {
           scale: 1,
           ease: "back.out(1.7)",
           transformOrigin: "center center",
-          duration: 0.5,
+          duration: 0.7,
         },
-        "-=0.2"
+        "<0.8"
       );
 
+      // NHS badge
       tl.to(
         "#NHS-badge",
         {
           opacity: 1,
           x: 0,
           ease: "back.out(1.1)",
-          duration: 0.7,
+          duration: 0.9,
         },
         "-=0.3"
       );
