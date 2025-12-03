@@ -183,10 +183,9 @@
   }
 }
 
-
 .nav-menu {
   @apply w-full flex justify-between items-center gap-x-6
-         px-6 lg:px-15 py-2 backdrop-blur-lg
+         px-6 lg:px-15 py-2.5 backdrop-blur-lg
          text-white font-semibold
          z-40
          transition-all duration-700 ease-in-out;

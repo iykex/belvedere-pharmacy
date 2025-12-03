@@ -13,7 +13,7 @@ export default function Banner() {
   useBannerAnimation(animationScope);
 
   return (
-    <div
+    <section
       className="bg-[url('/banner.png')] bg-cover bg-center min-h-screen overflow-x-hidden"
       ref={animationScope}
     >
@@ -94,6 +94,7 @@ export default function Banner() {
           </div>
         </WidthConstraint>
       </div>
-    </div>
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-background to-transparent pointer-events-none"></div>
+    </section>
   );
 }

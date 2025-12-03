@@ -59,12 +59,12 @@ export function MenuButtons({
   );
 }
 
-export default function Menu() {
+export default function Menu({ className }: { className?: string }) {
   const navMenu = useRef<HTMLDivElement>(null);
   useMenuScroll(navMenu);
 
   return (
-    <div className="nav-menu" ref={navMenu}>
+    <div className={cn("nav-menu", className)} ref={navMenu}>
       {/* Brand */}
       <div className="flex gap-x-2 items-center">
         <Link href="/">
