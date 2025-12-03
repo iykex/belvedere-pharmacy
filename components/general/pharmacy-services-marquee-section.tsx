@@ -4,7 +4,7 @@ import { IconProps, Icon } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
 import { TRUST_BADGES_MARQUEE } from "@/lib/constants";
 import WidthConstraint from "../shared/width-constraint";
-import SectionHeader from "./section-header";
+import SectionHeader from "./section-divider-head";
 
 export const TrustBadgeCard = ({
   title,

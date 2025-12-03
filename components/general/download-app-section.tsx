@@ -4,7 +4,7 @@ import Image from "next/image";
 import WidthConstraint from "../shared/width-constraint";
 import { APP_DOWNLOAD_BUTTONS, DOWNLOAD_APP_FEATURES } from "@/lib/constants";
 import { cn } from "@/lib/utils";
-import SectionHeader from "./section-header";
+import SectionHeader from "./section-divider-head";
 
 export default function DownloadAppSection() {
   return (

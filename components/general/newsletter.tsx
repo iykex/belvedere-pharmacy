@@ -8,7 +8,7 @@ import { Button } from "../ui/button";
 import WidthConstraint from "../shared/width-constraint";
 import { NEWSLETTER_FEATURES } from "@/lib/constants";
 import { Spinner } from "../ui/spinner";
-import SectionHeader from "./section-header";
+import SectionHeader from "./section-divider-head";
 
 export default function NewsletterSection() {
   const { isSubscribed, control, formState, handleSubmit, onSubmit } =

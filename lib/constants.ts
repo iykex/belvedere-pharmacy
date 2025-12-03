@@ -33,6 +33,9 @@ import {
   IconCertificate,
   IconThumbUp,
   IconBuildingCommunity,
+  IconClock12,
+  IconUserCircle,
+  IconBolt,
 } from "@tabler/icons-react";
 
 export const MENU_LINKS = [
@@ -436,4 +439,90 @@ export const TRUST_BADGES_MARQUEE = [
     color: "text-chart-3",
     bgColor: "bg-chart-3/10",
   },
+];
+
+export const PFP_BENEFITS = [
+  {
+    title: "Convenience",
+    description:
+      "Skip the GP appointment and get treated for common ailments at your local pharmacy.",
+    icon: IconClock12,
+  },
+  {
+    title: "Accessibility",
+    description:
+      "Enjoy extended hours and easier access compared to traditional GP surgeries.",
+    icon: IconUserCircle,
+  },
+  {
+    title: "Expertise",
+    description:
+      "Our qualified pharmacists provide professional advice and treatment for numerous conditions.",
+    icon: IconShieldCheck,
+  },
+  {
+    title: "Reduced NHS Pressure",
+    description:
+      "By using Pharmacy First, GP workloads decrease, enhancing patient care access.",
+    icon: IconBolt,
+  },
+];
+
+export const PFP_CONDITIONS = [
+  {
+    title: "Ear Pains",
+    image: "https://placehold.co/400x300/002f4b/ffffff?text=Ear+Care",
+    description:
+      "Treatment is suitable for children aged between 1 and 17 years. For those over 18, GP consultations are free at Belvedere Pharmacy. Our pharmacists are specially trained to diagnose and treat ear infections. We understand ear troubles can be frustrating, so our dedicated healthcare team is here to help.",
+    serviceId: "ear-pain",
+  },
+  {
+    title: "Infected Insect Bites",
+    image: "https://placehold.co/400x300/FF9900/ffffff?text=Insect+Bites",
+    description:
+      "For those dealing with complications from insect bites, Belvedere Pharmacy provides comprehensive care. Our skilled team is ready to assess and treat infected insect bite concerns, ensuring your swift and effective recovery with professional and compassionate care.",
+    serviceId: "skin-infection",
+  },
+  {
+    title: "Bacterial Skin Infection",
+    image: "https://placehold.co/400x300/00BFFF/ffffff?text=Skin+Care",
+    description:
+      "We provide assessment, treatment, and guidance for effective management of various skin infections, offering both NHS and private services. Our expert team will help diagnose your skin condition and recommend proper treatment, ensuring prompt and comfortable recovery.",
+    serviceId: "skin-infection",
+  },
+  {
+    title: "Shingles",
+    image: "https://placehold.co/400x300/002f4b/ffffff?text=Shingles",
+    description:
+      "If you are experiencing painful rashes, blisters, or itching, our healthcare team at Belvedere Pharmacy is here to help. We offer assessment, treatment, and support for effective shingles management, with compassionate, professional care to guide you through your recovery journey.",
+    serviceId: "shingles",
+  },
+  {
+    title: "Sinus Infection",
+    image: "https://placehold.co/400x300/FF9900/ffffff?text=Sinus+Relief",
+    description:
+      "Belvedere Pharmacy offers treatment for sinusitis. If you are experiencing a stuffy nose, headache, or facial pain, we can help. Our services include assessment, treatment, and guidance for effective sinus infection management, with professional support for your journey to relief.",
+    serviceId: "sinus-infection",
+  },
+  {
+    title: "Sore Throat Consultations",
+    image: "https://placehold.co/400x300/00BFFF/ffffff?text=Sore+Throat",
+    description:
+      "Discover prompt and effective care for sore throats at Belvedere Pharmacy. If a scratchy, irritated throat is slowing you down, we have the remedy to restore your comfort. Our accessible services provide quick assessment and treatment to help you feel better quickly.",
+    serviceId: "sore-throat",
+  },
+  {
+    title: "Urinary Tract Infection in Women",
+    image: "https://placehold.co/400x300/33CC00/ffffff?text=UTI+Care",
+    description:
+      "Our pharmacists can help women experiencing UTI symptoms like discomfort, frequent urination, or other UTI symptoms. Belvedere Pharmacy provides expert advice, assessment, and effective treatment for UTIs. Your well-being is our priority, and you can count on us for personalized care.",
+    serviceId: "uti",
+  },
+];
+
+export const PFP_CHECKLIST_ITEMS = [
+  "Quick and convenient appointments",
+  "Professional healthcare advice",
+  "Treatment for common conditions",
+  "NHS-funded service (free for eligible patients)",
 ];

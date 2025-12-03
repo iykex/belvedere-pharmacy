@@ -5,6 +5,7 @@ import { ReactNode } from "react";
 import { montserrat, openSans } from "@/lib/fonts";
 import Menu from "@/components/general/navigation-menu";
 import { Footer } from "@/components/general/footer";
+import IntersectionWrapper from "@/components/wrappers/use-intersection-wrapper";
 
 export const metadata: Metadata = getMetadata();
 
@@ -18,7 +19,11 @@ export default function RootLayout({
       <body
         className={`${openSans.className} ${montserrat.variable} antialiased`}
       >
-        <main> {children}</main>
+        <main>
+          <IntersectionWrapper selector=".observer-target">
+            {children}
+          </IntersectionWrapper>
+        </main>
         <footer className="w-full bg-foreground mt-20">
           <Footer />
         </footer>

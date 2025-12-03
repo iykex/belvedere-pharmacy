@@ -1,7 +1,7 @@
 import Image from "next/image";
 import WidthConstraint from "../shared/width-constraint";
 import TestimonialsSlide from "./testimonials-slide";
-import SectionHeader from "./section-header";
+import SectionHeader from "./section-divider-head";
 
 export default function Testimonials() {
   return (

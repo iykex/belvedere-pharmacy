@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { NHS_PHARMACY_FIRST_SERVICES } from "@/lib/constants";
 import WidthConstraint from "../shared/width-constraint";
-import SectionHeader from "./section-header";
+import SectionHeader from "./section-divider-head";
 
 export function NHSPharmacyFirstSection() {
   return (

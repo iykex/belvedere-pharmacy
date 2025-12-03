@@ -4,7 +4,7 @@ import { KEY_BENEFITS_IMGS, KEY_BENEFITS_TEXTS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { ChevronsRight, Check } from "lucide-react";
 import Image from "next/image";
-import SectionHeader from "./section-header";
+import SectionHeader from "./section-divider-head";
 
 export default function KeyBenefits() {
   return (

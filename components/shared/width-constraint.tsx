@@ -8,14 +8,5 @@ export default function WidthConstraint({
   children: ReactNode;
   className?: string;
 }) {
-  return (
-    <div
-      className={cn(
-        "max-w-(--container) mx-auto px-(--spacing-horizontal) w-full overflow-hidden",
-        className
-      )}
-    >
-      {children}
-    </div>
-  );
+  return <div className={cn("container mx-auto", className)}>{children}</div>;
 }

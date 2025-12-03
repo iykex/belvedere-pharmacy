@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { OUR_PROCESS_STEPS } from "@/lib/constants";
 import WidthConstraint from "../shared/width-constraint";
-import SectionHeader from "./section-header";
+import SectionHeader from "./section-divider-head";
 
 export function OurProcessSection() {
   return (
@@ -12,7 +12,7 @@ export function OurProcessSection() {
       <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-chart-2/5 rounded-full blur-3xl"></div>
       <WidthConstraint className="observer-target bg-linear-to-b from-background via-accent/20 to-background relative overflow-hidden">
-        <div className="container relative z-10 mx-auto">
+        <div className="relative z-10 mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
             <SectionHeader heading="Our Process" />
             <h2 className="text-section-header font-bold tracking-tight text-foreground mb-4">
@@ -28,7 +28,7 @@ export function OurProcessSection() {
             </p>
           </div>
 
-          <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mb-12">
+          <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mb-12 mx-[5%]">
             {OUR_PROCESS_STEPS.map((step, index) => {
               const Icon = step.icon;
               return (
