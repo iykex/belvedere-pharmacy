@@ -10,20 +10,18 @@ import Testimonials from "@/components/general/testimonials-section";
 
 export default function LandingPage() {
   return (
-    <>
+    <div className="space-y-25 overflow-hidden">
       <header className="fixed top-0 w-full z-50">
         <Menu />
       </header>
-      <div className="space-y-20 overflow-hidden">
-        <Banner />
-        <PharmacyServicesMarquee />
-        <NHSPharmacyFirstSection />
-        <KeyBenefits />
-        <OurProcessSection />
-        <Testimonials />
-        <DownloadAppSection />
-        <NewsletterSection />
-      </div>
-    </>
+      <Banner />
+      <PharmacyServicesMarquee />
+      <NHSPharmacyFirstSection />
+      <KeyBenefits />
+      <OurProcessSection />
+      <Testimonials />
+      <DownloadAppSection />
+      <NewsletterSection />
+    </div>
   );
 }

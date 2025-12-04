@@ -3,7 +3,6 @@ import "@/styles/globals.css";
 import { getMetadata } from "@/lib/metadata";
 import { ReactNode } from "react";
 import { montserrat, openSans } from "@/lib/fonts";
-import Menu from "@/components/general/navigation-menu";
 import { Footer } from "@/components/general/footer";
 import IntersectionWrapper from "@/components/wrappers/use-intersection-wrapper";
 

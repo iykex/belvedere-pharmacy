@@ -20,10 +20,10 @@ export default function KeyBenefits() {
           <h2 className="text-section-header font-bold text-foreground mb-4">
             Key <span className="text-primary">Benefits</span>
           </h2>
-          <div className="flex w-24 mx-auto mb-6">
+          {/* <div className="flex w-24 mx-auto mb-6">
             <hr className="w-1/2 bg-chart-3 h-1 border-0 rounded-full" />
             <hr className="w-1/2 bg-chart-2 h-1 border-0 rounded-full" />
-          </div>
+          </div> */}
           <p className="text-muted-foreground text-base">
             Experience healthcare services designed with you in mind
           </p>

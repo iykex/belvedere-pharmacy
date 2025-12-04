@@ -26,7 +26,7 @@ export default function NHSMinimalUnderlineAnimated() {
       <div className="inline-flex flex-col items-center">
         <span
           className={cn(
-            "text-[#005EB8] text-9xl font-black transition-all duration-700 ease-out",
+            "text-[#005EB8] text-9xl font-black transition-all duration-700 ease-out italic",
             isVisible ? "opacity-100 scale-100" : "opacity-0 scale-50"
           )}
         >

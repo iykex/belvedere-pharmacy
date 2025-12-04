@@ -18,10 +18,10 @@ export function OurProcessSection() {
             <h2 className="text-section-header font-bold tracking-tight text-foreground mb-4">
               How We <span className="text-primary">Help You</span>
             </h2>
-            <div className="flex w-24 mx-auto mb-6">
+            {/* <div className="flex w-24 mx-auto mb-6">
               <hr className="w-1/2 bg-chart-3 h-1 border-0" />
               <hr className="w-1/2 bg-chart-2 h-1 border-0" />
-            </div>
+            </div> */}
             <p className="text-base text-muted-foreground leading-relaxed">
               We offer a comprehensive range of healthcare services to meet your
               needs

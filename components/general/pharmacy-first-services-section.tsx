@@ -15,30 +15,16 @@ export function NHSPharmacyFirstSection() {
         <div className="container relative z-10 mx-auto">
           {/* Header Section */}
           <div className="text-center max-w-4xl mx-auto mb-12 md:mb-16">
-            <SectionHeader
-              heading={
-                <div className="flex items-center gap-1">
-                  <div className="bg-[#003087] rounded-4xl px-2 py-0.5 flex items-center justify-center">
-                    <span className="text-sm font-bold text-primary-foreground">
-                      NHS
-                    </span>
-                  </div>
-                  <span className="text-white font-bold">
-                    Pharmacy First Services
-                  </span>
-                </div>
-              }
-            />
+            <SectionHeader heading="NHS Pharmacy First Services" />
 
             <h2 className="text-section-header font-bold tracking-tight text-foreground mb-4 leading-tight">
-              Can't get to the GP?{" "}
-              <span className="text-primary">We can help</span>
+              Can't get to the GP? <span className="">We can help</span>
             </h2>
 
-            <div className="flex w-24 mx-auto mb-6">
+            {/* <div className="flex w-24 mx-auto mb-6">
               <hr className="w-1/2 bg-chart-3 h-1 border-0" />
               <hr className="w-1/2 bg-chart-2 h-1 border-0" />
-            </div>
+            </div> */}
 
             <p className="text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto">
               Access free NHS treatment for common conditions without waiting
@@ -56,16 +42,16 @@ export function NHSPharmacyFirstSection() {
                   className="flex flex-col justify-between relative group bg-card rounded-2xl border-2 border-border p-6 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-primary/50"
                 >
                   {/* Free badge */}
-                  <div className="absolute -top-4 right-0 bg-linear-to-r from-chart-3 to-chart-3/80 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg ring-4 ring-background">
+                  {/* <div className="absolute -top-4 right-0 bg-linear-to-r from-chart-3 to-chart-3/80 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg ring-4 ring-background">
                     FREE
-                  </div>
+                  </div> */}
 
                   {/* Optional secondary badge */}
-                  {service.badge && (
+                  {/* {service.badge && (
                     <div className="absolute -top-4 -left-0.5 bg-linear-to-r from-chart-2 to-chart-2/80 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg ring-4 ring-background">
                       {service.badge}
                     </div>
-                  )}
+                  )} */}
 
                   {/* Icon */}
                   <div

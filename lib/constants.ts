@@ -36,6 +36,9 @@ import {
   IconClock12,
   IconUserCircle,
   IconBolt,
+  IconShield,
+  IconTrendingUp,
+  IconUser,
 } from "@tabler/icons-react";
 
 export const MENU_LINKS = [
@@ -471,51 +474,65 @@ export const PFP_BENEFITS = [
 export const PFP_CONDITIONS = [
   {
     title: "Ear Pains",
-    image: "https://placehold.co/400x300/002f4b/ffffff?text=Ear+Care",
+    image: "/conditions/ear-pain.jpg",
     description:
       "Treatment is suitable for children aged between 1 and 17 years. For those over 18, GP consultations are free at Belvedere Pharmacy. Our pharmacists are specially trained to diagnose and treat ear infections. We understand ear troubles can be frustrating, so our dedicated healthcare team is here to help.",
     serviceId: "ear-pain",
+    badge: "Ages 1-17",
+    color: "from-primary/20 to-primary/5",
   },
   {
     title: "Infected Insect Bites",
-    image: "https://placehold.co/400x300/FF9900/ffffff?text=Insect+Bites",
+    image: "/conditions/insect-bite.jpg",
     description:
       "For those dealing with complications from insect bites, Belvedere Pharmacy provides comprehensive care. Our skilled team is ready to assess and treat infected insect bite concerns, ensuring your swift and effective recovery with professional and compassionate care.",
     serviceId: "skin-infection",
+    badge: "All Ages",
+    color: "from-chart-3/20 to-chart-3/5",
   },
   {
     title: "Bacterial Skin Infection",
-    image: "https://placehold.co/400x300/00BFFF/ffffff?text=Skin+Care",
+    image: "/conditions/skin-infections.jpg",
     description:
       "We provide assessment, treatment, and guidance for effective management of various skin infections, offering both NHS and private services. Our expert team will help diagnose your skin condition and recommend proper treatment, ensuring prompt and comfortable recovery.",
     serviceId: "skin-infection",
+    badge: "Common",
+    color: "from-chart-2/20 to-chart-2/5",
   },
   {
     title: "Shingles",
-    image: "https://placehold.co/400x300/002f4b/ffffff?text=Shingles",
+    image: "/conditions/shingles.jpg",
     description:
       "If you are experiencing painful rashes, blisters, or itching, our healthcare team at Belvedere Pharmacy is here to help. We offer assessment, treatment, and support for effective shingles management, with compassionate, professional care to guide you through your recovery journey.",
     serviceId: "shingles",
+    badge: "Urgent",
+    color: "from-destructive/20 to-destructive/5",
   },
   {
     title: "Sinus Infection",
-    image: "https://placehold.co/400x300/FF9900/ffffff?text=Sinus+Relief",
+    image: "/conditions/sinus-infection.jpg",
     description:
       "Belvedere Pharmacy offers treatment for sinusitis. If you are experiencing a stuffy nose, headache, or facial pain, we can help. Our services include assessment, treatment, and guidance for effective sinus infection management, with professional support for your journey to relief.",
     serviceId: "sinus-infection",
+    badge: "Common",
+    color: "from-primary/20 to-primary/5",
   },
   {
     title: "Sore Throat Consultations",
-    image: "https://placehold.co/400x300/00BFFF/ffffff?text=Sore+Throat",
+    image: "/conditions/sore-throat.jpeg",
     description:
       "Discover prompt and effective care for sore throats at Belvedere Pharmacy. If a scratchy, irritated throat is slowing you down, we have the remedy to restore your comfort. Our accessible services provide quick assessment and treatment to help you feel better quickly.",
     serviceId: "sore-throat",
+    badge: "Fast Relief",
+    color: "from-chart-3/20 to-chart-3/5",
   },
   {
     title: "Urinary Tract Infection in Women",
-    image: "https://placehold.co/400x300/33CC00/ffffff?text=UTI+Care",
     description:
-      "Our pharmacists can help women experiencing UTI symptoms like discomfort, frequent urination, or other UTI symptoms. Belvedere Pharmacy provides expert advice, assessment, and effective treatment for UTIs. Your well-being is our priority, and you can count on us for personalized care.",
+      "Expert care for women experiencing UTI symptoms like discomfort and frequent urination. We provide professional advice, assessment, and effective treatment with personalized attention.",
+    image: "/conditions/uti.jpg",
+    badge: "Women Only",
+    color: "from-chart-2/20 to-chart-2/5",
     serviceId: "uti",
   },
 ];
@@ -525,4 +542,292 @@ export const PFP_CHECKLIST_ITEMS = [
   "Professional healthcare advice",
   "Treatment for common conditions",
   "NHS-funded service (free for eligible patients)",
+];
+
+export const SERVICE_CATEGORIES = [
+  { id: "all", label: "All Services" },
+  { id: "pharmacy", label: "Pharmacy Services" },
+  { id: "health", label: "Health Services" },
+  { id: "specialized", label: "Specialized Care" },
+  { id: "preventive", label: "Preventive Care" },
+];
+
+export const SERVICES_LIST = [
+  {
+    title: "Prescription Dispensing",
+    description:
+      "Fast and accurate dispensing of NHS and private prescriptions with expert advice on medication use.",
+    category: "pharmacy",
+    features: [
+      "NHS & private prescriptions",
+      "Electronic prescription service",
+      "Repeat prescription service",
+      "Medication counseling",
+    ],
+    image: "/placeholder.svg?height=200&width=300",
+    link: "/services/prescriptions",
+    icon: IconPill,
+    color: "from-primary/20 to-primary/5",
+    borderColor: "border-primary/30",
+  },
+  {
+    title: "Medication Review",
+    description:
+      "Comprehensive review of your medications to ensure they're working effectively for you.",
+    category: "pharmacy",
+    features: [
+      "One-to-one consultation",
+      "Side effect management",
+      "Medication optimization",
+      "Written summary provided",
+    ],
+    image: "/placeholder.svg?height=200&width=300",
+    link: "/services/medication-review",
+    icon: IconHeart,
+    color: "from-chart-2/20 to-chart-2/5",
+    borderColor: "border-chart-2/30",
+  },
+  {
+    title: "Flu Vaccination",
+    description:
+      "Protect yourself against seasonal influenza with our convenient vaccination service.",
+    category: "health",
+    features: [
+      "NHS & private options",
+      "No appointment needed",
+      "Quick and painless",
+      "Professional administration",
+    ],
+    image: "/placeholder.svg?height=200&width=300",
+    link: "/services/flu-vaccination",
+    icon: IconShieldCheck,
+    color: "from-chart-3/20 to-chart-3/5",
+    borderColor: "border-chart-3/30",
+  },
+  {
+    title: "COVID-19 Vaccination",
+    description:
+      "Stay protected against COVID-19 with our vaccination service.",
+    category: "health",
+    features: [
+      "NHS service",
+      "Booster doses available",
+      "Safe environment",
+      "Post-vaccination advice",
+    ],
+    image: "/placeholder.svg?height=200&width=300",
+    link: "/services/covid-vaccination",
+    icon: IconShield,
+    color: "from-primary/20 to-primary/5",
+    borderColor: "border-primary/30",
+  },
+  {
+    title: "Blood Pressure Check",
+    description:
+      "Regular monitoring of your blood pressure to help maintain good cardiovascular health.",
+    category: "health",
+    features: [
+      "Quick and painless",
+      "Immediate results",
+      "Professional interpretation",
+      "Follow-up advice",
+    ],
+    image: "/placeholder.svg?height=200&width=300",
+    link: "/services/blood-pressure",
+    icon: IconTrendingUp,
+    color: "from-chart-2/20 to-chart-2/5",
+    borderColor: "border-chart-2/30",
+  },
+  {
+    title: "Diabetes Screening",
+    description:
+      "Early detection of diabetes risk factors through our comprehensive screening service.",
+    category: "preventive",
+    features: [
+      "Blood glucose testing",
+      "Risk assessment",
+      "Lifestyle advice",
+      "Referral if needed",
+    ],
+    image: "/placeholder.svg?height=200&width=300",
+    link: "/services/diabetes-screening",
+    icon: IconHeart,
+    color: "from-chart-3/20 to-chart-3/5",
+    borderColor: "border-chart-3/30",
+  },
+  {
+    title: "Stop Smoking Service",
+    description:
+      "Professional support and products to help you quit smoking for good.",
+    category: "specialized",
+    features: [
+      "One-to-one support",
+      "Nicotine replacement therapy",
+      "Regular check-ins",
+      "Personalized quit plan",
+    ],
+    image: "/placeholder.svg?height=200&width=300",
+    link: "/services/stop-smoking",
+    icon: IconBolt,
+    color: "from-primary/20 to-primary/5",
+    borderColor: "border-primary/30",
+  },
+  {
+    title: "Weight Management",
+    description:
+      "Personalized advice and support to help you achieve and maintain a healthy weight.",
+    category: "specialized",
+    features: [
+      "Nutritional advice",
+      "Body composition analysis",
+      "Goal setting",
+      "Ongoing support",
+    ],
+    image: "/placeholder.svg?height=200&width=300",
+    link: "/services/weight-management",
+    icon: IconTrendingUp,
+    color: "from-chart-2/20 to-chart-2/5",
+    borderColor: "border-chart-2/30",
+  },
+  {
+    title: "Travel Health Clinic",
+    description:
+      "Comprehensive travel health advice and vaccinations for your international trips.",
+    category: "specialized",
+    features: [
+      "Destination-specific advice",
+      "Travel vaccinations",
+      "Malaria prevention",
+      "Travel first aid kits",
+    ],
+    image: "/placeholder.svg?height=200&width=300",
+    link: "/services/travel-health",
+    icon: IconShield,
+    color: "from-chart-3/20 to-chart-3/5",
+    borderColor: "border-chart-3/30",
+  },
+  {
+    title: "Cholesterol Testing",
+    description:
+      "Quick and accurate testing of your cholesterol levels with expert interpretation.",
+    category: "preventive",
+    features: [
+      "Finger-prick test",
+      "Full lipid profile",
+      "Immediate results",
+      "Lifestyle advice",
+    ],
+    image: "/placeholder.svg?height=200&width=300",
+    link: "/services/cholesterol-testing",
+    icon: IconHeart,
+    color: "from-primary/20 to-primary/5",
+    borderColor: "border-primary/30",
+  },
+  {
+    title: "Emergency Contraception",
+    description:
+      "Confidential and non-judgmental emergency contraception service.",
+    category: "health",
+    features: [
+      "Confidential consultation",
+      "Same-day service",
+      "Follow-up advice",
+      "Future contraception planning",
+    ],
+    image: "/placeholder.svg?height=200&width=300",
+    link: "/services/emergency-contraception",
+    icon: IconUser,
+    color: "from-chart-2/20 to-chart-2/5",
+    borderColor: "border-chart-2/30",
+  },
+  {
+    title: "Minor Ailment Service",
+    description:
+      "Treatment and advice for common minor health conditions without seeing a GP.",
+    category: "health",
+    features: [
+      "No appointment needed",
+      "NHS service",
+      "Range of conditions covered",
+      "Prescription if needed",
+    ],
+    image: "/placeholder.svg?height=200&width=300",
+    link: "/services/minor-ailments",
+    icon: IconPill,
+    color: "from-chart-3/20 to-chart-3/5",
+    borderColor: "border-chart-3/30",
+  },
+];
+
+export const WHY_CHOOSE_US_SERVICES = [
+  {
+    title: "24/7 Support",
+    description: "Extended hours and emergency support whenever you need us",
+    icon: IconClock,
+    color: "primary",
+    borderColor: "border-chart-2/30",
+  },
+  {
+    title: "Expert Team",
+    description:
+      "Qualified healthcare professionals with years of specialized experience",
+    icon: IconUsers,
+    color: "chart-3",
+    borderColor: "border-primary/30",
+  },
+  {
+    icon: IconShield,
+    title: "NHS Approved",
+    description:
+      "Fully accredited and registered with all relevant healthcare bodies.",
+    color: "chart-2",
+    borderColor: "border-primary/30",
+  },
+  {
+    title: "Personalized",
+    description:
+      "Tailored services designed for your unique health needs and goals",
+    icon: IconUser,
+    color: "primary",
+    borderColor: "border-chart-3/30",
+  },
+];
+
+export const TRUST_BADGES_SERVICES = [
+  {
+    icon: IconClock,
+    title: "Available Now",
+    description: "Extended hours for your convenience",
+  },
+  {
+    icon: IconShield,
+    title: "NHS Trusted",
+    description: "Registered and accredited pharmacy",
+  },
+  {
+    icon: IconHeart,
+    title: "Expert Care",
+    description: "Qualified professionals dedicated to you",
+  },
+];
+
+export const CONTACT_CARDS_SERVICES = [
+  {
+    icon: IconPhone,
+    label: "Call us anytime",
+    title: "+44 (0) 123 456 7890",
+    details: "Mon-Fri: 9am-6pm, Sat: 10am-4pm",
+  },
+  {
+    icon: IconMapPin,
+    label: "Visit us",
+    title: "Belvedere, Kent",
+    details: "Walk-ins welcome • Easy parking",
+  },
+  {
+    icon: IconMail,
+    label: "Email us",
+    title: "info@belvederepharmacy.co.uk",
+    details: "Response within 24 hours",
+  },
 ];

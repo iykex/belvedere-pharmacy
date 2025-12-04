@@ -15,6 +15,7 @@ import { MenuIcon } from "lucide-react";
 import { ReactNode, useRef } from "react";
 import { cn } from "@/lib/utils";
 import useMenuScroll from "@/hooks/use-menu-scroll";
+import { usePathname } from "next/navigation";
 
 export function MenuButtons({
   outlineButtonClassName,
@@ -62,6 +63,7 @@ export function MenuButtons({
 export default function Menu({ className }: { className?: string }) {
   const navMenu = useRef<HTMLDivElement>(null);
   useMenuScroll(navMenu);
+  const pathname = usePathname();
 
   return (
     <div className={cn("nav-menu", className)} ref={navMenu}>
@@ -80,15 +82,23 @@ export default function Menu({ className }: { className?: string }) {
 
       {/* Navigation Links Desktop Only */}
       <div className="hidden lg:flex gap-x-6">
-        {MENU_LINKS.map((item) => (
-          <Link
-            key={item.href}
-            href={item.href}
-            className="text-center nav-links"
-          >
-            {item.label}
-          </Link>
-        ))}
+        {MENU_LINKS.map((item) => {
+          const isActive = pathname === item.href;
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={
+                (cn("text-center"),
+                isActive
+                  ? "underline underline-offset-4 decoration-2 decoration-primary"
+                  : "nav-links")
+              }
+            >
+              {item.label}
+            </Link>
+          );
+        })}
       </div>
 
       {/* Action Buttons Desktop Only */}

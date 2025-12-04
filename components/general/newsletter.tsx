@@ -15,12 +15,12 @@ export default function NewsletterSection() {
     useNewsletter();
 
   return (
-    <section className="observer-target md:px-10">
+    <section className="observer-target">
       <SectionHeader heading="Newsletter" />
-      <WidthConstraint className="w-full mt-10 md:rounded-2xl shadow-xl md:p-0 md:bg-card md:border border-border overflow-hidden">
+      <WidthConstraint className="mt-10 md:rounded-2xl shadow-xl md:p-0 md:bg-card md:border border-border">
         <div className="grid md:grid-cols-2">
           {/* Left Column - Features with accent background */}
-          <div className="px-8 py-12 md:px-12 bg-accent rounded-4xl md:rounded-none">
+          <div className="bg-accent rounded-4xl md:rounded-none p-4 sm:p-14 space-y-20">
             <div className="mb-8">
               <h2 className="text-section-header font-bold mb-3 text-foreground">
                 Stay Healthy & Informed
@@ -31,7 +31,7 @@ export default function NewsletterSection() {
               </p>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-6 sm:space-y-10">
               {NEWSLETTER_FEATURES.map((item) => {
                 const Icon = item.icon;
                 return (
@@ -55,7 +55,7 @@ export default function NewsletterSection() {
 
           {/* Right Column - Form with card background */}
           {isSubscribed ? (
-            <div className="text-center py-12 px-8 max-w-md mx-auto bg-card">
+            <div className="text-center py-12 px-8 max-w-md mx-auto bg-card space-y-10">
               <div className="inline-block p-4 bg-accent rounded-full mb-4">
                 <CheckCircle2 className="w-16 h-16 text-chart-3" />
               </div>
@@ -68,7 +68,7 @@ export default function NewsletterSection() {
               </p>
             </div>
           ) : (
-            <div className="py-12 px-8 bg-card">
+            <div className="py-12 px-8 bg-card space-y-10">
               <h3 className="text-section-header font-bold text-center text-foreground mb-2">
                 Subscribe to Our Newsletter
               </h3>
@@ -78,7 +78,7 @@ export default function NewsletterSection() {
               </p>
 
               <form id="email-form" onSubmit={handleSubmit(onSubmit)}>
-                <FieldGroup className="gap-2 max-w-md mx-auto">
+                <FieldGroup className="gap-2 max-w-md mx-auto space-y-2">
                   <Controller
                     name="email"
                     control={control}

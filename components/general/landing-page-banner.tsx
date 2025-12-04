@@ -47,7 +47,7 @@ export default function Banner() {
             <Button
               id="menu-outline-btn"
               variant="outline"
-              className="flex bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#002f4b] w-fit p-5 md:px-4 md:py-6 rounded-2xl min-[330px]:text-card-title font-bold transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+              className="flex bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#002f4b] w-fit p-5 md:px-4 md:py-6 rounded-2xl min-[330px]:text-[18px] font-bold transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
             >
               <Link
                 href="https://app.belvederepharmacy.net/#/auth/signin"
@@ -59,7 +59,7 @@ export default function Banner() {
 
             <Button
               id="menu-solid-btn"
-              className="flex items-center justify-center bg-[#FF9900] text-white hover:bg-[#FF9900]/90 w-fit p-5 md:px-4 md:py-6  rounded-2xl min-[330px]:text-card-title font-bold transition-all duration-300 shadow-xl hover:shadow-orange-500/30 hover:-translate-y-1 group border-2 border-[#FF9900]"
+              className="flex items-center justify-center bg-[#FF9900] text-white hover:bg-[#FF9900]/90 w-fit p-5 md:px-4 md:py-6  rounded-2xl min-[330px]:text-[18px] font-bold transition-all duration-300 shadow-xl hover:shadow-orange-500/30 hover:-translate-y-1 group border-2 border-[#FF9900]"
             >
               <Link
                 href="https://shop.belvederepharmacy.net/appointments/viewallservices/all?pharmacy=378&type=redirection"
@@ -94,7 +94,7 @@ export default function Banner() {
           </div>
         </WidthConstraint>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-background to-transparent pointer-events-none"></div>
+      {/* <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-background to-transparent pointer-events-none"></div> */}
     </section>
   );
 }
