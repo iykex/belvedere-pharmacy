@@ -91,10 +91,10 @@ export function NHSPharmacyFirstSection() {
             <p className="flex flex-col sm:flex-row items-center gap-2 ">
               <Stethoscope className="size-4 text-[#005EB8]" />
               <p className="font-semibold text-gray-900">NHS Pharmacy First</p>
-              <p>
+              <span className="block">
                 <span className="hidden sm:inline-flex">—</span> Free treatment
                 for eligible conditions
-              </p>
+              </span>
             </p>
             <div className="h-px flex-1 bg-gray-200 max-w-24" />
           </div>
