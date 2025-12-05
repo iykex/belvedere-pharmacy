@@ -1,0 +1,21 @@
+import FAQSection from "@/components/contact/faq-section";
+import Hero from "@/components/contact/hero";
+import ContactLocation from "@/components/contact/contact-location";
+import Map from "@/components/contact/map";
+import Menu from "@/components/shared/navigation-menu";
+import CTASection from "@/components/about/cta-section";
+
+export default function ContactPage() {
+  return (
+    <div className="overflow-hidden space-y-20">
+      <header className="fixed top-0 w-full z-50">
+        <Menu className="text-foreground!" />
+      </header>
+      <Hero />
+      <ContactLocation />
+      <Map />
+      <FAQSection />
+      <CTASection />
+    </div>
+  );
+}

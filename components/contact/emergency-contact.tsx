@@ -1,0 +1,65 @@
+import { AlertTriangle, Phone } from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "../ui/card";
+import { EMERGENCY_SERVICES_CONTACTS_PAGE } from "@/lib/constants";
+
+export default function EmergencyContact() {
+  return (
+    <Card className="shadow-lg border-0 ">
+      <CardHeader className="pb-3">
+        <div className="flex items-center gap-3">
+          <div className="flex size-12 items-center justify-center rounded-full bg-linear-to-br from-red-100 to-red-200">
+            <AlertTriangle className="size-6 text-red-600" />
+          </div>
+          <div>
+            <CardTitle className="text-xl text-red-800">
+              Emergency Contact
+            </CardTitle>
+            <CardDescription className="text-red-600">
+              For urgent medical assistance
+            </CardDescription>
+          </div>
+        </div>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        {EMERGENCY_SERVICES_CONTACTS_PAGE.map((service, index) => (
+          <div
+            key={index}
+            className={`p-4 rounded-xl bg-linear-to-r ${service.bgFrom} ${service.bgTo} border ${service.border}`}
+          >
+            <div className="flex items-start gap-4">
+              <div
+                className={`flex size-12 items-center justify-center rounded-full bg-linear-to-br ${service.badgeBg} ${service.badgeTo} shadow-md shrink-0`}
+              >
+                <Phone className="size-6 text-white" />
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center justify-between mb-1">
+                  <span
+                    className={`text-sm font-semibold ${service.labelColor} uppercase tracking-wide`}
+                  >
+                    {service.label}
+                  </span>
+                  <span
+                    className={`text-2xl font-black ${service.numberColor}`}
+                  >
+                    {service.number}
+                  </span>
+                </div>
+                <p className="text-sm text-gray-700 mb-2">
+                  {service.description}
+                </p>
+                <p className="text-xs text-gray-600">{service.detail}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </CardContent>
+    </Card>
+  );
+}

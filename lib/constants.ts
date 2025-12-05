@@ -40,6 +40,7 @@ import {
   IconTrendingUp,
   IconUser,
 } from "@tabler/icons-react";
+import { ContactFormFieldsMap } from "./types";
 
 export const MENU_LINKS = [
   { label: "Home", href: "/" },
@@ -275,13 +276,13 @@ export const APP_DOWNLOAD_BUTTONS = [
   {
     labelSmall: "Download on the",
     labelLarge: "App Store",
-    href: "#",
+    href: "https://apps.apple.com/us/app/belvedere-pharmacy/id6670758281",
     icon: "/app-store.png",
   },
   {
     labelSmall: "GET IT ON",
     labelLarge: "Google Play",
-    href: "#",
+    href: "https://play.google.com/store/apps/details?id=net.belvederepharmacy.app",
     icon: "/play-store.png",
   },
 ];
@@ -332,6 +333,7 @@ export const NHS_PHARMACY_FIRST_SERVICES = [
     icon: IconEar,
     color: "text-primary",
     bgColor: "bg-primary/10",
+    href: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5349",
   },
   {
     title: "Infected Insect Bites",
@@ -339,6 +341,7 @@ export const NHS_PHARMACY_FIRST_SERVICES = [
     icon: IconBug,
     color: "text-chart-3",
     bgColor: "bg-chart-3/10",
+    href: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5347",
   },
   {
     title: "Sinus Infection",
@@ -346,6 +349,7 @@ export const NHS_PHARMACY_FIRST_SERVICES = [
     icon: IconWind,
     color: "text-chart-2",
     bgColor: "bg-chart-2/10",
+    href: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5348",
   },
   {
     title: "Urinary Tract Infection",
@@ -354,6 +358,7 @@ export const NHS_PHARMACY_FIRST_SERVICES = [
     color: "text-chart-3",
     bgColor: "bg-chart-3/10",
     badge: "Women",
+    href: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5344",
   },
 ];
 
@@ -480,6 +485,7 @@ export const PFP_CONDITIONS = [
     serviceId: "ear-pain",
     badge: "Ages 1-17",
     color: "from-primary/20 to-primary/5",
+    href: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5349",
   },
   {
     title: "Infected Insect Bites",
@@ -489,6 +495,7 @@ export const PFP_CONDITIONS = [
     serviceId: "skin-infection",
     badge: "All Ages",
     color: "from-chart-3/20 to-chart-3/5",
+    href: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5347",
   },
   {
     title: "Bacterial Skin Infection",
@@ -498,6 +505,7 @@ export const PFP_CONDITIONS = [
     serviceId: "skin-infection",
     badge: "Common",
     color: "from-chart-2/20 to-chart-2/5",
+    href: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5345",
   },
   {
     title: "Shingles",
@@ -507,6 +515,7 @@ export const PFP_CONDITIONS = [
     serviceId: "shingles",
     badge: "Urgent",
     color: "from-destructive/20 to-destructive/5",
+    href: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5350",
   },
   {
     title: "Sinus Infection",
@@ -516,6 +525,7 @@ export const PFP_CONDITIONS = [
     serviceId: "sinus-infection",
     badge: "Common",
     color: "from-primary/20 to-primary/5",
+    href: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5348",
   },
   {
     title: "Sore Throat Consultations",
@@ -525,6 +535,7 @@ export const PFP_CONDITIONS = [
     serviceId: "sore-throat",
     badge: "Fast Relief",
     color: "from-chart-3/20 to-chart-3/5",
+    href: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5346",
   },
   {
     title: "Urinary Tract Infection in Women",
@@ -534,6 +545,7 @@ export const PFP_CONDITIONS = [
     badge: "Women Only",
     color: "from-chart-2/20 to-chart-2/5",
     serviceId: "uti",
+    href: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5344",
   },
 ];
 
@@ -553,6 +565,108 @@ export const SERVICE_CATEGORIES = [
 ];
 
 export const SERVICES_LIST = [
+  {
+    title: "Flu Vaccination",
+    description:
+      "Protect yourself against seasonal influenza with our convenient vaccination service.",
+    category: "health",
+    features: [
+      "NHS & private options",
+      "No appointment needed",
+      "Quick and painless",
+      "Professional administration",
+    ],
+    image: "/placeholder.svg?height=200&width=300",
+    link: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5340",
+    icon: IconShieldCheck,
+    color: "from-chart-3/20 to-chart-3/5",
+    borderColor: "border-chart-3/30",
+  },
+  {
+    title: "COVID-19 Vaccination",
+    description:
+      "Stay protected against COVID-19 with our vaccination service.",
+    category: "health",
+    features: [
+      "NHS service",
+      "Booster doses available",
+      "Safe environment",
+      "Post-vaccination advice",
+    ],
+    image: "/placeholder.svg?height=200&width=300",
+    link: "https://shop.belvederepharmacy.net/appointments/book/service/COVID-19%20Vaccine?pharmacy=378&originalServiceId=5342&type=redirection",
+    icon: IconShield,
+    color: "from-primary/20 to-primary/5",
+    borderColor: "border-primary/30",
+  },
+  {
+    title: "Blood Pressure Check",
+    description:
+      "Regular monitoring of your blood pressure to help maintain good cardiovascular health.",
+    category: "health",
+    features: [
+      "Quick and painless",
+      "Immediate results",
+      "Professional interpretation",
+      "Follow-up advice",
+    ],
+    image: "/placeholder.svg?height=200&width=300",
+    link: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5343",
+    icon: IconTrendingUp,
+    color: "from-chart-2/20 to-chart-2/5",
+    borderColor: "border-chart-2/30",
+  },
+  {
+    title: "Stop Smoking Service",
+    description:
+      "Professional support and products to help you quit smoking for good.",
+    category: "specialized",
+    features: [
+      "One-to-one support",
+      "Nicotine replacement therapy",
+      "Regular check-ins",
+      "Personalized quit plan",
+    ],
+    image: "/placeholder.svg?height=200&width=300",
+    link: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5341",
+    icon: IconBolt,
+    color: "from-primary/20 to-primary/5",
+    borderColor: "border-primary/30",
+  },
+  {
+    title: "Emergency Contraception",
+    description:
+      "Confidential and non-judgmental emergency contraception service.",
+    category: "health",
+    features: [
+      "Confidential consultation",
+      "Same-day service",
+      "Follow-up advice",
+      "Future contraception planning",
+    ],
+    image: "/placeholder.svg?height=200&width=300",
+    link: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5339",
+    icon: IconUser,
+    color: "from-chart-2/20 to-chart-2/5",
+    borderColor: "border-chart-2/30",
+  },
+  {
+    title: "Minor Ailment Service",
+    description:
+      "Treatment and advice for common minor health conditions without seeing a GP.",
+    category: "health",
+    features: [
+      "No appointment needed",
+      "NHS service",
+      "Range of conditions covered",
+      "Prescription if needed",
+    ],
+    image: "/placeholder.svg?height=200&width=300",
+    link: "/services/minor-ailments",
+    icon: IconPill,
+    color: "from-chart-3/20 to-chart-3/5",
+    borderColor: "border-chart-3/30",
+  },
   {
     title: "Prescription Dispensing",
     description:
@@ -586,91 +700,6 @@ export const SERVICES_LIST = [
     icon: IconHeart,
     color: "from-chart-2/20 to-chart-2/5",
     borderColor: "border-chart-2/30",
-  },
-  {
-    title: "Flu Vaccination",
-    description:
-      "Protect yourself against seasonal influenza with our convenient vaccination service.",
-    category: "health",
-    features: [
-      "NHS & private options",
-      "No appointment needed",
-      "Quick and painless",
-      "Professional administration",
-    ],
-    image: "/placeholder.svg?height=200&width=300",
-    link: "/services/flu-vaccination",
-    icon: IconShieldCheck,
-    color: "from-chart-3/20 to-chart-3/5",
-    borderColor: "border-chart-3/30",
-  },
-  {
-    title: "COVID-19 Vaccination",
-    description:
-      "Stay protected against COVID-19 with our vaccination service.",
-    category: "health",
-    features: [
-      "NHS service",
-      "Booster doses available",
-      "Safe environment",
-      "Post-vaccination advice",
-    ],
-    image: "/placeholder.svg?height=200&width=300",
-    link: "/services/covid-vaccination",
-    icon: IconShield,
-    color: "from-primary/20 to-primary/5",
-    borderColor: "border-primary/30",
-  },
-  {
-    title: "Blood Pressure Check",
-    description:
-      "Regular monitoring of your blood pressure to help maintain good cardiovascular health.",
-    category: "health",
-    features: [
-      "Quick and painless",
-      "Immediate results",
-      "Professional interpretation",
-      "Follow-up advice",
-    ],
-    image: "/placeholder.svg?height=200&width=300",
-    link: "/services/blood-pressure",
-    icon: IconTrendingUp,
-    color: "from-chart-2/20 to-chart-2/5",
-    borderColor: "border-chart-2/30",
-  },
-  {
-    title: "Diabetes Screening",
-    description:
-      "Early detection of diabetes risk factors through our comprehensive screening service.",
-    category: "preventive",
-    features: [
-      "Blood glucose testing",
-      "Risk assessment",
-      "Lifestyle advice",
-      "Referral if needed",
-    ],
-    image: "/placeholder.svg?height=200&width=300",
-    link: "/services/diabetes-screening",
-    icon: IconHeart,
-    color: "from-chart-3/20 to-chart-3/5",
-    borderColor: "border-chart-3/30",
-  },
-  {
-    title: "Stop Smoking Service",
-    description:
-      "Professional support and products to help you quit smoking for good.",
-    category: "specialized",
-    features: [
-      "One-to-one support",
-      "Nicotine replacement therapy",
-      "Regular check-ins",
-      "Personalized quit plan",
-    ],
-    image: "/placeholder.svg?height=200&width=300",
-    link: "/services/stop-smoking",
-    icon: IconBolt,
-    color: "from-primary/20 to-primary/5",
-    borderColor: "border-primary/30",
   },
   {
     title: "Weight Management",
@@ -724,36 +753,19 @@ export const SERVICES_LIST = [
     borderColor: "border-primary/30",
   },
   {
-    title: "Emergency Contraception",
+    title: "Diabetes Screening",
     description:
-      "Confidential and non-judgmental emergency contraception service.",
-    category: "health",
+      "Early detection of diabetes risk factors through our comprehensive screening service.",
+    category: "preventive",
     features: [
-      "Confidential consultation",
-      "Same-day service",
-      "Follow-up advice",
-      "Future contraception planning",
+      "Blood glucose testing",
+      "Risk assessment",
+      "Lifestyle advice",
+      "Referral if needed",
     ],
     image: "/placeholder.svg?height=200&width=300",
-    link: "/services/emergency-contraception",
-    icon: IconUser,
-    color: "from-chart-2/20 to-chart-2/5",
-    borderColor: "border-chart-2/30",
-  },
-  {
-    title: "Minor Ailment Service",
-    description:
-      "Treatment and advice for common minor health conditions without seeing a GP.",
-    category: "health",
-    features: [
-      "No appointment needed",
-      "NHS service",
-      "Range of conditions covered",
-      "Prescription if needed",
-    ],
-    image: "/placeholder.svg?height=200&width=300",
-    link: "/services/minor-ailments",
-    icon: IconPill,
+    link: "/services/diabetes-screening",
+    icon: IconHeart,
     color: "from-chart-3/20 to-chart-3/5",
     borderColor: "border-chart-3/30",
   },
@@ -907,8 +919,8 @@ export const CTA_SECTION_FEATURES_LIST = [
   "Expert medication reviews",
 ];
 
-export const CTA_SECTION_BUTTONS = [
-  { href: "/contact", label: "Contact Us Today" },
+export const CTA_SECTION_BUTTONS_ABOUT_PAGE = [
+  { href: "/contact-us", label: "Contact Us Today" },
   { href: "/services", label: "View Our Services" },
 ];
 
@@ -945,7 +957,7 @@ export const CTA_SECTION_CONTACT_ITEMS = [
 export const ABOUT_BANNER_BUTTONS = [
   {
     variant: "default",
-    href: "/appointment",
+    href: "http://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378",
     label: "Book an Appointment",
   },
   {
@@ -960,4 +972,140 @@ export const WORKING_HOURS = [
   { days: "Saturday", hours: "09:00 - 14:00" },
   { days: "Sunday", hours: "Closed" },
   { days: "Emergency Service", hours: "24/7 On Call" },
+];
+
+export const FAQS_CONTACTS_PAGE = [
+  {
+    question: "What are your opening hours?",
+    answer:
+      "We are open Monday to Friday from 9am to 6pm, and Saturday from 9am to 2pm. We are closed on Sundays and Bank Holidays.",
+    value: "item-1",
+  },
+  {
+    question: "Do I need to make an appointment for Pharmacy First services?",
+    answer:
+      "While walk-ins are welcome, we recommend booking an appointment to minimize waiting times and ensure our pharmacist is available to assist you.",
+    value: "item-2",
+  },
+  {
+    question: "Are your Pharmacy First services free?",
+    answer:
+      "Yes, NHS Pharmacy First services are free for patients who are eligible for free NHS prescriptions. Others may need to pay the standard NHS prescription charge.",
+    value: "item-3",
+  },
+  {
+    question: "How do I order a repeat prescription?",
+    answer:
+      "You can order repeat prescriptions through our website, mobile app, by phone, or in person at the pharmacy. We also offer a prescription delivery service.",
+    value: "item-4",
+  },
+  {
+    question: "Do you offer medication reviews?",
+    answer:
+      "Yes, we offer free medication reviews to help ensure you're getting the most from your medicines and to address any concerns or side effects you may be experiencing.",
+    value: "item-5",
+  },
+  {
+    question: "Can I get vaccinations at your pharmacy?",
+    answer:
+      "Yes, we offer various vaccinations including flu, COVID-19, travel vaccines, and more. Some are available on the NHS while others are private services.",
+    value: "item-6",
+  },
+];
+
+export const CONTACT_ITEMS_CONTACTS_PAGE = [
+  {
+    id: "phone",
+    icon: IconPhone,
+    title: "Phone",
+    content: "+44 (0) 123 456 7890",
+    detail: "Mon-Fri: 9am-6pm, Sat: 9am-2pm",
+    bgFrom: "from-blue-100",
+    bgTo: "to-blue-50",
+    bgHoverFrom: "group-hover:from-blue-50",
+    bgHoverTo: "group-hover:to-blue-100",
+    iconColor: "text-blue-600",
+  },
+  {
+    id: "email",
+    icon: IconMail,
+    title: "Email",
+    content: "info@belvederepharmacy.com",
+    detail: "We aim to respond within 1-2 hours",
+    bgFrom: "from-purple-100",
+    bgTo: "to-purple-50",
+    bgHoverFrom: "group-hover:from-purple-50",
+    bgHoverTo: "group-hover:to-purple-100",
+    iconColor: "text-purple-600",
+  },
+  {
+    id: "address",
+    icon: IconMapPin,
+    title: "Address",
+    content: "11 PICARDY STREET",
+    detail: "BELVEDERE, KENT DA17 5QQ",
+    bgFrom: "from-emerald-100",
+    bgTo: "to-emerald-50",
+    bgHoverFrom: "group-hover:from-emerald-50",
+    bgHoverTo: "group-hover:to-emerald-100",
+    iconColor: "text-emerald-600",
+  },
+];
+
+export const OPENING_HOURS_CONTACTS_PAGE = [
+  { day: "Mon - Fri", hours: "09:00 - 18:00", color: "text-gray-900" },
+  { day: "Saturday", hours: "09:00 - 14:00", color: "text-gray-900" },
+  { day: "Sunday", hours: "Closed", color: "text-red-600", isClosed: true },
+];
+
+export const EMERGENCY_SERVICES_CONTACTS_PAGE = [
+  {
+    number: "999",
+    label: "Emergency",
+    description: "Life-threatening emergencies only",
+    detail: "Chest pain, severe bleeding, loss of consciousness",
+    bgFrom: "from-red-50",
+    bgTo: "to-red-100/50",
+    border: "border-red-200",
+    badgeBg: "from-red-500",
+    badgeTo: "to-red-600",
+    numberColor: "text-red-600",
+    labelColor: "text-red-700",
+  },
+  {
+    number: "111",
+    label: "Non-Emergency",
+    description: "24/7 medical advice",
+    detail: "When your GP is closed or for urgent medical advice",
+    bgFrom: "from-blue-50",
+    bgTo: "to-blue-100/50",
+    border: "border-blue-200",
+    badgeBg: "from-blue-500",
+    badgeTo: "to-blue-600",
+    numberColor: "text-blue-600",
+    labelColor: "text-blue-700",
+  },
+];
+
+export const CONTACT_FORM_FIELD_ITEMS: ContactFormFieldsMap[] = [
+  {
+    name: "name",
+    label: "Full Name",
+    placeholder: "Harriet Tevez",
+  },
+  {
+    name: "email",
+    label: "Email Address",
+    placeholder: "harriet@gmail.com",
+  },
+  {
+    name: "phone",
+    label: "Phone Number",
+    placeholder: "+44 7123 456700",
+  },
+  {
+    name: "subject",
+    label: "Subject",
+    placeholder: "Prescription",
+  },
 ];

@@ -91,7 +91,7 @@ export default function Menu({ className }: { className?: string }) {
               className={
                 (cn("text-center"),
                 isActive
-                  ? "underline underline-offset-4 decoration-2 decoration-primary"
+                  ? "underline underline-offset-8 decoration-2 decoration-primary"
                   : "nav-links")
               }
             >

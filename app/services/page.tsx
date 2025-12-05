@@ -1,4 +1,4 @@
-import Menu from "@/components/general/navigation-menu";
+import Menu from "@/components/shared/navigation-menu";
 import { ServicesCTA } from "@/components/services/services-cta";
 import { ServicesGrid } from "@/components/services/services-grid";
 import { ServicesHeading } from "@/components/services/services-header";

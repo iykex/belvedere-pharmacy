@@ -6,7 +6,6 @@ import {
   Video,
   Calendar,
   CheckCircle,
-  Sparkles,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -67,26 +66,12 @@ export function ServicesHeading() {
                 className="group bg-primary hover:bg-primary/90 text-primary-foreground font-bold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
               >
                 <Link
-                  href="/appointment"
+                  href="https://shop.belvederepharmacy.net/appointments/viewallservices/all?pharmacy=378&type=redirection"
                   className="flex items-center justify-center gap-2"
                 >
                   <Calendar className="w-5 h-5" />
                   <span>Book an Appointment</span>
                   <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </Button>
-
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="group border-2 border-border hover:border-primary text-foreground hover:bg-accent font-bold rounded-xl transition-all duration-300"
-              >
-                <Link
-                  href="#services"
-                  className="flex items-center justify-center gap-2"
-                >
-                  <span>Browse All Services</span>
                 </Link>
               </Button>
             </div>

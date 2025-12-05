@@ -64,7 +64,10 @@ export function ServicesCTA() {
                 asChild
                 className="bg-white text-primary hover:bg-white font-bold px-8 py-6 text-base group"
               >
-                <Link href="/contact-us" className="flex items-center gap-2">
+                <Link
+                  href="http://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378"
+                  className="flex items-center gap-2"
+                >
                   Book Now
                   <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Link>

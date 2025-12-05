@@ -1,3 +1,7 @@
+import z4 from "zod/v4";
+import { contactFormSchema } from "./schema";
+import { FieldPath } from "react-hook-form";
+
 export interface ServiceCategory {
   id: string;
   label: string;
@@ -37,3 +41,12 @@ export type ButtonVariants =
   | "ghost"
   | null
   | undefined;
+
+export type ContactFormType = z4.infer<typeof contactFormSchema>;
+export type ContactFormFieldNames = FieldPath<ContactFormType>;
+
+export type ContactFormFieldsMap = {
+  name: ContactFormFieldNames;
+  label: string;
+  placeholder: string;
+};

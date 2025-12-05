@@ -1,0 +1,103 @@
+import { Clock, Mail, Phone } from "lucide-react";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "../ui/card";
+import { Button } from "../ui/button";
+import {
+  CONTACT_ITEMS_CONTACTS_PAGE,
+  OPENING_HOURS_CONTACTS_PAGE,
+} from "@/lib/constants";
+import Link from "next/link";
+
+export default function ContactsColumn() {
+  return (
+    <Card className="border-0 shadow-lg overflow-hidden max-w-md">
+      <CardHeader>
+        <div className="flex items-center gap-3">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/20">
+            <Phone className="h-6 w-6 text-primary" />
+          </div>
+          <div>
+            <CardTitle className="text-xl">Contact Information</CardTitle>
+            <CardDescription>
+              Reach out to us through any of these channels
+            </CardDescription>
+          </div>
+        </div>
+      </CardHeader>
+      <CardContent className="p-6 space-y-6">
+        {CONTACT_ITEMS_CONTACTS_PAGE.map((item) => {
+          const IconComponent = item.icon;
+          return (
+            <div
+              key={item.id}
+              className="group flex items-start p-4 rounded-xl hover:bg-gray-50 transition-colors duration-200"
+            >
+              <div
+                className={`mr-4 flex h-12 w-12 items-center justify-center rounded-full bg-linear-to-br ${item.bgFrom} ${item.bgTo} ${item.bgHoverFrom} ${item.bgHoverTo} transition-colors`}
+              >
+                <IconComponent className={`h-6 w-6 ${item.iconColor}`} />
+              </div>
+              <div className="flex-1">
+                <p className="font-bold text-gray-900 mb-1">{item.title}</p>
+                <p className="text-primary font-semibold mb-1">
+                  {item.content}
+                </p>
+                <p className="text-sm text-gray-600">{item.detail}</p>
+              </div>
+            </div>
+          );
+        })}
+
+        {/* Opening Hours */}
+        <div className="group flex items-start p-4 rounded-xl hover:bg-gray-50 transition-colors duration-200">
+          <div className="mr-4 flex h-12 w-12 items-center justify-center rounded-full bg-linear-to-br from-amber-100 to-amber-50 group-hover:from-amber-50 group-hover:to-amber-100 transition-colors">
+            <Clock className="h-6 w-6 text-amber-600" />
+          </div>
+          <div className="flex-1">
+            <p className="font-bold text-gray-900 mb-1">Opening Hours</p>
+            <div className="space-y-2 text-sm">
+              {OPENING_HOURS_CONTACTS_PAGE.map((item, index) => (
+                <div
+                  key={index}
+                  className={
+                    item.isClosed
+                      ? "flex justify-between items-center pt-2 border-t"
+                      : "flex justify-between items-center"
+                  }
+                >
+                  <span className="text-gray-600">{item.day}</span>
+                  <span className={`font-medium ${item.color}`}>
+                    {item.hours}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Quick Actions */}
+        <div className="pt-4 border-t">
+          <div className="flex flex-col gap-3">
+            <Button className="w-full justify-center" variant="default" asChild>
+              <Link href="tel:+441234567890">
+                <Phone className="mr-2 h-4 w-4" />
+                Call Now
+              </Link>
+            </Button>
+            <Button className="w-full justify-center" variant="outline" asChild>
+              <Link href="mailto:info@belvederepharmacy.com">
+                <Mail className="mr-2 h-4 w-4" />
+                Send Email
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}

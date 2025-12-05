@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { ChevronsRight, Check } from "lucide-react";
 import Image from "next/image";
 import SectionHeader from "./section-divider-head";
+import Link from "next/link";
 
 export default function KeyBenefits() {
   return (
@@ -68,8 +69,13 @@ export default function KeyBenefits() {
 
                 {/* CTA Button */}
                 <Button className="rounded-full px-6 py-3 font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group/btn w-full sm:w-auto">
-                  Get Prescription
-                  <ChevronsRight className="ml-2 w-5 h-5 stroke-3 transition-transform group-hover/btn:translate-x-1" />
+                  <Link
+                    href="https://app.belvederepharmacy.net/#/auth/signin"
+                    className="flex items-center"
+                  >
+                    Get Prescription
+                    <ChevronsRight className="ml-2 w-5 h-5 stroke-3 transition-transform group-hover/btn:translate-x-1" />
+                  </Link>
                 </Button>
               </div>
             );
@@ -108,15 +114,20 @@ export default function KeyBenefits() {
               size="lg"
               className="rounded-full px-8 font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group"
             >
-              Get Started Today
-              <ChevronsRight className="ml-2 size-5 stroke-3 transition-transform group-hover:translate-x-1" />
+              <Link
+                href="https://app.belvederepharmacy.net/#/auth/signin"
+                className="flex items-center"
+              >
+                Get Started Today
+                <ChevronsRight className="ml-2 size-5 stroke-3 transition-transform group-hover:translate-x-1" />
+              </Link>
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="rounded-full px-8 font-semibold border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+              className="rounded-full px-8 font-semibold border border-primary hover:border-background text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
             >
-              Learn More
+              <Link href="/services"> Learn More</Link>
             </Button>
           </div>
         </div>

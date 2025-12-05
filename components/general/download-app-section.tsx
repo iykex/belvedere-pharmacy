@@ -58,7 +58,7 @@ export default function DownloadAppSection() {
                   key={item.icon}
                   asChild
                   variant="outline"
-                  className="px-5 py-7 bg-card hover:bg-accent hover:border-primary/50 transition-all duration-300 border-border hover:shadow-md group w-full sm:w-fit"
+                  className="px-5 py-7 bg-card hover:bg-accent hover:border-background transition-all duration-300 border-border hover:shadow-md group w-full sm:w-fit"
                 >
                   <Link href={item.href} className="flex items-center gap-3">
                     <Image

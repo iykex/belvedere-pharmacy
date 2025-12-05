@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import NHSMinimalUnderlineAnimated from "@/components/general/nhs-text-animation";
 import { Badge } from "@/components/ui/badge";
-import Menu from "@/components/general/navigation-menu";
+import Menu from "@/components/shared/navigation-menu";
 import {
   PFP_BENEFITS,
   PFP_CHECKLIST_ITEMS,
@@ -96,7 +96,7 @@ const ConditionsSection = () => {
               <div className="p-6 grow flex flex-col">
                 <p className="mb-6 grow opacity-70">{condition.description}</p>
                 <Button className="group w-fit mx-auto">
-                  <Link href={""} className="flex items-center">
+                  <Link href={condition.href} className="flex items-center">
                     <Calendar className="mr-2 size-4 transition-transform group-hover:translate-x-1" />
                     Book your Appointment
                   </Link>
@@ -152,10 +152,12 @@ const CTASection = () => {
                 size="lg"
                 className="w-fit text-white hover:text-primary hover:bg-gray-100 shadow-lg"
               >
-                <Link href="/appointment"> Book an Appointment</Link>
+                <Link href="https://shop.belvederepharmacy.net/appointments/viewallservices/all?pharmacy=378&type=redirection">
+                  Book an Appointment
+                </Link>
               </Button>
               <Button variant="outline" size="lg" className="w-fit">
-                <Link href="/contact"> Contact Us for More Information</Link>
+                <Link href="/contact-us"> Contact Us for More Information</Link>
               </Button>
             </div>
           </div>
@@ -203,7 +205,7 @@ export function HeroSection() {
               className="group bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-[20px] px-10 py-7 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
             >
               <Link
-                href="/appointment"
+                href="https://shop.belvederepharmacy.net/appointments/viewallservices/all?pharmacy=378&type=redirection"
                 className="flex items-center justify-center gap-3"
               >
                 <span>Book Free Consultation</span>

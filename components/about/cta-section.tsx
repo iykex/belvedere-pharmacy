@@ -1,7 +1,7 @@
 import { CheckCircle, Mail, PhoneCall } from "lucide-react";
 import WidthConstraint from "../shared/width-constraint";
 import {
-  CTA_SECTION_BUTTONS,
+  CTA_SECTION_BUTTONS_ABOUT_PAGE,
   CTA_SECTION_CONTACT_ITEMS,
   CTA_SECTION_FEATURES_LIST,
 } from "@/lib/constants";
@@ -47,15 +47,15 @@ export default function CTASection() {
 
             {/* Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              {CTA_SECTION_BUTTONS.map((item) => {
+              {CTA_SECTION_BUTTONS_ABOUT_PAGE.map((item) => {
                 return (
                   <Button
                     key={item.label}
                     size="lg"
-                    className="bg-white text-primary hover:bg-white/90 font-semibold shadow-lg"
+                    className="bg-white text-primary hover:scale-90 hover:bg-background hover:text-primary font-semibold shadow-lg z-50 transition-all ease-in-out duration-300"
                     asChild
                   >
-                    <Link href="/contact">
+                    <Link href={item.href}>
                       <PhoneCall className="mr-2 h-5 w-5" />
                       {item.label}
                     </Link>
@@ -128,7 +128,7 @@ export default function CTASection() {
                   size="lg"
                   asChild
                 >
-                  <Link href="/contact">
+                  <Link href="/contact-us">
                     <Mail className="mr-2 h-5 w-5" />
                     Send us a Message
                   </Link>
