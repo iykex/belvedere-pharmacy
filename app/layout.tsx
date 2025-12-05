@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "@/styles/globals.css";
 import { getMetadata } from "@/lib/metadata";
 import { ReactNode } from "react";
-import { montserrat, openSans } from "@/lib/fonts";
+import { plusJakartaSans, inter } from "@/lib/fonts";
 import { Footer } from "@/components/general/footer";
 import IntersectionWrapper from "@/components/wrappers/use-intersection-wrapper";
 
@@ -16,14 +16,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${openSans.className} ${montserrat.variable} antialiased`}
+        className={`${inter.className} ${plusJakartaSans.variable} antialiased`}
       >
-        <main>
+        <main className="dashed-grid-bg min-h-screen">
           <IntersectionWrapper selector=".observer-target">
             {children}
           </IntersectionWrapper>
         </main>
-        <footer className="w-full bg-foreground mt-20">
+        <footer className="w-full bg-foreground">
           <Footer />
         </footer>
       </body>

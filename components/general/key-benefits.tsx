@@ -1,135 +1,111 @@
 import WidthConstraint from "@/components/shared/width-constraint";
 import { Button } from "@/components/ui/button";
-import { KEY_BENEFITS_IMGS, KEY_BENEFITS_TEXTS } from "@/lib/constants";
-import { cn } from "@/lib/utils";
-import { ChevronsRight, Check } from "lucide-react";
-import Image from "next/image";
-import SectionHeader from "./section-divider-head";
+import { KEY_BENEFITS_TEXTS } from "@/lib/constants";
+import { ArrowRight, Check, Sparkles } from "lucide-react";
 import Link from "next/link";
 
 export default function KeyBenefits() {
   return (
-    <section className="bg-linear-to-b from-background via-accent/10 to-background relative overflow-hidden">
-      {/* Background decorations */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-chart-2/5 rounded-full blur-3xl"></div>
-
-      <WidthConstraint className="z-10 observer-target">
+    <section className="py-20 bg-white">
+      <WidthConstraint className="observer-target">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto">
-          <SectionHeader heading="Why Choose Us" />
-          <h2 className="text-section-header font-bold text-foreground mb-4">
-            Key <span className="text-primary">Benefits</span>
-          </h2>
-          {/* <div className="flex w-24 mx-auto mb-6">
-            <hr className="w-1/2 bg-chart-3 h-1 border-0 rounded-full" />
-            <hr className="w-1/2 bg-chart-2 h-1 border-0 rounded-full" />
-          </div> */}
-          <p className="text-muted-foreground text-base">
-            Experience healthcare services designed with you in mind
-          </p>
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
+          <div className="max-w-2xl">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="p-2 bg-primary/10 rounded-lg">
+                <Sparkles className="size-5 text-primary" />
+              </div>
+              <span className="text-primary font-semibold text-sm uppercase tracking-wider">
+                Why Choose Us
+              </span>
+            </div>
+
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 mb-4">
+              Why Patients <span className="text-primary">Love Us</span>
+            </h2>
+
+            <p className="text-gray-600 text-lg leading-relaxed">
+              Experience healthcare services designed with you in mind. We go
+              beyond traditional pharmacy care.
+            </p>
+          </div>
+
+          <Button
+            asChild
+            size="lg"
+            className="group bg-primary hover:bg-primary/90 text-white font-semibold px-8 rounded-xl shadow-lg"
+          >
+            <Link href="/services" className="flex items-center gap-2">
+              Explore Services
+              <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </Button>
         </div>
 
         {/* Benefits Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 w-full place-items-center">
+        <div className="grid gap-6 sm:grid-cols-2">
           {KEY_BENEFITS_TEXTS.map((item, index) => {
             return (
               <div
                 key={item.title}
-                className={`rounded-3xl hover:shadow-xl hover:border-primary/30 transition-all duration-300 group ${item.order} p-6 md:p-8`}
+                className="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100"
               >
-                {/* Icon or Number Badge */}
-                <div className="flex items-center justify-center w-12 h-12 bg-primary/10 text-primary rounded-full mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <span className="text-lg md:text-2xl font-bold">
+                {/* Number Badge */}
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="flex items-center justify-center w-12 h-12 bg-primary text-white rounded-xl font-bold text-lg group-hover:scale-110 transition-transform duration-300">
                     {index + 1}
-                  </span>
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors">
+                    {item.title}
+                  </h3>
                 </div>
 
-                {/* Title */}
-                <p className="text-lg md:text-[20px] font-bold text-foreground mb-6 group-hover:text-primary transition-colors">
-                  {item.title}
-                </p>
-
                 {/* Benefits List */}
-                <ul className="space-y-4 mb-8">
-                  {item.bullets.map((bullet) => {
-                    return (
-                      <li
-                        key={bullet}
-                        className="flex gap-3 items-center text-foreground/90"
-                      >
-                        <div className="shrink-0 w-6 h-6 bg-chart-3/10 rounded-full flex items-center justify-center mt-0.5">
-                          <Check className="w-4 h-4 text-chart-3 stroke-3" />
-                        </div>
-                        <p className="leading-relaxed">{bullet}</p>
-                      </li>
-                    );
-                  })}
+                <ul className="space-y-3 mb-6">
+                  {item.bullets.map((bullet) => (
+                    <li
+                      key={bullet}
+                      className="flex gap-3 items-start text-gray-600"
+                    >
+                      <div className="shrink-0 w-5 h-5 bg-green-100 rounded-full flex items-center justify-center mt-0.5">
+                        <Check className="w-3 h-3 text-green-600 stroke-[3]" />
+                      </div>
+                      <p className="leading-relaxed text-sm">{bullet}</p>
+                    </li>
+                  ))}
                 </ul>
 
-                {/* CTA Button */}
-                <Button className="rounded-full px-6 py-3 font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group/btn w-full sm:w-auto">
-                  <Link
-                    href="https://app.belvederepharmacy.net/#/auth/signin"
-                    className="flex items-center"
-                  >
-                    Get Prescription
-                    <ChevronsRight className="ml-2 w-5 h-5 stroke-3 transition-transform group-hover/btn:translate-x-1" />
-                  </Link>
-                </Button>
-              </div>
-            );
-          })}
-
-          {/* Images */}
-          {KEY_BENEFITS_IMGS.map((item) => {
-            return (
-              <div
-                key={item.url}
-                className={`overflow-hidden ${item.order} flex items-center justify-center p-4`}
-              >
-                <Image
-                  src={item.url}
-                  alt=""
-                  width={500}
-                  height={500}
-                  className="w-full h-auto max-w-[420px] object-contain pt-6 transition-transform duration-500 hover:scale-95"
-                />
+                {/* CTA Link */}
+                <Link
+                  href="https://app.belvederepharmacy.net/#/auth/signin"
+                  className="group/link inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
+                >
+                  Get Started
+                  <ArrowRight className="size-4 transition-transform group-hover/link:translate-x-1" />
+                </Link>
               </div>
             );
           })}
         </div>
 
-        {/* Bottom CTA Section */}
-        <div className="text-center">
-          <h3 className="text-card-title font-medium text-foreground mb-4">
-            Ready to experience better healthcare?
-          </h3>
-          <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Join thousands of satisfied customers who trust us with their health
-            and wellness needs.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              className="rounded-full px-8 font-semibold bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 group"
+        {/* Stats Row */}
+        <div className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-6">
+          {[
+            { value: "5000+", label: "Happy Patients" },
+            { value: "5+", label: "Years Experience" },
+            { value: "99%", label: "Satisfaction Rate" },
+            { value: "NHS", label: "Accredited" },
+          ].map((stat, index) => (
+            <div
+              key={index}
+              className="text-center p-6 rounded-2xl bg-gray-50 hover:bg-primary/5 transition-colors"
             >
-              <Link
-                href="https://app.belvederepharmacy.net/#/auth/signin"
-                className="flex items-center"
-              >
-                Get Started Today
-                <ChevronsRight className="ml-2 size-5 stroke-3 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="rounded-full px-8 font-semibold border border-primary hover:border-background text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
-            >
-              <Link href="/services"> Learn More</Link>
-            </Button>
-          </div>
+              <p className="text-3xl sm:text-4xl font-bold text-primary mb-1">
+                {stat.value}
+              </p>
+              <p className="text-sm text-gray-500 font-medium">{stat.label}</p>
+            </div>
+          ))}
         </div>
       </WidthConstraint>
     </section>

@@ -1,64 +1,172 @@
-import { Shield } from "lucide-react";
+import { Shield, ArrowRight, Users, Clock, Award, Heart, MapPin, Phone } from "lucide-react";
 import WidthConstraint from "../shared/width-constraint";
 import { Button } from "../ui/button";
-import { ABOUT_BANNER_BUTTONS } from "@/lib/constants";
-import { ButtonVariants } from "@/lib/types";
 import { Badge } from "../ui/badge";
 import Link from "next/link";
+import Image from "next/image";
+
+const HERO_STATS = [
+  { icon: Users, value: "5000+", label: "Happy Patients" },
+  { icon: Clock, value: "5+", label: "Years Serving" },
+  { icon: Award, value: "NHS", label: "Accredited" },
+];
 
 export default function Banner() {
   return (
-    <section className="relative min-h-screen overflow-hidden">
-      {/* Background Video */}
-      <video
-        className="absolute animate-in top-0 left-0 w-full h-full object-cover z-0"
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-      >
-        <source src="/pills/v2.mp4" type="video/mp4" />
-      </video>
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-[#002f4b] via-[#003d5c] to-[#004a6d]">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,153,0,0.08),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(0,191,255,0.06),transparent_50%)]" />
 
-      {/*Overlay for readability */}
-      <div className="absolute inset-0 bg-black/50 z-0"></div>
+      {/* Subtle grid pattern */}
+      <div className="absolute inset-0 opacity-5" style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+      }} />
 
-      <WidthConstraint className="relative z-10 flex items-center min-h-screen">
-        <div className="max-w-4xl mx-auto text-center space-y-10">
-          <Badge className="text-foreground text-sm font-bold bg-background py-2">
-            <Shield className="size-5! text-primary" />
-            Trusted since 2020
-          </Badge>
+      <WidthConstraint className="relative z-10 py-20">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left Content */}
+          <div className="space-y-8">
+            <div className="flex flex-wrap gap-3">
+              <Badge className="inline-flex items-center gap-2 text-primary text-sm font-semibold bg-primary/15 py-2 px-4 border-primary/30 backdrop-blur-sm">
+                <Shield className="size-4" />
+                Trusted since 2020
+              </Badge>
+              <Badge className="inline-flex items-center gap-2 text-[#00BFFF] text-sm font-semibold bg-[#00BFFF]/15 py-2 px-4 border-[#00BFFF]/30 backdrop-blur-sm">
+                <Heart className="size-4" />
+                Community First
+              </Badge>
+            </div>
 
-          <h1 className="text-title font-montserrat font-extrabold tracking-tight text-foreground leading-15">
-            About <span className="text-primary">Belvedere Pharmacy</span>
-          </h1>
+            <div className="space-y-6">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.1]">
+                About{" "}
+                <span className="text-primary relative inline-block">
+                  Belvedere
+                  <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 8" fill="none">
+                    <path d="M2 6C50 2 150 2 198 6" stroke="#FF9900" strokeWidth="3" strokeLinecap="round" />
+                  </svg>
+                </span>
+                <br />
+                <span className="text-white/90">Pharmacy</span>
+              </h1>
 
-          <p className="text-card-title text-background leading-relaxed max-w-xl mx-auto">
-            Providing accessible healthcare and personalized service to our
-            community with a commitment to excellence and compassion.
-          </p>
+              <p className="text-lg sm:text-xl text-white/70 leading-relaxed max-w-xl">
+                Providing accessible healthcare and personalized service to our
+                community with a commitment to excellence and compassion.
+              </p>
+            </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            {ABOUT_BANNER_BUTTONS.map((item, index) => {
-              return (
-                <Button
-                  key={index}
-                  variant={item.variant as ButtonVariants}
-                  size="lg"
-                  className="grow rounded-2xl py-6 border-0"
-                >
-                  <Link
-                    href={item.href}
-                    className="flex items-center text-card-title"
-                  >
-                    {item.label}
-                  </Link>
-                </Button>
-              );
-            })}
+            {/* Quick Actions */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button
+                asChild
+                size="lg"
+                className="group bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-6 rounded-xl shadow-lg shadow-primary/30 transition-all duration-300 hover:scale-105"
+              >
+                <Link href="/contact-us" className="flex items-center gap-2">
+                  Get in Touch
+                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </Button>
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="bg-white/10 border-white/20 text-white hover:bg-white hover:text-[#002f4b] backdrop-blur-sm px-8 py-6 rounded-xl font-semibold transition-all duration-300"
+              >
+                <Link href="/services">
+                  Our Services
+                </Link>
+              </Button>
+            </div>
+
+            {/* Contact Info Row */}
+            <div className="flex flex-wrap gap-6 pt-4">
+              <div className="flex items-center gap-2 text-white/70">
+                <MapPin className="size-4 text-primary" />
+                <span className="text-sm">Belvedere, Kent</span>
+              </div>
+              <div className="flex items-center gap-2 text-white/70">
+                <Phone className="size-4 text-primary" />
+                <span className="text-sm">+44 (0) 123 456 7890</span>
+              </div>
+            </div>
           </div>
+
+          {/* Right Side - Visual Card */}
+          <div className="hidden lg:block">
+            <div className="relative">
+              {/* Main Card */}
+              <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 space-y-6">
+                {/* Pharmacy Image/Logo */}
+                <div className="flex items-center gap-4">
+                  <Image
+                    src="/logo/belvedere-logo.png"
+                    alt="Belvedere Pharmacy"
+                    width={64}
+                    height={64}
+                    className="rounded-xl"
+                  />
+                  <div>
+                    <h3 className="text-xl font-bold text-white">Belvedere Pharmacy</h3>
+                    <p className="text-white/60 text-sm">Your Local Healthcare Partner</p>
+                  </div>
+                </div>
+
+                {/* Stats */}
+                <div className="space-y-3">
+                  {HERO_STATS.map((stat, index) => {
+                    const Icon = stat.icon;
+                    return (
+                      <div
+                        key={index}
+                        className="flex items-center gap-4 bg-white/5 rounded-xl p-4 hover:bg-white/10 transition-colors"
+                      >
+                        <div className="p-3 bg-primary/20 rounded-lg">
+                          <Icon className="size-5 text-primary" />
+                        </div>
+                        <div>
+                          <p className="text-2xl font-bold text-white">{stat.value}</p>
+                          <p className="text-white/60 text-sm">{stat.label}</p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Mission Statement */}
+                <div className="pt-4 border-t border-white/10">
+                  <p className="text-white/70 text-sm italic leading-relaxed">
+                    "Our mission is to provide accessible, compassionate healthcare
+                    to every member of our community."
+                  </p>
+                </div>
+              </div>
+
+              {/* Floating Badge */}
+              <div className="absolute -bottom-4 -left-4 bg-primary text-white px-4 py-2 rounded-xl shadow-lg shadow-primary/30">
+                <p className="text-sm font-semibold">🌟 NHS Accredited</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Stats Row */}
+        <div className="grid grid-cols-3 gap-4 mt-12 lg:hidden">
+          {HERO_STATS.map((stat, index) => {
+            const Icon = stat.icon;
+            return (
+              <div
+                key={index}
+                className="bg-white/10 backdrop-blur-sm border border-white/10 rounded-xl p-4 text-center"
+              >
+                <Icon className="size-5 text-primary mx-auto mb-2" />
+                <p className="text-xl font-bold text-white">{stat.value}</p>
+                <p className="text-xs text-white/60">{stat.label}</p>
+              </div>
+            );
+          })}
         </div>
       </WidthConstraint>
     </section>

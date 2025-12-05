@@ -8,14 +8,14 @@ import ContactLocationSection from "@/components/about/contact-location";
 
 export default function Page() {
   return (
-    <div className="overflow-hidden space-y-20">
+    <div className="overflow-hidden">
       <header className="fixed top-0 w-full z-50">
         <Menu />
       </header>
       <Banner />
       <OurStorySection />
-      <CTASection />
       <OurValuesSection />
+      <CTASection />
       <TeamSection />
       <ContactLocationSection />
     </div>

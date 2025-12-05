@@ -1,18 +1,26 @@
 import WidthConstraint from "../shared/width-constraint";
+import Image from "next/image";
 
 export default function OurStorySection() {
   return (
-    <section>
+    <section className="py-20 bg-white">
       <WidthConstraint>
-        <div className="grid md:grid-cols-2 gap-16 items-center my-5">
-          <div className="space-y-6">
-            <div className="inline-block">
-              <h2 className="text-4xl font-bold tracking-tight">Our Journey</h2>
-              <div className="mt-2 h-1 w-20 rounded-full bg-linear-to-r from-primary to-secondary" />
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Left Content */}
+          <div className="space-y-8">
+            <div className="space-y-4">
+              <span className="text-primary font-semibold tracking-wide uppercase text-sm">
+                Our Journey
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 leading-tight">
+                A Story of{" "}
+                <span className="text-primary">Community Care</span>
+              </h2>
+              <div className="h-1 w-20 rounded-full bg-gradient-to-r from-primary to-primary/50" />
             </div>
 
-            <div className="space-y-4 text-[20px] text-muted-foreground leading-relaxed max-w-lg text-justify">
-              <p>
+            <div className="space-y-5 text-gray-600 leading-relaxed">
+              <p className="text-lg">
                 Belvedere Pharmacy was founded in 2020 with a simple mission: to
                 provide accessible, personalized healthcare to our local
                 community. What started as a small family-owned pharmacy has
@@ -32,24 +40,49 @@ export default function OurStorySection() {
                 and dignity.
               </p>
             </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-6 pt-4">
+              <div className="text-center sm:text-left">
+                <p className="text-3xl sm:text-4xl font-bold text-primary">5+</p>
+                <p className="text-sm text-gray-500 font-medium">Years Serving</p>
+              </div>
+              <div className="text-center sm:text-left">
+                <p className="text-3xl sm:text-4xl font-bold text-primary">5000+</p>
+                <p className="text-sm text-gray-500 font-medium">Patients Helped</p>
+              </div>
+              <div className="text-center sm:text-left">
+                <p className="text-3xl sm:text-4xl font-bold text-primary">NHS</p>
+                <p className="text-sm text-gray-500 font-medium">Accredited</p>
+              </div>
+            </div>
           </div>
 
-          <div className="relative group">
-            <div className="absolute  max-w-2xl inset-0 bg-primary rounded-3xl rotate-5 opacity-20 group-hover:rotate-10 transition-transform duration-500"></div>
-            <div className="relative rounded-3xl border-4 border-white">
-              <img
-                src="https://placehold.co/800x600/002F4B/FFFFFF?text=Our+Pharmacy+Team"
-                alt="Belvedere Pharmacy Team"
-                className="w-full max-w-2xl object-cover transform group-hover:hover:scale-90 transition-transform duration-700 rounded-2xl"
-              />
+          {/* Right Side - Image */}
+          <div className="relative">
+            <div className="relative group">
+              {/* Background decoration */}
+              <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-chart-2/20 rounded-3xl rotate-3 group-hover:rotate-6 transition-transform duration-500" />
+
+              {/* Main image container */}
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/booking.jpg"
+                  alt="Belvedere Pharmacy Team"
+                  width={800}
+                  height={600}
+                  className="w-full h-auto object-cover"
+                  priority
+                />
+
+                {/* Overlay gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+              </div>
+
               {/* Floating Badge */}
-              <div className="absolute bottom-6 left-6 bg-white backdrop-blur-sm p-4 rounded-xl shadow-lg border-l-4 border-primary hover:border-background  hover:bg-primary group">
-                <p className="font-bold text-foreground group-hover:text-background">
-                  Community First
-                </p>
-                <p className="text-xs text-muted-foreground group-hover:text-white/70">
-                  Serving neighbors for decades
-                </p>
+              <div className="absolute -bottom-6 -left-6 bg-white p-5 rounded-2xl shadow-xl border-l-4 border-primary">
+                <p className="font-bold text-gray-900 text-lg">Community First</p>
+                <p className="text-sm text-gray-500">Serving neighbors since 2020</p>
               </div>
             </div>
           </div>

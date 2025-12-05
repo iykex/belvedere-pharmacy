@@ -8,7 +8,7 @@ export default function ServicesPage() {
   return (
     <div className="space-y-40 overflow-hidden pt-[10%]">
       <header className="fixed top-0 w-full z-50">
-        <Menu className="text-foreground!" />
+        <Menu />
       </header>
       <ServicesHeading />
       <ServicesGrid />

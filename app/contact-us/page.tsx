@@ -9,7 +9,7 @@ export default function ContactPage() {
   return (
     <div className="overflow-hidden space-y-20">
       <header className="fixed top-0 w-full z-50">
-        <Menu className="text-foreground!" />
+        <Menu />
       </header>
       <Hero />
       <ContactLocation />

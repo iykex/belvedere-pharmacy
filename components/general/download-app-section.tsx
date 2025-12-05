@@ -2,116 +2,137 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import WidthConstraint from "../shared/width-constraint";
-import { APP_DOWNLOAD_BUTTONS, DOWNLOAD_APP_FEATURES } from "@/lib/constants";
-import { cn } from "@/lib/utils";
-import SectionHeader from "./section-divider-head";
+import { DOWNLOAD_APP_FEATURES } from "@/lib/constants";
+import { ArrowRight, Download, Smartphone } from "lucide-react";
 
 export default function DownloadAppSection() {
   return (
-    <section className="observer-target">
-      <SectionHeader heading="App Download" />
-      <WidthConstraint className="mt-10 grid gap-12 md:grid-cols-2 items-center bg-linear-to-br from-accent/50 via-background to-secondary/30 xl:rounded-3xl p-8 md:p-12 lg:p-16 md:shadow-sm overflow-hidden relative">
-        {/* Decorative background elements */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -z-10"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-chart-2/5 rounded-full blur-3xl -z-10"></div>
-
-        <div className="space-y-6 sm:space-y-8 z-10">
-          <div className="space-y-4">
-            <h2 className="text-section-header font-bold tracking-tight text-foreground leading-tight">
-              Begin your health journey with{" "}
-              <span className="text-primary">Belvedere</span>
-            </h2>
-            <p className="text-base text-muted-foreground leading-relaxed">
-              Download our app to manage your prescriptions, book appointments,
-              and access health resources on the go.
-            </p>
-          </div>
-
-          <div className="space-y-5">
-            {DOWNLOAD_APP_FEATURES.map((item) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={item.description}
-                  className="max-w-lg flex items-start gap-4 p-4 rounded-xl bg-card/50 backdrop-blur-sm border border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-md"
-                >
-                  <div className="mt-0.5 bg-primary/10 p-2.5 rounded-lg shrink-0">
-                    <Icon className={cn("size-5 text-primary")} />
-                  </div>
-                  <div className="space-y-1">
-                    <h3 className="text-base font-semibold text-foreground">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {item.description}
-                    </p>
-                  </div>
+    <section className="py-20 bg-white">
+      <WidthConstraint>
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
+          <div className="space-y-8">
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <div className="p-2 bg-primary/10 rounded-lg">
+                  <Smartphone className="size-5 text-primary" />
                 </div>
-              );
-            })}
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-4 max-w-lg justify-center items-center">
-            {APP_DOWNLOAD_BUTTONS.map((item) => {
-              return (
-                <Button
-                  key={item.icon}
-                  asChild
-                  variant="outline"
-                  className="px-5 py-7 bg-card hover:bg-accent hover:border-background transition-all duration-300 border-border hover:shadow-md group w-full sm:w-fit"
-                >
-                  <Link href={item.href} className="flex items-center gap-3">
-                    <Image
-                      src={item.icon}
-                      alt={item.labelSmall}
-                      width={35}
-                      height={35}
-                      className="group-hover:scale-110 transition-transform duration-300"
-                    />
-                    <div className="flex flex-col items-start">
-                      <span className="text-[10px] sm:text-xs text-muted-foreground">
-                        {item.labelSmall}
-                      </span>
-                      <span className="text-sm sm:text-base font-semibold text-foreground">
-                        {item.labelLarge}
-                      </span>
-                    </div>
-                  </Link>
-                </Button>
-              );
-            })}
-          </div>
-        </div>
-
-        <div className="relative h-[400px] lg:h-[600px] flex scale-70 md:scale-100 items-center justify-center">
-          {/* Decorative rings */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-[300px] h-[300px] rounded-full border-2 border-primary/20 animate-pulse"></div>
-          </div>
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-[400px] h-[400px] rounded-full border border-chart-2/10"></div>
-          </div>
-
-          {/* Phone mockup placeholder - replace with your actual phone image */}
-          <div className="relative z-10 w-[280px] h-[560px] bg-linear-to-br from-foreground to-foreground/80 rounded-[3rem] shadow-lg border-8 border-foreground/20 overflow-hidden">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-7 bg-foreground rounded-b-3xl"></div>
-            <div className="w-full h-full bg-linear-to-br from-primary/20 via-accent to-chart-2/20 flex items-center justify-center">
-              <div className="text-center space-y-4 p-8">
-                <div className="w-20 h-20 bg-primary rounded-2xl mx-auto flex items-center justify-center shadow-lg">
-                  <span className="text-3xl font-bold text-primary-foreground">
-                    B
-                  </span>
-                </div>
-                <p className="text-sm text-foreground/70 font-medium">
-                  Your Health App
-                </p>
+                <span className="text-primary font-semibold text-sm uppercase tracking-wider">
+                  Mobile App
+                </span>
               </div>
+
+              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 mb-4">
+                Healthcare in Your <span className="text-primary">Pocket</span>
+              </h2>
+
+              <p className="text-gray-600 text-lg leading-relaxed max-w-lg">
+                Download our app to manage your prescriptions, book appointments,
+                and access health resources on the go.
+              </p>
+            </div>
+
+            {/* Features */}
+            <div className="space-y-4">
+              {DOWNLOAD_APP_FEATURES.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <div
+                    key={item.description}
+                    className="flex items-start gap-4 p-4 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors"
+                  >
+                    <div className="p-2.5 bg-primary/10 rounded-lg shrink-0">
+                      <Icon className="size-5 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900 mb-1">
+                        {item.title}
+                      </h3>
+                      <p className="text-sm text-gray-500 leading-relaxed">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Download Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Link
+                href="https://apps.apple.com/us/app/belvedere-pharmacy/id6670758281"
+                className="group flex items-center gap-3 bg-gray-900 hover:bg-gray-800 text-white px-6 py-4 rounded-xl transition-all duration-300"
+              >
+                <Image
+                  src="/app-store.png"
+                  alt="App Store"
+                  width={32}
+                  height={32}
+                  className="rounded-md"
+                />
+                <div>
+                  <p className="text-xs text-gray-400">Download on the</p>
+                  <p className="font-semibold">App Store</p>
+                </div>
+                <ArrowRight className="size-4 ml-auto opacity-50 group-hover:opacity-100 transition-all group-hover:translate-x-1" />
+              </Link>
+
+              <Link
+                href="https://play.google.com/store/apps/details?id=net.belvederepharmacy.app"
+                className="group flex items-center gap-3 bg-gray-900 hover:bg-gray-800 text-white px-6 py-4 rounded-xl transition-all duration-300"
+              >
+                <Image
+                  src="/play-store.png"
+                  alt="Google Play"
+                  width={32}
+                  height={32}
+                  className="rounded-md"
+                />
+                <div>
+                  <p className="text-xs text-gray-400">Get it on</p>
+                  <p className="font-semibold">Google Play</p>
+                </div>
+                <ArrowRight className="size-4 ml-auto opacity-50 group-hover:opacity-100 transition-all group-hover:translate-x-1" />
+              </Link>
             </div>
           </div>
 
-          {/* Floating elements */}
-          <div className="absolute top-20 right-10 w-16 h-16 bg-chart-3/20 rounded-2xl backdrop-blur-sm animate-bounce"></div>
-          <div className="absolute bottom-32 left-10 w-12 h-12 bg-primary/20 rounded-full backdrop-blur-sm animate-pulse"></div>
+          {/* Right - Phone Mockup */}
+          <div className="hidden lg:flex justify-center items-center">
+            <div className="relative">
+              {/* Background decoration */}
+              <div className="absolute -inset-8 bg-primary/5 rounded-full blur-3xl" />
+
+              {/* Phone mockup */}
+              <div className="relative w-72 h-[580px] bg-gray-900 rounded-[3rem] p-3 shadow-2xl">
+                {/* Notch */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-7 bg-gray-900 rounded-b-2xl z-10" />
+
+                {/* Screen */}
+                <div className="w-full h-full bg-gradient-to-br from-primary/30 via-white to-[#00BFFF]/20 rounded-[2.5rem] overflow-hidden flex items-center justify-center">
+                  <div className="text-center space-y-4">
+                    <div className="w-20 h-20 bg-primary rounded-2xl mx-auto flex items-center justify-center shadow-lg shadow-primary/30">
+                      <Image
+                        src="/logo/belvedere-logo.png"
+                        alt="Belvedere"
+                        width={48}
+                        height={48}
+                      />
+                    </div>
+                    <div>
+                      <p className="font-bold text-gray-900">Belvedere</p>
+                      <p className="text-sm text-gray-600">Your Health App</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating badge */}
+              <div className="absolute -right-4 top-20 bg-white shadow-xl rounded-xl p-3 animate-bounce-slow">
+                <Download className="size-6 text-primary" />
+              </div>
+            </div>
+          </div>
         </div>
       </WidthConstraint>
     </section>
