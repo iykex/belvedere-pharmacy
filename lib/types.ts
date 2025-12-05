@@ -27,3 +27,13 @@ export interface WhyChooseUsFeature {
   color: string;
   borderColor: string;
 }
+
+export type ButtonVariants =
+  | "link"
+  | "default"
+  | "outline"
+  | "destructive"
+  | "secondary"
+  | "ghost"
+  | null
+  | undefined;

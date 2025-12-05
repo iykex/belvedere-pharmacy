@@ -831,3 +831,133 @@ export const CONTACT_CARDS_SERVICES = [
     details: "Response within 24 hours",
   },
 ];
+
+export const TEAM_MEMBERS = [
+  {
+    name: "Dr. Sarah Johnson",
+    role: "Lead Pharmacist",
+    bio: "Dr. Johnson has over 15 years of experience in pharmacy care and specializes in medication management for chronic conditions.",
+    image: "/team/sarah-johnson.jpg",
+    experience: "15 years",
+  },
+  {
+    name: "Michael Thompson",
+    role: "Pharmacy Manager",
+    bio: "Michael ensures our pharmacy operations run smoothly and is dedicated to creating an exceptional experience for every patient.",
+    image: "/team/michael-thompson.jpg",
+    experience: "12 years",
+  },
+  {
+    name: "Emma Wilson",
+    role: "Clinical Pharmacist",
+    bio: "Emma focuses on providing comprehensive medication reviews and personalized health consultations for our patients.",
+    image: "/team/emma-wilson.jpg",
+    experience: "8 years",
+  },
+  {
+    name: "Dr. James Roberts",
+    role: "Healthcare Consultant",
+    bio: "Dr. Roberts brings his extensive medical knowledge to our team, helping to bridge the gap between pharmacy and primary care.",
+    image: "/team/james-roberts.jpg",
+    experience: "20 years",
+  },
+];
+
+export const BELVEDERE_VALUES = [
+  {
+    icon: IconHeart,
+    title: "Compassion",
+    description:
+      "We treat every patient with kindness, empathy, and respect, recognizing that each person's healthcare journey is unique.",
+    color: "from-rose-100 to-rose-50",
+    iconColor: "text-rose-600",
+  },
+  {
+    icon: IconShield,
+    title: "Trust",
+    description:
+      "We build lasting relationships based on honesty, reliability, and a commitment to always acting in our patients' best interests.",
+    color: "from-blue-100 to-blue-50",
+    iconColor: "text-blue-600",
+  },
+  {
+    icon: IconUsers,
+    title: "Community",
+    description:
+      "We're proud to be part of the Belvedere community and are dedicated to improving the health and wellbeing of our neighbors.",
+    color: "from-emerald-100 to-emerald-50",
+    iconColor: "text-emerald-600",
+  },
+  {
+    icon: IconAward,
+    title: "Excellence",
+    description:
+      "We strive for the highest standards in everything we do, from the quality of our services to the expertise of our staff.",
+    color: "from-amber-100 to-amber-50",
+    iconColor: "text-amber-600",
+  },
+];
+
+export const CTA_SECTION_FEATURES_LIST = [
+  "Same-day prescription fulfillment",
+  "Free medication delivery in Belvedere",
+  "Private consultation rooms",
+  "No-appointment health checks",
+  "Emergency on-call service",
+  "Expert medication reviews",
+];
+
+export const CTA_SECTION_BUTTONS = [
+  { href: "/contact", label: "Contact Us Today" },
+  { href: "/services", label: "View Our Services" },
+];
+
+export const CTA_SECTION_CONTACT_ITEMS = [
+  {
+    icon: IconPhone,
+    title: "Call us anytime",
+    description: "+44 (0) 123 456 7890",
+    card: true,
+    iconSize: "size-12",
+    iconBg: "bg-primary",
+    iconClass: "size-6 text-white",
+  },
+  {
+    icon: IconMail,
+    title: "Email us",
+    description: "info@belvederepharmacy.com",
+    card: false,
+    iconSize: "size-10",
+    iconBg: "bg-primary/10",
+    iconClass: "size-5 text-primary",
+  },
+  {
+    icon: IconClock,
+    title: "Emergency Service",
+    description: "24/7 on-call pharmacist",
+    card: false,
+    iconSize: "size-10",
+    iconBg: "bg-primary/10",
+    iconClass: "size-5 text-primary",
+  },
+];
+
+export const ABOUT_BANNER_BUTTONS = [
+  {
+    variant: "default",
+    href: "/appointment",
+    label: "Book an Appointment",
+  },
+  {
+    variant: "outline",
+    href: "/contact-us",
+    label: "Contact Us",
+  },
+];
+
+export const WORKING_HOURS = [
+  { days: "Monday - Friday", hours: "09:00 - 18:00" },
+  { days: "Saturday", hours: "09:00 - 14:00" },
+  { days: "Sunday", hours: "Closed" },
+  { days: "Emergency Service", hours: "24/7 On Call" },
+];

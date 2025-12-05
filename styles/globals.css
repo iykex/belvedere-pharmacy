@@ -362,3 +362,38 @@
 #NHS-badge {
   opacity: 0;
 }
+
+/* Pharmacy-themed gradient utilities — uses your --chart-* theme vars (with hex fallbacks) */
+#gradients {
+  /* 1. Amber → Cyan (bright, friendly pharmacy hero) */
+  @apply bg-linear-to-br from-(--chart-1)/15 via-white/60 to-(--chart-2)/12;
+  /* fallback: @apply bg-linear-to-br from-[#ff9900]/15 via-white/60 to-[#00bfff]/12; */
+
+  /* 2. Calm Clinic (soft cyan → white → green for wellness) */
+  @apply bg-linear-to-r from-(--chart-2)/12 via-white to-(--chart-3)/10;
+  /* fallback: @apply bg-linear-to-r from-[#00bfff]/12 via-white to-[#33cc00]/10; */
+
+  /* 3. Natural Wellness (green-forward for herbal / wellness feel) */
+  @apply bg-linear-to-br from-(--chart-3)/14 via-white/50 to-(--chart-1)/8;
+  /* fallback: @apply bg-linear-to-br from-[#33cc00]/14 via-white/50 to-[#ff9900]/8; */
+
+  /* 4. Urgent / Alert accent (subtle red accent used sparingly) */
+  @apply bg-linear-to-tr from-(--chart-4)/8 via-white/80 to-(--chart-1)/6;
+  /* fallback: @apply bg-linear-to-tr from-[#ff0000]/8 via-white/80 to-[#ff9900]/6; */
+
+  /* 5. Deep Clinic (trusted, corporate background — deep blue anchor) */
+  @apply bg-linear-to-b from-(--chart-5)/10 via-(--chart-2)/6 to-white/6;
+  /* fallback: @apply bg-linear-to-b from-[#002f4b]/10 via-[#00bfff]/6 to-white/6; */
+
+  /* 6. Balanced Pharmacy (modern tech-pharmacy vibe — cyan + deep blue) */
+  @apply bg-linear-to-br from-(--chart-2)/14 via-white/60 to-(--chart-5)/10;
+  /* fallback: @apply bg-linear-to-br from-[#00bfff]/14 via-white/60 to-[#002f4b]/10; */
+
+  /* 7. Sunrise Rx (warm amber sunrise for friendly CTAs) */
+  @apply bg-linear-to-br from-(--chart-1)/18 via-(--chart-3)/6 to-white/8;
+  /* fallback: @apply bg-linear-to-br from-[#ff9900]/18 via-[#33cc00]/6 to-white/8; */
+
+  /* 8. Clean Exam Room (very soft, clinical neutral) */
+  @apply bg-linear-to-r from-white to-(--chart-2)/8;
+  /* fallback: @apply bg-linear-to-r from-white to-[#00bfff]/8; */
+}
