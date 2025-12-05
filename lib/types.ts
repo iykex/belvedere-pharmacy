@@ -1,6 +1,7 @@
 import z4 from "zod/v4";
 import { contactFormSchema } from "./schema";
 import { FieldPath } from "react-hook-form";
+import { StaticImageData } from "next/image";
 
 export interface ServiceCategory {
   id: string;
@@ -12,7 +13,7 @@ export interface Service {
   description: string;
   category: string;
   features: string[];
-  image: string;
+  image: StaticImageData;
   link: string;
   icon: React.ComponentType<{ className?: string }>;
   color: string;

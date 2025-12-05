@@ -8,6 +8,7 @@ import SectionHeader from "@/components/general/section-divider-head";
 import Image from "next/image";
 import WidthConstraint from "@/components/shared/width-constraint";
 import CTASection from "@/components/shared/cta-section";
+import NHSImageSrc from "@/public/nhs.jpg";
 
 const AboutSection = () => {
   return (
@@ -81,8 +82,8 @@ const ConditionsSection = () => {
                 <Image
                   src={condition.image}
                   alt={condition.title}
-                  width={200}
-                  height={200}
+                  loading="lazy"
+                  placeholder="blur"
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <h3 className="absolute bottom-4 left-4 text-card-title font-bold text-white z-20">
@@ -163,11 +164,10 @@ export function NHSImageCard() {
   return (
     <WidthConstraint className="max-w-5xl">
       <Image
-        src="/nhs.jpg"
+        src={NHSImageSrc}
         alt="NHS"
-        width={1000}
-        height={1000}
         loading="lazy"
+        placeholder="blur"
         className="w-full rounded-xl aspect-video "
       />
     </WidthConstraint>
@@ -176,7 +176,7 @@ export function NHSImageCard() {
 
 export default function NHSPharmacyFirstPage() {
   return (
-    <div className="space-y-20 overflow-hidden">
+    <div className="space-y-20 mb-30 overflow-hidden">
       <header className="fixed top-0 w-full z-50">
         <Menu className="backdrop-blur-3xl!" />
       </header>

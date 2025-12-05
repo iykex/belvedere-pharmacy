@@ -3,6 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ServiceCard from "./service-card";
 import { SERVICE_CATEGORIES, SERVICES_LIST } from "@/lib/constants";
 import WidthConstraint from "../shared/width-constraint";
+import NHSImage from "@/public/nhs.jpg";
 
 export function ServicesGrid() {
   return (
@@ -43,7 +44,7 @@ export function ServicesGrid() {
                     <ServiceCard
                       key={index}
                       description={service.description}
-                      image={"/nhs.jpg"}
+                      image={service.image}
                       link={service.link}
                       title={service.title}
                       features={service.features}

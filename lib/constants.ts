@@ -42,6 +42,25 @@ import {
   IconLocation,
 } from "@tabler/icons-react";
 import { ContactFormFieldsMap } from "./types";
+import earPainImage from "@/public/conditions/ear-pain.jpg";
+import insectBiteImage from "@/public/conditions/insect-bite.jpg";
+import skinInfectionsImage from "@/public/conditions/skin-infections.jpg";
+import shinglesImage from "@/public/conditions/shingles.jpg";
+import sinusInfectionImage from "@/public/conditions/sinus-infection.jpg";
+import soreThroatImage from "@/public/conditions/sore-throat.jpeg";
+import utiImage from "@/public/conditions/uti.jpg";
+import fluVaccineImage from "@/public/services/flu-vaccine.jpeg";
+import covidVaccineImage from "@/public/services/covid-vaccine.jpg";
+import pressureCheckImage from "@/public/services/pressure-check.jpg";
+import stopSmokingImage from "@/public/services/stop-smoking.jpg";
+import emergencyContraceptionImage from "@/public/services/emergency-contraception.jpg";
+import minorAilmentImage from "@/public/services/minor-ailment.jpg";
+import prescriptionDispensingImage from "@/public/services/prescription-dispensing.jpg";
+import medicationReviewImage from "@/public/services/medication-review.jpg";
+import weightManagementImage from "@/public/services/weight-management.jpeg";
+import travelClinicImage from "@/public/services/travel-clinic.jpg";
+import cholesterolTestsImage from "@/public/services/cholesterol-tests.jpg";
+import diabetesScreeningImage from "@/public/services/diabetes-screening.png";
 
 export const MENU_LINKS = [
   { label: "Home", href: "/" },
@@ -473,7 +492,7 @@ export const PFP_BENEFITS = [
 export const PFP_CONDITIONS = [
   {
     title: "Ear Pains",
-    image: "/conditions/ear-pain.jpg",
+    image: earPainImage,
     description:
       "Treatment is suitable for children aged between 1 and 17 years. For those over 18, GP consultations are free at Belvedere Pharmacy. Our pharmacists are specially trained to diagnose and treat ear infections. We understand ear troubles can be frustrating, so our dedicated healthcare team is here to help.",
     serviceId: "ear-pain",
@@ -483,7 +502,7 @@ export const PFP_CONDITIONS = [
   },
   {
     title: "Infected Insect Bites",
-    image: "/conditions/insect-bite.jpg",
+    image: insectBiteImage,
     description:
       "For those dealing with complications from insect bites, Belvedere Pharmacy provides comprehensive care. Our skilled team is ready to assess and treat infected insect bite concerns, ensuring your swift and effective recovery with professional and compassionate care.",
     serviceId: "skin-infection",
@@ -493,7 +512,7 @@ export const PFP_CONDITIONS = [
   },
   {
     title: "Bacterial Skin Infection",
-    image: "/conditions/skin-infections.jpg",
+    image: skinInfectionsImage,
     description:
       "We provide assessment, treatment, and guidance for effective management of various skin infections, offering both NHS and private services. Our expert team will help diagnose your skin condition and recommend proper treatment, ensuring prompt and comfortable recovery.",
     serviceId: "skin-infection",
@@ -503,7 +522,7 @@ export const PFP_CONDITIONS = [
   },
   {
     title: "Shingles",
-    image: "/conditions/shingles.jpg",
+    image: shinglesImage,
     description:
       "If you are experiencing painful rashes, blisters, or itching, our healthcare team at Belvedere Pharmacy is here to help. We offer assessment, treatment, and support for effective shingles management, with compassionate, professional care to guide you through your recovery journey.",
     serviceId: "shingles",
@@ -513,7 +532,7 @@ export const PFP_CONDITIONS = [
   },
   {
     title: "Sinus Infection",
-    image: "/conditions/sinus-infection.jpg",
+    image: sinusInfectionImage,
     description:
       "Belvedere Pharmacy offers treatment for sinusitis. If you are experiencing a stuffy nose, headache, or facial pain, we can help. Our services include assessment, treatment, and guidance for effective sinus infection management, with professional support for your journey to relief.",
     serviceId: "sinus-infection",
@@ -523,7 +542,7 @@ export const PFP_CONDITIONS = [
   },
   {
     title: "Sore Throat Consultations",
-    image: "/conditions/sore-throat.jpeg",
+    image: soreThroatImage,
     description:
       "Discover prompt and effective care for sore throats at Belvedere Pharmacy. If a scratchy, irritated throat is slowing you down, we have the remedy to restore your comfort. Our accessible services provide quick assessment and treatment to help you feel better quickly.",
     serviceId: "sore-throat",
@@ -535,7 +554,7 @@ export const PFP_CONDITIONS = [
     title: "Urinary Tract Infection in Women",
     description:
       "Expert care for women experiencing UTI symptoms like discomfort and frequent urination. We provide professional advice, assessment, and effective treatment with personalized attention.",
-    image: "/conditions/uti.jpg",
+    image: utiImage,
     badge: "Women Only",
     color: "from-chart-2/20 to-chart-2/5",
     serviceId: "uti",
@@ -570,7 +589,7 @@ export const SERVICES_LIST = [
       "Quick and painless",
       "Professional administration",
     ],
-    image: "/placeholder.svg?height=200&width=300",
+    image: fluVaccineImage,
     link: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5340",
     icon: IconShieldCheck,
     color: "from-chart-3/20 to-chart-3/5",
@@ -587,7 +606,7 @@ export const SERVICES_LIST = [
       "Safe environment",
       "Post-vaccination advice",
     ],
-    image: "/placeholder.svg?height=200&width=300",
+    image: covidVaccineImage,
     link: "https://shop.belvederepharmacy.net/appointments/book/service/COVID-19%20Vaccine?pharmacy=378&originalServiceId=5342&type=redirection",
     icon: IconShield,
     color: "from-primary/20 to-primary/5",
@@ -604,7 +623,7 @@ export const SERVICES_LIST = [
       "Professional interpretation",
       "Follow-up advice",
     ],
-    image: "/placeholder.svg?height=200&width=300",
+    image: pressureCheckImage,
     link: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5343",
     icon: IconTrendingUp,
     color: "from-chart-2/20 to-chart-2/5",
@@ -621,7 +640,7 @@ export const SERVICES_LIST = [
       "Regular check-ins",
       "Personalized quit plan",
     ],
-    image: "/placeholder.svg?height=200&width=300",
+    image: stopSmokingImage,
     link: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5341",
     icon: IconBolt,
     color: "from-primary/20 to-primary/5",
@@ -638,7 +657,7 @@ export const SERVICES_LIST = [
       "Follow-up advice",
       "Future contraception planning",
     ],
-    image: "/placeholder.svg?height=200&width=300",
+    image: emergencyContraceptionImage,
     link: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5339",
     icon: IconUser,
     color: "from-chart-2/20 to-chart-2/5",
@@ -655,7 +674,7 @@ export const SERVICES_LIST = [
       "Range of conditions covered",
       "Prescription if needed",
     ],
-    image: "/placeholder.svg?height=200&width=300",
+    image: minorAilmentImage,
     link: "/services/minor-ailments",
     icon: IconPill,
     color: "from-chart-3/20 to-chart-3/5",
@@ -672,7 +691,7 @@ export const SERVICES_LIST = [
       "Repeat prescription service",
       "Medication counseling",
     ],
-    image: "/placeholder.svg?height=200&width=300",
+    image: prescriptionDispensingImage,
     link: "/services/prescriptions",
     icon: IconPill,
     color: "from-primary/20 to-primary/5",
@@ -689,7 +708,7 @@ export const SERVICES_LIST = [
       "Medication optimization",
       "Written summary provided",
     ],
-    image: "/placeholder.svg?height=200&width=300",
+    image: medicationReviewImage,
     link: "/services/medication-review",
     icon: IconHeart,
     color: "from-chart-2/20 to-chart-2/5",
@@ -706,7 +725,7 @@ export const SERVICES_LIST = [
       "Goal setting",
       "Ongoing support",
     ],
-    image: "/placeholder.svg?height=200&width=300",
+    image: weightManagementImage,
     link: "/services/weight-management",
     icon: IconTrendingUp,
     color: "from-chart-2/20 to-chart-2/5",
@@ -723,7 +742,7 @@ export const SERVICES_LIST = [
       "Malaria prevention",
       "Travel first aid kits",
     ],
-    image: "/placeholder.svg?height=200&width=300",
+    image: travelClinicImage,
     link: "/services/travel-health",
     icon: IconShield,
     color: "from-chart-3/20 to-chart-3/5",
@@ -740,7 +759,7 @@ export const SERVICES_LIST = [
       "Immediate results",
       "Lifestyle advice",
     ],
-    image: "/placeholder.svg?height=200&width=300",
+    image: cholesterolTestsImage,
     link: "/services/cholesterol-testing",
     icon: IconHeart,
     color: "from-primary/20 to-primary/5",
@@ -757,7 +776,7 @@ export const SERVICES_LIST = [
       "Lifestyle advice",
       "Referral if needed",
     ],
-    image: "/placeholder.svg?height=200&width=300",
+    image: diabetesScreeningImage,
     link: "/services/diabetes-screening",
     icon: IconHeart,
     color: "from-chart-3/20 to-chart-3/5",
@@ -1123,7 +1142,7 @@ export const CTA_SECTION_CONTACT_INFO = [
     label: "Email Us",
     value: "info@belvederepharmacy.com",
     href: "#",
-    isLink: false,
+    isLink: true,
     bgColor: "bg-gray-50",
     hoverBgColor: "",
     iconBgColor: "bg-gray-100",
