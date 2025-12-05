@@ -35,7 +35,7 @@ export default function Banner() {
         }}
       />
 
-      <WidthConstraint className="relative z-10  mt-34 sm:mt-[10%] mb-4">
+      <WidthConstraint className="relative z-10  mt-34 sm:mt-[5%]">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Content */}
           <div className="space-y-8">
@@ -114,7 +114,7 @@ export default function Banner() {
           </div>
 
           {/* Right Side - Visual Card */}
-          <div className="hidden lg:block">
+          <div className="hidden lg:block pb-10">
             <div className="relative">
               {/* Main Card */}
               <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-3xl p-8 space-y-6">
@@ -171,7 +171,7 @@ export default function Banner() {
 
               {/* Floating Badge */}
               <div className="absolute -bottom-4 -left-4 bg-primary text-white px-4 py-2 rounded-xl shadow-lg shadow-primary/30">
-                <p className="text-sm font-semibold">🌟 NHS Accredited</p>
+                <p className="text-sm font-semibold">NHS Accredited</p>
               </div>
             </div>
           </div>
