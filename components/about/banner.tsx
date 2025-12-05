@@ -1,4 +1,13 @@
-import { Shield, ArrowRight, Users, Clock, Award, Heart, MapPin, Phone } from "lucide-react";
+import {
+  Shield,
+  ArrowRight,
+  Users,
+  Clock,
+  Award,
+  Heart,
+  MapPin,
+  Phone,
+} from "lucide-react";
 import WidthConstraint from "../shared/width-constraint";
 import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
@@ -13,17 +22,20 @@ const HERO_STATS = [
 
 export default function Banner() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-[#002f4b] via-[#003d5c] to-[#004a6d]">
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-linear-to-br from-[#012337] via-[#033046] to-[#001924]">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,153,0,0.08),transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(0,191,255,0.06),transparent_50%)]" />
 
       {/* Subtle grid pattern */}
-      <div className="absolute inset-0 opacity-5" style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-      }} />
+      <div
+        className="absolute inset-0 opacity-5"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+        }}
+      />
 
-      <WidthConstraint className="relative z-10 py-20">
+      <WidthConstraint className="relative z-10  mt-34 sm:mt-[10%] mb-4">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Content */}
           <div className="space-y-8">
@@ -43,8 +55,17 @@ export default function Banner() {
                 About{" "}
                 <span className="text-primary relative inline-block">
                   Belvedere
-                  <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 8" fill="none">
-                    <path d="M2 6C50 2 150 2 198 6" stroke="#FF9900" strokeWidth="3" strokeLinecap="round" />
+                  <svg
+                    className="absolute -bottom-2 left-0 w-full"
+                    viewBox="0 0 200 8"
+                    fill="none"
+                  >
+                    <path
+                      d="M2 6C50 2 150 2 198 6"
+                      stroke="#FF9900"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                    />
                   </svg>
                 </span>
                 <br />
@@ -62,7 +83,7 @@ export default function Banner() {
               <Button
                 asChild
                 size="lg"
-                className="group bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-6 rounded-xl shadow-lg shadow-primary/30 transition-all duration-300 hover:scale-105"
+                className="group bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-6 rounded-xl shadow-lg shadow-primary/30 transition-all duration-300 hover:scale-95"
               >
                 <Link href="/contact-us" className="flex items-center gap-2">
                   Get in Touch
@@ -75,9 +96,7 @@ export default function Banner() {
                 size="lg"
                 className="bg-white/10 border-white/20 text-white hover:bg-white hover:text-[#002f4b] backdrop-blur-sm px-8 py-6 rounded-xl font-semibold transition-all duration-300"
               >
-                <Link href="/services">
-                  Our Services
-                </Link>
+                <Link href="/services">Our Services</Link>
               </Button>
             </div>
 
@@ -109,8 +128,12 @@ export default function Banner() {
                     className="rounded-xl"
                   />
                   <div>
-                    <h3 className="text-xl font-bold text-white">Belvedere Pharmacy</h3>
-                    <p className="text-white/60 text-sm">Your Local Healthcare Partner</p>
+                    <h3 className="text-xl font-bold text-white">
+                      Belvedere Pharmacy
+                    </h3>
+                    <p className="text-white/60 text-sm">
+                      Your Local Healthcare Partner
+                    </p>
                   </div>
                 </div>
 
@@ -127,7 +150,9 @@ export default function Banner() {
                           <Icon className="size-5 text-primary" />
                         </div>
                         <div>
-                          <p className="text-2xl font-bold text-white">{stat.value}</p>
+                          <p className="text-2xl font-bold text-white">
+                            {stat.value}
+                          </p>
                           <p className="text-white/60 text-sm">{stat.label}</p>
                         </div>
                       </div>
@@ -138,8 +163,8 @@ export default function Banner() {
                 {/* Mission Statement */}
                 <div className="pt-4 border-t border-white/10">
                   <p className="text-white/70 text-sm italic leading-relaxed">
-                    "Our mission is to provide accessible, compassionate healthcare
-                    to every member of our community."
+                    "Our mission is to provide accessible, compassionate
+                    healthcare to every member of our community."
                   </p>
                 </div>
               </div>

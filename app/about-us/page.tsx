@@ -8,7 +8,7 @@ import ContactLocationSection from "@/components/about/contact-location";
 
 export default function Page() {
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden space-y-20 sm:space-y-30 mb-30">
       <header className="fixed top-0 w-full z-50">
         <Menu />
       </header>
@@ -16,8 +16,10 @@ export default function Page() {
       <OurStorySection />
       <OurValuesSection />
       <CTASection />
-      <TeamSection />
-      <ContactLocationSection />
+      <div className="bg-linear-to-br from-primary/5 to-chart-2/5 space-y-30 py-4">
+        <TeamSection />
+        <ContactLocationSection />
+      </div>
     </div>
   );
 }

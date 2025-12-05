@@ -1177,3 +1177,21 @@ export const CTA_SECTION_CONTACT_INFO = [
     valueClass: "font-semibold",
   },
 ];
+
+export const CONTACT_LOCATION_INFO = [
+  {
+    icon: IconLocation,
+    title: "Location",
+    details: ["11 Picardy Street", "Belvedere, Kent DA17 5QQ"],
+  },
+  {
+    icon: IconPhone,
+    title: "Phone",
+    details: ["+44 (0) 123 456 7890"],
+  },
+  {
+    icon: IconMail,
+    title: "Email",
+    details: ["info@belvederepharmacy.com"],
+  },
+];

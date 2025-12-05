@@ -1,11 +1,12 @@
 import WidthConstraint from "../shared/width-constraint";
 import Image from "next/image";
+import ourStoryImage from "@/public/our-story.png";
 
 export default function OurStorySection() {
   return (
-    <section className="py-20 bg-white">
+    <section>
       <WidthConstraint>
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 items-center pb-10">
           {/* Left Content */}
           <div className="space-y-8">
             <div className="space-y-4">
@@ -13,10 +14,9 @@ export default function OurStorySection() {
                 Our Journey
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 leading-tight">
-                A Story of{" "}
-                <span className="text-primary">Community Care</span>
+                A Story of <span className="text-primary">Community Care</span>
               </h2>
-              <div className="h-1 w-20 rounded-full bg-gradient-to-r from-primary to-primary/50" />
+              <div className="h-1 w-20 rounded-full bg-linear-to-r from-primary to-primary/50" />
             </div>
 
             <div className="space-y-5 text-gray-600 leading-relaxed">
@@ -40,49 +40,36 @@ export default function OurStorySection() {
                 and dignity.
               </p>
             </div>
-
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 pt-4">
-              <div className="text-center sm:text-left">
-                <p className="text-3xl sm:text-4xl font-bold text-primary">5+</p>
-                <p className="text-sm text-gray-500 font-medium">Years Serving</p>
-              </div>
-              <div className="text-center sm:text-left">
-                <p className="text-3xl sm:text-4xl font-bold text-primary">5000+</p>
-                <p className="text-sm text-gray-500 font-medium">Patients Helped</p>
-              </div>
-              <div className="text-center sm:text-left">
-                <p className="text-3xl sm:text-4xl font-bold text-primary">NHS</p>
-                <p className="text-sm text-gray-500 font-medium">Accredited</p>
-              </div>
-            </div>
           </div>
 
           {/* Right Side - Image */}
           <div className="relative">
             <div className="relative group">
               {/* Background decoration */}
-              <div className="absolute -inset-4 bg-gradient-to-br from-primary/20 to-chart-2/20 rounded-3xl rotate-3 group-hover:rotate-6 transition-transform duration-500" />
+              <div className="absolute -inset-4 bg-linear-to-br from-primary/20 to-chart-2/20 rounded-4xl rotate-6 group-hover:rotate-3 transition-transform duration-500" />
 
               {/* Main image container */}
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <Image
-                  src="/booking.jpg"
+                  src={ourStoryImage}
                   alt="Belvedere Pharmacy Team"
-                  width={800}
-                  height={600}
                   className="w-full h-auto object-cover"
                   priority
+                  placeholder="blur"
                 />
 
-                {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                {/* Overlay linear */}
+                <div className="absolute inset-0 bg-linear-to-t from-black/30 via-transparent to-transparent" />
               </div>
 
               {/* Floating Badge */}
               <div className="absolute -bottom-6 -left-6 bg-white p-5 rounded-2xl shadow-xl border-l-4 border-primary">
-                <p className="font-bold text-gray-900 text-lg">Community First</p>
-                <p className="text-sm text-gray-500">Serving neighbors since 2020</p>
+                <p className="font-bold text-gray-900 text-lg">
+                  Community First
+                </p>
+                <p className="text-sm text-gray-500">
+                  Serving neighbors since 2020
+                </p>
               </div>
             </div>
           </div>

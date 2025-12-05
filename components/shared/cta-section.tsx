@@ -1,11 +1,4 @@
-import {
-  CheckCircle,
-  ArrowRight,
-  Phone,
-  Mail,
-  MapPin,
-  Clock,
-} from "lucide-react";
+import { CheckCircle, ArrowRight, Mail } from "lucide-react";
 import WidthConstraint from "./width-constraint";
 import {
   CTA_SECTION_FEATURES_LIST,
@@ -43,7 +36,7 @@ export default function CTASection() {
                   <div className="flex h-5 w-5 items-center justify-center rounded-full bg-white/20 ">
                     <CheckCircle className="h-3 w-3" />
                   </div>
-                  <span className="text-white/90 pr-4 sm:pr-0" >{feature}</span>
+                  <span className="text-white/90 pr-4 sm:pr-0">{feature}</span>
                 </div>
               ))}
             </div>
