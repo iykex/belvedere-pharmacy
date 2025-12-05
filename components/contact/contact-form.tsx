@@ -24,7 +24,7 @@ import EmergencyContact from "./emergency-contact";
 export function ContactForm() {
   const { control, formState, handleSubmit, onSubmit } = useContactForm();
   return (
-    <div className="space-y-5">
+    <div className="space-y-5 z-10">
       <Card className="w-full max-w-6xl h-fit border-0 shadow-lg">
         <CardHeader className="space-y-2">
           <CardTitle className="text-card-title">Send Us a Message</CardTitle>

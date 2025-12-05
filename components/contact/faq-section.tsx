@@ -16,12 +16,12 @@ export default function FAQSection() {
           <h2 className="text-section-header font-bold tracking-tight">
             Frequently Asked Questions
           </h2>
-          <p className="text-card-title text-muted-foreground">
+          <p className="sm:text-card-title text-muted-foreground">
             Find answers to common questions about our pharmacy services
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto px-2">
           <Accordion
             type="single"
             collapsible
