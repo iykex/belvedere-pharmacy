@@ -3,7 +3,7 @@ import Hero from "@/components/contact/hero";
 import ContactLocation from "@/components/contact/contact-location";
 import Map from "@/components/contact/map";
 import Menu from "@/components/shared/navigation-menu";
-import CTASection from "@/components/about/cta-section";
+import CTASection from "@/components/shared/cta-section";
 
 export default function ContactPage() {
   return (

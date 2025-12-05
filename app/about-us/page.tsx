@@ -1,5 +1,5 @@
 import Menu from "@/components/shared/navigation-menu";
-import CTASection from "@/components/about/cta-section";
+import CTASection from "@/components/shared/cta-section";
 import Banner from "@/components/about/banner";
 import OurStorySection from "@/components/about/our-story-section";
 import OurValuesSection from "@/components/about/our-values-section";

@@ -39,6 +39,7 @@ import {
   IconShield,
   IconTrendingUp,
   IconUser,
+  IconLocation,
 } from "@tabler/icons-react";
 import { ContactFormFieldsMap } from "./types";
 
@@ -1100,5 +1101,60 @@ export const CONTACT_FORM_FIELD_ITEMS: ContactFormFieldsMap[] = [
     name: "subject",
     label: "Subject",
     placeholder: "Prescription",
+  },
+];
+
+export const CTA_SECTION_CONTACT_INFO = [
+  {
+    icon: IconPhone,
+    label: "Call Us",
+    value: "+44 (0) 123 456 7890",
+    href: "tel:+441234567890",
+    isLink: true,
+    bgColor: "bg-primary/5",
+    hoverBgColor: "hover:bg-primary/10",
+    iconBgColor: "bg-primary/10",
+    iconColor: "text-primary",
+    textColor: "text-primary",
+    valueClass: "font-bold",
+  },
+  {
+    icon: IconMail,
+    label: "Email Us",
+    value: "info@belvederepharmacy.com",
+    href: "#",
+    isLink: false,
+    bgColor: "bg-gray-50",
+    hoverBgColor: "",
+    iconBgColor: "bg-gray-100",
+    iconColor: "text-gray-600",
+    textColor: "text-gray-900",
+    valueClass: "font-semibold",
+  },
+  {
+    icon: IconLocation,
+    label: "Visit Us",
+    value: "Belvedere, Kent",
+    href: "#",
+    isLink: false,
+    bgColor: "bg-gray-50",
+    hoverBgColor: "",
+    iconBgColor: "bg-gray-100",
+    iconColor: "text-gray-600",
+    textColor: "text-gray-900",
+    valueClass: "font-semibold",
+  },
+  {
+    icon: IconClock,
+    label: "Opening Hours",
+    value: "Mon-Fri: 9am - 6pm",
+    href: "#",
+    isLink: false,
+    bgColor: "bg-gray-50",
+    hoverBgColor: "",
+    iconBgColor: "bg-gray-100",
+    iconColor: "text-gray-600",
+    textColor: "text-gray-900",
+    valueClass: "font-semibold",
   },
 ];

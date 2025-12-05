@@ -3,8 +3,8 @@ import "@/styles/globals.css";
 import { getMetadata } from "@/lib/metadata";
 import { ReactNode } from "react";
 import { plusJakartaSans, inter } from "@/lib/fonts";
-import { Footer } from "@/components/general/footer";
 import IntersectionWrapper from "@/components/wrappers/use-intersection-wrapper";
+import { Footer } from "@/components/shared/footer";
 
 export const metadata: Metadata = getMetadata();
 

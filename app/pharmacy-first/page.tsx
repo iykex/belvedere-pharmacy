@@ -1,21 +1,17 @@
 import { ArrowRight, Calendar, CheckCircle, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import NHSMinimalUnderlineAnimated from "@/components/general/nhs-text-animation";
 import { Badge } from "@/components/ui/badge";
 import Menu from "@/components/shared/navigation-menu";
-import {
-  PFP_BENEFITS,
-  PFP_CHECKLIST_ITEMS,
-  PFP_CONDITIONS,
-} from "@/lib/constants";
+import { PFP_BENEFITS, PFP_CONDITIONS } from "@/lib/constants";
 import SectionHeader from "@/components/general/section-divider-head";
 import Image from "next/image";
 import WidthConstraint from "@/components/shared/width-constraint";
+import CTASection from "@/components/shared/cta-section";
 
 const AboutSection = () => {
   return (
-    <section className="observer-target space-y-14">
+    <section className="space-y-14 observer-target">
       <WidthConstraint className="space-y-8">
         <SectionHeader heading="About the Programme" />
         <div className="text-center max-w-3xl mx-auto space-y-2">
@@ -58,7 +54,7 @@ const AboutSection = () => {
 
 const ConditionsSection = () => {
   return (
-    <section className="observer-target space-y-14">
+    <section className="space-y-14 observer-target">
       <WidthConstraint className="space-y-8">
         <SectionHeader heading="Health Conditions" />
         <div className="text-center max-w-3xl mx-auto space-y-2">
@@ -95,7 +91,7 @@ const ConditionsSection = () => {
               </div>
               <div className="p-6 grow flex flex-col">
                 <p className="mb-6 grow opacity-70">{condition.description}</p>
-                <Button className="group w-fit mx-auto">
+                <Button className="group w-fit mx-auto rounded-sm px-4">
                   <Link href={condition.href} className="flex items-center">
                     <Calendar className="mr-2 size-4 transition-transform group-hover:translate-x-1" />
                     Book your Appointment
@@ -110,70 +106,14 @@ const ConditionsSection = () => {
   );
 };
 
-const CTASection = () => {
-  return (
-    <section className="observer-target relative space-y-14">
-      {/* Decorative Brand Blobs */}
-      <div className="absolute -top-24 -right-24 size-64 rounded-full bg-white/10 blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 size-64 rounded-full bg-white/10 blur-3xl"></div>
-
-      <WidthConstraint className="relative z-10">
-        <div className="grid gap-8 md:grid-cols-2 place-items-center">
-          {/* Left Column: Text & List */}
-          <div className="space-y-4">
-            <h2 className="text-card-title font-bold tracking-tight">
-              Ready to use our Pharmacy First service?
-            </h2>
-            <p className="text-base max-w-xl text-foreground/70">
-              Book an appointment today and get the care you need without
-              waiting for a GP appointment.
-            </p>
-            <ul className="space-y-4 text-foreground/70">
-              {PFP_CHECKLIST_ITEMS.map((item, index) => (
-                <li key={index} className="flex items-center">
-                  <CheckCircle className="mr-3 size-5 text-green-500 shrink-0" />
-                  <span className="font-medium">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Right Column: Action Card */}
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 shadow-sm max-w-2xl space-y-5">
-            <h3 className="text-card-title font-bold">
-              Book Your Consultation
-            </h3>
-            <p className="text-base text-foreground/70">
-              Choose a convenient time for your Pharmacy First consultation. Our
-              pharmacists are ready to help you.
-            </p>
-            <div className="space-y-4 flex flex-col sm:flex-row justify-between gap-4 ">
-              <Button
-                size="lg"
-                className="w-fit text-white hover:text-primary hover:bg-gray-100 shadow-lg"
-              >
-                <Link href="https://shop.belvederepharmacy.net/appointments/viewallservices/all?pharmacy=378&type=redirection">
-                  Book an Appointment
-                </Link>
-              </Button>
-              <Button variant="outline" size="lg" className="w-fit">
-                <Link href="/contact-us"> Contact Us for More Information</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </WidthConstraint>
-    </section>
-  );
-};
-
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-[url('/pexels.png')] bg-cover bg-center">
-      <div className="w-full h-full min-h-screen pt-[10%] bg-linear-to-r from-[#002f4b] from-2% ">
+    <section className="bg-[url('/pexels.png')] bg-cover bg-center min-h-screen overflow-hidden relative pb-8 md:pb-0">
+      <div className="absolute inset-0 bg-linear-to-r from-[#002f4b]/95 via-[#002f4b]/80 to-[#002f4b]/40" />
+      <div className="w-full h-full min-h-screen pt-40 px-2 sm:px-0 sm:pt-[10%]">
         <WidthConstraint className="grid lg:grid-cols-2 gap-16 place-items-center">
           {/* Left Content */}
-          <div className="space-y-8">
+          <div className="space-y-8 z-50">
             {/* Badges*/}
             <div className="flex flex-wrap gap-3">
               <Badge className="inline-flex items-center gap-2 bg-[#005EB8] text-white px-4 py-2 rounded-full text-sm font-semibold shadow-sm">
@@ -209,31 +149,26 @@ export function HeroSection() {
                 className="flex items-center justify-center gap-3"
               >
                 <span>Book Free Consultation</span>
-                <ArrowRight className="size-8 stroke-3 transition-all ease-in-out duration-400 group-hover:translate-x-1" />
+                <ArrowRight className="size-6.5 stroke-3 transition-all ease-in-out duration-400 group-hover:translate-x-1" />
               </Link>
             </Button>
           </div>
-          <div className="h-full flex flex-col justify-end ml-auto pr-6">
-            <NHSMinimalUnderlineAnimated />
-          </div>
         </WidthConstraint>
       </div>
-      {/* Bottom fade transition */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 bg-linear-to-t from-background to-transparent pointer-events-none"></div>
     </section>
   );
 }
 
 export function NHSImageCard() {
   return (
-    <WidthConstraint className="observer-target max-w-5xl">
+    <WidthConstraint className="max-w-5xl">
       <Image
         src="/nhs.jpg"
         alt="NHS"
-        width={500}
-        height={500}
+        width={1000}
+        height={1000}
         loading="lazy"
-        className="w-full rounded-xl"
+        className="w-full rounded-xl aspect-video "
       />
     </WidthConstraint>
   );
@@ -241,7 +176,7 @@ export function NHSImageCard() {
 
 export default function NHSPharmacyFirstPage() {
   return (
-    <div className="space-y-25 overflow-hidden">
+    <div className="space-y-20 overflow-hidden">
       <header className="fixed top-0 w-full z-50">
         <Menu className="backdrop-blur-3xl!" />
       </header>
