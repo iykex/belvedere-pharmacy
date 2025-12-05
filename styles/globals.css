@@ -185,7 +185,8 @@
   body {
     @apply text-foreground;
     background-color: #ffffff;
-    font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: var(--font-inter), -apple-system, BlinkMacSystemFont,
+      "Segoe UI", sans-serif;
     font-weight: 400;
   }
 
@@ -195,7 +196,8 @@
   h4,
   h5,
   h6 {
-    font-family: var(--font-plus-jakarta-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: var(--font-plus-jakarta-sans), -apple-system,
+      BlinkMacSystemFont, "Segoe UI", sans-serif;
   }
 
   h1 {
@@ -311,7 +313,6 @@
 }
 
 @keyframes bounce-slow {
-
   0%,
   100% {
     transform: translateY(0);
@@ -341,34 +342,70 @@
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background-image:
-    linear-gradient(to right, #e5e7eb 1px, transparent 1px),
+  background-image: linear-gradient(to right, #e5e7eb 1px, transparent 1px),
     linear-gradient(to bottom, #e5e7eb 1px, transparent 1px);
   background-size: 24px 24px;
-  mask-image:
-    repeating-linear-gradient(to right,
+  mask-image: repeating-linear-gradient(
+      to right,
       black 0px,
       black 3px,
       transparent 3px,
-      transparent 8px),
-    repeating-linear-gradient(to bottom,
+      transparent 8px
+    ),
+    repeating-linear-gradient(
+      to bottom,
       black 0px,
       black 3px,
       transparent 3px,
-      transparent 8px),
+      transparent 8px
+    ),
     radial-gradient(ellipse 80% 80% at 100% 0%, #000 40%, transparent 80%);
-  -webkit-mask-image:
-    repeating-linear-gradient(to right,
+  -webkit-mask-image: repeating-linear-gradient(
+      to right,
       black 0px,
       black 3px,
       transparent 3px,
-      transparent 8px),
-    repeating-linear-gradient(to bottom,
+      transparent 8px
+    ),
+    repeating-linear-gradient(
+      to bottom,
       black 0px,
       black 3px,
       transparent 3px,
-      transparent 8px),
+      transparent 8px
+    ),
     radial-gradient(ellipse 80% 80% at 100% 0%, #000 40%, transparent 80%);
   mask-composite: intersect;
   -webkit-mask-composite: source-in;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 60s linear infinite;
+  animation-play-state: running;
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
+
+.observer-target {
+  opacity: 0;
+  transform: translateY(30px) scale(0.98);
+  transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 1),
+    transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 1);
+  will-change: opacity, transform;
+}
+
+.observer-target.in-view {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }

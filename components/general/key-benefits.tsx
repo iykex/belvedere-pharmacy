@@ -1,22 +1,22 @@
 import WidthConstraint from "@/components/shared/width-constraint";
 import { Button } from "@/components/ui/button";
 import { KEY_BENEFITS_TEXTS } from "@/lib/constants";
-import { ArrowRight, Check, Sparkles } from "lucide-react";
+import { ArrowRight, Check, HandHelping, Sparkles, Wand } from "lucide-react";
 import Link from "next/link";
 
 export default function KeyBenefits() {
   return (
-    <section className="py-20 bg-white">
-      <WidthConstraint className="observer-target">
+    <section className="bg-white observer-target">
+      <WidthConstraint>
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
           <div className="max-w-2xl">
             <div className="flex items-center gap-2 mb-4">
               <div className="p-2 bg-primary/10 rounded-lg">
-                <Sparkles className="size-5 text-primary" />
+                <HandHelping className="size-5 text-primary" />
               </div>
               <span className="text-primary font-semibold text-sm uppercase tracking-wider">
-                Why Choose Us
+                What We Offer
               </span>
             </div>
 
@@ -43,19 +43,19 @@ export default function KeyBenefits() {
         </div>
 
         {/* Benefits Grid */}
-        <div className="grid gap-6 sm:grid-cols-2">
+        <div className="grid gap-6 sm:grid-cols-3 sm:px-4 py-2">
           {KEY_BENEFITS_TEXTS.map((item, index) => {
             return (
               <div
                 key={item.title}
-                className="group bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100"
+                className="flex flex-col justify-between group bg-white rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 max-w-lg"
               >
                 {/* Number Badge */}
                 <div className="flex items-center gap-4 mb-6">
-                  <div className="flex items-center justify-center w-12 h-12 bg-primary text-white rounded-xl font-bold text-lg group-hover:scale-110 transition-transform duration-300">
+                  <div className="shrink-0 flex items-center justify-center size-12 bg-primary text-white rounded-xl font-bold text-lg group-hover:scale-110 transition-transform duration-300">
                     {index + 1}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary transition-colors">
+                  <h3 className="text-lg font-bold text-gray-900 group-hover:text-primary transition-colors">
                     {item.title}
                   </h3>
                 </div>
@@ -68,7 +68,7 @@ export default function KeyBenefits() {
                       className="flex gap-3 items-start text-gray-600"
                     >
                       <div className="shrink-0 w-5 h-5 bg-green-100 rounded-full flex items-center justify-center mt-0.5">
-                        <Check className="w-3 h-3 text-green-600 stroke-[3]" />
+                        <Check className="w-3 h-3 text-green-600 stroke-3" />
                       </div>
                       <p className="leading-relaxed text-sm">{bullet}</p>
                     </li>
@@ -86,26 +86,6 @@ export default function KeyBenefits() {
               </div>
             );
           })}
-        </div>
-
-        {/* Stats Row */}
-        <div className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-6">
-          {[
-            { value: "5000+", label: "Happy Patients" },
-            { value: "5+", label: "Years Experience" },
-            { value: "99%", label: "Satisfaction Rate" },
-            { value: "NHS", label: "Accredited" },
-          ].map((stat, index) => (
-            <div
-              key={index}
-              className="text-center p-6 rounded-2xl bg-gray-50 hover:bg-primary/5 transition-colors"
-            >
-              <p className="text-3xl sm:text-4xl font-bold text-primary mb-1">
-                {stat.value}
-              </p>
-              <p className="text-sm text-gray-500 font-medium">{stat.label}</p>
-            </div>
-          ))}
         </div>
       </WidthConstraint>
     </section>

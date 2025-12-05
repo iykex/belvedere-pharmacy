@@ -7,7 +7,7 @@ import { ArrowRight, Download, Smartphone } from "lucide-react";
 
 export default function DownloadAppSection() {
   return (
-    <section className="py-20 bg-white">
+    <section className="bg-white observer-target">
       <WidthConstraint>
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
@@ -27,8 +27,8 @@ export default function DownloadAppSection() {
               </h2>
 
               <p className="text-gray-600 text-lg leading-relaxed max-w-lg">
-                Download our app to manage your prescriptions, book appointments,
-                and access health resources on the go.
+                Download our app to manage your prescriptions, book
+                appointments, and access health resources on the go.
               </p>
             </div>
 
@@ -104,12 +104,12 @@ export default function DownloadAppSection() {
               <div className="absolute -inset-8 bg-primary/5 rounded-full blur-3xl" />
 
               {/* Phone mockup */}
-              <div className="relative w-72 h-[580px] bg-gray-900 rounded-[3rem] p-3 shadow-2xl">
+              <div className="relative w-72 h-[580px] bg-gray-900 rounded-[3rem] p-3 shadow-lg">
                 {/* Notch */}
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-7 bg-gray-900 rounded-b-2xl z-10" />
 
                 {/* Screen */}
-                <div className="w-full h-full bg-gradient-to-br from-primary/30 via-white to-[#00BFFF]/20 rounded-[2.5rem] overflow-hidden flex items-center justify-center">
+                <div className="w-full h-full bg-linear-to-br from-primary/30 via-white to-[#00BFFF]/20 rounded-[2.5rem] overflow-hidden flex items-center justify-center">
                   <div className="text-center space-y-4">
                     <div className="w-20 h-20 bg-primary rounded-2xl mx-auto flex items-center justify-center shadow-lg shadow-primary/30">
                       <Image

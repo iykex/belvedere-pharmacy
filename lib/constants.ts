@@ -371,13 +371,6 @@ export const TRUST_BADGES_MARQUEE = [
     bgColor: "bg-chart-2/10",
   },
   {
-    title: "CQC Registered",
-    subtitle: "Quality Assured",
-    icon: IconAward,
-    color: "text-primary",
-    bgColor: "bg-primary/10",
-  },
-  {
     title: "Same Day Service",
     subtitle: "Fast & Reliable",
     icon: IconClock,

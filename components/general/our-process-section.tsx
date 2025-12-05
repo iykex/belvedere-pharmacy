@@ -3,32 +3,31 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { OUR_PROCESS_STEPS } from "@/lib/constants";
 import WidthConstraint from "../shared/width-constraint";
+import SectionHeader from "./section-divider-head";
 
 export function OurProcessSection() {
   return (
-    <section className="py-20 bg-white">
-      <WidthConstraint className="observer-target">
+    <section className="bg-white observer-target">
+      <WidthConstraint>
         <div className="relative z-10">
           {/* Header */}
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-primary font-semibold text-sm uppercase tracking-wider">
-              Our Process
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 mt-4 mb-4">
+            <SectionHeader heading="Our Process" />
+            <h2 className="text-section-header font-bold tracking-tight text-gray-900 mt-4 mb-4">
               How We <span className="text-primary">Help You</span>
             </h2>
-            <p className="text-gray-600 text-lg leading-relaxed">
+            <p className="text-gray-600 text-base leading-relaxed">
               We offer a comprehensive range of healthcare services to meet your
               needs
             </p>
           </div>
 
           {/* Steps Grid */}
-          <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mb-12">
+          <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mb-12 px-5 py-2">
             {OUR_PROCESS_STEPS.map((step, index) => {
               const Icon = step.icon;
               return (
-                <div key={index} className="relative group">
+                <div key={index} className="relative group max-w-sm">
                   <div className="flex flex-col h-full bg-white rounded-2xl p-6 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-gray-100">
                     {/* Number badge */}
                     <div className="absolute -top-3 -left-3 bg-primary text-white text-sm font-bold rounded-full w-8 h-8 flex items-center justify-center shadow-lg">

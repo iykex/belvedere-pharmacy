@@ -1,5 +1,6 @@
 "use client";
-import { useEffect } from "react";
+
+import { useEffect, useRef } from "react";
 
 const observerOptions = {
   root: null,
@@ -8,24 +9,46 @@ const observerOptions = {
 };
 
 export function useIntersectionObserver(selector: string) {
+  const observerRef = useRef<IntersectionObserver | null>(null);
+
   useEffect(() => {
-    const targets = document.querySelectorAll(selector);
-    const io = new IntersectionObserver((targets) => {
-      targets.forEach((element, index) => {
-        if (element.isIntersecting && element.target instanceof HTMLElement) {
-          element.target.style.transitionDelay = `${index * 80}ms`;
-          element.target.classList.add("in-view");
-        } else {
-          // element.target.classList.remove("in-view");
+    observerRef.current = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && entry.target instanceof HTMLElement) {
+          const elements = document.querySelectorAll(selector);
+          const index = Array.from(elements).indexOf(
+            entry.target as HTMLElement
+          );
+          entry.target.style.transitionDelay = `${index * 80}ms`;
+          entry.target.classList.add("in-view");
         }
       });
     }, observerOptions);
-    targets.forEach((target) => io.observe(target));
 
-    return () =>
+    observeAll();
+
+    const mutationObserver = new MutationObserver(() => {
+      observeAll();
+    });
+
+    mutationObserver.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+
+    function observeAll() {
+      if (!observerRef.current) return;
+      const targets = document.querySelectorAll(selector);
       targets.forEach((target) => {
-        io.unobserve(target);
-        io.disconnect();
+        if (!target.classList.contains("in-view")) {
+          observerRef.current!.observe(target);
+        }
       });
-  }, [observerOptions]);
+    }
+
+    return () => {
+      observerRef.current?.disconnect();
+      mutationObserver.disconnect();
+    };
+  }, [selector]);
 }

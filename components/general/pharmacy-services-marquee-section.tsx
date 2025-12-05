@@ -56,10 +56,6 @@ export default function PharmacyServicesMarquee() {
             <h2 className="text-section-header font-bold tracking-tight mb-4 text-foreground">
               Trusted <span className="text-primary">Healthcare Partner</span>
             </h2>
-            {/* <div className="flex w-24 mx-auto mb-6">
-              <hr className="w-1/2 bg-chart-3 h-1 border-0" />
-              <hr className="w-1/2 bg-chart-2 h-1 border-0" />
-            </div> */}
             <p className="text-muted-foreground text-base leading-relaxed">
               Accredited, experienced, and committed to providing exceptional
               pharmaceutical care to our community.
@@ -70,7 +66,7 @@ export default function PharmacyServicesMarquee() {
           <div className="relative flex flex-col gap-6 bg-transparent">
             {/* Row 1: Right to Left */}
             <div className="flex overflow-hidden group bg-transparent">
-              <div className="flex min-w-full shrink-0 animate-scroll gap-4 group-hover:paused bg-transparent">
+              <div className="flex min-w-full shrink-0 animate-scroll gap-4 group-hover:paused bg-transparent py-2">
                 {TRUST_BADGES_MARQUEE.map((badge, i) => (
                   <TrustBadgeCard key={`row1-${i}`} {...badge} />
                 ))}
