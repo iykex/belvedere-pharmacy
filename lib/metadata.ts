@@ -1,25 +1,31 @@
 import { Metadata } from "next";
 
+// Site configuration - uses environment variable or defaults to production URL
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://belvederepharmacy.net";
+const SITE_NAME = "Belvedere Pharmacy";
+
 export const rootMetadata: Metadata = {
-  title: "Belvedere Pharmacy",
+  title: SITE_NAME,
   description:
-    "We have all the drugs your doctor prescribed for your health and what’s more, we can get it to you.",
+    "Your trusted community pharmacy providing NHS services, prescriptions, health consultations, and personalized care in Belvedere, Kent.",
   keywords: [
-    "Drug",
     "Pharmacy",
+    "NHS Pharmacy",
+    "Belvedere Pharmacy",
+    "Prescription",
     "Health",
     "Medicine",
-    "Prescription",
-    "Belvedere",
-    "Delivery",
-    "Care",
-    "Wellness",
-    "Support",
-    "Consultation",
+    "Healthcare",
+    "Kent Pharmacy",
+    "Community Pharmacy",
+    "NHS Services",
+    "Pharmacy First",
+    "Prescription Delivery",
+    "Health Consultation",
   ],
-  authors: [{ name: "Belvedere Pharmacy" }],
-  creator: "Belvedere Pharmacy",
-  publisher: "Belvedere Pharmacy",
+  authors: [{ name: SITE_NAME }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
   formatDetection: {
     email: false,
     address: false,
@@ -35,37 +41,33 @@ export const rootMetadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "en_US",
-    url: " http://localhost:3000",
-    siteName: "Belvedere Pharmacy",
-    title: "Belvedere",
+    locale: "en_GB",
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: SITE_NAME,
     description:
-      "We have all the drugs your doctor prescribed for your health and what’s more, we can get it to you.",
+      "Your trusted community pharmacy providing NHS services, prescriptions, health consultations, and personalized care in Belvedere, Kent.",
     images: [
       {
-        url: "http://localhost:3000/belvedere-logo.png",
+        url: `${SITE_URL}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: "Belvedere Pharmacy",
+        alt: SITE_NAME,
         type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    site: "@belvedere_pharmacy",
-    creator: "@belvedere_pharmacy",
-    title: "Belvedere Pharmacy",
+    site: "@belvederepharm",
+    creator: "@belvederepharm",
+    title: SITE_NAME,
     description:
-      "We have all the drugs your doctor prescribed for your health and what’s more, we can get it to you.",
-    images: ["http://localhost:3000/belvedere-logo.png"],
+      "Your trusted community pharmacy providing NHS services, prescriptions, health consultations, and personalized care in Belvedere, Kent.",
+    images: [`${SITE_URL}/og-image.png`],
   },
   alternates: {
-    canonical: "http://localhost:3000",
-    languages: {
-      "en-US": "http://localhost:3000/en-US",
-      "es-ES": "http://localhost:3000/es-ES",
-    },
+    canonical: SITE_URL,
   },
   icons: {
     icon: "/favicons/favicon.ico",
@@ -80,9 +82,9 @@ export const rootMetadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "Belvedere Pharmacy",
+    title: SITE_NAME,
   },
-  metadataBase: new URL("http://localhost:3000"),
+  metadataBase: new URL(SITE_URL),
 };
 
 export function getMetadata(
@@ -91,34 +93,37 @@ export function getMetadata(
   path?: string,
   image?: string
 ): Metadata {
+  const pageTitle = title ? `${title} | ${SITE_NAME}` : SITE_NAME;
+  const pageDescription = description || rootMetadata.description as string;
+  const pageUrl = path ? `${SITE_URL}${path}` : SITE_URL;
+  const pageImage = image || `${SITE_URL}/og-image.png`;
+
   return {
     ...rootMetadata,
-    title,
-    description,
+    title: pageTitle,
+    description: pageDescription,
     alternates: {
-      canonical: `https://yoursite.com${path}`,
+      canonical: pageUrl,
     },
     openGraph: {
       ...rootMetadata.openGraph,
-      title,
-      description,
-      url: `https://yoursite.com${path}`,
-      images: image
-        ? [
-            {
-              url: image,
-              width: 1200,
-              height: 630,
-              alt: title,
-            },
-          ]
-        : rootMetadata.openGraph?.images,
+      title: pageTitle,
+      description: pageDescription,
+      url: pageUrl,
+      images: [
+        {
+          url: pageImage,
+          width: 1200,
+          height: 630,
+          alt: title || SITE_NAME,
+        },
+      ],
     },
     twitter: {
       ...rootMetadata.twitter,
-      title,
-      description,
-      images: image ? [image] : rootMetadata.twitter?.images,
+      title: pageTitle,
+      description: pageDescription,
+      images: [pageImage],
     },
   };
 }

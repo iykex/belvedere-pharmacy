@@ -8,11 +8,20 @@ import Image from "next/image";
 
 export default function Banner() {
   return (
-    <section
-      className="bg-[url('/banner.png')] bg-cover bg-center h-screen overflow-hidden relative"
-    >
+    <section className="h-screen overflow-hidden relative">
+      {/* Background Image with CDN optimization */}
+      <Image
+        src="/banner.png"
+        alt="Belvedere Pharmacy"
+        fill
+        sizes="100vw"
+        className="object-cover object-center"
+        priority
+        quality={85}
+      />
+
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-linear-to-r from-[#002f4b]/95 via-[#002f4b]/80 to-[#002f4b]/40" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#002f4b]/95 via-[#002f4b]/80 to-[#002f4b]/40" />
 
       {/* Content */}
       <div className="relative w-full h-full flex items-center">
@@ -99,6 +108,7 @@ export default function Banner() {
                           width={28}
                           height={28}
                           className="rounded-md"
+                          loading="lazy"
                         />
                         <div className="flex-1">
                           <p className="text-[10px] text-white/60">Download on the</p>
@@ -117,6 +127,7 @@ export default function Banner() {
                           width={28}
                           height={28}
                           className="rounded-md"
+                          loading="lazy"
                         />
                         <div className="flex-1">
                           <p className="text-[10px] text-white/60">Get it on</p>

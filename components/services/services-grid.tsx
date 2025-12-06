@@ -32,7 +32,7 @@ export function ServicesGrid() {
             <TabsContent
               key={category.id}
               value={category.id}
-              className="mt-8 animate-in fade-in duration-500"
+              className="mt-8"
             >
               <div className="grid gap-x-12 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
                 {SERVICES_LIST.filter(

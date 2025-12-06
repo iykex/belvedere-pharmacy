@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Service } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { CheckCircle, Plus } from "lucide-react";
-import Image from "next/image"; // ← added
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -20,15 +20,16 @@ export default function ServiceCard({
 
   return (
     <Card className="max-w-lg mx-auto p-0 rounded-none relative rounded-tr-4xl rounded-bl-4xl border-0 shadow-none outline-0 overflow-hidden">
-      {/* Background Image*/}
+      {/* Background Image with CDN optimization */}
       <div className="relative w-full h-80 rounded-tr-4xl rounded-bl-4xl">
         <Image
           src={image}
           alt={title}
           fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
           className="object-cover object-center"
-          quality={85}
-          priority={false}
+          quality={80}
+          loading="lazy"
           placeholder="blur"
         />
 
@@ -77,7 +78,7 @@ export default function ServiceCard({
           <div className="w-full flex justify-center">
             <Button
               asChild
-              className="w-full max-w-xs bg-linear-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary text-white font-semibold shadow-md hover:shadow-lg transition-all"
+              className="w-full max-w-xs bg-primary hover:bg-primary/90 text-white font-semibold shadow-md hover:shadow-lg transition-all"
             >
               <Link href={link}>Explore Service</Link>
             </Button>

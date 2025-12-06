@@ -81,7 +81,7 @@
   --muted: #f9fafb;
   --muted-foreground: #6b7280;
 
-  --accent: #e6f7ff;
+  --accent: #ffffff;
   --accent-foreground: #002f4b;
 
   --border: #dde2e6;
@@ -313,6 +313,7 @@
 }
 
 @keyframes bounce-slow {
+
   0%,
   100% {
     transform: translateY(0);
@@ -345,35 +346,27 @@
   background-image: linear-gradient(to right, #e5e7eb 1px, transparent 1px),
     linear-gradient(to bottom, #e5e7eb 1px, transparent 1px);
   background-size: 24px 24px;
-  mask-image: repeating-linear-gradient(
-      to right,
+  mask-image: repeating-linear-gradient(to right,
       black 0px,
       black 3px,
       transparent 3px,
-      transparent 8px
-    ),
-    repeating-linear-gradient(
-      to bottom,
+      transparent 8px),
+    repeating-linear-gradient(to bottom,
       black 0px,
       black 3px,
       transparent 3px,
-      transparent 8px
-    ),
+      transparent 8px),
     radial-gradient(ellipse 80% 80% at 100% 0%, #000 40%, transparent 80%);
-  -webkit-mask-image: repeating-linear-gradient(
-      to right,
+  -webkit-mask-image: repeating-linear-gradient(to right,
       black 0px,
       black 3px,
       transparent 3px,
-      transparent 8px
-    ),
-    repeating-linear-gradient(
-      to bottom,
+      transparent 8px),
+    repeating-linear-gradient(to bottom,
       black 0px,
       black 3px,
       transparent 3px,
-      transparent 8px
-    ),
+      transparent 8px),
     radial-gradient(ellipse 80% 80% at 100% 0%, #000 40%, transparent 80%);
   mask-composite: intersect;
   -webkit-mask-composite: source-in;
@@ -383,6 +376,17 @@
   from {
     transform: translateX(0);
   }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
   to {
     transform: translateX(-100%);
   }
@@ -397,15 +401,45 @@
   animation-play-state: paused;
 }
 
-.observer-target {
-  opacity: 0;
-  transform: translateY(30px) scale(0.98);
-  transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 1),
-    transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 1);
-  will-change: opacity, transform;
+.animate-marquee {
+  animation: marquee 40s linear infinite;
 }
 
-.observer-target.in-view {
-  opacity: 1;
-  transform: translateY(0) scale(1);
+/* Carousel track for infinite scroll */
+.carousel-track {
+  display: flex;
+  width: max-content;
+  animation: carousel-scroll 40s linear infinite;
+}
+
+.carousel-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes carousel-scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 18s linear infinite;
+}
+
+.group-hover\:paused:hover {
+  animation-play-state: paused;
 }
