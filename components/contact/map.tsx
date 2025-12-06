@@ -8,7 +8,7 @@ export default function Map() {
           <h2 className="text-section-header font-bold tracking-tight">
             Find Us
           </h2>
-          <p className="text-card-title text-muted-foreground">
+          <p className="sm:text-card-title text-muted-foreground">
             Visit our pharmacy at 11 PICARDY STREET, BELVEDERE, KENT DA17 5QQ
           </p>
         </div>

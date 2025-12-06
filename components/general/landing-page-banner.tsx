@@ -12,7 +12,7 @@ export default function Banner() {
       className="bg-[url('/banner.png')] bg-cover bg-center h-screen overflow-hidden relative"
     >
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#002f4b]/95 via-[#002f4b]/80 to-[#002f4b]/40" />
+      <div className="absolute inset-0 bg-linear-to-r from-[#002f4b]/95 via-[#002f4b]/80 to-[#002f4b]/40" />
 
       {/* Content */}
       <div className="relative w-full h-full flex items-center">

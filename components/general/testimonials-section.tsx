@@ -12,7 +12,7 @@ export default function Testimonials() {
   const currentTestimonial = TESTIMONIALS_DEMO[currentIndex];
 
   return (
-    <section className="py-20 bg-[#002f4b] relative overflow-hidden">
+    <section className="py-20 bg-[#002f4b] relative overflow-hidden observer-target">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,153,0,0.08),transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(0,191,255,0.06),transparent_50%)]" />
@@ -29,7 +29,8 @@ export default function Testimonials() {
                 Trusted by <span className="text-primary">Thousands</span>
               </h2>
               <p className="text-white/70 text-lg leading-relaxed max-w-md">
-                Hear what our patients have to say about their experience with Belvedere Pharmacy.
+                Hear what our patients have to say about their experience with
+                Belvedere Pharmacy.
               </p>
             </div>
 
@@ -91,7 +92,9 @@ export default function Testimonials() {
                   <h4 className="text-lg font-bold text-white">
                     {currentTestimonial.name}
                   </h4>
-                  <p className="text-white/60 text-sm">{currentTestimonial.role}</p>
+                  <p className="text-white/60 text-sm">
+                    {currentTestimonial.role}
+                  </p>
                 </div>
               </div>
             </div>
@@ -102,10 +105,11 @@ export default function Testimonials() {
                 <button
                   key={index}
                   onClick={() => goToTestimonial(index)}
-                  className={`h-2 rounded-full transition-all duration-300 ${index === currentIndex
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    index === currentIndex
                       ? "w-8 bg-primary"
                       : "w-2 bg-white/30 hover:bg-white/50"
-                    }`}
+                  }`}
                   aria-label={`Go to testimonial ${index + 1}`}
                 />
               ))}

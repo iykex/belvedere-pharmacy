@@ -1,12 +1,7 @@
 import Image from "next/image";
 import WidthConstraint from "../shared/width-constraint";
 import { Button } from "../ui/button";
-import {
-  ArrowRight,
-  Video,
-  Calendar,
-  CheckCircle,
-} from "lucide-react";
+import { ArrowRight, Video, Calendar, CheckCircle } from "lucide-react";
 import Link from "next/link";
 
 export function ServicesHeading() {
@@ -15,7 +10,7 @@ export function ServicesHeading() {
       <WidthConstraint className="relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 place-items-center">
           {/* LEFT COL - Content */}
-          <div className="space-y-6 max-w-2xl">
+          <div className="space-y-2 max-w-2xl">
             {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 text-primary px-4 py-2 rounded-full">
               <span className="text-sm font-bold">
@@ -24,7 +19,7 @@ export function ServicesHeading() {
             </div>
 
             {/* Heading */}
-            <h1 className="text-title font-montserrat font-bold tracking-tight text-foreground leading-20">
+            <h1 className="text-title font-montserrat font-bold tracking-tight text-foreground sm:leading-20">
               Find the Right <span className="text-primary">Service</span> for
               Your Health
             </h1>
@@ -84,8 +79,8 @@ export function ServicesHeading() {
               <Image
                 src="/booking.jpg"
                 alt="Healthcare Services"
-                width={400}
-                height={400}
+                width={1200}
+                height={120}
                 className="w-full object-cover rounded-4xl"
               />
             </div>

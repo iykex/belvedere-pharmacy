@@ -3,11 +3,11 @@ import Hero from "@/components/contact/hero";
 import ContactLocation from "@/components/contact/contact-location";
 import Map from "@/components/contact/map";
 import Menu from "@/components/shared/navigation-menu";
-import CTASection from "@/components/about/cta-section";
+import CTASection from "@/components/shared/cta-section";
 
 export default function ContactPage() {
   return (
-    <div className="overflow-hidden space-y-20">
+    <div className="overflow-hidden  space-y-20 sm:space-y-30 mb-30">
       <header className="fixed top-0 w-full z-50">
         <Menu />
       </header>

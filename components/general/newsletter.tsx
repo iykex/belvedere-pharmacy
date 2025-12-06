@@ -14,8 +14,8 @@ export default function NewsletterSection() {
     useNewsletter();
 
   return (
-    <section className="py-20 bg-gray-50">
-      <WidthConstraint>
+    <section className="observer-target">
+      <WidthConstraint className="pb-2">
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
           <div className="grid lg:grid-cols-2">
             {/* Left Column - Features */}
@@ -42,7 +42,10 @@ export default function NewsletterSection() {
                 {NEWSLETTER_FEATURES.map((item) => {
                   const Icon = item.icon;
                   return (
-                    <div key={item.title} className="flex items-start gap-4 bg-white/5 rounded-xl p-4">
+                    <div
+                      key={item.title}
+                      className="flex items-start gap-4 bg-white/5 rounded-xl p-4"
+                    >
                       <div className="shrink-0 p-2 bg-primary/20 rounded-lg">
                         <Icon className="size-5 text-primary" />
                       </div>
@@ -71,8 +74,8 @@ export default function NewsletterSection() {
                     Successfully Subscribed!
                   </h3>
                   <p className="text-gray-600">
-                    Thank you for joining our wellness community. Check your inbox
-                    for a confirmation email.
+                    Thank you for joining our wellness community. Check your
+                    inbox for a confirmation email.
                   </p>
                 </div>
               </div>
@@ -105,7 +108,7 @@ export default function NewsletterSection() {
                                 aria-invalid={fieldState.invalid}
                                 autoComplete="off"
                                 placeholder="your.email@example.com"
-                                className="flex-1 px-4 py-3 rounded-l-xl border border-r-0 border-gray-200 focus:ring-2 focus:ring-primary/20 focus:border-primary"
+                                className="flex-1 px-4 py-3 rounded-l-xl border border-r-0 rounded-r-none border-gray-200 focus:ring-2 focus:ring-primary/20 focus:border-primary"
                                 onKeyDown={(e) =>
                                   e.key === "Enter" && handleSubmit(onSubmit)
                                 }

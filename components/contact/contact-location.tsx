@@ -6,7 +6,7 @@ export default function ContactLocation() {
   return (
     <section>
       <WidthConstraint>
-        <div className="grid sm:grid-cols-2 p-5 ">
+        <div className="grid sm:grid-cols-2 p-5 gap-4">
           <ContactsColumn />
           <ContactForm />
         </div>

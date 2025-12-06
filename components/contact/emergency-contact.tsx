@@ -11,9 +11,9 @@ import { EMERGENCY_SERVICES_CONTACTS_PAGE } from "@/lib/constants";
 export default function EmergencyContact() {
   return (
     <Card className="shadow-lg border-0 ">
-      <CardHeader className="pb-3">
+      <CardHeader>
         <div className="flex items-center gap-3">
-          <div className="flex size-12 items-center justify-center rounded-full bg-linear-to-br from-red-100 to-red-200">
+          <div className="hidden sm:flex size-12 items-center justify-center rounded-full bg-linear-to-br from-red-100 to-red-200">
             <AlertTriangle className="size-6 text-red-600" />
           </div>
           <div>
@@ -41,7 +41,7 @@ export default function EmergencyContact() {
               <div className="flex-1">
                 <div className="flex items-center justify-between mb-1">
                   <span
-                    className={`text-sm font-semibold ${service.labelColor} uppercase tracking-wide`}
+                    className={`text-sm font-semibold  ${service.labelColor} uppercase tracking-wide`}
                   >
                     {service.label}
                   </span>
@@ -51,10 +51,12 @@ export default function EmergencyContact() {
                     {service.number}
                   </span>
                 </div>
-                <p className="text-sm text-gray-700 mb-2">
+                <p className="hidden sm:block text-sm text-gray-700 mb-2">
                   {service.description}
                 </p>
-                <p className="text-xs text-gray-600">{service.detail}</p>
+                <p className="hidden sm:block text-xs text-gray-600">
+                  {service.detail}
+                </p>
               </div>
             </div>
           </div>

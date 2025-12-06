@@ -11,7 +11,15 @@ import {
   SheetTrigger,
   SheetClose,
 } from "@/components/ui/sheet";
-import { MenuIcon, ArrowRight, X, Phone, MapPin, Clock, ChevronRight } from "lucide-react";
+import {
+  MenuIcon,
+  ArrowRight,
+  X,
+  Phone,
+  MapPin,
+  Clock,
+  ChevronRight,
+} from "lucide-react";
 import { ReactNode, useRef, useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
@@ -94,31 +102,37 @@ export default function Menu({ className }: { className?: string }) {
       <div
         className={cn(
           "info-bar py-2 transition-all duration-300",
-          useDarkText ? "bg-gray-50/80 backdrop-blur-sm border-b border-gray-100" : "bg-white/10 backdrop-blur-sm"
+          useDarkText
+            ? "bg-gray-50/80 backdrop-blur-sm border-b border-gray-100"
+            : "bg-white/10 backdrop-blur-sm"
         )}
       >
-        <div className="flex items-center justify-center gap-4 md:gap-8 px-4 text-sm">
+        <div className="flex items-center justify-center sm:gap-4 md:gap-8 px-4 sm:text-sm">
           {ABOUT_US_INFO_BANNER.map((item) => {
             const Icon = item.icon;
             return (
               <div
                 key={item.title}
                 className={cn(
-                  "flex items-center gap-2 transition-colors duration-300",
+                  "flex text-center sm:text-left sm:items-center gap-2 transition-colors duration-300",
                   useDarkText ? "text-gray-700" : "text-white/90"
                 )}
               >
-                <Icon className="size-4 text-primary" />
-                <span className={cn(
-                  "hidden sm:inline font-medium text-xs",
-                  useDarkText ? "text-gray-500" : "text-white/70"
-                )}>
+                <Icon className=" size-4 text-primary" />
+                <span
+                  className={cn(
+                    "hidden sm:inline font-medium text-xs",
+                    useDarkText ? "text-gray-500" : "text-white/70"
+                  )}
+                >
                   {item.title}:
                 </span>
-                <span className={cn(
-                  "text-xs font-semibold",
-                  useDarkText ? "text-gray-900" : "text-white"
-                )}>
+                <span
+                  className={cn(
+                    "text-xs font-semibold",
+                    useDarkText ? "text-gray-900" : "text-white"
+                  )}
+                >
                   {item.description}
                 </span>
               </div>
@@ -128,12 +142,7 @@ export default function Menu({ className }: { className?: string }) {
       </div>
 
       {/* Main Navigation */}
-      <nav
-        className={cn(
-          "nav-menu",
-          useDarkText ? "nav-menu-light" : ""
-        )}
-      >
+      <nav className={cn("nav-menu", useDarkText ? "nav-menu-light" : "")}>
         {/* Brand */}
         <div className="flex gap-x-3 items-center">
           <Link href="/" className="relative group">
@@ -147,14 +156,22 @@ export default function Menu({ className }: { className?: string }) {
             />
           </Link>
           <div className="hidden min-[450px]:block">
-            <p className={cn(
-              "font-bold text-lg leading-tight transition-colors duration-300",
-              useDarkText ? "text-gray-900" : "text-white"
-            )}>Belvedere</p>
-            <p className={cn(
-              "text-xs transition-colors duration-300",
-              useDarkText ? "text-gray-500" : "text-white/70"
-            )}>Pharmacy</p>
+            <p
+              className={cn(
+                "font-bold text-lg leading-tight transition-colors duration-300",
+                useDarkText ? "text-gray-900" : "text-white"
+              )}
+            >
+              Belvedere
+            </p>
+            <p
+              className={cn(
+                "text-xs transition-colors duration-300",
+                useDarkText ? "text-gray-500" : "text-white/70"
+              )}
+            >
+              Pharmacy
+            </p>
           </div>
         </div>
 
@@ -171,8 +188,8 @@ export default function Menu({ className }: { className?: string }) {
                   isActive
                     ? "text-primary"
                     : useDarkText
-                      ? "text-gray-600 hover:text-gray-900"
-                      : "text-white/80 hover:text-white"
+                    ? "text-gray-600 hover:text-gray-900"
+                    : "text-white/80 hover:text-white"
                 )}
               >
                 {/* Text */}
@@ -212,10 +229,12 @@ export default function Menu({ className }: { className?: string }) {
           >
             {/* Sliding underline */}
             <span className="relative z-10">Order Prescriptions</span>
-            <span className={cn(
-              "absolute bottom-1 left-0 h-px bg-current transition-all duration-300 ease-out",
-              "w-0 group-hover:w-full"
-            )} />
+            <span
+              className={cn(
+                "absolute bottom-1 left-0 h-px bg-current transition-all duration-300 ease-out",
+                "w-0 group-hover:w-full"
+              )}
+            />
           </Link>
 
           <Button
@@ -227,7 +246,7 @@ export default function Menu({ className }: { className?: string }) {
               className="flex items-center gap-2"
             >
               {/* Shine effect */}
-              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
+              <span className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
               <span className="relative z-10">Book Now</span>
               <ArrowRight className="relative z-10 size-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
@@ -251,7 +270,7 @@ export default function Menu({ className }: { className?: string }) {
             </SheetTrigger>
             <SheetContent
               side="right"
-              className="w-full sm:w-[350px] p-0 border-0 bg-white [&>button]:hidden"
+              className="w-full h-full sm:w-[350px] p-0 border-0 bg-white [&>button]:hidden"
             >
               {/* Mobile Menu Header */}
               <div className="bg-[#002f4b] p-6 pb-8">
@@ -265,8 +284,12 @@ export default function Menu({ className }: { className?: string }) {
                         height={44}
                       />
                       <SheetTitle className="text-left text-white">
-                        <span className="block font-bold text-lg">Belvedere</span>
-                        <span className="text-xs text-white/70 font-normal">Pharmacy</span>
+                        <span className="block font-bold leading-3">
+                          Belvedere
+                        </span>
+                        <span className="text-xs text-white/70 font-normal">
+                          Pharmacy
+                        </span>
                       </SheetTitle>
                     </div>
                     <SheetClose className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
@@ -286,7 +309,9 @@ export default function Menu({ className }: { className?: string }) {
                     </div>
                     <div>
                       <p className="text-xs text-white/60">Call Us</p>
-                      <p className="text-sm font-semibold text-white">+44 (0) 123 456 7890</p>
+                      <p className="text-sm font-semibold text-white">
+                        +44 (0) 123 456 7890
+                      </p>
                     </div>
                   </a>
                   <div className="flex gap-3">
@@ -294,14 +319,18 @@ export default function Menu({ className }: { className?: string }) {
                       <MapPin className="size-4 text-primary" />
                       <div>
                         <p className="text-xs text-white/60">Location</p>
-                        <p className="text-xs font-semibold text-white">Belvedere, Kent</p>
+                        <p className="text-xs font-semibold text-white">
+                          Belvedere, Kent
+                        </p>
                       </div>
                     </div>
                     <div className="flex-1 flex items-center gap-2 bg-white/10 rounded-xl p-3">
                       <Clock className="size-4 text-primary" />
                       <div>
                         <p className="text-xs text-white/60">Hours</p>
-                        <p className="text-xs font-semibold text-white">Mon-Fri 9-6</p>
+                        <p className="text-xs font-semibold text-white">
+                          Mon-Fri 9-6
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -309,8 +338,10 @@ export default function Menu({ className }: { className?: string }) {
               </div>
 
               {/* Mobile Navigation Links */}
-              <div className="p-6 space-y-2">
-                <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">Menu</p>
+              <div className="p-6 space-y-2 h-full overflow-scroll">
+                <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">
+                  Menu
+                </p>
                 {MENU_LINKS.map((item) => {
                   const isActive = pathname === item.href;
                   return (
@@ -320,15 +351,19 @@ export default function Menu({ className }: { className?: string }) {
                         className={cn(
                           "group flex items-center justify-between px-4 py-3.5 rounded-xl font-medium transition-all duration-300",
                           isActive
-                            ? "bg-primary text-white"
+                            ? " text-primary font-bold animate-pulse py-2"
                             : "hover:bg-gray-50 text-gray-900"
                         )}
                       >
                         <span>{item.label}</span>
-                        <ChevronRight className={cn(
-                          "size-4 transition-all duration-300 group-hover:translate-x-1",
-                          isActive ? "text-white" : "text-gray-400 group-hover:text-primary"
-                        )} />
+                        <ChevronRight
+                          className={cn(
+                            "size-4 transition-all duration-300 group-hover:translate-x-1",
+                            isActive
+                              ? "text-primary stroke-3"
+                              : "text-gray-400 group-hover:text-primary"
+                          )}
+                        />
                       </Link>
                     </SheetClose>
                   );
@@ -336,31 +371,31 @@ export default function Menu({ className }: { className?: string }) {
               </div>
 
               {/* Mobile Action Buttons */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-white via-white to-transparent pt-12">
-                <div className="space-y-3">
-                  <Button asChild className="group w-full bg-primary hover:bg-primary/90 py-6 rounded-xl overflow-hidden relative">
-                    <Link
-                      href="https://shop.belvederepharmacy.net/appointments/viewallservices/all?pharmacy=378&type=redirection"
-                      className="flex items-center justify-center gap-2 font-semibold"
-                    >
-                      <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-                      <span className="relative z-10">Book Appointment</span>
-                      <ArrowRight className="relative z-10 size-4 transition-transform duration-300 group-hover:translate-x-1" />
-                    </Link>
-                  </Button>
-                  <Button
-                    asChild
-                    variant="outline"
-                    className="w-full py-6 rounded-xl border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300"
+              <div className="max-[349px]:flex-col flex gap-2 p-2">
+                <Button
+                  asChild
+                  className="group w-fit max-[349px]:w-full max-[349px]: grow bg-primary hover:bg-primary/90 py-2 rounded-md overflow-hidden"
+                >
+                  <Link
+                    href="https://shop.belvederepharmacy.net/appointments/viewallservices/all?pharmacy=378&type=redirection"
+                    className="flex items-center justify-center gap-2 font-semibold"
                   >
-                    <Link
-                      href="https://app.belvederepharmacy.net/#/auth/signin"
-                      className="font-semibold"
-                    >
-                      Order Prescriptions
-                    </Link>
-                  </Button>
-                </div>
+                    Book Appointment{" "}
+                    {/* <ArrowRight className=" stroke-3 z-10 size-4 transition-transform duration-300 group-hover:translate-x-1" /> */}
+                  </Link>
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  className="w-fit py-2  max-[349px]:w-full grow rounded-md border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300"
+                >
+                  <Link
+                    href="https://app.belvederepharmacy.net/#/auth/signin"
+                    className="font-semibold"
+                  >
+                    Order Prescriptions
+                  </Link>
+                </Button>
               </div>
             </SheetContent>
           </Sheet>

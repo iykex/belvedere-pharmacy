@@ -15,12 +15,9 @@ import Link from "next/link";
 
 export default function ContactsColumn() {
   return (
-    <Card className="border-0 shadow-lg overflow-hidden max-w-md">
+    <Card className="border-0 shadow-lg overflow-hidden max-w-md z-10">
       <CardHeader>
         <div className="flex items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/20">
-            <Phone className="h-6 w-6 text-primary" />
-          </div>
           <div>
             <CardTitle className="text-xl">Contact Information</CardTitle>
             <CardDescription>
@@ -29,18 +26,18 @@ export default function ContactsColumn() {
           </div>
         </div>
       </CardHeader>
-      <CardContent className="p-6 space-y-6">
+      <CardContent className="sm:px-6 space-y-6">
         {CONTACT_ITEMS_CONTACTS_PAGE.map((item) => {
           const IconComponent = item.icon;
           return (
             <div
               key={item.id}
-              className="group flex items-start p-4 rounded-xl hover:bg-gray-50 transition-colors duration-200"
+              className="group flex items-start sm:p-4 rounded-xl hover:bg-gray-50 transition-colors duration-200"
             >
               <div
-                className={`mr-4 flex h-12 w-12 items-center justify-center rounded-full bg-linear-to-br ${item.bgFrom} ${item.bgTo} ${item.bgHoverFrom} ${item.bgHoverTo} transition-colors`}
+                className={`hidden mr-4 sm:flex size-12 items-center justify-center rounded-full bg-linear-to-br ${item.bgFrom} ${item.bgTo} ${item.bgHoverFrom} ${item.bgHoverTo} transition-colors`}
               >
-                <IconComponent className={`h-6 w-6 ${item.iconColor}`} />
+                <IconComponent className={`size-6 ${item.iconColor}`} />
               </div>
               <div className="flex-1">
                 <p className="font-bold text-gray-900 mb-1">{item.title}</p>
@@ -54,8 +51,8 @@ export default function ContactsColumn() {
         })}
 
         {/* Opening Hours */}
-        <div className="group flex items-start p-4 rounded-xl hover:bg-gray-50 transition-colors duration-200">
-          <div className="mr-4 flex h-12 w-12 items-center justify-center rounded-full bg-linear-to-br from-amber-100 to-amber-50 group-hover:from-amber-50 group-hover:to-amber-100 transition-colors">
+        <div className="group flex items-start sm:p-4 rounded-xl hover:bg-gray-50 transition-colors duration-200">
+          <div className="hidden mr-4 sm:flex size-12 items-center justify-center rounded-full bg-linear-to-br from-amber-100 to-amber-50 group-hover:from-amber-50 group-hover:to-amber-100 transition-colors">
             <Clock className="h-6 w-6 text-amber-600" />
           </div>
           <div className="flex-1">
