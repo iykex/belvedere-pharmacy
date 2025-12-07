@@ -1,11 +1,12 @@
 import { PFP_CONDITIONS } from "@/lib/constants";
 import SectionHeader from "../general/section-divider-head";
 import WidthConstraint from "../shared/width-constraint";
-import { Badge, Calendar } from "lucide-react";
+import { Calendar } from "lucide-react";
 import Image from "next/image";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import NHSImageSrc from "@/public/ui/nhs.jpg";
+import { Badge } from "../ui/badge";
 
 export const ConditionsSection = () => {
   return (
