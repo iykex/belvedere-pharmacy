@@ -61,6 +61,9 @@ import weightManagementImage from "@/public/services/weight-management.jpeg";
 import travelClinicImage from "@/public/services/travel-clinic.jpg";
 import cholesterolTestsImage from "@/public/services/cholesterol-tests.jpg";
 import diabetesScreeningImage from "@/public/services/diabetes-screening.png";
+import appStore from "@/public/ui/app-store.png";
+import playStore from "@/public/ui/play-store.png";
+import testimonialAvatar from "@/public/ui/testimonial-avatar.png";
 
 export const MENU_LINKS = [
   { label: "Home", href: "/" },
@@ -114,21 +117,12 @@ export const KEY_BENEFITS_TEXTS = [
   },
 ];
 
-export const KEY_BENEFITS_IMGS = [
-  {
-    url: "/key-benefits/all-medicine.svg",
-    order: " order-2  scale-110",
-  },
-  { url: "/key-benefits/delivery.svg", order: "order-4 md:order-3 scale-90" },
-  { url: "/key-benefits/profile.svg", order: " order-6  scale-110" },
-];
-
 export const TESTIMONIALS_DEMO = [
   {
     id: 1,
     name: "Sarah Johnson",
     role: "CEO, TechStart Inc",
-    image: "/test-image.png",
+    image: testimonialAvatar,
     content:
       "Working with this team transformed our business. Their attention to detail and innovative approach exceeded all expectations.",
   },
@@ -136,7 +130,7 @@ export const TESTIMONIALS_DEMO = [
     id: 2,
     name: "Michael Chen",
     role: "Product Manager, InnovateCo",
-    image: "/test-image.png",
+    image: testimonialAvatar,
     content:
       "Exceptional service and results. They delivered on time and went above and beyond to ensure our success.",
   },
@@ -144,7 +138,7 @@ export const TESTIMONIALS_DEMO = [
     id: 3,
     name: "Emily Rodriguez",
     role: "Director of Marketing, GrowthLab",
-    image: "/test-image.png",
+    image: testimonialAvatar,
     content:
       "The level of professionalism and expertise is unmatched. Our ROI increased by 300% within the first quarter.",
   },
@@ -152,7 +146,7 @@ export const TESTIMONIALS_DEMO = [
     id: 4,
     name: "David Kim",
     role: "Founder, StartupHub",
-    image: "/test-image.png",
+    image: testimonialAvatar,
     content:
       "A game-changer for our organization. Their strategic insights helped us scale faster than we thought possible.",
   },
@@ -179,14 +173,6 @@ export const FOOTER_LINKS = [
       { label: "Travel Health", href: "/services" },
     ],
   },
-];
-
-export const SERVICES = [
-  "Prescription Services",
-  "Health Checks",
-  "Vaccinations",
-  "Medication Review",
-  "Travel Health",
 ];
 
 export const SOCIAL_LINKS = [
@@ -289,21 +275,6 @@ export const DOWNLOAD_APP_FEATURES = [
     iconColor: "text-accent",
     title: "Health Tracking",
     description: "Monitor your health metrics and see your progress over time",
-  },
-];
-
-export const APP_DOWNLOAD_BUTTONS = [
-  {
-    labelSmall: "Download on the",
-    labelLarge: "App Store",
-    href: "https://apps.apple.com/us/app/belvedere-pharmacy/id6670758281",
-    icon: "/app-store.png",
-  },
-  {
-    labelSmall: "GET IT ON",
-    labelLarge: "Google Play",
-    href: "https://play.google.com/store/apps/details?id=net.belvederepharmacy.app",
-    icon: "/play-store.png",
   },
 ];
 
@@ -562,13 +533,6 @@ export const PFP_CONDITIONS = [
   },
 ];
 
-export const PFP_CHECKLIST_ITEMS = [
-  "Quick and convenient appointments",
-  "Professional healthcare advice",
-  "Treatment for common conditions",
-  "NHS-funded service (free for eligible patients)",
-];
-
 export const SERVICE_CATEGORIES = [
   { id: "all", label: "All Services" },
   { id: "pharmacy", label: "Pharmacy Services" },
@@ -818,45 +782,6 @@ export const WHY_CHOOSE_US_SERVICES = [
   },
 ];
 
-export const TRUST_BADGES_SERVICES = [
-  {
-    icon: IconClock,
-    title: "Available Now",
-    description: "Extended hours for your convenience",
-  },
-  {
-    icon: IconShield,
-    title: "NHS Trusted",
-    description: "Registered and accredited pharmacy",
-  },
-  {
-    icon: IconHeart,
-    title: "Expert Care",
-    description: "Qualified professionals dedicated to you",
-  },
-];
-
-export const CONTACT_CARDS_SERVICES = [
-  {
-    icon: IconPhone,
-    label: "Call us anytime",
-    title: "+44 (0) 123 456 7890",
-    details: "Mon-Fri: 9am-6pm, Sat: 10am-4pm",
-  },
-  {
-    icon: IconMapPin,
-    label: "Visit us",
-    title: "Belvedere, Kent",
-    details: "Walk-ins welcome • Easy parking",
-  },
-  {
-    icon: IconMail,
-    label: "Email us",
-    title: "info@belvederepharmacy.co.uk",
-    details: "Response within 24 hours",
-  },
-];
-
 export const TEAM_MEMBERS = [
   {
     name: "Dr. Sarah Johnson",
@@ -930,54 +855,6 @@ export const CTA_SECTION_FEATURES_LIST = [
   "No-appointment health checks",
   "Emergency on-call service",
   "Expert medication reviews",
-];
-
-export const CTA_SECTION_BUTTONS_ABOUT_PAGE = [
-  { href: "/contact-us", label: "Contact Us Today" },
-  { href: "/services", label: "View Our Services" },
-];
-
-export const CTA_SECTION_CONTACT_ITEMS = [
-  {
-    icon: IconPhone,
-    title: "Call us anytime",
-    description: "+44 (0) 123 456 7890",
-    card: true,
-    iconSize: "size-12",
-    iconBg: "bg-primary",
-    iconClass: "size-6 text-white",
-  },
-  {
-    icon: IconMail,
-    title: "Email us",
-    description: "info@belvederepharmacy.com",
-    card: false,
-    iconSize: "size-10",
-    iconBg: "bg-primary/10",
-    iconClass: "size-5 text-primary",
-  },
-  {
-    icon: IconClock,
-    title: "Emergency Service",
-    description: "24/7 on-call pharmacist",
-    card: false,
-    iconSize: "size-10",
-    iconBg: "bg-primary/10",
-    iconClass: "size-5 text-primary",
-  },
-];
-
-export const ABOUT_BANNER_BUTTONS = [
-  {
-    variant: "default",
-    href: "http://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378",
-    label: "Book an Appointment",
-  },
-  {
-    variant: "outline",
-    href: "/contact-us",
-    label: "Contact Us",
-  },
 ];
 
 export const WORKING_HOURS = [
@@ -1584,4 +1461,84 @@ export const TERMS_LIABILITY = [
   "Adverse reactions to medication (unless due to our negligence)",
   "Misuse or mishandling of medication by the customer",
   "Errors in prescribing decisions made by your healthcare provider",
+];
+
+// Landing Page Banner Constants
+export const LANDING_PAGE_ACTION_BUTTONS = [
+  {
+    text: "Book an Appointment",
+    href: "https://shop.belvederepharmacy.net/appointments/viewallservices/all?pharmacy=378&type=redirection",
+    variant: "primary",
+    icon: true,
+  },
+  {
+    text: "Order Prescriptions",
+    href: "https://app.belvederepharmacy.net/#/auth/signin",
+    variant: "secondary",
+    icon: false,
+  },
+];
+
+export const APP_STORES = [
+  {
+    name: "App Store",
+    label: "Download on the",
+    platform: "App Store",
+    href: "https://apps.apple.com/us/app/belvedere-pharmacy/id6670758281",
+    image: appStore,
+  },
+  {
+    name: "Google Play",
+    label: "Get it on",
+    platform: "Google Play",
+    href: "https://play.google.com/store/apps/details?id=net.belvederepharmacy.app",
+    image: playStore,
+  },
+];
+
+export const ABOUT_HERO_STATS = [
+  { icon: IconUsers, value: "5000+", label: "Happy Patients" },
+  { icon: IconClock, value: "5+", label: "Years Serving" },
+  { icon: IconAward, value: "NHS", label: "Accredited" },
+];
+
+export const ABOUT_HERO_BADGES = [
+  {
+    icon: IconShield,
+    text: "Trusted since 2020",
+    bgColor: "bg-primary/15",
+    textColor: "text-primary",
+    borderColor: "border-primary/30",
+  },
+  {
+    icon: IconHeart,
+    text: "Community First",
+    bgColor: "bg-[#00BFFF]/15",
+    textColor: "text-[#00BFFF]",
+    borderColor: "border-[#00BFFF]/30",
+  },
+];
+
+export const ABOUT_ACTION_BUTTONS = [
+  {
+    text: "Get in Touch",
+    href: "/contact-us",
+    variant: "primary",
+  },
+  {
+    text: "Our Services",
+    href: "/services",
+    variant: "default",
+  },
+];
+
+export const ABOUT_CONTACT_INFO = [
+  {
+    icon: IconMapPin,
+    label: "Belvedere, Kent",
+  },
+  {
+    icon: IconPhone,
+    label: "+44 (0) 123 456 7890",
+  },
 ];

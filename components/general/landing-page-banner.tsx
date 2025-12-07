@@ -5,23 +5,25 @@ import { ArrowRight, BadgeCheckIcon, Download } from "lucide-react";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import Image from "next/image";
+import bannerImage from "@/public/ui/home-banner.png";
+import { LANDING_PAGE_ACTION_BUTTONS, APP_STORES } from "@/lib/constants";
 
 export default function Banner() {
   return (
     <section className="h-screen overflow-hidden relative">
       {/* Background Image with CDN optimization */}
       <Image
-        src="/banner.png"
+        src={bannerImage}
         alt="Belvedere Pharmacy"
         fill
-        sizes="100vw"
         className="object-cover object-center"
         priority
         quality={85}
+        placeholder="blur"
       />
 
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#002f4b]/95 via-[#002f4b]/80 to-[#002f4b]/40" />
+      <div className="absolute inset-0 bg-linear-to-r from-[#002f4b]/95 via-[#002f4b]/80 to-[#002f4b]/40" />
 
       {/* Content */}
       <div className="relative w-full h-full flex items-center">
@@ -43,33 +45,30 @@ export default function Banner() {
               </h1>
 
               <p className="text-base sm:text-lg text-gray-200 max-w-xl leading-relaxed font-light">
-                Experience accessible, professional healthcare with expert advice,
-                prescription services, and personalized care tailored to your needs.
+                Experience accessible, professional healthcare with expert
+                advice, prescription services, and personalized care tailored to
+                your needs.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button
-                  asChild
-                  className="group bg-[#FF9900] text-white hover:bg-[#FF9900]/90 transition-all duration-300 shadow-lg hover:shadow-[#FF9900]/25 px-8 py-6 text-base font-semibold"
-                >
-                  <Link
-                    href="https://shop.belvederepharmacy.net/appointments/viewallservices/all?pharmacy=378&type=redirection"
-                    className="flex items-center gap-2"
+                {LANDING_PAGE_ACTION_BUTTONS.map((btn) => (
+                  <Button
+                    key={btn.text}
+                    asChild
+                    className={
+                      btn.variant === "primary"
+                        ? "group bg-[#FF9900] text-white hover:bg-[#FF9900]/90 transition-all duration-300 shadow-lg hover:shadow-[#FF9900]/25 px-8 py-6 text-base font-semibold"
+                        : "group border-white/20 bg-white/5 text-white hover:bg-white hover:text-[#002f4b] backdrop-blur-sm px-8 py-6 text-base font-semibold transition-all duration-300"
+                    }
                   >
-                    Book an Appointment
-                    <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
-                  </Link>
-                </Button>
-
-                <Button
-                  asChild
-                  variant="outline"
-                  className="group border-white/20 bg-white/5 text-white hover:bg-white hover:text-[#002f4b] backdrop-blur-sm px-8 py-6 text-base font-semibold transition-all duration-300"
-                >
-                  <Link href="https://app.belvederepharmacy.net/#/auth/signin">
-                    Order Prescriptions
-                  </Link>
-                </Button>
+                    <Link href={btn.href} className="flex items-center gap-2">
+                      {btn.text}
+                      {btn.icon && (
+                        <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+                      )}
+                    </Link>
+                  </Button>
+                ))}
               </div>
             </div>
 
@@ -89,8 +88,12 @@ export default function Banner() {
 
                   <div className="space-y-5">
                     <div className="space-y-2">
-                      <p className="text-primary font-semibold text-xs uppercase tracking-wider">Mobile App</p>
-                      <h3 className="text-xl font-bold text-white">Download Our App</h3>
+                      <p className="text-primary font-semibold text-xs uppercase tracking-wider">
+                        Mobile App
+                      </p>
+                      <h3 className="text-xl font-bold text-white">
+                        Download Our App
+                      </h3>
                       <p className="text-white/70 text-sm leading-relaxed">
                         Manage prescriptions & book appointments on the go.
                       </p>
@@ -98,43 +101,33 @@ export default function Banner() {
 
                     {/* App Store Buttons */}
                     <div className="flex flex-col gap-2">
-                      <Link
-                        href="https://apps.apple.com/us/app/belvedere-pharmacy/id6670758281"
-                        className="group flex items-center gap-3 bg-white/10 hover:bg-white/20 rounded-xl p-2.5 transition-all duration-300"
-                      >
-                        <Image
-                          src="/app-store.png"
-                          alt="App Store"
-                          width={28}
-                          height={28}
-                          className="rounded-md"
-                          loading="lazy"
-                        />
-                        <div className="flex-1">
-                          <p className="text-[10px] text-white/60">Download on the</p>
-                          <p className="text-xs font-semibold text-white">App Store</p>
-                        </div>
-                        <ArrowRight className="size-3 text-white/40 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-white" />
-                      </Link>
-
-                      <Link
-                        href="https://play.google.com/store/apps/details?id=net.belvederepharmacy.app"
-                        className="group flex items-center gap-3 bg-white/10 hover:bg-white/20 rounded-xl p-2.5 transition-all duration-300"
-                      >
-                        <Image
-                          src="/play-store.png"
-                          alt="Google Play"
-                          width={28}
-                          height={28}
-                          className="rounded-md"
-                          loading="lazy"
-                        />
-                        <div className="flex-1">
-                          <p className="text-[10px] text-white/60">Get it on</p>
-                          <p className="text-xs font-semibold text-white">Google Play</p>
-                        </div>
-                        <ArrowRight className="size-3 text-white/40 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-white" />
-                      </Link>
+                      {APP_STORES.map((store) => {
+                        return (
+                          <Link
+                            key={store.name}
+                            href={store.href}
+                            className="group flex items-center gap-3 bg-white/10 hover:bg-white/20 rounded-xl p-2.5 transition-all duration-300"
+                          >
+                            <Image
+                              src={store.image}
+                              alt={store.name}
+                              width={28}
+                              height={28}
+                              className="rounded-md"
+                              loading="lazy"
+                            />
+                            <div className="flex-1">
+                              <p className="text-[10px] text-white/60">
+                                {store.label}
+                              </p>
+                              <p className="text-xs font-semibold text-white">
+                                {store.platform}
+                              </p>
+                            </div>
+                            <ArrowRight className="size-3 text-white/40 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-white" />
+                          </Link>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>

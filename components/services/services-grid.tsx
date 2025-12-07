@@ -3,37 +3,34 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ServiceCard from "./service-card";
 import { SERVICE_CATEGORIES, SERVICES_LIST } from "@/lib/constants";
 import WidthConstraint from "../shared/width-constraint";
-import NHSImage from "@/public/nhs.jpg";
 
 export function ServicesGrid() {
   return (
-    <section className="observer-target">
+    <section>
       <WidthConstraint>
         <Tabs defaultValue="all">
-          <TabsList className="mx-auto gap-x-5 px-2 py-6 bg-transparent transition-all ease-in-out duration-300 border border-input/30 rounded-lg">
-            {SERVICE_CATEGORIES.map((category) => (
-              <TabsTrigger
-                key={category.id}
-                value={category.id}
-                className="text-base font-medium transition-all duration-400 ease-in-out bg-white shadow-sm h-full py-4 hover:scale-95 text-foreground/50 hover:text-foreground
-            data-[state=active]:bg-primary 
-            data-[state=active]:text-background  
-            data-[state=active]:hover:scale-100
-            data-[state=active]:font-bold
-            data-[state=active]:shadow-none
-          "
-              >
-                {category.label}
-              </TabsTrigger>
-            ))}
-          </TabsList>
+          <div className="w-full overflow-x-auto sm:mx-0 sm:px-0">
+            <TabsList className="">
+              {SERVICE_CATEGORIES.map((category) => (
+                <TabsTrigger
+                  key={category.id}
+                  value={category.id}
+                  className="shrink-0 text-base font-medium transition-all duration-400 ease-in-out bg-white shadow-sm h-full py-4 hover:scale-95 text-foreground/50 hover:text-foreground
+              data-[state=active]:bg-primary 
+              data-[state=active]:text-background  
+              data-[state=active]:hover:scale-100
+              data-[state=active]:font-bold
+              data-[state=active]:shadow-none
+            "
+                >
+                  {category.label}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </div>
 
           {SERVICE_CATEGORIES.map((category) => (
-            <TabsContent
-              key={category.id}
-              value={category.id}
-              className="mt-8"
-            >
+            <TabsContent key={category.id} value={category.id} className="mt-8">
               <div className="grid gap-x-12 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
                 {SERVICES_LIST.filter(
                   (service) =>

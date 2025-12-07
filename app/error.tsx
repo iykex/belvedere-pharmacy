@@ -17,13 +17,12 @@ export default function Error({
   reset: () => void;
 }) {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-primary/5 via-chart-2/5 to-chart-3/5 px-4">
+    <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-primary/5 via-chart-2/5 to-chart-3/5 px-4 py-20 sm:py-[10%]">
       <WidthConstraint className="max-w-2xl w-full">
         <div className="space-y-8 text-center">
           {/* Error Icon */}
           <div className="flex justify-center">
             <div className="relative">
-              <div className="absolute inset-0 bg-primary/20 rounded-full blur-2xl scale-150" />
               <div className="relative bg-primary/10 rounded-full p-8 border border-primary/30">
                 <AlertCircle
                   className="h-16 w-16 text-primary"

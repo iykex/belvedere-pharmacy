@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function KeyBenefits() {
   return (
-    <section className="bg-white observer-target">
+    <section className="bg-white">
       <WidthConstraint>
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">

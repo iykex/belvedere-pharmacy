@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 export function WhyChooseUs() {
   return (
-    <section className="relative observer-target space-y-15">
+    <section className="relative space-y-15">
       <WidthConstraint className="relative space-y-15">
         <SectionHeader heading="Why choose us" />
         <div className="text-center max-w-3xl mx-auto space-y-2">

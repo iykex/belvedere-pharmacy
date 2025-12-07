@@ -1,15 +1,15 @@
 import WidthConstraint from "../shared/width-constraint";
 import Image from "next/image";
-import ourStoryImage from "@/public/our-story.png";
+import ourStoryImage from "@/public/ui/our-story.png";
 
 export default function OurStorySection() {
   return (
     <section>
       <WidthConstraint>
-        <div className="grid lg:grid-cols-2 gap-16 items-center pb-10">
+        <div className="grid lg:grid-cols-2 gap-16 place-items-center pb-10">
           {/* Left Content */}
-          <div className="space-y-8">
-            <div className="space-y-4">
+          <div className="space-y-10">
+            <div className="space-y-8">
               <span className="text-primary font-semibold tracking-wide uppercase text-sm">
                 Our Journey
               </span>
@@ -19,8 +19,8 @@ export default function OurStorySection() {
               <div className="h-1 w-20 rounded-full bg-linear-to-r from-primary to-primary/50" />
             </div>
 
-            <div className="space-y-5 text-gray-600 leading-relaxed">
-              <p className="text-lg">
+            <div className="space-y-4 text-gray-600 leading-8.5 max-w-2xl lg:text-justify">
+              <p className="text-lg ">
                 Belvedere Pharmacy was founded in 2020 with a simple mission: to
                 provide accessible, personalized healthcare to our local
                 community. What started as a small family-owned pharmacy has
@@ -63,8 +63,8 @@ export default function OurStorySection() {
               </div>
 
               {/* Floating Badge */}
-              <div className="absolute -bottom-6 -left-6 bg-white p-5 rounded-2xl shadow-xl border-l-4 border-primary">
-                <p className="font-bold text-gray-900 text-lg">
+              <div className="absolute -bottom-6 sm:-left-6 bg-white p-2 sm:p-5 rounded-2xl shadow-xl border-l-4 border-primary">
+                <p className="font-bold text-gray-900 sm:text-lg">
                   Community First
                 </p>
                 <p className="text-sm text-gray-500">

@@ -2,12 +2,13 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import WidthConstraint from "../shared/width-constraint";
-import { DOWNLOAD_APP_FEATURES } from "@/lib/constants";
+import { APP_STORES, DOWNLOAD_APP_FEATURES } from "@/lib/constants";
 import { ArrowRight, Download, Smartphone } from "lucide-react";
+import phoneAppScreenshot from "@/public/ui/phone-app-screenshot.png";
 
 export default function DownloadAppSection() {
   return (
-    <section className="bg-white observer-target">
+    <section className="bg-white">
       <WidthConstraint>
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
@@ -59,41 +60,26 @@ export default function DownloadAppSection() {
 
             {/* Download Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="https://apps.apple.com/us/app/belvedere-pharmacy/id6670758281"
-                className="group flex items-center gap-3 bg-gray-900 hover:bg-gray-800 text-white px-6 py-4 rounded-xl transition-all duration-300"
-              >
-                <Image
-                  src="/app-store.png"
-                  alt="App Store"
-                  width={32}
-                  height={32}
-                  className="rounded-md"
-                />
-                <div>
-                  <p className="text-xs text-gray-400">Download on the</p>
-                  <p className="font-semibold">App Store</p>
-                </div>
-                <ArrowRight className="size-4 ml-auto opacity-50 group-hover:opacity-100 transition-all group-hover:translate-x-1" />
-              </Link>
-
-              <Link
-                href="https://play.google.com/store/apps/details?id=net.belvederepharmacy.app"
-                className="group flex items-center gap-3 bg-gray-900 hover:bg-gray-800 text-white px-6 py-4 rounded-xl transition-all duration-300"
-              >
-                <Image
-                  src="/play-store.png"
-                  alt="Google Play"
-                  width={32}
-                  height={32}
-                  className="rounded-md"
-                />
-                <div>
-                  <p className="text-xs text-gray-400">Get it on</p>
-                  <p className="font-semibold">Google Play</p>
-                </div>
-                <ArrowRight className="size-4 ml-auto opacity-50 group-hover:opacity-100 transition-all group-hover:translate-x-1" />
-              </Link>
+              {APP_STORES.map((store) => (
+                <Link
+                  key={store.name}
+                  href={store.href}
+                  className="group flex items-center gap-3 bg-gray-900 hover:bg-gray-800 text-white px-6 py-4 rounded-xl transition-all duration-300"
+                >
+                  <Image
+                    src={store.image}
+                    alt={store.name}
+                    width={32}
+                    height={32}
+                    className="rounded-md"
+                  />
+                  <div>
+                    <p className="text-xs text-gray-400">{store.label}</p>
+                    <p className="font-semibold">{store.platform}</p>
+                  </div>
+                  <ArrowRight className="size-4 ml-auto opacity-50 group-hover:opacity-100 transition-all group-hover:translate-x-1" />
+                </Link>
+              ))}
             </div>
           </div>
 
@@ -104,15 +90,16 @@ export default function DownloadAppSection() {
               <div className="absolute -inset-8 bg-primary/5 rounded-full blur-3xl" />
 
               {/* App Screenshot */}
-              <div className="relative w-80">
+              <div className="relative w-80 mb-10">
                 <Image
-                  src="/app-android.png"
+                  src={phoneAppScreenshot}
                   alt="Belvedere Pharmacy App"
                   width={320}
                   height={640}
-                  className="w-full h-auto object-contain"
+                  className="w-full h-auto object-contain "
                   quality={95}
                   priority
+                  placeholder="blur"
                 />
               </div>
 
