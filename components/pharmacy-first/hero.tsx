@@ -3,6 +3,8 @@ import WidthConstraint from "../shared/width-constraint";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import Image from "next/image";
+import bannerImage from "@/public/ui/pfp-banner.png";
 
 export function HeroSection() {
   return (
@@ -29,7 +31,7 @@ export function HeroSection() {
             </h1>
 
             {/* Description */}
-            <p className="text-gray-600 text-lg leading-relaxed max-w-2xl lg:text-justify">
+            <p className="text-gray-600 text-lg leading-relaxed max-w-xl lg:text-justify">
               At Belvedere Pharmacy, we prioritise the patient experience in our
               local community. Recognising the challenges in accessing GP
               services for common health concerns, we now offer Free NHS
@@ -49,6 +51,14 @@ export function HeroSection() {
                 <ArrowRight className="size-6.5 stroke-3 transition-all ease-in-out duration-400 group-hover:translate-x-1" />
               </Link>
             </Button>
+          </div>
+          <div>
+            <Image
+              src={bannerImage}
+              alt="banner"
+              placeholder="blur"
+              className="drop-shadow-lg drop-shadow-muted-foreground/80"
+            />
           </div>
         </WidthConstraint>
       </div>
