@@ -6,7 +6,7 @@ import WidthConstraint from "../shared/width-constraint";
 
 export function NHSPharmacyFirstSection() {
   return (
-    <section className="relative overflow-hidden observer-target">
+    <section className="relative overflow-hidden">
       <WidthConstraint>
         <div className="relative z-10">
           {/* Header Section */}

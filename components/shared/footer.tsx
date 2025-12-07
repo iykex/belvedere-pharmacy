@@ -3,7 +3,6 @@ import {
   CONTACT_ITEMS,
   FOOTER_LINKS,
   LEGAL_LINKS,
-  SERVICES,
   SOCIAL_LINKS,
 } from "@/lib/constants";
 import WidthConstraint from "../shared/width-constraint";

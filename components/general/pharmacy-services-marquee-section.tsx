@@ -44,7 +44,7 @@ export const TrustBadgeCard = ({
 
 export default function PharmacyServicesMarquee() {
   return (
-    <section className="observer-target relative">
+    <section className="relative">
       {/* Background Decorations */}
       <div className="absolute inset-0 -z-10 bg-[linear-linear(to_right,#dde2e612_1px,transparent_1px),linear-linear(to_bottom,#dde2e612_1px,transparent_1px)] bg-cover"></div>
       <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[400px] w-[400px] rounded-full bg-primary/10 blur-[120px]"></div>

@@ -68,7 +68,7 @@ export function MenuButtons({
 }
 
 // Pages with dark hero backgrounds (need white text initially)
-const DARK_HERO_PAGES = ["/", "/pharmacy-first", "/about-us", "/contact-us"];
+const DARK_HERO_PAGES = ["/", "/about-us", "/contact-us"];
 
 export default function Menu({ className }: { className?: string }) {
   const navMenu = useRef<HTMLDivElement>(null);
@@ -188,8 +188,8 @@ export default function Menu({ className }: { className?: string }) {
                   isActive
                     ? "text-primary"
                     : useDarkText
-                      ? "text-gray-600 hover:text-gray-900"
-                      : "text-white/80 hover:text-white"
+                    ? "text-gray-600 hover:text-gray-900"
+                    : "text-white/80 hover:text-white"
                 )}
               >
                 {/* Text */}

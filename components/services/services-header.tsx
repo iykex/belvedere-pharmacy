@@ -2,6 +2,7 @@ import Image from "next/image";
 import WidthConstraint from "../shared/width-constraint";
 import { Button } from "../ui/button";
 import { ArrowRight, Calendar, CheckCircle, Video } from "lucide-react";
+import elderlyCouple from "@/public/ui/elderly-couple.jpg";
 import Link from "next/link";
 
 export function ServicesHeading() {
@@ -70,12 +71,13 @@ export function ServicesHeading() {
           <div className="hidden lg:block relative">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <Image
-                src="/booking.jpg"
+                src={elderlyCouple}
                 alt="Healthcare Services"
                 width={600}
                 height={400}
                 className="w-full h-auto object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
+                placeholder="blur"
               />
             </div>
           </div>

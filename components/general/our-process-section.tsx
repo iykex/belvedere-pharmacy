@@ -7,7 +7,7 @@ import SectionHeader from "./section-divider-head";
 
 export function OurProcessSection() {
   return (
-    <section className="bg-white observer-target">
+    <section className="bg-white">
       <WidthConstraint>
         <div className="relative z-10">
           {/* Header */}

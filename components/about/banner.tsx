@@ -1,24 +1,15 @@
-import {
-  Shield,
-  ArrowRight,
-  Users,
-  Clock,
-  Award,
-  Heart,
-  MapPin,
-  Phone,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import WidthConstraint from "../shared/width-constraint";
 import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
 import Link from "next/link";
 import Image from "next/image";
-
-const HERO_STATS = [
-  { icon: Users, value: "5000+", label: "Happy Patients" },
-  { icon: Clock, value: "5+", label: "Years Serving" },
-  { icon: Award, value: "NHS", label: "Accredited" },
-];
+import {
+  ABOUT_HERO_STATS,
+  ABOUT_HERO_BADGES,
+  ABOUT_ACTION_BUTTONS,
+  ABOUT_CONTACT_INFO,
+} from "@/lib/constants";
 
 export default function Banner() {
   return (
@@ -40,14 +31,18 @@ export default function Banner() {
           {/* Left Content */}
           <div className="space-y-8">
             <div className="flex flex-wrap gap-3">
-              <Badge className="inline-flex items-center gap-2 text-primary text-sm font-semibold bg-primary/15 py-2 px-4 border-primary/30 backdrop-blur-sm">
-                <Shield className="size-4" />
-                Trusted since 2020
-              </Badge>
-              <Badge className="inline-flex items-center gap-2 text-[#00BFFF] text-sm font-semibold bg-[#00BFFF]/15 py-2 px-4 border-[#00BFFF]/30 backdrop-blur-sm">
-                <Heart className="size-4" />
-                Community First
-              </Badge>
+              {ABOUT_HERO_BADGES.map((badge, index) => {
+                const IconComponent = badge.icon;
+                return (
+                  <Badge
+                    key={index}
+                    className={`inline-flex items-center gap-2 ${badge.textColor} text-sm font-semibold ${badge.bgColor} py-2 px-4 ${badge.borderColor} backdrop-blur-sm`}
+                  >
+                    <IconComponent className="size-4" />
+                    {badge.text}
+                  </Badge>
+                );
+              })}
             </div>
 
             <div className="space-y-6">
@@ -80,36 +75,45 @@ export default function Banner() {
 
             {/* Quick Actions */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                asChild
-                size="lg"
-                className="group bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-6 rounded-xl shadow-lg shadow-primary/30 transition-all duration-300 hover:scale-95"
-              >
-                <Link href="/contact-us" className="flex items-center gap-2">
-                  Get in Touch
-                  <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="bg-white/10 border-white/20 text-white hover:bg-white hover:text-[#002f4b] backdrop-blur-sm px-8 py-6 rounded-xl font-semibold transition-all duration-300"
-              >
-                <Link href="/services">Our Services</Link>
-              </Button>
+              {ABOUT_ACTION_BUTTONS.map((btn, index) => {
+                const isPrimary = btn.variant === "primary";
+                return (
+                  <Button
+                    key={index}
+                    asChild
+                    variant={isPrimary ? "default" : "outline"}
+                    size="lg"
+                    className={
+                      isPrimary
+                        ? "group bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-6 rounded-xl shadow-lg shadow-primary/30 transition-all duration-300 hover:scale-95"
+                        : "bg-white/10 border-white/20 text-white hover:bg-white hover:text-[#002f4b] backdrop-blur-sm px-8 py-6 rounded-xl font-semibold transition-all duration-300"
+                    }
+                  >
+                    <Link href={btn.href} className="flex items-center gap-2">
+                      {btn.text}
+                      {isPrimary && (
+                        <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
+                      )}
+                    </Link>
+                  </Button>
+                );
+              })}
             </div>
 
             {/* Contact Info Row */}
             <div className="flex flex-wrap gap-6 pt-4">
-              <div className="flex items-center gap-2 text-white/70">
-                <MapPin className="size-4 text-primary" />
-                <span className="text-sm">Belvedere, Kent</span>
-              </div>
-              <div className="flex items-center gap-2 text-white/70">
-                <Phone className="size-4 text-primary" />
-                <span className="text-sm">+44 (0) 123 456 7890</span>
-              </div>
+              {ABOUT_CONTACT_INFO.map((info, index) => {
+                const IconComponent = info.icon;
+                return (
+                  <div
+                    key={index}
+                    className="flex items-center gap-2 text-white/70"
+                  >
+                    <IconComponent className="size-4 text-primary" />
+                    <span className="text-sm">{info.label}</span>
+                  </div>
+                );
+              })}
             </div>
           </div>
 
@@ -139,7 +143,7 @@ export default function Banner() {
 
                 {/* Stats */}
                 <div className="space-y-3">
-                  {HERO_STATS.map((stat, index) => {
+                  {ABOUT_HERO_STATS.map((stat, index) => {
                     const Icon = stat.icon;
                     return (
                       <div
@@ -178,8 +182,8 @@ export default function Banner() {
         </div>
 
         {/* Mobile Stats Row */}
-        <div className="grid grid-cols-3 gap-4 mt-12 lg:hidden">
-          {HERO_STATS.map((stat, index) => {
+        <div className="grid grid-cols-3 gap-4 mt-12 pb-10 lg:hidden">
+          {ABOUT_HERO_STATS.map((stat, index) => {
             const Icon = stat.icon;
             return (
               <div
