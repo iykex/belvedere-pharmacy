@@ -150,8 +150,8 @@ export default function Menu({ className }: { className?: string }) {
             <Image
               src="/logo/belvedere-logo.png"
               alt="Belvedere"
-              width={48}
-              height={48}
+              width={64}
+              height={64}
               className="relative z-10"
             />
           </Link>
@@ -188,8 +188,8 @@ export default function Menu({ className }: { className?: string }) {
                   isActive
                     ? "text-primary"
                     : useDarkText
-                    ? "text-gray-600 hover:text-gray-900"
-                    : "text-white/80 hover:text-white"
+                      ? "text-gray-600 hover:text-gray-900"
+                      : "text-white/80 hover:text-white"
                 )}
               >
                 {/* Text */}

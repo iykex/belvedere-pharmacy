@@ -9,46 +9,22 @@ const observerOptions = {
 };
 
 export function useIntersectionObserver(selector: string) {
-  const observerRef = useRef<IntersectionObserver | null>(null);
-
   useEffect(() => {
-    observerRef.current = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && entry.target instanceof HTMLElement) {
-          const elements = document.querySelectorAll(selector);
-          const index = Array.from(elements).indexOf(
-            entry.target as HTMLElement
-          );
-          entry.target.style.transitionDelay = `${index * 80}ms`;
-          entry.target.classList.add("in-view");
-        }
-      });
-    }, observerOptions);
+    // Determine if we are on the client
+    if (typeof window === "undefined") return;
 
-    observeAll();
-
-    const mutationObserver = new MutationObserver(() => {
-      observeAll();
+    // Immediately show all elements matching the selector
+    // This effectively disables the scroll fade-in animation
+    const elements = document.querySelectorAll(selector);
+    elements.forEach((el) => {
+      if (el instanceof HTMLElement) {
+        // Force visibility and disable transitions
+        el.style.opacity = "1";
+        el.style.transform = "none";
+        el.style.transition = "none";
+        el.style.animation = "none";
+        el.classList.add("in-view");
+      }
     });
-
-    mutationObserver.observe(document.body, {
-      childList: true,
-      subtree: true,
-    });
-
-    function observeAll() {
-      if (!observerRef.current) return;
-      const targets = document.querySelectorAll(selector);
-      targets.forEach((target) => {
-        if (!target.classList.contains("in-view")) {
-          observerRef.current!.observe(target);
-        }
-      });
-    }
-
-    return () => {
-      observerRef.current?.disconnect();
-      mutationObserver.disconnect();
-    };
   }, [selector]);
 }

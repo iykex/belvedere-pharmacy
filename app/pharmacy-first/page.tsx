@@ -176,15 +176,17 @@ export function NHSImageCard() {
 
 export default function NHSPharmacyFirstPage() {
   return (
-    <div className="space-y-20 mb-30 overflow-hidden">
+    <div className="mb-30 overflow-hidden">
       <header className="fixed top-0 w-full z-50">
         <Menu className="backdrop-blur-3xl!" />
       </header>
       <HeroSection />
-      <AboutSection />
-      <NHSImageCard />
-      <ConditionsSection />
-      <CTASection />
+      <div className="space-y-20 sm:space-y-30 py-20">
+        <AboutSection />
+        <NHSImageCard />
+        <ConditionsSection />
+        <CTASection />
+      </div>
     </div>
   );
 }

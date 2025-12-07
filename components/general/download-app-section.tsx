@@ -97,34 +97,23 @@ export default function DownloadAppSection() {
             </div>
           </div>
 
-          {/* Right - Phone Mockup */}
+          {/* Right - Phone with App Screenshot */}
           <div className="hidden lg:flex justify-center items-center">
             <div className="relative">
               {/* Background decoration */}
               <div className="absolute -inset-8 bg-primary/5 rounded-full blur-3xl" />
 
-              {/* Phone mockup */}
-              <div className="relative w-72 h-[580px] bg-gray-900 rounded-[3rem] p-3 shadow-lg">
-                {/* Notch */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-7 bg-gray-900 rounded-b-2xl z-10" />
-
-                {/* Screen */}
-                <div className="w-full h-full bg-linear-to-br from-primary/30 via-white to-[#00BFFF]/20 rounded-[2.5rem] overflow-hidden flex items-center justify-center">
-                  <div className="text-center space-y-4">
-                    <div className="w-20 h-20 bg-primary rounded-2xl mx-auto flex items-center justify-center shadow-lg shadow-primary/30">
-                      <Image
-                        src="/logo/belvedere-logo.png"
-                        alt="Belvedere"
-                        width={48}
-                        height={48}
-                      />
-                    </div>
-                    <div>
-                      <p className="font-bold text-gray-900">Belvedere</p>
-                      <p className="text-sm text-gray-600">Your Health App</p>
-                    </div>
-                  </div>
-                </div>
+              {/* App Screenshot */}
+              <div className="relative w-80">
+                <Image
+                  src="/app-android.png"
+                  alt="Belvedere Pharmacy App"
+                  width={320}
+                  height={640}
+                  className="w-full h-auto object-contain"
+                  quality={95}
+                  priority
+                />
               </div>
 
               {/* Floating badge */}

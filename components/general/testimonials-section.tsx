@@ -105,11 +105,10 @@ export default function Testimonials() {
                 <button
                   key={index}
                   onClick={() => goToTestimonial(index)}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    index === currentIndex
-                      ? "w-8 bg-primary"
-                      : "w-2 bg-white/30 hover:bg-white/50"
-                  }`}
+                  className={`h-2 rounded-full transition-all duration-300 ${index === currentIndex
+                    ? "w-8 bg-primary"
+                    : "w-2 bg-white/30 hover:bg-white/50"
+                    }`}
                   aria-label={`Go to testimonial ${index + 1}`}
                 />
               ))}

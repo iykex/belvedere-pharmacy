@@ -33,10 +33,10 @@ export function WhyChooseUs() {
                     feature.color === "primary"
                       ? "bg-primary"
                       : feature.color === "chart-3"
-                      ? "bg-chart-3"
-                      : feature.color === "chart-2"
-                      ? "bg-chart-2"
-                      : "bg-primary"
+                        ? "bg-chart-3"
+                        : feature.color === "chart-2"
+                          ? "bg-chart-2"
+                          : "bg-primary"
                   )}
                 ></div>
 
@@ -51,10 +51,10 @@ export function WhyChooseUs() {
                           feature.color === "primary"
                             ? "text-primary"
                             : feature.color === "chart-3"
-                            ? "text-chart-3"
-                            : feature.color === "chart-2"
-                            ? "text-chart-2"
-                            : "text-primary"
+                              ? "text-chart-3"
+                              : feature.color === "chart-2"
+                                ? "text-chart-2"
+                                : "text-primary"
                         )}
                       />
                     </div>

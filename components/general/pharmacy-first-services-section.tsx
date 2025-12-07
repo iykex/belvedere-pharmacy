@@ -88,14 +88,14 @@ export function NHSPharmacyFirstSection() {
           {/* NHS Badge */}
           <div className="mt-5 sm:mt-10 flex items-center justify-center gap-3 text-sm text-gray-600">
             <div className="h-px flex-1 bg-gray-200 max-w-24 w-full" />
-            <p className="flex flex-col sm:flex-row items-center gap-2 ">
+            <div className="flex flex-col sm:flex-row items-center gap-2 text-center sm:text-left">
               <Stethoscope className="size-4 text-[#005EB8]" />
               <p className="font-semibold text-gray-900">NHS Pharmacy First</p>
               <span className="block">
                 <span className="hidden sm:inline-flex">—</span> Free treatment
                 for eligible conditions
               </span>
-            </p>
+            </div>
             <div className="h-px flex-1 bg-gray-200 max-w-24" />
           </div>
         </div>

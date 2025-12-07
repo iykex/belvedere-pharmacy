@@ -63,19 +63,14 @@ export default function PharmacyServicesMarquee() {
           </div>
 
           {/* Marquee Container */}
-          <div className="relative flex flex-col gap-6 bg-transparent">
-            {/* Row 1: Right to Left */}
-            <div className="flex overflow-hidden group bg-transparent">
-              <div className="flex min-w-full shrink-0 animate-scroll gap-4 group-hover:paused bg-transparent py-2">
-                {TRUST_BADGES_MARQUEE.map((badge, i) => (
-                  <TrustBadgeCard key={`row1-${i}`} {...badge} />
-                ))}
-                {TRUST_BADGES_MARQUEE.map((badge, i) => (
-                  <TrustBadgeCard key={`row1-dup-${i}`} {...badge} />
-                ))}
-              </div>
+          <div className="overflow-hidden">
+            <div className="flex w-max animate-scroll group-hover:paused gap-4 py-2">
+              {[...TRUST_BADGES_MARQUEE, ...TRUST_BADGES_MARQUEE].map((badge, i) => (
+                <TrustBadgeCard key={i} {...badge} />
+              ))}
             </div>
           </div>
+
 
           {/* Info Banner */}
           <div className="text-center max-w-3xl mt-4 mx-auto">
