@@ -25,7 +25,7 @@ export default function Testimonials() {
               <span className="text-primary font-semibold text-sm uppercase tracking-wider">
                 Testimonials
               </span>
-              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mt-4 mb-4">
+              <h2 className="text-3xl sm:text-4xl font-bold tracking-wide sm:tracking-tight text-white mt-4 mb-4">
                 Trusted by <span className="text-primary">Thousands</span>
               </h2>
               <p className="text-white/70 text-lg leading-relaxed max-w-md">

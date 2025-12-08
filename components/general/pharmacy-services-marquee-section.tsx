@@ -50,12 +50,13 @@ export default function PharmacyServicesMarquee() {
       <div className="absolute left-0 right-0 top-0 -z-10 m-auto h-[400px] w-[400px] rounded-full bg-primary/5 dark:bg-primary/10 blur-[120px]"></div>
 
       <WidthConstraint>
-        <div className={cn("px-4 md:px-6 mx-auto")}>
+        <div>
           {/* Header */}
-          <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+          <div className="text-center sm:max-w-3xl mx-auto mb-4">
             <SectionHeader heading="Why Choose Us" />
             <h2 className="text-section-header font-bold tracking-tight mb-4 text-gray-900 dark:text-white">
-              Trusted <span className="text-primary">Healthcare Partner</span>
+              Trusted 
+              <span className="text-primary ml-1.5">Healthcare Partner</span>
             </h2>
             <p className="text-gray-600 dark:text-gray-300 text-base leading-relaxed md:text-lg">
               Accredited, experienced, and committed to providing exceptional
@@ -80,13 +81,13 @@ export default function PharmacyServicesMarquee() {
 
           {/* Info Banner */}
           <div className="text-center max-w-3xl mt-4 mx-auto pb-4">
-            <div className="inline-flex items-center justify-center gap-3 px-6 py-3 rounded-full bg-white dark:bg-[#003b5c] border border-border/60 shadow-xs dark:shadow-sm/30 backdrop-blur-sm">
+            <div className="flex flex-col items-center justify-center gap-3">
+              <span className="text-xs font-semibold text-primary bg-primary/10 px-3 py-2 rounded-full text-nowrap">
+                Your safety first
+              </span>
               <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                 Regulated by the General Pharmaceutical Council (GPhC) and
                 registered with the Care Quality Commission (CQC).
-              </span>
-              <span className="text-xs font-semibold text-primary bg-primary/10 px-3 py-2 rounded-full text-nowrap">
-                Your safety first
               </span>
             </div>
           </div>

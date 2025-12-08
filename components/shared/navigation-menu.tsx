@@ -159,10 +159,10 @@ export default function Menu({ className }: { className?: string }) {
               alt="Belvedere"
               width={64}
               height={64}
-              className="relative z-10"
+              className="relative z-10 scale-50 sm:scale-100"
             />
           </Link>
-          <div className="hidden min-[450px]:block">
+          <div className="hidden min-[450px]: lg:flex items-center gap-2">
             <p
               className={cn(
                 "font-bold text-lg leading-tight transition-colors duration-300",
@@ -176,7 +176,7 @@ export default function Menu({ className }: { className?: string }) {
             </p>
             <p
               className={cn(
-                "text-xs transition-colors duration-300",
+                "text-xs lg:text-lg text-center transition-colors duration-300",
                 hasDarkHero
                   ? "text-background dark:text-foreground"
                   : "text-foreground",
@@ -207,9 +207,9 @@ export default function Menu({ className }: { className?: string }) {
                 )}
               >
                 {/* Text */}
-                <span className="relative hover:text-inherit">
+                <p className="relative text-base hover:text-inherit">
                   {item.label}
-                </span>
+                </p>
 
                 {/* Active indicator - bottom line */}
                 <span
@@ -245,7 +245,7 @@ export default function Menu({ className }: { className?: string }) {
             )}
           >
             {/* Sliding underline */}
-            <span className="relative">Order Prescriptions</span>
+            <p className="relative text-base">Order Prescriptions</p>
             <span
               className={cn(
                 "absolute bottom-1 left-0 right-0 bg-primary h-px mx-auto transition-all duration-500 ease-in-out origin-center",

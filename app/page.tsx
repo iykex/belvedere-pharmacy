@@ -20,8 +20,10 @@ export default function LandingPage() {
       <KeyBenefits />
       <OurProcessSection />
       <Testimonials />
-      <DownloadAppSection />
-      <NewsletterSection />
+      <div className="space-y-20 sm:space-y-30 w-full dashed-grid-bg">
+        <DownloadAppSection />
+        <NewsletterSection />
+      </div>
     </div>
   );
 }

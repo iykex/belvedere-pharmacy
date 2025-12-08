@@ -16,7 +16,7 @@ export function NHSPharmacyFirstSection() {
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-12 md:mb-16">
             <div className="max-w-2xl">
               <div className="flex items-center gap-3 mb-5">
-                <div className="p-2 bg-[#005EB8]/10 dark:bg-[#005EB8]/20 dark:shadow-md dark:shadow-black/70 rounded-lg">
+                <div className="p-2 bg-[#005EB8]/10 dark:bg-[#005EB8]/20 dark:shadow-sm dark:shadow-black/70 rounded-lg">
                   <Shield className="size-5 text-[#005EB8] dark:text-white" />
                 </div>
                 <span className="text-[#005EB8] dark:text-primary font-semibold text-sm uppercase tracking-wider">
@@ -24,10 +24,10 @@ export function NHSPharmacyFirstSection() {
                 </span>
               </div>
 
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900 dark:text-white mb-2 leading-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-wide sm:tracking-tight text-gray-900 dark:text-white mb-2 leading-tight">
                 Can't Get to the GP?
               </h2>
-              <h2 className="text-primary text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-5 leading-tight">
+              <h2 className="text-primary text-3xl sm:text-4xl md:text-5xl font-bold sm:tracking-tight mb-5 leading-tight">
                 We Can Help
               </h2>
 
@@ -89,10 +89,10 @@ export function NHSPharmacyFirstSection() {
           </div>
 
           {/* NHS Badge */}
-          <div className="mt-10 md:mt-14">
+          <div className="mt-10">
             <div className="flex items-center justify-center gap-4">
               <div className="h-px flex-1 bg-gray-300 dark:bg-[#1a4d6e] max-w-20 md:max-w-32" />
-              <div className="flex flex-col sm:flex-row items-center gap-3 text-center px-4 py-3 bg-gray-50 dark:bg-[#002f4b] rounded-xl border border-gray-200 dark:border-[#1a4d6e]">
+              <div className="flex flex-col sm:flex-row items-center gap-3 text-center">
                 <div className="flex items-center gap-2">
                   <Stethoscope className="size-5 text-[#005EB8]" />
                   <p className="font-bold text-gray-900 dark:text-white">
@@ -107,7 +107,7 @@ export function NHSPharmacyFirstSection() {
             </div>
 
             {/* NHS Note */}
-            <p className="text-center text-gray-500 dark:text-gray-400 text-sm mt-6 max-w-2xl mx-auto">
+            <p className="text-center text-gray-500 dark:text-gray-400 text-sm mt-2 max-w-2xl mx-auto">
               All services are provided in accordance with NHS guidelines. Some
               treatments require a consultation with our pharmacist.
             </p>

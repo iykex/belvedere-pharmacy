@@ -220,18 +220,11 @@
 
 .nav-link::after {
   content: "";
-  position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 0;
-  height: 2px;
-  background: var(--primary);
-  transition: width 0.4s ease-in-out;
-  @apply origin-center;
+  @apply mx-auto absolute left-0 right-0 -bottom-1 w-0 h-0.5 bg-primary transition-all duration-500 ease-in-out origin-center;
 }
 
 .nav-link:hover::after {
-  @apply w-full;
+  @apply w-1/2;
 }
 
 ::-webkit-scrollbar {

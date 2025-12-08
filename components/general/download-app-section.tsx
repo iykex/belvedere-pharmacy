@@ -11,7 +11,7 @@ import { useTheme } from "next-themes";
 export default function DownloadAppSection() {
   const { theme } = useTheme();
   return (
-    <section className="bg-white dark:bg-background">
+    <section className="bg-white dark:bg-background ">
       <WidthConstraint>
         <div className="grid lg:grid-cols-2 place-items-center p-4">
           {/* Left Content */}
@@ -26,7 +26,7 @@ export default function DownloadAppSection() {
                 </span>
               </div>
 
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900 dark:text-white mb-5 leading-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-wide sm:tracking-tight text-gray-900 dark:text-white mb-5 leading-tight">
                 Healthcare in Your <span className="text-primary">Pocket</span>
               </h2>
 
@@ -91,14 +91,12 @@ export default function DownloadAppSection() {
           </div>
 
           {/* Right - Phone with App Screenshot */}
-          <div className="scale-75 lg:scale-100 lg:flex justify-center items-center">
-            <div className="relative">
+          <div className="scale-75 lg:scale-100 lg:flex justify-center items-center max-w-xs">
+            <div className="relative ">
               {/* Phone frame */}
               <Image
                 src={theme === "light" ? phoneAppScreenshot : mobileApp}
                 alt="Belvedere Pharmacy App"
-                width={320}
-                height={640}
                 className="w-full h-auto object-contain rounded-4xl aspect-9/16"
                 quality={95}
                 priority

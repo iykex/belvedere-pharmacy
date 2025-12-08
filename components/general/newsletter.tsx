@@ -17,7 +17,7 @@ export default function NewsletterSection() {
     <section>
       <WidthConstraint>
         <div className="overflow-hidden">
-          <div className="grid lg:grid-cols-2 rounded-2xl shadow-lg dark:shadow-xl/30 border border-gray-200 dark:border-[#1a4d6e]">
+          <div className="grid lg:grid-cols-2 rounded-2xl shadow-lg dark:shadow-xl/30 border border-gray-200">
             {/* Left Column - Features  */}
             <div className="bg-[#003b5c] dark:bg-transparent p-8 lg:p-12 space-y-8 md:space-y-10 rounded-2xl lg:rounded-r-none">
               <div>
@@ -29,7 +29,7 @@ export default function NewsletterSection() {
                     Newsletter
                   </span>
                 </div>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 tracking-wide sm:tracking-normal sm:leading-tight">
                   Stay Healthy & Informed
                 </h2>
                 <p className="text-white/80 dark:text-white/70 leading-relaxed text-lg">
@@ -100,7 +100,7 @@ export default function NewsletterSection() {
                             data-invalid={fieldState.invalid}
                             className="gap-2"
                           >
-                            <div className="flex">
+                            <div className="flex shadow-md dark:border-2 rounded-2xl">
                               <Input
                                 {...field}
                                 id="email"
@@ -108,7 +108,7 @@ export default function NewsletterSection() {
                                 aria-invalid={fieldState.invalid}
                                 autoComplete="off"
                                 placeholder="your.email@example.com"
-                                className="flex-1 px-4 py-3 rounded-l-xl border-r-0 rounded-r-none border-gray-200 dark:border-[#1a4d6e] dark:bg-[#002f4b] dark:text-white focus:ring-2 focus:ring-primary/20 focus:border-primary"
+                                className="flex-1  rounded-l-xl border-0 border-r-0 rounded-r-none dark:bg-[#002f4b] dark:text-white"
                                 onKeyDown={(e) =>
                                   e.key === "Enter" && handleSubmit(onSubmit)
                                 }

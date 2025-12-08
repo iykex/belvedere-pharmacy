@@ -16,7 +16,7 @@ export function OurProcessSection() {
           {/* Header */}
           <div className="text-center max-w-2xl mx-auto space-y-6">
             <SectionHeader heading="Our Process" />
-            <h2 className="text-section-header font-bold tracking-tight text-gray-900 dark:text-white leading-tight">
+            <h2 className="text-section-header font-bold tracking-wide sm:tracking-tight text-gray-900 dark:text-white leading-tight">
               How We <span className="text-primary">Help You</span>
             </h2>
             <p className="text-gray-600 dark:text-gray-300 text-lg leading-relaxed">

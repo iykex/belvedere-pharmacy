@@ -23,7 +23,7 @@ export default function KeyBenefits() {
               </span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-gray-900 dark:text-white mb-4 leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-wide sm:tracking-tight text-gray-900 dark:text-white mb-4 leading-tight">
               Why Patients <span className="text-primary">Love Us</span>
             </h2>
 
