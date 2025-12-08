@@ -128,7 +128,8 @@
 }
 
 .dark {
-  --background: #002f4b;
+  /* --background: #002f4b; */
+  --background: #001a33;
   --foreground: #ffffff;
 
   --card: #003b5c;
@@ -217,43 +218,7 @@
   }
 }
 
-/* Navigation Wrapper */
-.nav-wrapper {
-  @apply w-full z-50;
-}
-
-.nav-wrapper.nav-scrolled {
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-/* Info Bar - Always visible */
-.info-bar {
-  transition: all 0.3s ease;
-}
-
-/* Main Navigation */
-.nav-menu {
-  @apply w-full flex justify-between items-center gap-x-6 px-4 lg:px-8 py-3 text-white font-medium z-40 transition-all duration-300;
-}
-
-.nav-menu.nav-menu-light {
-  @apply text-gray-900 py-2;
-}
-
-/* Nav Links Hover Effect */
-.nav-menu .nav-links {
-  @apply relative transition-colors duration-200;
-}
-
-.nav-menu .nav-links:hover {
-  @apply text-primary;
-}
-
-.nav-menu .nav-links::after {
+.nav-link::after {
   content: "";
   position: absolute;
   left: 0;
@@ -261,11 +226,12 @@
   width: 0;
   height: 2px;
   background: var(--primary);
-  transition: width 0.2s ease-in-out;
+  transition: width 0.4s ease-in-out;
+  @apply origin-center;
 }
 
-.nav-menu .nav-links:hover::after {
-  width: 100%;
+.nav-link:hover::after {
+  @apply w-full;
 }
 
 ::-webkit-scrollbar {
@@ -317,9 +283,9 @@
   animation: bounce-slow 2s ease-in-out infinite;
 }
 
-/* Dashed Grid Background */
 .dashed-grid-bg {
   position: relative;
+  background-color: var(--background);
 }
 
 .dashed-grid-bg::before {
@@ -328,41 +294,47 @@
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background-image: linear-gradient(to right, #e5e7eb 1px, transparent 1px),
-    linear-gradient(to bottom, #e5e7eb 1px, transparent 1px);
+  background-image: linear-gradient(
+      to right,
+      var(--border) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, var(--border) 1px, transparent 1px);
   background-size: 24px 24px;
   mask-image: repeating-linear-gradient(
       to right,
-      black 0px,
-      black 3px,
+      white 0px,
+      white 3px,
       transparent 3px,
       transparent 8px
     ),
     repeating-linear-gradient(
       to bottom,
-      black 0px,
-      black 3px,
+      white 0px,
+      white 3px,
       transparent 3px,
       transparent 8px
     ),
-    radial-gradient(ellipse 80% 80% at 100% 0%, #000 40%, transparent 80%);
+    radial-gradient(ellipse 80% 80% at 100% 0%, white 40%, transparent 80%);
   -webkit-mask-image: repeating-linear-gradient(
       to right,
-      black 0px,
-      black 3px,
+      white 0px,
+      white 3px,
       transparent 3px,
       transparent 8px
     ),
     repeating-linear-gradient(
       to bottom,
-      black 0px,
-      black 3px,
+      white 0px,
+      white 3px,
       transparent 3px,
       transparent 8px
     ),
-    radial-gradient(ellipse 80% 80% at 100% 0%, #000 40%, transparent 80%);
+    radial-gradient(ellipse 80% 80% at 100% 0%, white 40%, transparent 80%);
   mask-composite: intersect;
   -webkit-mask-composite: source-in;
+  height: 100%;
+  width: 100%;
 }
 
 @keyframes scroll {

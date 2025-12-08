@@ -1,0 +1,175 @@
+:root {
+  --dur: 1000ms;
+}
+
+.wrapper {
+  background: radial-gradient(
+    circle at 50% 50%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  perspective: 200px;
+}
+
+.bars-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  transform-style: preserve-3d;
+}
+
+.bar {
+  position: relative;
+  height: 100%;
+  width: 10%;
+  background: linear-gradient(to right, #70badf 0%, #77c6ed 90%, #77c6ed 100%);
+  transition: all var(--dur) ease-in-out;
+  transform-style: preserve-3d;
+  perspective: 200px;
+}
+
+/* Clip-path variations using nth-child */
+.bar:nth-child(1) {
+  clip-path: circle(70% at 255% 50%);
+}
+.bar:nth-child(2) {
+  clip-path: circle(70% at 155% 50%);
+}
+.bar:nth-child(9) {
+  clip-path: circle(70% at -55% 50%);
+}
+.bar:nth-child(10) {
+  clip-path: circle(70% at -155% 50%);
+}
+
+/* Delays */
+.bar:nth-child(2) {
+  transition-delay: 20ms;
+}
+.bar:nth-child(3) {
+  transition-delay: 40ms;
+}
+.bar:nth-child(4) {
+  transition-delay: 60ms;
+}
+.bar:nth-child(5) {
+  transition-delay: 80ms;
+}
+.bar:nth-child(6) {
+  transition-delay: 100ms;
+}
+.bar:nth-child(7) {
+  transition-delay: 120ms;
+}
+.bar:nth-child(8) {
+  transition-delay: 140ms;
+}
+.bar:nth-child(9) {
+  transition-delay: 160ms;
+}
+.bar:nth-child(10) {
+  transition-delay: 180ms;
+}
+
+/* Checked state - flip bars */
+.toggle:checked ~ .bars-container .bar {
+  transform: rotateX(180deg);
+  filter: grayscale(100%) brightness(135%);
+}
+
+/* Circles */
+.circle,
+.circle-other {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: var(--dur) linear forwards;
+}
+
+.circle {
+  background: radial-gradient(
+    circle at 30% 30%,
+    #77c6ed 0%,
+    #77c6ed 30%,
+    #1b729e 100%
+  );
+  z-index: 2;
+  transform: translateZ(30px) translateX(-45px);
+  animation-name: circleAnim;
+}
+
+.circle-other {
+  background: radial-gradient(
+    circle at 30% 30%,
+    #ffffff 0%,
+    #ffffff 30%,
+    #bbbbbb 100%
+  );
+  transform: translateZ(-30px) translateX(-45px);
+  animation-name: circleAnimOther;
+}
+
+/* Return animations when checked */
+.toggle:checked ~ .circle {
+  animation-name: circleReturn;
+}
+.toggle:checked ~ .circle-other {
+  animation-name: circleReturnOther;
+}
+
+/* Keyframes */
+@keyframes circleAnim {
+  0% {
+    transform: translateZ(30px) translateX(-45px);
+  }
+  50% {
+    transform: translateZ(0) translateX(0) translateY(35px);
+  }
+  100% {
+    transform: translateZ(-30px) translateX(45px);
+  }
+}
+
+@keyframes circleReturn {
+  0% {
+    transform: translateZ(-30px) translateX(45px);
+  }
+  50% {
+    transform: translateZ(0) translateX(0) translateY(35px);
+  }
+  100% {
+    transform: translateZ(30px) translateX(-45px);
+  }
+}
+
+@keyframes circleAnimOther {
+  0% {
+    transform: translateZ(-30px) translateX(-45px);
+  }
+  50% {
+    transform: translateZ(0) translateX(0) translateY(-35px);
+  }
+  100% {
+    transform: translateZ(30px) translateX(45px);
+  }
+}
+
+@keyframes circleReturnOther {
+  0% {
+    transform: translateZ(30px) translateX(45px);
+  }
+  50% {
+    transform: translateZ(0) translateX(0) translateY(-35px);
+  }
+  100% {
+    transform: translateZ(-30px) translateX(-45px);
+  }
+}

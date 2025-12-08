@@ -23,8 +23,7 @@ export default function Banner() {
       />
 
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-linear-to-r from-[#002f4b]/95 via-[#002f4b]/80 to-[#002f4b]/40" />
-
+      <div className="absolute inset-0 bg-linear-to-r from-[#001a33]/95 via-[#001a33]/80 to-[#001a33]/40 dark:from-[#001122]/95 dark:via-[#001122]/80 dark:to-[#001122]/30" />
       {/* Content */}
       <div className="relative w-full h-full flex items-center">
         <WidthConstraint>
