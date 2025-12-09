@@ -3,12 +3,6 @@
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { flushSync } from "react-dom";
 
 export default function ModeToggle() {
@@ -39,7 +33,7 @@ export default function ModeToggle() {
         >
           <Sun
             className="lg:size-5 lg:stroke-3 bg-background lg:bg-transparent"
-            onClick={() => setTheme("dark")}
+            onClick={() => changeTheme("dark")}
           />
         </Button>
       </div>
@@ -53,7 +47,7 @@ export default function ModeToggle() {
         >
           <Moon
             className="lg:size-5 lg:stroke-3 bg-background lg:bg-transparent"
-            onClick={() => setTheme("light")}
+            onClick={() => changeTheme("light")}
           />
         </Button>
       </div>
