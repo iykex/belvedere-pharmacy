@@ -10,13 +10,13 @@ export function ServicesGrid() {
       <WidthConstraint>
         <Tabs defaultValue="all">
           <div className="w-full overflow-x-auto sm:mx-0 sm:px-0">
-            <TabsList className="">
+            <TabsList>
               {SERVICE_CATEGORIES.map((category) => (
                 <TabsTrigger
                   key={category.id}
                   value={category.id}
-                  className="shrink-0 text-base font-medium transition-all duration-400 ease-in-out bg-white shadow-sm h-full py-4 hover:scale-95 text-foreground/50 hover:text-foreground
-              data-[state=active]:bg-primary 
+                  className="z-10 shrink-0 text-base font-medium transition-all duration-400 ease-in-out bg-white shadow-sm h-full py-4 hover:scale-95 text-foreground/50 hover:text-foreground
+              data-[state=active]:bg-primary data-[state=active]:dark:bg-primary 
               data-[state=active]:text-background  
               data-[state=active]:hover:scale-100
               data-[state=active]:font-bold

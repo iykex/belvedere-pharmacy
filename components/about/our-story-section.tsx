@@ -13,13 +13,13 @@ export default function OurStorySection() {
               <span className="text-primary font-semibold tracking-wide uppercase text-sm">
                 Our Journey
               </span>
-              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 leading-tight">
+              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 dark:text-white leading-tight">
                 A Story of <span className="text-primary">Community Care</span>
               </h2>
               <div className="h-1 w-20 rounded-full bg-linear-to-r from-primary to-primary/50" />
             </div>
 
-            <div className="space-y-4 text-gray-600 leading-8.5 max-w-2xl lg:text-justify">
+            <div className="space-y-4 text-gray-600 dark:text-white/60 leading-8.5 max-w-2xl lg:text-justify">
               <p className="text-lg ">
                 Belvedere Pharmacy was founded in 2020 with a simple mission: to
                 provide accessible, personalized healthcare to our local

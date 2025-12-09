@@ -13,7 +13,7 @@ import {
 
 export default function Banner() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-linear-to-br from-[#012337] via-[#033046] to-[#001924]">
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-linear-to-br from-[#012337] via-[#033046] to-[#001924]  dark:bg-linear-to-br dark:from-[#000b16] dark:via-[#001528] dark:to-[#00101f] ">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,153,0,0.08),transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(0,191,255,0.06),transparent_50%)]" />
@@ -174,7 +174,7 @@ export default function Banner() {
               </div>
 
               {/* Floating Badge */}
-              <div className="absolute -bottom-4 -left-4 bg-primary text-white px-4 py-2 rounded-xl shadow-lg shadow-primary/30">
+              <div className="absolute top-11 right-10 bg-primary text-white px-4 py-2 rounded-xl shadow-lg shadow-primary/30">
                 <p className="text-sm font-semibold">NHS Accredited</p>
               </div>
             </div>

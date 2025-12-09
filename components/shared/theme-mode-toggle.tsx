@@ -10,7 +10,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { flushSync } from "react-dom";
-import "@/styles/3d-toggle.css";
 
 export default function ModeToggle() {
   const { setTheme } = useTheme();
@@ -29,29 +28,35 @@ export default function ModeToggle() {
   }
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+    <div>
+      <div className="dark:hidden">
+        <span className="sr-only">Toggle dark theme</span>
         <Button
           variant="outline"
           size="icon"
-          className="bg-transparent backdrop-blur-3xl group hover:bg-transparent border-0"
+          className="lg:backdrop-blur-3xl group hover:text-primary hover:scale-105 border-0 w-fit h-fit lg:w-full lg:h-full shadow-none bg-background! lg:bg-transparent! rounded-none size-auto lg:p-1.5 lg:rounded-full"
+          asChild
         >
-          <Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90 group-hover:scale-120 group-hover:text-primary stroke-3 dark:group-hover:scale-0 duration-300 ease-in-out" />
-          <Moon className="absolute h-[1.2rem] w-[1.2rem] scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0 dark:group-hover:scale-120 group-hover:text-primary stroke-3 duration-300 ease-in-out" />
-          <span className="sr-only">Toggle theme</span>
+          <Sun
+            className="lg:size-5 lg:stroke-3 bg-background lg:bg-transparent"
+            onClick={() => setTheme("dark")}
+          />
         </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" sideOffset={6}>
-        <DropdownMenuItem onClick={() => setTheme("light")}>
-          Light
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
-          Dark
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
-          System
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+      </div>
+      <div className="hidden dark:block">
+        <span className="hidden sr-only">Toggle light theme</span>
+        <Button
+          variant="outline"
+          size="icon"
+          className="lg:backdrop-blur-3xl group hover:text-primary hover:scale-105 border-0 w-fit h-fit lg:w-full lg:h-full shadow-none bg-background! lg:bg-transparent! rounded-none size-auto lg:p-1.5 lg:rounded-full"
+          asChild
+        >
+          <Moon
+            className="lg:size-5 lg:stroke-3 bg-background lg:bg-transparent"
+            onClick={() => setTheme("light")}
+          />
+        </Button>
+      </div>
+    </div>
   );
 }

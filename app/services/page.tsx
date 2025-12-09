@@ -6,7 +6,7 @@ import CTASection from "@/components/shared/cta-section";
 
 export default function ServicesPage() {
   return (
-    <div className="overflow-hidden space-y-20 sm:space-y-30 mb-30">
+    <div className="overflow-hidden space-y-20 sm:space-y-30 pb-30">
       <header className="fixed top-0 w-full z-50">
         <Menu />
       </header>

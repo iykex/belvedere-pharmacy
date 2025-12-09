@@ -40,11 +40,15 @@ export default function ContactsColumn() {
                 <IconComponent className={`size-6 ${item.iconColor}`} />
               </div>
               <div className="flex-1">
-                <p className="font-bold text-gray-900 mb-1">{item.title}</p>
+                <p className="font-bold text-gray-900 dark:text-white mb-1">
+                  {item.title}
+                </p>
                 <p className="text-primary font-semibold mb-1">
                   {item.content}
                 </p>
-                <p className="text-sm text-gray-600">{item.detail}</p>
+                <p className="text-sm text-gray-600 dark:text-white/60">
+                  {item.detail}
+                </p>
               </div>
             </div>
           );
@@ -56,7 +60,9 @@ export default function ContactsColumn() {
             <Clock className="h-6 w-6 text-amber-600" />
           </div>
           <div className="flex-1">
-            <p className="font-bold text-gray-900 mb-1">Opening Hours</p>
+            <p className="font-bold text-gray-900 dark:text-white mb-1">
+              Opening Hours
+            </p>
             <div className="space-y-2 text-sm">
               {OPENING_HOURS_CONTACTS_PAGE.map((item, index) => (
                 <div
@@ -67,7 +73,7 @@ export default function ContactsColumn() {
                       : "flex justify-between items-center"
                   }
                 >
-                  <span className="text-gray-600">{item.day}</span>
+                  <span className="text-gray-600 dark:text-white/60">{item.day}</span>
                   <span className={`font-medium ${item.color}`}>
                     {item.hours}
                   </span>

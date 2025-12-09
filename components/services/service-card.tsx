@@ -19,9 +19,9 @@ export default function ServiceCard({
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <Card className="max-w-lg mx-auto p-0 rounded-none relative rounded-tr-4xl rounded-bl-4xl border-0 shadow-none outline-0 overflow-hidden">
+    <Card className="max-w-lg mx-auto p-0 bg-background rounded-none relative rounded-tr-4xl rounded-bl-4xl border-0 shadow-none outline-0 overflow-hidden gap-0">
       {/* Background Image with CDN optimization */}
-      <div className="relative w-full h-80 rounded-tr-4xl rounded-bl-4xl">
+      <div className="relative w-full h-80  rounded-tr-4xl rounded-bl-4xl">
         <Image
           src={image}
           alt={title}
@@ -53,38 +53,36 @@ export default function ServiceCard({
       </div>
 
       {/* Expandable content */}
-      <div
+      <CardContent
         className={cn(
-          "transition-all duration-500 ease-in-out overflow-hidden bg-background",
-          isExpanded ? "max-h-96 opacity-100 pt-6" : "max-h-0 opacity-0"
+          "transition-all duration-300 ease-in-out overflow-hidden bg-background max-h-0 opacity-0 space-y-6",
+          isExpanded && "max-h-96 opacity-100 pt-6"
         )}
       >
-        <CardContent className="space-y-6">
-          <p className="text-muted-foreground mb-6 leading-relaxed">
-            {description}
-          </p>
+        <p className="text-muted-foreground mb-6 leading-relaxed">
+          {description}
+        </p>
 
-          <div className="space-y-3">
-            {features.map((feature, idx) => (
-              <div key={idx} className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                <span className="text-sm font-medium text-foreground/80">
-                  {feature}
-                </span>
-              </div>
-            ))}
-          </div>
+        <div className="space-y-3">
+          {features.map((feature, idx) => (
+            <div key={idx} className="flex items-start gap-3">
+              <CheckCircle className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+              <span className="text-sm font-medium text-foreground/80">
+                {feature}
+              </span>
+            </div>
+          ))}
+        </div>
 
-          <div className="w-full flex justify-center">
-            <Button
-              asChild
-              className="w-full max-w-xs bg-primary hover:bg-primary/90 text-white font-semibold shadow-md hover:shadow-lg transition-all"
-            >
-              <Link href={link}>Explore Service</Link>
-            </Button>
-          </div>
-        </CardContent>
-      </div>
+        <div className="w-full flex justify-center">
+          <Button
+            asChild
+            className="w-full max-w-xs bg-primary hover:bg-primary/90 text-white font-semibold shadow-md hover:shadow-lg transition-all"
+          >
+            <Link href={link}>Explore Service</Link>
+          </Button>
+        </div>
+      </CardContent>
     </Card>
   );
 }

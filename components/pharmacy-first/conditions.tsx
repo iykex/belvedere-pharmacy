@@ -14,10 +14,10 @@ export const ConditionsSection = () => {
       <WidthConstraint className="space-y-8">
         <SectionHeader heading="Health Conditions" />
         <div className="text-center max-w-3xl mx-auto space-y-2">
-          <h2 className="text-card-title font-bold tracking-tight text-foreground">
+          <h2 className="text-card-title font-bold text-foreground">
             Conditions We Can Help With
           </h2>
-          <p className="text-gray-600 max-w-md mx-auto">
+          <p className="text-gray-600 dark:text-white/60 max-w-md mx-auto">
             Our Pharmacy First service can help you with a range of common
             conditions without needing to see a GP.
           </p>
@@ -27,7 +27,7 @@ export const ConditionsSection = () => {
           {PFP_CONDITIONS.map((condition, index) => (
             <div
               key={index}
-              className="group bg-white rounded-3xl overflow-hidden shadow-sm transition-all duration-300 hover:shadow-md hover:border-primary/20 flex flex-col h-full max-w-md relative"
+              className="group bg-white dark:bg-[#003b5c] rounded-3xl overflow-hidden shadow-sm transition-all duration-300 hover:shadow-md hover:border-primary/20 flex flex-col h-full max-w-md relative"
             >
               <Badge className="absolute top-4 right-4 z-20 bg-[#005EB8] text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
                 {condition.badge}
@@ -41,7 +41,7 @@ export const ConditionsSection = () => {
                   placeholder="blur"
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <h3 className="absolute bottom-4 left-4 text-card-title font-bold text-white z-20">
+                <h3 className="absolute bottom-4 left-4 drop-shadow-xs drop-shadow-black/90 text-card-title font-bold text-white z-20">
                   {condition.title}
                 </h3>
               </div>

@@ -10,7 +10,7 @@ import Link from "next/link";
 export default function CTASection() {
   return (
     <section className="overflow-hidden">
-      <WidthConstraint className="relative p-6 md:p-20 bg-foreground rounded-2xl">
+      <WidthConstraint className="relative p-6 md:p-20 bg-[#002f4b] rounded-2xl">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-size-[40px_40px]" />
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Content */}
@@ -68,12 +68,12 @@ export default function CTASection() {
           </div>
 
           {/* Right Column - Contact Card */}
-          <div className="bg-white rounded-2xl p-4 sm:p-8 shadow-2xl z-10">
+          <div className="bg-white dark:bg-[#03456a] rounded-2xl p-4 sm:p-8 shadow-2xl z-10">
             <div className="mb-6">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
                 Get In Touch
               </h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-white/60">
                 We're here to help with all your healthcare needs
               </p>
             </div>
@@ -92,7 +92,7 @@ export default function CTASection() {
                       />
                     </div>
                     <div>
-                      <p className="text text-gray-500">{contact.label}</p>
+                      <p className="text text-gray-500 dark:text-white/60">{contact.label}</p>
                       <p
                         className={`${contact.valueClass} ${contact.textColor}`}
                       >

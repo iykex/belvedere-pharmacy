@@ -153,7 +153,6 @@ export default function Menu({ className }: { className?: string }) {
         {/* Brand */}
         <div className="flex gap-x-3 items-center">
           <Link href="/" className="relative group">
-            <div className="absolute -inset-2 bg-primary/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <Image
               src="/logo/belvedere-logo.png"
               alt="Belvedere"
@@ -275,20 +274,20 @@ export default function Menu({ className }: { className?: string }) {
         <div className="lg:hidden">
           <Sheet>
             <SheetTrigger asChild>
-              <button
+              <Button
                 className={cn(
-                  "p-2 rounded-xl transition-all duration-300",
+                  "transition-all duration-300 bg-transparent border-0  p-0! h-fit w-fit rounded-none shadow-none",
                   hasDarkHero
                     ? "text-background dark:text-foreground"
                     : "text-foreground dark:text-background"
                 )}
               >
-                <MenuIcon className="size-6" />
-              </button>
+                <MenuIcon className="size-6 text-foreground dark:text-white" />
+              </Button>
             </SheetTrigger>
             <SheetContent
               side="right"
-              className="w-full h-full sm:w-[350px] p-0 border-0 bg-white [&>button]:hidden"
+              className="w-full h-full sm:w-[350px] p-0 border-0 bg-background [&>button]:hidden"
             >
               {/* Mobile Menu Header */}
               <div className="bg-[#002f4b] p-6 pb-8">
@@ -357,9 +356,12 @@ export default function Menu({ className }: { className?: string }) {
 
               {/* Mobile Navigation Links */}
               <div className="p-6 space-y-2 h-full overflow-scroll">
-                <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">
-                  Menu
-                </p>
+                <div className="mb-4 flex items-center justify-between pr-2.5 ">
+                  <p className="text-sm mt-1 font-semibold text-gray-400 uppercase tracking-wider w-fit">
+                    Menu
+                  </p>
+                  <ModeToggle />
+                </div>
                 {MENU_LINKS.map((item) => {
                   const isActive = pathname === item.href;
                   return (
@@ -370,7 +372,7 @@ export default function Menu({ className }: { className?: string }) {
                           "group flex items-center justify-between px-4 py-3.5 rounded-xl font-medium transition-all duration-300",
                           isActive
                             ? " text-primary font-bold animate-pulse py-2"
-                            : "hover:bg-gray-50 text-gray-900"
+                            : "hover:bg-gray-50 text-gray-900 dark:text-white"
                         )}
                       >
                         <span>{item.label}</span>
@@ -409,7 +411,7 @@ export default function Menu({ className }: { className?: string }) {
                 >
                   <Link
                     href="https://app.belvederepharmacy.net/#/auth/signin"
-                    className="font-semibold"
+                    className="font-semibold dark:text-white"
                   >
                     Order Prescriptions
                   </Link>

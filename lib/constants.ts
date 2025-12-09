@@ -166,11 +166,26 @@ export const FOOTER_LINKS = [
   {
     title: "Services",
     items: [
-      { label: "Prescription Services", href: "/prescriptions" },
-      { label: "Health Checks", href: "/services" },
-      { label: "Vaccinations", href: "/services" },
-      { label: "Medication Review", href: "/services" },
-      { label: "Travel Health", href: "/services" },
+      {
+        label: "Stop Smoking Services",
+        href: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5341",
+      },
+      {
+        label: "Blood Pressure Checks",
+        href: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5343",
+      },
+      {
+        label: "Flu Vaccinations",
+        href: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5340",
+      },
+      {
+        label: "Emergency Contraception",
+        href: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5339",
+      },
+      {
+        label: "Covid-19 Vaccination",
+        href: "https://shop.belvederepharmacy.net/appointments/book/service/COVID-19%20Vaccine?pharmacy=378&originalServiceId=5342&type=redirection",
+      },
     ],
   },
 ];
@@ -943,8 +958,16 @@ export const CONTACT_ITEMS_CONTACTS_PAGE = [
 ];
 
 export const OPENING_HOURS_CONTACTS_PAGE = [
-  { day: "Mon - Fri", hours: "09:00 - 18:00", color: "text-gray-900" },
-  { day: "Saturday", hours: "09:00 - 14:00", color: "text-gray-900" },
+  {
+    day: "Mon - Fri",
+    hours: "09:00 - 18:00",
+    color: "text-gray-900 dark:text-white/60",
+  },
+  {
+    day: "Saturday",
+    hours: "09:00 - 14:00",
+    color: "text-gray-900 dark:text-white/60",
+  },
   { day: "Sunday", hours: "Closed", color: "text-red-600", isClosed: true },
 ];
 
@@ -1020,11 +1043,11 @@ export const CTA_SECTION_CONTACT_INFO = [
     value: "info@belvederepharmacy.com",
     href: "#",
     isLink: true,
-    bgColor: "bg-gray-50",
+    bgColor: "bg-gray-50 dark:bg-primary/5",
     hoverBgColor: "",
-    iconBgColor: "bg-gray-100",
-    iconColor: "text-gray-600",
-    textColor: "text-gray-900",
+    iconBgColor: "bg-gray-100 dark:bg-primary/10",
+    iconColor: "text-gray-600 dark:text-primary",
+    textColor: "text-gray-900 dark:text-primary/90",
     valueClass: "font-semibold",
   },
   {
@@ -1033,11 +1056,11 @@ export const CTA_SECTION_CONTACT_INFO = [
     value: "Belvedere, Kent",
     href: "#",
     isLink: false,
-    bgColor: "bg-gray-50",
+    bgColor: "bg-gray-50 dark:bg-primary/5",
     hoverBgColor: "",
-    iconBgColor: "bg-gray-100",
-    iconColor: "text-gray-600",
-    textColor: "text-gray-900",
+    iconBgColor: "bg-gray-100 dark:bg-primary/10",
+    iconColor: "text-gray-600 dark:text-primary",
+    textColor: "text-gray-900 dark:text-primary/90",
     valueClass: "font-semibold",
   },
   {
@@ -1046,11 +1069,11 @@ export const CTA_SECTION_CONTACT_INFO = [
     value: "Mon-Fri: 9am - 6pm",
     href: "#",
     isLink: false,
-    bgColor: "bg-gray-50",
+    bgColor: "bg-gray-50 dark:bg-primary/5",
     hoverBgColor: "",
-    iconBgColor: "bg-gray-100",
-    iconColor: "text-gray-600",
-    textColor: "text-gray-900",
+    iconBgColor: "bg-gray-100 dark:bg-primary/10",
+    iconColor: "text-gray-600 dark:text-primary",
+    textColor: "text-gray-900 dark:text-primary/90",
     valueClass: "font-semibold",
   },
 ];
@@ -1277,6 +1300,161 @@ export const PRIVACY_POLICY_COOKIES = [
   },
 ];
 
+export const PRIVACY_POLICY_SECTIONS = [
+  {
+    number: 1,
+    title: "Introduction",
+    type: "paragraphs",
+    content: [
+      'Belvedere Pharmacy ("we", "us", or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, use our mobile applications, and access our pharmacy services.',
+      "Please read this Privacy Policy carefully. If you do not agree with our policies and practices, please do not use our services. Your continued use of our services signifies your acceptance of this Privacy Policy.",
+    ],
+  },
+  {
+    number: 2,
+    title: "Information We Collect",
+    type: "complexSubsections",
+    subsections: [
+      {
+        title: "2.1 Personal Information",
+        beforeText:
+          "We collect personal information that you voluntarily provide, including:",
+        bulletPoints: PRIVACY_POLICY_PERSONAL_INFO,
+      },
+      {
+        title: "2.2 Automatically Collected Information",
+        beforeText:
+          "When you use our website or apps, we automatically collect:",
+        bulletPoints: PRIVACY_POLICY_AUTO_COLLECTED,
+      },
+      {
+        title: "2.3 Health Data",
+        description:
+          "Health information is special category data under GDPR. We only collect and process health data with your explicit consent and as necessary to provide pharmacy services. This information is handled with the highest level of confidentiality.",
+      },
+    ],
+  },
+  {
+    number: 3,
+    title: "Legal Basis for Processing",
+    type: "bulletPointsWithTitles",
+    beforeText: "We process your data on the following legal bases:",
+    bulletPoints: PRIVACY_POLICY_LEGAL_BASIS,
+  },
+  {
+    number: 4,
+    title: "How We Use Your Information",
+    type: "bulletPoints",
+    beforeText: "We use your information for the following purposes:",
+    bulletPoints: PRIVACY_POLICY_USE_CASES,
+  },
+  {
+    number: 5,
+    title: "Sharing Your Information",
+    type: "bulletPointsWithTitles",
+    beforeText: "We may share your information with:",
+    bulletPoints: PRIVACY_POLICY_SHARING,
+    afterText:
+      "We never sell your personal information to third parties for marketing purposes.",
+  },
+  {
+    number: 6,
+    title: "Data Security",
+    type: "bulletPoints",
+    beforeText:
+      "We implement comprehensive security measures to protect your information:",
+    bulletPoints: PRIVACY_POLICY_SECURITY,
+    afterText:
+      "While we strive to protect your information, no method of transmission over the Internet is 100% secure. We cannot guarantee absolute security.",
+  },
+  {
+    number: 7,
+    title: "Data Retention",
+    type: "bulletPointsWithCategory",
+    beforeText:
+      "We retain your information for as long as necessary to provide services and comply with legal obligations:",
+    bulletPoints: PRIVACY_POLICY_DATA_RETENTION,
+    afterText:
+      "Once the retention period expires, we securely delete or anonymise your information.",
+  },
+  {
+    number: 8,
+    title: "Your Rights",
+    type: "bulletPointsWithTitles",
+    beforeText:
+      "Under UK data protection laws (GDPR and Data Protection Act 2018), you have the following rights:",
+    bulletPoints: PRIVACY_POLICY_USER_RIGHTS,
+    afterText:
+      "To exercise any of these rights, please contact us using the details in section 14.",
+  },
+  {
+    number: 9,
+    title: "Cookies and Tracking Technologies",
+    type: "bulletPointsWithTitles",
+    beforeText: "Our website uses cookies to enhance your experience:",
+    bulletPoints: PRIVACY_POLICY_COOKIES,
+    afterText:
+      "You can control cookies through your browser settings. Please note that disabling some cookies may affect website functionality.",
+  },
+  {
+    number: 10,
+    title: "Third-Party Links",
+    type: "paragraphs",
+    content: [
+      "Our website may contain links to third-party websites and services. We are not responsible for their privacy practices. We recommend reviewing their privacy policies before providing personal information.",
+    ],
+  },
+  {
+    number: 11,
+    title: "International Data Transfers",
+    type: "paragraphs",
+    content: [
+      "Your information is stored in the United Kingdom. If we transfer data internationally, we ensure appropriate safeguards are in place under relevant data protection regulations.",
+    ],
+  },
+  {
+    number: 12,
+    title: "Children's Privacy",
+    type: "paragraphs",
+    content: [
+      "Our services are intended for adults (18+). We do not knowingly collect personal information from children. If we become aware that a child has provided information, we will delete it immediately.",
+    ],
+  },
+  {
+    number: 13,
+    title: "Data Protection Officer",
+    type: "paragraphs",
+    content: [
+      "We have appointed a Data Protection Officer to oversee our data protection practices. You can contact our DPO with any data protection concerns.",
+    ],
+  },
+  {
+    number: 14,
+    title: "Contact Information",
+    type: "contact",
+    beforeText:
+      "For questions about this Privacy Policy or to exercise your data rights, please contact us:",
+    contactInfo: {
+      name: "Belvedere Pharmacy",
+      address1: "11 Picardy Street",
+      address2: "Belvedere, Kent DA17 5QQ",
+      phone: "+44 (0) 123 456 7890",
+      email: "info@belvederepharmacy.com",
+      dpoEmail: "dpo@belvederepharmacy.com",
+    },
+    afterText:
+      "You also have the right to lodge a complaint with the Information Commissioner's Office (ICO) at www.ico.org.uk.",
+  },
+  {
+    number: 15,
+    title: "Changes to This Privacy Policy",
+    type: "paragraphs",
+    content: [
+      'We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated "Last updated" date. We encourage you to review this policy periodically to stay informed about how we protect your information.',
+    ],
+  },
+];
+
 // Cookie Policy Constants
 export const COOKIE_POLICY_ESSENTIAL = [
   "Session management and login authentication",
@@ -1436,6 +1614,131 @@ export const COOKIE_POLICY_SECURITY = [
   "Cookies do not contain sensitive health information",
 ];
 
+// Consolidated Cookie Policy Data
+export const COOKIE_POLICY_DATA = [
+  {
+    number: 1,
+    type: "text",
+    title: "What Are Cookies?",
+    content: [
+      "Cookies are small text files that are stored on your device (computer, tablet, or mobile phone) when you visit a website. They allow websites to remember information about your visit, such as your preferences and login details.",
+      "Cookies serve important functions, including improving website performance, personalizing your experience, and helping us understand how our website is used.",
+    ],
+  },
+  {
+    number: 2,
+    type: "cookie-types",
+    title: "Types of Cookies We Use",
+    cookieTypes: [
+      {
+        title: "Essential Cookies",
+        description:
+          "These cookies are necessary for our website to function properly. They enable core functionality such as security, network management, and accessibility.",
+        color: "primary" as const,
+        note: "These cookies cannot be disabled as the website would not function without them.",
+        data: COOKIE_POLICY_ESSENTIAL,
+      },
+      {
+        title: "Performance and Analytics Cookies",
+        description:
+          "These cookies help us understand how visitors interact with our website. They collect anonymous data about page visits, user behavior, and site performance.",
+        color: "chart-2" as const,
+        note: "You can disable these cookies without affecting website functionality.",
+        data: COOKIE_POLICY_ANALYTICS,
+      },
+      {
+        title: "Marketing and Targeting Cookies",
+        description:
+          "These cookies track your online activity to deliver personalized advertising content and measure marketing campaign effectiveness.",
+        color: "chart-3" as const,
+        note: "You can disable these cookies through your browser settings or opt-out services.",
+        data: COOKIE_POLICY_MARKETING,
+      },
+    ],
+  },
+  {
+    number: 3,
+    type: "duration",
+    title: "How Long Cookies Last",
+    intro: "Cookies can be either session-based or persistent:",
+    data: COOKIE_POLICY_DURATION,
+  },
+  {
+    number: 4,
+    type: "third-party",
+    title: "Third-Party Cookies",
+    intro:
+      "In addition to our own cookies, third-party services may set cookies on your device:",
+    data: COOKIE_POLICY_THIRD_PARTY,
+  },
+  {
+    number: 5,
+    type: "preferences",
+    title: "Managing Your Cookie Preferences",
+    intro:
+      "You have control over cookies on our website. When you first visit, you'll see a cookie consent banner where you can:",
+    data: COOKIE_POLICY_PREFERENCES,
+    footer:
+      'You can change your cookie preferences at any time by clicking the "Cookie Preferences" link in the footer of our website.',
+  },
+  {
+    number: 6,
+    type: "browser-controls",
+    title: "Browser Cookie Controls",
+    intro: "Most browsers allow you to control cookies through their settings:",
+    data: COOKIE_POLICY_BROWSER_CONTROLS,
+    note: "Please note: Disabling essential cookies may affect website functionality and your ability to use certain features.",
+  },
+  {
+    number: 7,
+    type: "dnt",
+    title: "Do Not Track (DNT)",
+    content:
+      'Some browsers include a "Do Not Track" feature that sends a signal to websites requesting they don\'t track your activity. Currently, there is no industry standard for recognizing DNT signals. We respect your privacy choices but continue to collect analytics data to improve our website unless you disable cookies in your browser settings.',
+  },
+  {
+    number: 8,
+    type: "optout",
+    title: "Opting Out of Third-Party Tracking",
+    intro: "You can opt out of specific third-party services:",
+    data: COOKIE_POLICY_OPTOUT,
+  },
+  {
+    number: 9,
+    type: "table",
+    title: "Detailed Cookie List",
+    intro: "Below is a comprehensive list of cookies we use:",
+    tableData: COOKIE_POLICY_DETAILED_LIST,
+  },
+  {
+    number: 10,
+    type: "security",
+    title: "Cookie Security",
+    intro: "We take cookie security seriously:",
+    data: COOKIE_POLICY_SECURITY,
+  },
+  {
+    number: 11,
+    type: "contact",
+    title: "Questions About Our Cookie Policy",
+    intro:
+      "If you have questions about our cookie practices or how to manage your preferences, please contact us:",
+    contactInfo: {
+      name: "Belvedere Pharmacy",
+      address: ["11 Picardy Street", "Belvedere, Kent DA17 5QQ"],
+      phone: "+44 (0) 123 456 7890",
+      email: "info@belvederepharmacy.com",
+    },
+  },
+  {
+    number: 12,
+    type: "updates",
+    title: "Changes to This Cookie Policy",
+    content:
+      'We may update this Cookie Policy periodically to reflect changes in technology, regulations, or our practices. The "Last updated" date at the top of this page indicates when it was last revised. We encourage you to review this policy regularly to stay informed about how we use cookies.',
+  },
+];
+
 // Terms & Conditions Constants
 export const TERMS_SERVICES_LIST = [
   "Prescription dispensing (NHS and private)",
@@ -1461,6 +1764,155 @@ export const TERMS_LIABILITY = [
   "Adverse reactions to medication (unless due to our negligence)",
   "Misuse or mishandling of medication by the customer",
   "Errors in prescribing decisions made by your healthcare provider",
+];
+
+export const TERMS_AND_CONDITIONS = [
+  {
+    number: 1,
+    title: "Introduction",
+    type: "paragraphs",
+    content: [
+      'Welcome to Belvedere Pharmacy. These Terms and Conditions ("Terms") govern your use of our website, mobile applications, and pharmacy services. By accessing or using our services, you agree to be bound by these Terms. If you do not agree to any part of these Terms, you may not use our services.',
+      "Belvedere Pharmacy is a registered pharmacy located in Belvedere, Kent, UK, licensed and regulated by the General Pharmaceutical Council (GPhC).",
+    ],
+  },
+  {
+    number: 2,
+    title: "Our Services",
+    type: "bulletPoints",
+    bulletPoints: TERMS_SERVICES_LIST,
+    afterText:
+      "Service availability may vary. Please contact us for current offerings or visit our services page.",
+  },
+  {
+    number: 3,
+    title: "Eligibility",
+    type: "bulletPoints",
+    bulletPoints: TERMS_ELIGIBILITY,
+  },
+  {
+    number: 4,
+    title: "Prescriptions and Medication",
+    type: "subsections",
+    subsections: [
+      {
+        title: "4.1 Prescription Validity",
+        description:
+          "Prescriptions are valid for 6 months from the date issued by your healthcare provider. We will not dispense medication on expired or illegible prescriptions.",
+      },
+      {
+        title: "4.2 Accuracy of Information",
+        description:
+          "You agree to provide accurate information regarding your medical history, current medications, and allergies. Failure to disclose relevant medical information may result in harm.",
+      },
+      {
+        title: "4.3 Right to Refuse",
+        description:
+          "We reserve the right to refuse to dispense medication if we believe it may be harmful, contraindicated, or if the prescription appears forged or invalid.",
+      },
+      {
+        title: "4.4 Storage and Handling",
+        description:
+          "It is your responsibility to store medication as directed. We are not liable for medication that has been improperly stored or mishandled.",
+      },
+    ],
+  },
+  {
+    number: 5,
+    title: "Payments and Charges",
+    type: "subsections",
+    subsections: [
+      {
+        title: "5.1 NHS Services",
+        description:
+          "NHS prescription charges apply as set by the Department of Health. Exemptions may apply based on age, medical conditions, or benefits received.",
+      },
+      {
+        title: "5.2 Private Services",
+        description:
+          "Prices for private services will be provided before treatment. Payment must be made at the time of service unless alternative arrangements have been agreed.",
+      },
+      {
+        title: "5.3 Refunds and Returns",
+        description:
+          "Medication can only be returned if unused and in original packaging. Returns must be made within 30 days of purchase. Refunds will not be issued for medication that has been opened, used, or stored improperly.",
+      },
+    ],
+  },
+  {
+    number: 6,
+    title: "Confidentiality and Data Protection",
+    type: "paragraphs",
+    content: [
+      "Your health information is confidential and protected under UK data protection laws (GDPR and Data Protection Act 2018). We will only disclose your information with your consent, except where required by law.",
+      "For full details on how we collect, use, and protect your data, please refer to our Privacy Policy.",
+    ],
+  },
+  {
+    number: 7,
+    title: "Limitations of Liability",
+    type: "bulletPoints",
+    beforeText:
+      "To the extent permitted by law, Belvedere Pharmacy shall not be liable for:",
+    bulletPoints: TERMS_LIABILITY,
+  },
+  {
+    number: 8,
+    title: "Professional Standards and Complaints",
+    type: "paragraphs",
+    content: [
+      "We are committed to providing high-quality care. Our team is regulated by the GPhC and follows their standards and guidance.",
+      "If you wish to make a complaint, please contact us at info@belvederepharmacy.com or visit our pharmacy. We will investigate and respond to complaints within 10 working days.",
+      "You also have the right to complain to the GPhC if you believe we have breached professional standards.",
+    ],
+  },
+  {
+    number: 9,
+    title: "Website Use",
+    type: "subsections",
+    subsections: [
+      {
+        title: "9.1 Acceptable Use",
+        description:
+          "You agree not to use our website or services for illegal purposes, harassment, or to transmit harmful or malicious code.",
+      },
+      {
+        title: "9.2 Intellectual Property",
+        description:
+          "All content on our website, including text, images, and logos, is the property of Belvedere Pharmacy and protected by copyright. You may not reproduce or distribute without permission.",
+      },
+    ],
+  },
+  {
+    number: 10,
+    title: "Changes to These Terms",
+    type: "paragraphs",
+    content: [
+      'We may update these Terms from time to time. Changes will be posted on this page, and the "Last updated" date will be revised. Your continued use of our services constitutes acceptance of the revised Terms.',
+    ],
+  },
+  {
+    number: 11,
+    title: "Governing Law and Jurisdiction",
+    type: "paragraphs",
+    content: [
+      "These Terms are governed by and construed in accordance with the laws of England and Wales. Any disputes arising from these Terms shall be subject to the exclusive jurisdiction of the English courts.",
+    ],
+  },
+  {
+    number: 12,
+    title: "Contact Information",
+    type: "contact",
+    beforeText:
+      "If you have questions about these Terms and Conditions, please contact us:",
+    contactInfo: {
+      name: "Belvedere Pharmacy",
+      address1: "11 Picardy Street",
+      address2: "Belvedere, Kent DA17 5QQ",
+      phone: "+44 (0) 123 456 7890",
+      email: "info@belvederepharmacy.com",
+    },
+  },
 ];
 
 // Landing Page Banner Constants

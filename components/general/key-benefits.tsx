@@ -36,7 +36,7 @@ export default function KeyBenefits() {
           <Button
             asChild
             size="lg"
-            className="group bg-primary hover:bg-primary/90 text-white font-semibold px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+            className="group bg-primary hover:bg-primary/90 text-white font-semibold px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 z-10"
           >
             <Link href="/services" className="flex items-center gap-2">
               Explore Services

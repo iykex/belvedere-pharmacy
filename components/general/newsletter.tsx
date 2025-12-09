@@ -17,7 +17,7 @@ export default function NewsletterSection() {
     <section>
       <WidthConstraint>
         <div className="overflow-hidden">
-          <div className="grid lg:grid-cols-2 rounded-2xl shadow-lg dark:shadow-xl/30 border border-gray-200">
+          <div className="grid lg:grid-cols-2 rounded-2xl shadow-lg dark:shadow-xl/30 border border-input">
             {/* Left Column - Features  */}
             <div className="bg-[#003b5c] dark:bg-transparent p-8 lg:p-12 space-y-8 md:space-y-10 rounded-2xl lg:rounded-r-none">
               <div>

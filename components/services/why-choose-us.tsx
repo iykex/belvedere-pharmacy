@@ -9,7 +9,7 @@ export function WhyChooseUs() {
       <WidthConstraint className="relative space-y-15">
         <SectionHeader heading="Why choose us" />
         <div className="text-center max-w-3xl mx-auto space-y-2">
-          <h2 className="text-section-header font-bold tracking-tight">
+          <h2 className="text-section-header font-bold">
             Why Choose Belvedere
           </h2>
           <p className="text-base text-muted-foreground">
@@ -33,10 +33,10 @@ export function WhyChooseUs() {
                     feature.color === "primary"
                       ? "bg-primary"
                       : feature.color === "chart-3"
-                        ? "bg-chart-3"
-                        : feature.color === "chart-2"
-                          ? "bg-chart-2"
-                          : "bg-primary"
+                      ? "bg-chart-3"
+                      : feature.color === "chart-2"
+                      ? "bg-chart-2"
+                      : "bg-primary"
                   )}
                 ></div>
 
@@ -44,17 +44,17 @@ export function WhyChooseUs() {
                 <div className="relative z-10 p-8">
                   {/* Icon container */}
                   <div className="mb-6">
-                    <div className="w-16 h-16 bg-card rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <div className="size-16 bg-card dark:bg-[#055482]  rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                       <Icon
                         className={cn(
                           "size-8 transition-all duration-300 ease-linear",
                           feature.color === "primary"
                             ? "text-primary"
                             : feature.color === "chart-3"
-                              ? "text-chart-3"
-                              : feature.color === "chart-2"
-                                ? "text-chart-2"
-                                : "text-primary"
+                            ? "text-chart-3"
+                            : feature.color === "chart-2"
+                            ? "text-chart-2"
+                            : "text-primary"
                         )}
                       />
                     </div>
@@ -66,7 +66,7 @@ export function WhyChooseUs() {
                   </h3>
 
                   {/* Description */}
-                  <p className="text-muted-foreground group-hover:text-white/90 text-sm leading-relaxed transition-colors duration-300">
+                  <p className="text-muted-foreground text-center group-hover:text-white/90 text-sm leading-relaxed transition-colors duration-300">
                     {feature.description}
                   </p>
                 </div>

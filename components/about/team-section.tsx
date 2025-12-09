@@ -11,10 +11,10 @@ export default function TeamSection() {
         <SectionHeader heading="Our Team" />
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto space-y-4">
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">
             Meet Our <span className="text-primary">Healthcare</span> Family
           </h2>
-          <p className="text-gray-600 text-lg">
+          <p className="text-gray-600 dark:text-white/60 text-lg">
             Dedicated professionals committed to your wellbeing
           </p>
         </div>
@@ -24,7 +24,7 @@ export default function TeamSection() {
           {TEAM_MEMBERS.map((member, index) => (
             <div
               key={index}
-              className="group relative overflow-hidden rounded-2xl bg-white shadow-sm hover:shadow-xl transition-all duration-300"
+              className="group relative overflow-hidden rounded-2xl bg-card shadow-sm hover:shadow-xl transition-all duration-300"
             >
               {/* Image Area */}
               <div className="relative aspect-square overflow-hidden bg-linear-to-br from-primary/10 to-chart-2/10">
@@ -42,14 +42,14 @@ export default function TeamSection() {
 
               {/* Content */}
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-900 mb-1">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">
                   {member.name}
                 </h3>
                 <p className="text-primary font-semibold mb-3">{member.role}</p>
-                <p className="text-gray-600 text-sm mb-4 leading-relaxed">
+                <p className="text-gray-600 dark:text-white/60 text-sm mb-4 leading-relaxed">
                   {member.bio}
                 </p>
-                <div className="flex items-center gap-2 text-sm text-gray-500">
+                <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-white/40">
                   <Calendar className="size-4" />
                   <span>{member.experience} experience</span>
                 </div>

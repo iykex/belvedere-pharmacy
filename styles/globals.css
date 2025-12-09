@@ -129,7 +129,7 @@
 
 .dark {
   /* --background: #002f4b; */
-  --background: #001a33;
+  --background: #00162a;
   --foreground: #ffffff;
 
   --card: #003b5c;
@@ -285,7 +285,6 @@
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 0;
   pointer-events: none;
   background-image: linear-gradient(
       to right,
