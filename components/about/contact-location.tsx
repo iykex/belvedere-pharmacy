@@ -17,7 +17,7 @@ export default function ContactLocationSection() {
         <SectionHeader heading="Visit Us" />
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto space-y-4">
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">
             Visit <span className="text-primary">Our</span> Pharmacy
           </h2>
         </div>
@@ -34,11 +34,11 @@ export default function ContactLocationSection() {
                     <IconComponent className="h-6 w-6 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-1">
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
                       {info.title}
                     </h3>
                     {info.details.map((detail, idx) => (
-                      <p key={idx} className="text-gray-600">
+                      <p key={idx} className="text-gray-600 dark:text-white/60">
                         {detail}
                       </p>
                     ))}
@@ -53,7 +53,7 @@ export default function ContactLocationSection() {
                 <Clock className="h-6 w-6 text-primary" />
               </div>
               <div className="flex-1">
-                <h3 className="text-lg font-bold text-gray-900 mb-4">
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">
                   Opening Hours
                 </h3>
                 <div className="space-y-3 max-w-xs">
@@ -62,10 +62,12 @@ export default function ContactLocationSection() {
                       key={idx}
                       className="flex justify-between items-center pb-3 border-b border-gray-100 last:border-0"
                     >
-                      <span className="font-medium text-gray-900">
+                      <span className="font-medium text-gray-900 dark:text-white">
                         {schedule.days}
                       </span>
-                      <span className="text-gray-600">{schedule.hours}</span>
+                      <span className="text-gray-600 dark:text-white/60">
+                        {schedule.hours}
+                      </span>
                     </div>
                   ))}
                 </div>

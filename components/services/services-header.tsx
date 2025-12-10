@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export function ServicesHeading() {
   return (
-    <section className="pt-32 pb-20 bg-white">
+    <section className="pt-32 pb-20 bg-background">
       <WidthConstraint className="relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* LEFT COL - Content */}
@@ -20,13 +20,13 @@ export function ServicesHeading() {
             </div>
 
             {/* Heading */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-gray-900 leading-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight">
               Find the Right <span className="text-primary">Service</span> for
               Your Health
             </h1>
 
             {/* Description */}
-            <p className="text-gray-600 text-lg leading-relaxed">
+            <p className="text-gray-600 dark:text-white/60 text-lg leading-relaxed">
               Our pharmacists offer a comprehensive range of NHS-commissioned
               and private healthcare services. Get expert help from the comfort
               of your home with our video consultation service.

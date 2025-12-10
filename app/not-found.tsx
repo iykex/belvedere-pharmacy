@@ -31,17 +31,19 @@ function NavCard({
   return (
     <Link
       href={href}
-      className="group bg-white border-2 border-gray-200 hover:border-primary rounded-xl p-6 transition-all hover:shadow-lg"
+      className="group bg-card border-2 border-input hover:border-primary rounded-xl p-6 transition-all hover:shadow-lg z-10"
     >
       <div className="flex items-start gap-4">
         <div className="p-3 bg-primary/10 group-hover:bg-primary/20 rounded-lg transition-colors">
           <Icon className="h-5 w-5 text-primary" />
         </div>
         <div>
-          <h3 className="font-semibold text-gray-900 group-hover:text-primary transition-colors">
+          <h3 className="font-semibold text-gray-900 dark:text-white group-hover:text-primary transition-colors">
             {title}
           </h3>
-          <p className="text-sm text-gray-600">{description}</p>
+          <p className="text-sm text-gray-600 dark:text-white/60">
+            {description}
+          </p>
         </div>
       </div>
     </Link>
@@ -63,7 +65,7 @@ function ContactItem({
   const Icon = iconMap[iconName];
   const content = (
     <>
-      <p className="text-sm text-gray-600">{label}</p>
+      <p className="text-sm text-gray-600 dark:text-white/60">{label}</p>
       {href ? (
         <a
           href={href}
@@ -72,7 +74,7 @@ function ContactItem({
           {value}
         </a>
       ) : (
-        <p className="font-semibold text-gray-900">{value}</p>
+        <p className="font-semibold text-gray-900 dark:text-white">{value}</p>
       )}
     </>
   );
@@ -87,7 +89,7 @@ function ContactItem({
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-primary/5 via-chart-2/5 to-chart-3/5 px-4">
+    <div className="min-h-screen flex items-center justify-center px-4">
       <WidthConstraint className="max-w-2xl w-full">
         <div className="space-y-8 py-[10%]">
           {/* 404 Display */}
@@ -101,11 +103,11 @@ export default function NotFound() {
               </div>
             </div>
 
-            <div className="space-y-3">
-              <h1 className="text-4xl sm:text-5xl font-bold text-gray-900">
+            <div className="space-y-3 z-10">
+              <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white z-10">
                 Page Not Found
               </h1>
-              <p className="text-lg text-gray-600 max-w-xl mx-auto leading-relaxed">
+              <p className="text-lg text-gray-600 dark:text-white/60 max-w-xl mx-auto leading-relaxed z-10">
                 Sorry, we couldn't find the page you're looking for. The page
                 may have been moved, deleted, or the URL might be incorrect.
               </p>
@@ -121,7 +123,7 @@ export default function NotFound() {
 
           {/* Contact Card */}
           <div className="bg-linear-to-br from-primary/10 to-chart-2/10 border border-primary/20 rounded-xl p-6 space-y-4">
-            <h3 className="font-semibold text-gray-900 text-lg">
+            <h3 className="font-semibold text-gray-900 dark:text-white text-lg">
               Still need help?
             </h3>
             <div className="space-y-3">

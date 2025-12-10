@@ -17,15 +17,15 @@ export default function Error({
   reset: () => void;
 }) {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-primary/5 via-chart-2/5 to-chart-3/5 px-4 py-20 sm:py-[10%]">
+    <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-primary/5 via-chart-2/5 to-chart-3/5 px-4 py-20">
       <WidthConstraint className="max-w-2xl w-full">
         <div className="space-y-8 text-center">
           {/* Error Icon */}
-          <div className="flex justify-center">
+          <div className="flex justify-center z-10">
             <div className="relative">
-              <div className="relative bg-primary/10 rounded-full p-8 border border-primary/30">
+              <div className="relative bg-destructive/10 rounded-full p-8 border border-destructive/30">
                 <AlertCircle
-                  className="h-16 w-16 text-primary"
+                  className="h-16 w-16 text-destructive"
                   strokeWidth={1.5}
                 />
               </div>
@@ -34,34 +34,34 @@ export default function Error({
 
           {/* Error Content */}
           <div className="space-y-4">
-            <h1 className="text-5xl sm:text-6xl font-bold text-gray-900">
+            <h1 className="text-5xl sm:text-6xl font-bold text-destructive dark:text-destructive z-10">
               Oops!
             </h1>
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-700">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-700 dark:text-white/60">
               Something went wrong
             </h2>
-            <p className="text-lg text-gray-600 max-w-xl mx-auto leading-relaxed">
+            <p className="text-lg text-gray-600 dark:text-white/60 max-w-xl mx-auto leading-relaxed">
               We encountered an unexpected error while processing your request.
               Our team has been notified and is working to resolve the issue.
             </p>
           </div>
 
           {/* Error Details */}
-          <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 text-left space-y-3">
+          <div className="bg-card border border-input rounded-xl p-6 text-left space-y-3">
             <div>
-              <h3 className="text-sm font-semibold text-gray-900 mb-2">
+              <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">
                 Error Details
               </h3>
-              <p className="text-sm text-gray-600 font-mono break-all">
+              <p className="text-sm text-gray-600 dark:text-white/60 font-mono break-all">
                 {error.message || "An unexpected error occurred"}
               </p>
             </div>
             {error.digest && (
               <div>
-                <h3 className="text-sm font-semibold text-gray-900 mb-2">
+                <h3 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">
                   Error ID
                 </h3>
-                <p className="text-sm text-gray-600 font-mono">
+                <p className="text-sm text-gray-600 dark:text-white/60 font-mono">
                   {error.digest}
                 </p>
               </div>
@@ -70,10 +70,10 @@ export default function Error({
 
           {/* Helpful Information */}
           <div className="bg-primary/5 border border-primary/20 rounded-xl p-6 space-y-3">
-            <h3 className="font-semibold text-gray-900">
+            <h3 className="font-semibold text-gray-900 dark:text-white">
               Here's what you can try:
             </h3>
-            <ul className="space-y-2 text-left text-gray-700">
+            <ul className="space-y-2 text-left text-gray-700 dark:text-white/60">
               {ERROR_TROUBLESHOOTING_STEPS.map((item, idx) => (
                 <li key={idx} className="flex items-start gap-3">
                   <span className="text-primary font-bold mt-1 text-lg">✓</span>

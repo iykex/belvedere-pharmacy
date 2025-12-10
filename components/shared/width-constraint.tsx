@@ -9,7 +9,7 @@ export default function WidthConstraint({
   className?: string;
 }) {
   return (
-    <div className={cn("container w-11/12 mx-auto overflow-hidden", className)}>
+    <div className={cn("container w-11/12 mx-auto overflow-hidden px-2", className)}>
       {children}
     </div>
   );

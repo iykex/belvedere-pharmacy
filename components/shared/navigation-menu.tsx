@@ -23,6 +23,7 @@ import {
 import { ReactNode, useRef, useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
+import ModeToggle from "./theme-mode-toggle";
 
 export function MenuButtons({
   outlineButtonClassName,
@@ -74,11 +75,7 @@ export default function Menu({ className }: { className?: string }) {
   const navMenu = useRef<HTMLDivElement>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
-
-  // Determine if this page has a dark hero
   const hasDarkHero = DARK_HERO_PAGES.includes(pathname);
-  // Use dark text if scrolled OR if page doesn't have dark hero
-  const useDarkText = isScrolled || !hasDarkHero;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -92,8 +89,8 @@ export default function Menu({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "nav-wrapper transition-all duration-500 ease-out",
-        isScrolled ? "nav-scrolled" : "",
+        "w-full z-50 transition-all duration-500 ease-out",
+        isScrolled && "bg-background text-foreground",
         className
       )}
       ref={navMenu}
@@ -101,10 +98,9 @@ export default function Menu({ className }: { className?: string }) {
       {/* Info Bar - Always visible */}
       <div
         className={cn(
-          "info-bar py-2 transition-all duration-300",
-          useDarkText
-            ? "bg-gray-50/80 backdrop-blur-sm border-b border-gray-100"
-            : "bg-white/10 backdrop-blur-sm"
+          "py-2 transition-all duration-300 ease-in-out backdrop-blur-3xl",
+          hasDarkHero && "text-white",
+          isScrolled && "bg-background text-foreground"
         )}
       >
         <div className="flex items-center justify-center sm:gap-4 md:gap-8 px-4 sm:text-sm">
@@ -115,14 +111,16 @@ export default function Menu({ className }: { className?: string }) {
                 key={item.title}
                 className={cn(
                   "flex text-center sm:text-left sm:items-center gap-2 transition-colors duration-300",
-                  useDarkText ? "text-gray-700" : "text-white/90"
+                  hasDarkHero && "text-white",
+                  isScrolled && "bg-background text-foreground"
                 )}
               >
                 <Icon className=" size-4 text-primary" />
                 <span
                   className={cn(
                     "hidden sm:inline font-medium text-xs",
-                    useDarkText ? "text-gray-500" : "text-white/70"
+                    hasDarkHero && "text-white",
+                    isScrolled && "bg-background text-foreground"
                   )}
                 >
                   {item.title}:
@@ -130,7 +128,8 @@ export default function Menu({ className }: { className?: string }) {
                 <span
                   className={cn(
                     "text-xs font-semibold",
-                    useDarkText ? "text-gray-900" : "text-white"
+                    hasDarkHero && "text-white",
+                    isScrolled && "bg-background text-foreground"
                   )}
                 >
                   {item.description}
@@ -142,32 +141,45 @@ export default function Menu({ className }: { className?: string }) {
       </div>
 
       {/* Main Navigation */}
-      <nav className={cn("nav-menu", useDarkText ? "nav-menu-light" : "")}>
+      <nav
+        className={cn(
+          "w-full flex justify-between items-center gap-x-6 px-4 lg:px-8 py-3 font-medium z-50 transition-all duration-300",
+          hasDarkHero
+            ? "text-background dark:text-foreground"
+            : "text-foreground dark:text-background",
+          isScrolled && "bg-background text-foreground"
+        )}
+      >
         {/* Brand */}
         <div className="flex gap-x-3 items-center">
           <Link href="/" className="relative group">
-            <div className="absolute -inset-2 bg-primary/10 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <Image
               src="/logo/belvedere-logo.png"
               alt="Belvedere"
               width={64}
               height={64}
-              className="relative z-10"
+              className="relative z-10 scale-50 sm:scale-100"
             />
           </Link>
-          <div className="hidden min-[450px]:block">
+          <div className="hidden min-[450px]: lg:flex items-center gap-2">
             <p
               className={cn(
                 "font-bold text-lg leading-tight transition-colors duration-300",
-                useDarkText ? "text-gray-900" : "text-white"
+                hasDarkHero
+                  ? "text-background dark:text-foreground"
+                  : "text-foreground",
+                isScrolled && "bg-background text-foreground"
               )}
             >
               Belvedere
             </p>
             <p
               className={cn(
-                "text-xs transition-colors duration-300",
-                useDarkText ? "text-gray-500" : "text-white/70"
+                "text-xs lg:text-lg text-center transition-colors duration-300",
+                hasDarkHero
+                  ? "text-background dark:text-foreground"
+                  : "text-foreground",
+                isScrolled && "bg-background text-foreground"
               )}
             >
               Pharmacy
@@ -184,22 +196,25 @@ export default function Menu({ className }: { className?: string }) {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "nav-link group relative px-5 py-2.5 text-sm font-medium transition-all duration-300",
-                  isActive
-                    ? "text-primary"
-                    : useDarkText
-                    ? "text-gray-600 hover:text-gray-900"
-                    : "text-white/80 hover:text-white"
+                  "group relative px-5 py-2.5 text-sm font-medium transition-all duration-300",
+                  !isActive && "nav-link",
+                  hasDarkHero
+                    ? "text-background dark:text-foreground hover:text-background/80 dark:hover:text-foreground/80"
+                    : "text-foreground hover:text-gray-900 dark:hover:text-foreground/90",
+                  isScrolled &&
+                    "bg-background text-foreground hover:text-foreground"
                 )}
               >
                 {/* Text */}
-                <span className="relative z-10">{item.label}</span>
+                <p className="relative text-base hover:text-inherit">
+                  {item.label}
+                </p>
 
                 {/* Active indicator - bottom line */}
                 <span
                   className={cn(
                     "absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-primary transition-all duration-300 ease-out",
-                    isActive ? "w-6" : "w-0 group-hover:w-4"
+                    isActive ? "w-6" : "w-0"
                   )}
                 />
 
@@ -221,18 +236,19 @@ export default function Menu({ className }: { className?: string }) {
           <Link
             href="https://app.belvederepharmacy.net/#/auth/signin"
             className={cn(
-              "group relative px-4 py-2 text-sm font-semibold transition-all duration-300 overflow-hidden rounded-lg",
-              useDarkText
-                ? "text-gray-700 hover:text-primary"
-                : "text-white hover:text-primary"
+              "group relative px-4 py-2 text-sm font-semibold transition-all duration-300 overflow-hidden rounded-lg hover:text-primary",
+              hasDarkHero
+                ? "text-background dark:text-foreground"
+                : "text-foreground",
+              isScrolled && "bg-background text-foreground"
             )}
           >
             {/* Sliding underline */}
-            <span className="relative z-10">Order Prescriptions</span>
+            <p className="relative text-base">Order Prescriptions</p>
             <span
               className={cn(
-                "absolute bottom-1 left-0 h-px bg-current transition-all duration-300 ease-out",
-                "w-0 group-hover:w-full"
+                "absolute bottom-1 left-0 right-0 bg-primary h-px mx-auto transition-all duration-500 ease-in-out origin-center",
+                "w-0 group-hover:w-1/2"
               )}
             />
           </Link>
@@ -251,26 +267,27 @@ export default function Menu({ className }: { className?: string }) {
               <ArrowRight className="relative z-10 size-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
           </Button>
+          <ModeToggle />
         </div>
 
         {/* Mobile Only */}
         <div className="lg:hidden">
           <Sheet>
             <SheetTrigger asChild>
-              <button
+              <Button
                 className={cn(
-                  "p-2 rounded-xl transition-all duration-300",
-                  useDarkText
-                    ? "hover:bg-gray-100 text-gray-900"
-                    : "hover:bg-white/10 text-white"
+                  "transition-all duration-300 bg-transparent border-0  p-0! h-fit w-fit rounded-none shadow-none",
+                  hasDarkHero
+                    ? "text-background dark:text-foreground"
+                    : "text-foreground dark:text-background"
                 )}
               >
-                <MenuIcon className="size-6" />
-              </button>
+                <MenuIcon className="size-6 text-foreground dark:text-white" />
+              </Button>
             </SheetTrigger>
             <SheetContent
               side="right"
-              className="w-full h-full sm:w-[350px] p-0 border-0 bg-white [&>button]:hidden"
+              className="w-full h-full sm:w-[350px] p-0 border-0 bg-background [&>button]:hidden"
             >
               {/* Mobile Menu Header */}
               <div className="bg-[#002f4b] p-6 pb-8">
@@ -339,9 +356,12 @@ export default function Menu({ className }: { className?: string }) {
 
               {/* Mobile Navigation Links */}
               <div className="p-6 space-y-2 h-full overflow-scroll">
-                <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-4">
-                  Menu
-                </p>
+                <div className="mb-4 flex items-center justify-between pr-2.5 ">
+                  <p className="text-sm mt-1 font-semibold text-gray-400 uppercase tracking-wider w-fit">
+                    Menu
+                  </p>
+                  <ModeToggle />
+                </div>
                 {MENU_LINKS.map((item) => {
                   const isActive = pathname === item.href;
                   return (
@@ -352,7 +372,7 @@ export default function Menu({ className }: { className?: string }) {
                           "group flex items-center justify-between px-4 py-3.5 rounded-xl font-medium transition-all duration-300",
                           isActive
                             ? " text-primary font-bold animate-pulse py-2"
-                            : "hover:bg-gray-50 text-gray-900"
+                            : "hover:bg-gray-50 text-gray-900 dark:text-white"
                         )}
                       >
                         <span>{item.label}</span>
@@ -391,7 +411,7 @@ export default function Menu({ className }: { className?: string }) {
                 >
                   <Link
                     href="https://app.belvederepharmacy.net/#/auth/signin"
-                    className="font-semibold"
+                    className="font-semibold dark:text-white"
                   >
                     Order Prescriptions
                   </Link>

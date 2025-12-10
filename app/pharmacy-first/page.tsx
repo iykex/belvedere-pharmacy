@@ -6,7 +6,7 @@ import { ConditionsSection } from "@/components/pharmacy-first/conditions";
 
 export default function NHSPharmacyFirstPage() {
   return (
-    <div className="mb-30 space-y-20 sm:space-y-30 overflow-hidden">
+    <div className="pb-30 space-y-20 sm:space-y-30 overflow-hidden">
       <header className="fixed top-0 w-full z-50">
         <Menu />
       </header>

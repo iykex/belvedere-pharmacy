@@ -10,7 +10,7 @@ import Testimonials from "@/components/general/testimonials-section";
 
 export default function LandingPage() {
   return (
-    <div className="overflow-hidden space-y-20 sm:space-y-30 mb-30 w-full">
+    <div className="overflow-hidden space-y-20 sm:space-y-30 pb-30 w-full">
       <header className="fixed top-0 w-full z-50">
         <Menu />
       </header>
@@ -20,8 +20,8 @@ export default function LandingPage() {
       <KeyBenefits />
       <OurProcessSection />
       <Testimonials />
-      <DownloadAppSection />
-      <div className="w-full mt-50">
+      <div className="space-y-20 sm:space-y-30 w-full dashed-grid-bg">
+        <DownloadAppSection />
         <NewsletterSection />
       </div>
     </div>
