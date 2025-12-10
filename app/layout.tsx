@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
+import "@/styles/hide-dev-overlay.css";
 import { getMetadata } from "@/lib/metadata";
 import { ReactNode } from "react";
 import { plusJakartaSans, inter } from "@/lib/fonts";
 import { Footer } from "@/components/shared/footer";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import FAQChatbot from "@/components/general/faq-chatbot";
-import "./hide-dev-overlay.css";
 import CookieConsentDialogue from "@/components/general/cookie-consent";
 
 export const metadata: Metadata = getMetadata();
