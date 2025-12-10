@@ -97,13 +97,19 @@ export default function Menu({ className }: { className?: string }) {
     >
       {/* Info Bar - Always visible */}
       <div
+        onClick={(e) => {
+          // Scroll to top when clicking empty areas of the info bar
+          if (e.target === e.currentTarget) {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
+        }}
         className={cn(
-          "py-2 transition-all duration-300 ease-in-out backdrop-blur-3xl",
+          "py-2 px-3 transition-all duration-300 ease-in-out backdrop-blur-3xl cursor-pointer",
           hasDarkHero && "text-white",
           isScrolled && "bg-background text-foreground"
         )}
       >
-        <div className="flex items-center justify-center gap-3 sm:gap-4 md:gap-8 px-4 sm:text-sm">
+        <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 sm:gap-x-4 md:gap-x-8">
           {ABOUT_US_INFO_BANNER.map((item) => {
             const Icon = item.icon;
             return (
@@ -127,7 +133,7 @@ export default function Menu({ className }: { className?: string }) {
                 </span>
                 <span
                   className={cn(
-                    "text-[10px] sm:text-xs font-semibold whitespace-nowrap",
+                    "text-[10px] sm:text-xs font-semibold",
                     hasDarkHero && "text-white",
                     isScrolled && "bg-background text-foreground"
                   )}
@@ -142,8 +148,14 @@ export default function Menu({ className }: { className?: string }) {
 
       {/* Main Navigation */}
       <nav
+        onClick={(e) => {
+          // Scroll to top when clicking empty areas of the navbar
+          if (e.target === e.currentTarget) {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
+        }}
         className={cn(
-          "w-full flex justify-between items-center gap-x-6 px-4 lg:px-8 py-3 font-medium z-50 transition-all duration-300",
+          "w-full flex justify-between items-center gap-x-6 px-4 lg:px-8 py-3 font-medium z-50 transition-all duration-300 cursor-pointer",
           hasDarkHero
             ? "text-background dark:text-foreground"
             : "text-foreground dark:text-background",
@@ -354,17 +366,41 @@ export default function Menu({ className }: { className?: string }) {
                       </div>
                     </div>
                   </div>
+
+                  {/* Action Buttons - Below location/hours */}
+                  <div className="flex gap-2 mt-4">
+                    <Button
+                      asChild
+                      className="flex-1 bg-primary hover:bg-primary/90 py-2.5 rounded-xl overflow-hidden text-sm font-semibold"
+                    >
+                      <Link
+                        href="https://shop.belvederepharmacy.net/appointments/viewallservices/all?pharmacy=378&type=redirection"
+                        className="flex items-center justify-center gap-2"
+                      >
+                        Book Appointment
+                      </Link>
+                    </Button>
+                    <Button
+                      asChild
+                      variant="outline"
+                      className="flex-1 py-2.5 rounded-xl border-white/20 bg-white/10 hover:bg-white/20 text-white text-sm font-semibold"
+                    >
+                      <Link
+                        href="https://app.belvederepharmacy.net/#/auth/signin"
+                        className="flex items-center justify-center"
+                      >
+                        Order Prescriptions
+                      </Link>
+                    </Button>
+                  </div>
                 </div>
               </div>
 
               {/* Mobile Navigation Links */}
-              <div className="p-6 space-y-2 h-full overflow-scroll">
-                <div className="mb-4 flex items-center justify-between pr-2.5 ">
-                  <p className="text-sm mt-1 font-semibold text-gray-400 uppercase tracking-wider w-fit">
-                    Menu
-                  </p>
-                  <ModeToggle />
-                </div>
+              <div className="p-6 space-y-2 flex-1 overflow-y-auto">
+                <p className="text-sm mb-4 font-semibold text-gray-400 uppercase tracking-wider">
+                  Menu
+                </p>
                 {MENU_LINKS.map((item) => {
                   const isActive = pathname === item.href;
                   return (
@@ -391,34 +427,6 @@ export default function Menu({ className }: { className?: string }) {
                     </SheetClose>
                   );
                 })}
-              </div>
-
-              {/* Mobile Action Buttons */}
-              <div className="max-[349px]:flex-col flex gap-2 p-2">
-                <Button
-                  asChild
-                  className="group w-fit max-[349px]:w-full max-[349px]: grow bg-primary hover:bg-primary/90 py-2 rounded-md overflow-hidden"
-                >
-                  <Link
-                    href="https://shop.belvederepharmacy.net/appointments/viewallservices/all?pharmacy=378&type=redirection"
-                    className="flex items-center justify-center gap-2 font-semibold"
-                  >
-                    Book Appointment{" "}
-                    {/* <ArrowRight className=" stroke-3 z-10 size-4 transition-transform duration-300 group-hover:translate-x-1" /> */}
-                  </Link>
-                </Button>
-                <Button
-                  asChild
-                  variant="outline"
-                  className="w-fit py-2  max-[349px]:w-full grow rounded-md border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300"
-                >
-                  <Link
-                    href="https://app.belvederepharmacy.net/#/auth/signin"
-                    className="font-semibold dark:text-white"
-                  >
-                    Order Prescriptions
-                  </Link>
-                </Button>
               </div>
             </SheetContent>
           </Sheet>

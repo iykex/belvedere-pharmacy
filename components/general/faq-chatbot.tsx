@@ -262,8 +262,12 @@ export default function FAQChatbot() {
     }, [messages]);
 
     useEffect(() => {
+        // Only auto-focus on desktop to avoid keyboard popping up on mobile
         if (isOpen && inputRef.current) {
-            inputRef.current.focus();
+            const isMobile = window.matchMedia("(max-width: 768px)").matches;
+            if (!isMobile) {
+                inputRef.current.focus();
+            }
         }
     }, [isOpen]);
 
