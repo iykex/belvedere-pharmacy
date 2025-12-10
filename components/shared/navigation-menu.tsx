@@ -103,19 +103,19 @@ export default function Menu({ className }: { className?: string }) {
           isScrolled && "bg-background text-foreground"
         )}
       >
-        <div className="flex items-center justify-center sm:gap-4 md:gap-8 px-4 sm:text-sm">
+        <div className="flex items-center justify-center gap-3 sm:gap-4 md:gap-8 px-4 sm:text-sm">
           {ABOUT_US_INFO_BANNER.map((item) => {
             const Icon = item.icon;
             return (
               <div
                 key={item.title}
                 className={cn(
-                  "flex text-center sm:text-left sm:items-center gap-2 transition-colors duration-300",
+                  "flex items-center gap-1 sm:gap-2 transition-colors duration-300",
                   hasDarkHero && "text-white",
                   isScrolled && "bg-background text-foreground"
                 )}
               >
-                <Icon className=" size-4 text-primary" />
+                <Icon className="size-3 sm:size-4 text-primary flex-shrink-0" />
                 <span
                   className={cn(
                     "hidden sm:inline font-medium text-xs",
@@ -127,7 +127,7 @@ export default function Menu({ className }: { className?: string }) {
                 </span>
                 <span
                   className={cn(
-                    "text-xs font-semibold",
+                    "text-[10px] sm:text-xs font-semibold whitespace-nowrap",
                     hasDarkHero && "text-white",
                     isScrolled && "bg-background text-foreground"
                   )}
@@ -151,40 +151,40 @@ export default function Menu({ className }: { className?: string }) {
         )}
       >
         {/* Brand */}
-        <div className="flex gap-x-3 items-center">
-          <Link href="/" className="relative group">
+        <div className="flex gap-x-2 sm:gap-x-3 items-center">
+          <Link href="/" className="relative group flex items-center gap-2 sm:gap-3">
             <Image
               src="/logo/belvedere-logo.png"
               alt="Belvedere"
               width={64}
               height={64}
-              className="relative z-10 scale-50 sm:scale-100"
+              className="relative z-10 w-10 h-10 sm:w-16 sm:h-16"
             />
+            <div className="flex flex-col">
+              <p
+                className={cn(
+                  "font-bold text-sm sm:text-lg leading-tight transition-colors duration-300",
+                  hasDarkHero
+                    ? "text-white dark:text-foreground"
+                    : "text-foreground",
+                  isScrolled && "text-foreground"
+                )}
+              >
+                Belvedere
+              </p>
+              <p
+                className={cn(
+                  "text-xs sm:text-base leading-tight transition-colors duration-300",
+                  hasDarkHero
+                    ? "text-white/80 dark:text-foreground/80"
+                    : "text-foreground/80",
+                  isScrolled && "text-foreground/80"
+                )}
+              >
+                Pharmacy
+              </p>
+            </div>
           </Link>
-          <div className="hidden min-[450px]: lg:flex items-center gap-2">
-            <p
-              className={cn(
-                "font-bold text-lg leading-tight transition-colors duration-300",
-                hasDarkHero
-                  ? "text-background dark:text-foreground"
-                  : "text-foreground",
-                isScrolled && "bg-background text-foreground"
-              )}
-            >
-              Belvedere
-            </p>
-            <p
-              className={cn(
-                "text-xs lg:text-lg text-center transition-colors duration-300",
-                hasDarkHero
-                  ? "text-background dark:text-foreground"
-                  : "text-foreground",
-                isScrolled && "bg-background text-foreground"
-              )}
-            >
-              Pharmacy
-            </p>
-          </div>
         </div>
 
         {/* Navigation Links Desktop Only */}
@@ -270,19 +270,22 @@ export default function Menu({ className }: { className?: string }) {
           <ModeToggle />
         </div>
 
-        {/* Mobile Only */}
-        <div className="lg:hidden">
+        {/* Mobile Only - Theme Toggle + Menu */}
+        <div className="lg:hidden flex items-center gap-3">
+          <ModeToggle />
           <Sheet>
             <SheetTrigger asChild>
               <Button
+                variant="ghost"
+                size="icon"
                 className={cn(
-                  "transition-all duration-300 bg-transparent border-0  p-0! h-fit w-fit rounded-none shadow-none",
-                  hasDarkHero
-                    ? "text-background dark:text-foreground"
-                    : "text-foreground dark:text-background"
+                  "transition-all duration-300 h-10 w-10 rounded-lg",
+                  hasDarkHero && !isScrolled
+                    ? "text-white hover:bg-white/10"
+                    : "text-foreground hover:bg-foreground/10"
                 )}
               >
-                <MenuIcon className="size-6 text-foreground dark:text-white" />
+                <MenuIcon className="size-6" />
               </Button>
             </SheetTrigger>
             <SheetContent

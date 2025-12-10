@@ -27,8 +27,8 @@ export default function PrivacyPolicyPage() {
 
       {/* Content Section */}
       <section className="bg-white dark:bg-transparent">
-        <WidthConstraint className="space-y-12 py-8">
-          <div className="max-w-4xl mx-auto space-y-12 px-4 sm:px-8 lg:px-12">
+        <WidthConstraint className="py-8 lg:py-12">
+          <div className="max-w-4xl mx-auto space-y-12 px-6 sm:px-10 lg:px-16">
             {PRIVACY_POLICY_SECTIONS.map((section, idx) => (
               <article key={idx} className="space-y-4">
                 <h2 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
@@ -142,44 +142,6 @@ export default function PrivacyPolicyPage() {
                   </>
                 )}
 
-                {/* Complex Subsections Type */}
-                {section.type === "complexSubsections" && (
-                  <div className="space-y-4">
-                    {section.subsections?.map((subsection, sIdx) => (
-                      <div key={sIdx}>
-                        <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
-                          {subsection.title}
-                        </h3>
-                        {subsection.beforeText && (
-                          <p className="text-gray-700 dark:text-white/60 leading-relaxed mb-3">
-                            {subsection.beforeText}
-                          </p>
-                        )}
-                        {subsection.bulletPoints && (
-                          <ul className="space-y-2 ml-6">
-                            {subsection.bulletPoints.map((point, bIdx) => (
-                              <li
-                                key={bIdx}
-                                className="text-gray-700 dark:text-white/60 flex items-start gap-3"
-                              >
-                                <span className="text-primary font-bold mt-1">
-                                  •
-                                </span>
-                                <span>{point}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                        {subsection.description && (
-                          <p className="text-gray-700 dark:text-white leading-relaxed">
-                            {subsection.description}
-                          </p>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                )}
-
                 {/* Contact Type */}
                 {section.type === "contact" && (
                   <>
@@ -191,23 +153,23 @@ export default function PrivacyPolicyPage() {
                     {section.contactInfo && (
                       <div className="bg-primary/5 border border-primary/20 rounded-xl p-6 space-y-2">
                         <p className="text-gray-900 dark:text-white font-semibold">
-                          {section.contactInfo.name}
+                          {(section.contactInfo as any).name}
                         </p>
                         <p className="text-gray-700 dark:text-white/60">
-                          {section.contactInfo.address1}
+                          {(section.contactInfo as any).address1}
                         </p>
                         <p className="text-gray-700 dark:text-white/60">
-                          {section.contactInfo.address2}
+                          {(section.contactInfo as any).address2}
                         </p>
                         <p className="text-gray-700 dark:text-white/60">
-                          Phone: {section.contactInfo.phone}
+                          Phone: {(section.contactInfo as any).phone}
                         </p>
                         <p className="text-gray-700 dark:text-white/60">
-                          Email: {section.contactInfo.email}
+                          Email: {(section.contactInfo as any).email}
                         </p>
-                        {section.contactInfo.dpoEmail && (
+                        {(section.contactInfo as any).dpoEmail && (
                           <p className="text-gray-700 dark:text-white/60">
-                            DPO Email: {section.contactInfo.dpoEmail}
+                            DPO Email: {(section.contactInfo as any).dpoEmail}
                           </p>
                         )}
                       </div>

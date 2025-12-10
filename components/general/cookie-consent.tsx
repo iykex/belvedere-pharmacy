@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Cookie, X, Settings, Shield, ChevronUp, Check } from "lucide-react";
+import { Cookie, X, Settings, Shield, ChevronLeft, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -260,7 +260,7 @@ export default function CookieConsent() {
                             <>
                                 <Button
                                     onClick={handleAcceptAll}
-                                    className="w-full bg-primary hover:bg-primary/90 text-white font-bold py-6 rounded-2xl text-base shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all"
+                                    className="w-full bg-primary hover:bg-primary/90 text-white font-bold py-5 rounded-2xl text-base shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all"
                                 >
                                     Accept All Cookies
                                 </Button>
@@ -284,20 +284,22 @@ export default function CookieConsent() {
                             </>
                         ) : (
                             <>
-                                <Button
-                                    onClick={handleSavePreferences}
-                                    className="w-full bg-primary hover:bg-primary/90 text-white font-bold py-6 rounded-2xl text-base shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all"
-                                >
-                                    Save My Preferences
-                                </Button>
-                                <Button
-                                    onClick={() => setShowPreferences(false)}
-                                    variant="ghost"
-                                    className="w-full py-4 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 font-medium"
-                                >
-                                    <ChevronUp className="size-4 mr-2" />
-                                    Back to Overview
-                                </Button>
+                                <div className="grid grid-cols-2 gap-3">
+                                    <Button
+                                        onClick={handleSavePreferences}
+                                        className="w-full bg-primary hover:bg-primary/90 text-white font-bold py-5 rounded-2xl text-base shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all"
+                                    >
+                                        Save Preferences
+                                    </Button>
+                                    <Button
+                                        onClick={() => setShowPreferences(false)}
+                                        variant="outline"
+                                        className="w-full py-5 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 font-medium"
+                                    >
+                                        <ChevronLeft className="size-4 mr-2" />
+                                        Back to Overview
+                                    </Button>
+                                </div>
                             </>
                         )}
                     </div>

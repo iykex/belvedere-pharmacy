@@ -27,8 +27,8 @@ export default function CookiePolicyPage() {
 
       {/* Content Section */}
       <section className="bg-white dark:bg-transparent">
-        <WidthConstraint className="space-y-12 py-8">
-          <div className="max-w-4xl mx-auto space-y-12 px-4 sm:px-8 lg:px-12">
+        <WidthConstraint className="py-8 lg:py-12">
+          <div className="max-w-4xl mx-auto space-y-12 px-6 sm:px-10 lg:px-16">
             {COOKIE_POLICY_DATA.map((section, idx) => (
               <article key={idx} className="space-y-4">
                 <h2 className="text-3xl font-bold text-gray-900 dark:text-white z-10 flex items-center gap-3">
