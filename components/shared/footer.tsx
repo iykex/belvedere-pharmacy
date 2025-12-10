@@ -9,7 +9,7 @@ import WidthConstraint from "../shared/width-constraint";
 
 export function Footer() {
   return (
-    <WidthConstraint className="py-8 md:py-12 2xl:px-0">
+    <WidthConstraint className="py-8 md:py-12 px-0">
       <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-[1.5fr_1fr_1fr_1fr] text-white">
         {/* Column 1: Logo and social */}
         <div className="space-y-4">

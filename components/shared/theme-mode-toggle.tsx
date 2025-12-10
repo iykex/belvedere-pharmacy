@@ -32,7 +32,7 @@ export default function ModeToggle() {
           asChild
         >
           <Sun
-            className="lg:size-5 lg:stroke-3 bg-transparent"
+            className="lg:size-5 bg-transparent"
             onClick={() => changeTheme("dark")}
           />
         </Button>
@@ -46,7 +46,7 @@ export default function ModeToggle() {
           asChild
         >
           <Moon
-            className="lg:size-5 lg:stroke-3 bg-transparent"
+            className="lg:size-5  bg-transparent dark:text-white"
             onClick={() => changeTheme("light")}
           />
         </Button>

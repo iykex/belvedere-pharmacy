@@ -51,3 +51,9 @@ export type ContactFormFieldsMap = {
   label: string;
   placeholder: string;
 };
+
+export interface CookiePreferences {
+  essential: boolean;
+  analytics: boolean;
+  marketing: boolean;
+}
