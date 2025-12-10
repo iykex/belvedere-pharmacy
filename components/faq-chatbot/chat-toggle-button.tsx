@@ -8,9 +8,9 @@ export function ChatToggleButton({ isOpen, onClick }: ChatToggleButtonProps) {
     <Button
       onClick={onClick}
       className={cn(
-        "fixed bottom-6 right-6 z-50 flex items-center justify-center size-14 rounded-full shadow-2xl transition-all duration-300 hover:scale-110",
+        "fixed bottom-6 right-2 z-50 flex items-center justify-center size-10 rounded-full shadow-2xl transition-all duration-300 hover:scale-110",
         "bg-linear-to-br from-primary to-primary/80 text-white",
-        "hover:shadow-primary/40 hover:shadow-xl",
+        "hover:shadow-primary/40 hover:shadow-xl ",
         isOpen && "rotate-90"
       )}
       aria-label={isOpen ? "Close chat" : "Open chat"}
@@ -19,7 +19,7 @@ export function ChatToggleButton({ isOpen, onClick }: ChatToggleButtonProps) {
 
       {/* Pulse animation when closed */}
       {!isOpen && (
-        <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary opacity-30" />
+        <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary opacity-10" />
       )}
     </Button>
   );
