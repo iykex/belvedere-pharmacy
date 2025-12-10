@@ -69,7 +69,8 @@
   --popover: #ffffff;
   --popover-foreground: #002f4b;
 
-  --primary: #ff9900;
+  /* Primary - Vibrant Sky Blue from uploaded images */
+  --primary: #3B9FE7;
   --primary-foreground: #ffffff;
 
   --secondary: #f9fafb;
@@ -87,13 +88,24 @@
   --border: #dde2e6;
   --input: #dde2e6;
 
-  --ring: #00bfff;
+  --ring: #3B9FE7;
 
-  --chart-1: #ff9900;
-  --chart-2: #00bfff;
-  --chart-3: #33cc00;
-  --chart-4: #ff0000;
+  /* Chart colors - Updated to match new theme */
+  --chart-1: #3B9FE7;
+  --chart-2: #2E7D32;
+  --chart-3: #E91E63;
+  --chart-4: #7C4DFF;
   --chart-5: #002f4b;
+
+  /* Accent pastel colors from uploaded images */
+  --accent-yellow: #FFF9E6;
+  --accent-yellow-dark: #F9A825;
+  --accent-mint: #E8F5E9;
+  --accent-mint-dark: #2E7D32;
+  --accent-pink: #FCE4EC;
+  --accent-pink-dark: #C62828;
+  --accent-lavender: #EDE7F6;
+  --accent-lavender-dark: #5E35B1;
 
   --sidebar: #f9fafb;
   --sidebar-foreground: #002f4b;
@@ -102,7 +114,7 @@
   --sidebar-accent: #ffffff;
   --sidebar-accent-foreground: #002f4b;
   --sidebar-border: #dde2e6;
-  --sidebar-ring: #00bfff;
+  --sidebar-ring: #3B9FE7;
 
   /* --- FLUID TYPOGRAPHY SCALE --- */
   /* Body Text: Scales from 13px (mobile) to 15px (desktop) */
@@ -137,7 +149,8 @@
   --popover: #003b5c;
   --popover-foreground: #ffffff;
 
-  --primary: #ff9900;
+  /* Primary - Same vibrant blue for consistency */
+  --primary: #3B9FE7;
   --primary-foreground: #ffffff;
 
   --secondary: #004d73;
@@ -154,22 +167,22 @@
   --border: #1a4d6e;
   --input: #1a4d6e;
 
-  --ring: #00bfff;
+  --ring: #3B9FE7;
 
-  --chart-1: #ff9900;
-  --chart-2: #00bfff;
-  --chart-3: #33cc00;
-  --chart-4: #ff5555;
+  --chart-1: #3B9FE7;
+  --chart-2: #4CAF50;
+  --chart-3: #F48FB1;
+  --chart-4: #B388FF;
   --chart-5: #ffffff;
 
   --sidebar: #00253b;
   --sidebar-foreground: #ffffff;
-  --sidebar-primary: #ff9900;
+  --sidebar-primary: #3B9FE7;
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #003b5c;
   --sidebar-accent-foreground: #ffffff;
   --sidebar-border: #1a4d6e;
-  --sidebar-ring: #00bfff;
+  --sidebar-ring: #3B9FE7;
 }
 
 @layer base {

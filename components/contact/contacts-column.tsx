@@ -56,8 +56,8 @@ export default function ContactsColumn() {
 
         {/* Opening Hours */}
         <div className="group flex items-start sm:p-4 rounded-xl hover:bg-gray-50 transition-colors duration-200">
-          <div className="hidden mr-4 sm:flex size-12 items-center justify-center rounded-full bg-linear-to-br from-amber-100 to-amber-50 group-hover:from-amber-50 group-hover:to-amber-100 transition-colors">
-            <Clock className="h-6 w-6 text-amber-600" />
+          <div className="hidden mr-4 sm:flex size-12 items-center justify-center rounded-full bg-linear-to-br from-[#FFF9E6] to-[#FFF3CC] group-hover:from-[#FFF3CC] group-hover:to-[#FFF9E6] transition-colors">
+            <Clock className="h-6 w-6 text-[#F9A825]" />
           </div>
           <div className="flex-1">
             <p className="font-bold text-gray-900 dark:text-white mb-1">

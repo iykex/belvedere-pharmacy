@@ -15,7 +15,7 @@ export default function Banner() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-linear-to-br from-[#012337] via-[#033046] to-[#001924]  dark:bg-linear-to-br dark:from-[#000b16] dark:via-[#001528] dark:to-[#00101f] ">
       {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,153,0,0.08),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(249,168,37,0.08),transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(0,191,255,0.06),transparent_50%)]" />
 
       {/* Subtle grid pattern */}
@@ -57,7 +57,7 @@ export default function Banner() {
                   >
                     <path
                       d="M2 6C50 2 150 2 198 6"
-                      stroke="#FF9900"
+                      stroke="#F9A825"
                       strokeWidth="3"
                       strokeLinecap="round"
                     />

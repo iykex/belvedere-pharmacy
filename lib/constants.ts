@@ -858,8 +858,8 @@ export const BELVEDERE_VALUES = [
     title: "Excellence",
     description:
       "We strive for the highest standards in everything we do, from the quality of our services to the expertise of our staff.",
-    color: "from-amber-100 to-amber-50",
-    iconColor: "text-amber-600",
+    color: "from-[#FFF9E6] to-[#FFF3CC]",
+    iconColor: "text-[#F9A825]",
   },
 ];
 

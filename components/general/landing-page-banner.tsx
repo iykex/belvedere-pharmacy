@@ -40,7 +40,7 @@ export default function Banner() {
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.1]">
                 Your Trusted Partner in <br />
-                <span className="text-[#FF9900]">Community Healthcare</span>
+                <span className="text-[#F9A825]">Community Healthcare</span>
               </h1>
 
               <p className="text-base sm:text-lg text-gray-200 max-w-xl leading-relaxed font-light">
@@ -56,7 +56,7 @@ export default function Banner() {
                     asChild
                     className={
                       btn.variant === "primary"
-                        ? "group bg-[#FF9900] text-white hover:bg-[#FF9900]/90 transition-all duration-300 shadow-lg hover:shadow-[#FF9900]/25 px-8 py-6 text-base font-semibold"
+                        ? "group bg-[#F9A825] text-white hover:bg-[#F9A825]/90 transition-all duration-300 shadow-lg hover:shadow-[#F9A825]/25 px-8 py-6 text-base font-semibold"
                         : "group border-white/20 bg-white/5 text-white hover:bg-white hover:text-[#002f4b] backdrop-blur-sm px-8 py-6 text-base font-semibold transition-all duration-300"
                     }
                   >
