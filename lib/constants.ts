@@ -74,15 +74,15 @@ export const MENU_LINKS = [
 ];
 
 export const ABOUT_US_INFO_BANNER = [
-  { title: "Find Us", description: "Belvedere, Kent", icon: IconMapPin },
+  { title: "Find Us", description: "Orpington, BR5 2SR", icon: IconMapPin },
   {
     title: "Opening Hours",
-    description: "Mon-Fri: 9am-6pm",
+    description: "Mon-Fri: 9am-6:30pm",
     icon: IconClockHour5,
   },
   {
     title: "Call Us",
-    description: "+44 (0) 123 456 7890",
+    description: "+44 (0) 1234 567890",
     icon: IconPhoneOutgoing,
   },
 ];
@@ -244,10 +244,10 @@ export const LEGAL_LINKS = [
 ];
 
 export const CONTACT_ITEMS = [
-  "123 High Street",
-  "Belvedere, London",
-  "DA17 6HE",
-  "020 1234 5678",
+  "OAKHURST, ST PAULS WOOD HILL",
+  "Orpington, Kent",
+  "BR5 2SR",
+  "+44 (0) 1234 567890",
   "info@belvederepharmacy.co.uk",
 ];
 
@@ -873,7 +873,7 @@ export const CTA_SECTION_FEATURES_LIST = [
 ];
 
 export const WORKING_HOURS = [
-  { days: "Monday - Friday", hours: "09:00 - 18:00" },
+  { days: "Monday - Friday", hours: "09:00 - 18:30" },
   { days: "Saturday", hours: "09:00 - 14:00" },
   { days: "Sunday", hours: "Closed" },
   { days: "Emergency Service", hours: "24/7 On Call" },
@@ -883,7 +883,7 @@ export const FAQS_CONTACTS_PAGE = [
   {
     question: "What are your opening hours?",
     answer:
-      "We are open Monday to Friday from 9am to 6pm, and Saturday from 9am to 2pm. We are closed on Sundays and Bank Holidays.",
+      "We are open Monday to Friday from 9am to 6:30pm, and Saturday from 9am to 2pm. We are closed on Sundays and Bank Holidays.",
     value: "item-1",
   },
   {
@@ -923,8 +923,8 @@ export const CONTACT_ITEMS_CONTACTS_PAGE = [
     id: "phone",
     icon: IconPhone,
     title: "Phone",
-    content: "+44 (0) 123 456 7890",
-    detail: "Mon-Fri: 9am-6pm, Sat: 9am-2pm",
+    content: "+44 (0) 1234 567890",
+    detail: "Mon-Fri: 9am-6:30pm, Sat: 9am-2pm",
     bgFrom: "from-blue-100",
     bgTo: "to-blue-50",
     bgHoverFrom: "group-hover:from-blue-50",
@@ -947,8 +947,8 @@ export const CONTACT_ITEMS_CONTACTS_PAGE = [
     id: "address",
     icon: IconMapPin,
     title: "Address",
-    content: "11 PICARDY STREET",
-    detail: "BELVEDERE, KENT DA17 5QQ",
+    content: "OAKHURST, ST PAULS WOOD HILL",
+    detail: "ORPINGTON, KENT BR5 2SR",
     bgFrom: "from-emerald-100",
     bgTo: "to-emerald-50",
     bgHoverFrom: "group-hover:from-emerald-50",
@@ -960,7 +960,7 @@ export const CONTACT_ITEMS_CONTACTS_PAGE = [
 export const OPENING_HOURS_CONTACTS_PAGE = [
   {
     day: "Mon - Fri",
-    hours: "09:00 - 18:00",
+    hours: "09:00 - 18:30",
     color: "text-gray-900 dark:text-white/60",
   },
   {
@@ -1027,7 +1027,7 @@ export const CTA_SECTION_CONTACT_INFO = [
   {
     icon: IconPhone,
     label: "Call Us",
-    value: "+44 (0) 123 456 7890",
+    value: "+44 (0) 1234 567890",
     href: "tel:+441234567890",
     isLink: true,
     bgColor: "bg-primary/5",
@@ -1053,7 +1053,7 @@ export const CTA_SECTION_CONTACT_INFO = [
   {
     icon: IconLocation,
     label: "Visit Us",
-    value: "Belvedere, Kent",
+    value: "Orpington, Kent",
     href: "#",
     isLink: false,
     bgColor: "bg-gray-50 dark:bg-primary/5",
@@ -1066,7 +1066,7 @@ export const CTA_SECTION_CONTACT_INFO = [
   {
     icon: IconClock,
     label: "Opening Hours",
-    value: "Mon-Fri: 9am - 6pm",
+    value: "Mon-Fri: 9am - 6:30pm",
     href: "#",
     isLink: false,
     bgColor: "bg-gray-50 dark:bg-primary/5",
@@ -1082,12 +1082,12 @@ export const CONTACT_LOCATION_INFO = [
   {
     icon: IconLocation,
     title: "Location",
-    details: ["11 Picardy Street", "Belvedere, Kent DA17 5QQ"],
+    details: ["Oakhurst, St Pauls Wood Hill", "Orpington, Kent BR5 2SR"],
   },
   {
     icon: IconPhone,
     title: "Phone",
-    details: ["+44 (0) 123 456 7890"],
+    details: ["+44 (0) 1234 567890"],
   },
   {
     icon: IconMail,
@@ -1127,7 +1127,7 @@ export const NOT_FOUND_NAV_ITEMS = [
 export const NOT_FOUND_CONTACT_INFO = {
   phone: {
     label: "Call us",
-    value: "+44 (0) 123 456 7890",
+    value: "+44 (0) 1234 567890",
     href: "tel:+441234567890",
     iconName: "Phone",
   },
@@ -1139,7 +1139,7 @@ export const NOT_FOUND_CONTACT_INFO = {
   },
   address: {
     label: "Visit us",
-    value: "11 Picardy Street, Belvedere, Kent DA17 5QQ",
+    value: "Oakhurst, St Pauls Wood Hill, Orpington, Kent BR5 2SR",
     href: undefined,
     iconName: "MapPin",
   },
@@ -1155,20 +1155,22 @@ export const ERROR_TROUBLESHOOTING_STEPS = [
 ];
 
 export const ERROR_SUPPORT_INFO = {
-  phone: "+44 (0) 123 456 7890",
+  phone: "+44 (0) 1234 567890",
   phoneHref: "tel:+441234567890",
   email: "info@belvederepharmacy.com",
   emailHref: "mailto:info@belvederepharmacy.com",
-  hours: "Mon-Fri: 9am-6pm, Sat: 10am-4pm",
+  hours: "Mon-Fri: 9am-6:30pm, Sat: 9am-2pm",
 };
 
 // Privacy Policy Constants
 export const PRIVACY_POLICY_PERSONAL_INFO = [
-  "Name, date of birth, and contact details (email, phone, address)",
-  "NHS number and prescription details",
-  "Medical history, allergies, and current medications",
-  "Payment information (credit/debit card details)",
-  "Information from healthcare providers with your consent",
+  "Identity data: name, age/date of birth, gender, job title, professional qualifications",
+  "Contact data: postal address, billing and delivery addresses, telephone numbers, email address",
+  "Special category data (sensitive personal data): information about your physical or mental health, health conditions, and other clinical metrics",
+  "Transaction data: purchases and/or orders which are made by you and your payment card or bank transfer details",
+  "Technical data: your online browsing activities, IP address, browser type, version and language, device identifiers",
+  "Profile data: account login details, username, password(s), interests, preferences, feedback and survey responses",
+  "Marketing and communications data: your marketing preferences, communication preferences and correspondence with us",
 ];
 
 export const PRIVACY_POLICY_AUTO_COLLECTED = [
@@ -1306,8 +1308,11 @@ export const PRIVACY_POLICY_SECTIONS = [
     title: "Introduction",
     type: "paragraphs",
     content: [
-      'Belvedere Pharmacy ("we", "us", or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, use our mobile applications, and access our pharmacy services.',
-      "Please read this Privacy Policy carefully. If you do not agree with our policies and practices, please do not use our services. Your continued use of our services signifies your acceptance of this Privacy Policy.",
+      "MECKAY LIMITED values your privacy and is strongly committed to protecting your personal information.",
+      "The purpose of this Privacy Notice is to explain how MECKAY LIMITED handles personal information about you and to outline the rights that you have under applicable data protection legislation. We respect your privacy and want to be transparent about how your personal information will be processed, stored and used when you visit our website, use our online services, our App or our Platform or otherwise engage with us as a customer, a patient, a supplier, a retailer or have any other commercial contract with us.",
+      "Please read the following carefully to understand our practices regarding your personal information and how we will treat it.",
+      "It is important that the personal information that we hold about you is accurate and current. Please keep us informed if your personal information changes during our relationship with you.",
+      "All personal information that we collect or are provided with will only be held and stored in accordance with this Privacy Notice and the UK General Data Protection Regulation (UK GDPR), the Data Protection Act 2018 and any other legislation relating to the protection of personal information (data protection laws).",
     ],
   },
   {
@@ -1435,10 +1440,10 @@ export const PRIVACY_POLICY_SECTIONS = [
     beforeText:
       "For questions about this Privacy Policy or to exercise your data rights, please contact us:",
     contactInfo: {
-      name: "Belvedere Pharmacy",
-      address1: "11 Picardy Street",
-      address2: "Belvedere, Kent DA17 5QQ",
-      phone: "+44 (0) 123 456 7890",
+      name: "Belvedere Pharmacy (MECKAY LIMITED)",
+      address1: "Oakhurst, St Pauls Wood Hill",
+      address2: "Orpington, Kent BR5 2SR",
+      phone: "+44 (0) 1234 567890",
       email: "info@belvederepharmacy.com",
       dpoEmail: "dpo@belvederepharmacy.com",
     },
@@ -1621,8 +1626,10 @@ export const COOKIE_POLICY_DATA = [
     type: "text",
     title: "What Are Cookies?",
     content: [
-      "Cookies are small text files that are stored on your device (computer, tablet, or mobile phone) when you visit a website. They allow websites to remember information about your visit, such as your preferences and login details.",
-      "Cookies serve important functions, including improving website performance, personalizing your experience, and helping us understand how our website is used.",
+      "Cookies are small text files that are sent to or accessed from your web browser or your device's memory. A cookie typically contains the name of the domain (internet location) from which the cookie originated, the lifetime of the cookie (i.e., when it expires) and a randomly generated unique number or other identifier.",
+      "There are many functions of cookies. Cookies enable you to move around our website and use its features. Without these cookies, you may experience problems using our website. Cookies can also provide us with information about how you use our website.",
+      "Cookies can be used to show you adverts that are relevant to you, based on your browsing habits, and used to personalise your user experience. For example, to personalise your experience, cookies can help us to remember your account details or username and preferences, analyse how well our website is performing or even allow us to recommend content we believe will be most relevant to you.",
+      "Certain cookies can collect personal information, other cookies used do not collect information that identifies you and will instead collect more general information such as how users arrive at and use our website or a user's general location.",
     ],
   },
   {
@@ -1724,9 +1731,9 @@ export const COOKIE_POLICY_DATA = [
     intro:
       "If you have questions about our cookie practices or how to manage your preferences, please contact us:",
     contactInfo: {
-      name: "Belvedere Pharmacy",
-      address: ["11 Picardy Street", "Belvedere, Kent DA17 5QQ"],
-      phone: "+44 (0) 123 456 7890",
+      name: "Belvedere Pharmacy (MECKAY LIMITED)",
+      address: ["Oakhurst, St Pauls Wood Hill", "Orpington, Kent BR5 2SR"],
+      phone: "+44 (0) 1234 567890",
       email: "info@belvederepharmacy.com",
     },
   },
@@ -1772,8 +1779,10 @@ export const TERMS_AND_CONDITIONS = [
     title: "Introduction",
     type: "paragraphs",
     content: [
-      'Welcome to Belvedere Pharmacy. These Terms and Conditions ("Terms") govern your use of our website, mobile applications, and pharmacy services. By accessing or using our services, you agree to be bound by these Terms. If you do not agree to any part of these Terms, you may not use our services.',
-      "Belvedere Pharmacy is a registered pharmacy located in Belvedere, Kent, UK, licensed and regulated by the General Pharmaceutical Council (GPhC).",
+      "These terms and conditions (the 'Terms') govern your use of our online platform, belvederepharmacy.net (the 'Site') and our smartphone app for iOS and Android devices (the 'App') (the Site and the App being collectively referred to as 'our Platform'), as well as the Services and Products that are made available to you via the Platform.",
+      "We are MECKAY LIMITED, a company registered in England and Wales with company number 06454698 and our registered office at Oakhurst, St. Pauls Wood Hill, Orpington, England, BR5 2SR. We operate a pharmacy which is registered with the General Pharmaceutical Council (GPhC) and our GPhC registration number is 2057431.",
+      "Our superintendent pharmacist is Michael Tweneboa-Koduah and their GPhC registration number is 2057431.",
+      "Please read these Terms carefully and make sure that you understand them. If you wish to access the Products or Services or engage with us via our Platform, you will be asked to agree to these Terms. If you do not accept these Terms, you will not be allowed to access the Products or Services or engage with us via our Platform.",
     ],
   },
   {
@@ -1906,10 +1915,10 @@ export const TERMS_AND_CONDITIONS = [
     beforeText:
       "If you have questions about these Terms and Conditions, please contact us:",
     contactInfo: {
-      name: "Belvedere Pharmacy",
-      address1: "11 Picardy Street",
-      address2: "Belvedere, Kent DA17 5QQ",
-      phone: "+44 (0) 123 456 7890",
+      name: "Belvedere Pharmacy (MECKAY LIMITED)",
+      address1: "Oakhurst, St Pauls Wood Hill",
+      address2: "Orpington, Kent BR5 2SR",
+      phone: "+44 (0) 1234 567890",
       email: "info@belvederepharmacy.com",
     },
   },
@@ -1987,10 +1996,10 @@ export const ABOUT_ACTION_BUTTONS = [
 export const ABOUT_CONTACT_INFO = [
   {
     icon: IconMapPin,
-    label: "Belvedere, Kent",
+    label: "Orpington, Kent",
   },
   {
     icon: IconPhone,
-    label: "+44 (0) 123 456 7890",
+    label: "+44 (0) 1234 567890",
   },
 ];

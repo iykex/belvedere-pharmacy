@@ -202,7 +202,7 @@ export default function Menu({ className }: { className?: string }) {
                     ? "text-background dark:text-foreground hover:text-background/80 dark:hover:text-foreground/80"
                     : "text-foreground hover:text-gray-900 dark:hover:text-foreground/90",
                   isScrolled &&
-                    "bg-background text-foreground hover:text-foreground"
+                  "bg-background text-foreground hover:text-foreground"
                 )}
               >
                 {/* Text */}
@@ -327,7 +327,7 @@ export default function Menu({ className }: { className?: string }) {
                     <div>
                       <p className="text-xs text-white/60">Call Us</p>
                       <p className="text-sm font-semibold text-white">
-                        +44 (0) 123 456 7890
+                        +44 (0) 1234 567890
                       </p>
                     </div>
                   </a>
@@ -337,7 +337,7 @@ export default function Menu({ className }: { className?: string }) {
                       <div>
                         <p className="text-xs text-white/60">Location</p>
                         <p className="text-xs font-semibold text-white">
-                          Belvedere, Kent
+                          Orpington, Kent
                         </p>
                       </div>
                     </div>
@@ -346,7 +346,7 @@ export default function Menu({ className }: { className?: string }) {
                       <div>
                         <p className="text-xs text-white/60">Hours</p>
                         <p className="text-xs font-semibold text-white">
-                          Mon-Fri 9-6
+                          Mon-Fri 9-6:30
                         </p>
                       </div>
                     </div>
