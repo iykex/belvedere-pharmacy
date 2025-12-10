@@ -41,7 +41,7 @@ export function NHSPharmacyFirstSection() {
             <Button
               asChild
               size="lg"
-              className="group bg-[#005EB8] hover:bg-[#005EB8]/90 text-white font-semibold px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+              className="group bg-primary hover:bg-primary/90 text-white font-semibold px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
             >
               <Link href="/pharmacy-first" className="flex items-center gap-2">
                 View All Conditions

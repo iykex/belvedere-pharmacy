@@ -5,6 +5,9 @@ import { ReactNode } from "react";
 import { plusJakartaSans, inter } from "@/lib/fonts";
 import { Footer } from "@/components/shared/footer";
 import { ThemeProvider } from "@/components/providers/theme-provider";
+import FAQChatbot from "@/components/general/faq-chatbot";
+import CookieConsent from "@/components/general/cookie-consent";
+import './hide-dev-overlay.css';
 
 export const metadata: Metadata = getMetadata();
 
@@ -28,8 +31,16 @@ export default function RootLayout({
           <footer className="w-full bg-foreground dark:bg-background">
             <Footer />
           </footer>
+
+          {/* Global Floating Chatbot */}
+          <FAQChatbot />
+
+          {/* Cookie Consent Dialog */}
+          <CookieConsent />
         </ThemeProvider>
       </body>
     </html>
   );
 }
+
+
