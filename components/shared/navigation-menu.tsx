@@ -97,25 +97,31 @@ export default function Menu({ className }: { className?: string }) {
     >
       {/* Info Bar - Always visible */}
       <div
+        onClick={(e) => {
+          // Scroll to top when clicking empty areas of the info bar
+          if (e.target === e.currentTarget) {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
+        }}
         className={cn(
-          "py-2 transition-all duration-300 ease-in-out backdrop-blur-3xl",
+          "py-2 px-3 transition-all duration-300 ease-in-out backdrop-blur-3xl cursor-pointer",
           hasDarkHero && "text-white",
           isScrolled && "bg-background text-foreground"
         )}
       >
-        <div className="flex items-center justify-center sm:gap-4 md:gap-8 px-4 sm:text-sm">
+        <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 sm:gap-x-4 md:gap-x-8">
           {ABOUT_US_INFO_BANNER.map((item) => {
             const Icon = item.icon;
             return (
               <div
                 key={item.title}
                 className={cn(
-                  "flex text-center sm:text-left sm:items-center gap-2 transition-colors duration-300",
+                  "flex items-center gap-1 sm:gap-2 transition-colors duration-300",
                   hasDarkHero && "text-white",
                   isScrolled && "bg-background text-foreground"
                 )}
               >
-                <Icon className=" size-4 text-primary" />
+                <Icon className="size-3 sm:size-4 text-primary flex-shrink-0" />
                 <span
                   className={cn(
                     "hidden sm:inline font-medium text-xs",
@@ -127,7 +133,7 @@ export default function Menu({ className }: { className?: string }) {
                 </span>
                 <span
                   className={cn(
-                    "text-xs font-semibold",
+                    "text-[10px] sm:text-xs font-semibold",
                     hasDarkHero && "text-white",
                     isScrolled && "bg-background text-foreground"
                   )}
@@ -142,8 +148,14 @@ export default function Menu({ className }: { className?: string }) {
 
       {/* Main Navigation */}
       <nav
+        onClick={(e) => {
+          // Scroll to top when clicking empty areas of the navbar
+          if (e.target === e.currentTarget) {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
+        }}
         className={cn(
-          "w-full flex justify-between items-center gap-x-6 px-4 lg:px-8 py-3 font-medium z-50 transition-all duration-300",
+          "w-full flex justify-between items-center gap-x-6 px-4 lg:px-8 py-3 font-medium z-50 transition-all duration-300 cursor-pointer",
           hasDarkHero
             ? "text-background dark:text-foreground"
             : "text-foreground dark:text-background",
@@ -151,40 +163,40 @@ export default function Menu({ className }: { className?: string }) {
         )}
       >
         {/* Brand */}
-        <div className="flex gap-x-3 items-center">
-          <Link href="/" className="relative group">
+        <div className="flex gap-x-2 sm:gap-x-3 items-center">
+          <Link href="/" className="relative group flex items-center gap-2 sm:gap-3">
             <Image
               src="/logo/belvedere-logo.png"
               alt="Belvedere"
               width={64}
               height={64}
-              className="relative z-10 scale-50 sm:scale-100"
+              className="relative z-10 w-10 h-10 sm:w-16 sm:h-16"
             />
+            <div className="flex flex-col">
+              <p
+                className={cn(
+                  "font-bold text-sm sm:text-lg leading-tight transition-colors duration-300",
+                  hasDarkHero
+                    ? "text-white dark:text-foreground"
+                    : "text-foreground",
+                  isScrolled && "text-foreground"
+                )}
+              >
+                Belvedere
+              </p>
+              <p
+                className={cn(
+                  "text-xs sm:text-base leading-tight transition-colors duration-300",
+                  hasDarkHero
+                    ? "text-white/80 dark:text-foreground/80"
+                    : "text-foreground/80",
+                  isScrolled && "text-foreground/80"
+                )}
+              >
+                Pharmacy
+              </p>
+            </div>
           </Link>
-          <div className="hidden min-[450px]: lg:flex items-center gap-2">
-            <p
-              className={cn(
-                "font-bold text-lg leading-tight transition-colors duration-300",
-                hasDarkHero
-                  ? "text-background dark:text-foreground"
-                  : "text-foreground",
-                isScrolled && "bg-background text-foreground"
-              )}
-            >
-              Belvedere
-            </p>
-            <p
-              className={cn(
-                "text-xs lg:text-lg text-center transition-colors duration-300",
-                hasDarkHero
-                  ? "text-background dark:text-foreground"
-                  : "text-foreground",
-                isScrolled && "bg-background text-foreground"
-              )}
-            >
-              Pharmacy
-            </p>
-          </div>
         </div>
 
         {/* Navigation Links Desktop Only */}
@@ -202,7 +214,7 @@ export default function Menu({ className }: { className?: string }) {
                     ? "text-background dark:text-foreground hover:text-background/80 dark:hover:text-foreground/80"
                     : "text-foreground hover:text-gray-900 dark:hover:text-foreground/90",
                   isScrolled &&
-                    "bg-background text-foreground hover:text-foreground"
+                  "bg-background text-foreground hover:text-foreground"
                 )}
               >
                 {/* Text */}
@@ -270,19 +282,22 @@ export default function Menu({ className }: { className?: string }) {
           <ModeToggle />
         </div>
 
-        {/* Mobile Only */}
-        <div className="lg:hidden">
+        {/* Mobile Only - Theme Toggle + Menu */}
+        <div className="lg:hidden flex items-center gap-3">
+          <ModeToggle />
           <Sheet>
             <SheetTrigger asChild>
               <Button
+                variant="ghost"
+                size="icon"
                 className={cn(
-                  "transition-all duration-300 bg-transparent border-0  p-0! h-fit w-fit rounded-none shadow-none",
-                  hasDarkHero
-                    ? "text-background dark:text-foreground"
-                    : "text-foreground dark:text-background"
+                  "transition-all duration-300 h-10 w-10 rounded-lg",
+                  hasDarkHero && !isScrolled
+                    ? "text-white hover:bg-white/10"
+                    : "text-foreground hover:bg-foreground/10"
                 )}
               >
-                <MenuIcon className="size-6 text-foreground dark:text-white" />
+                <MenuIcon className="size-6" />
               </Button>
             </SheetTrigger>
             <SheetContent
@@ -327,7 +342,7 @@ export default function Menu({ className }: { className?: string }) {
                     <div>
                       <p className="text-xs text-white/60">Call Us</p>
                       <p className="text-sm font-semibold text-white">
-                        +44 (0) 123 456 7890
+                        +44 (0) 1234 567890
                       </p>
                     </div>
                   </a>
@@ -337,7 +352,7 @@ export default function Menu({ className }: { className?: string }) {
                       <div>
                         <p className="text-xs text-white/60">Location</p>
                         <p className="text-xs font-semibold text-white">
-                          Belvedere, Kent
+                          Orpington, Kent
                         </p>
                       </div>
                     </div>
@@ -346,22 +361,46 @@ export default function Menu({ className }: { className?: string }) {
                       <div>
                         <p className="text-xs text-white/60">Hours</p>
                         <p className="text-xs font-semibold text-white">
-                          Mon-Fri 9-6
+                          Mon-Fri 9-6:30
                         </p>
                       </div>
                     </div>
+                  </div>
+
+                  {/* Action Buttons - Below location/hours */}
+                  <div className="flex gap-2 mt-4">
+                    <Button
+                      asChild
+                      className="flex-1 bg-primary hover:bg-primary/90 py-2.5 rounded-xl overflow-hidden text-sm font-semibold"
+                    >
+                      <Link
+                        href="https://shop.belvederepharmacy.net/appointments/viewallservices/all?pharmacy=378&type=redirection"
+                        className="flex items-center justify-center gap-2"
+                      >
+                        Book Appointment
+                      </Link>
+                    </Button>
+                    <Button
+                      asChild
+                      variant="outline"
+                      className="flex-1 py-2.5 rounded-xl border-white/20 bg-white/10 hover:bg-white/20 text-white text-sm font-semibold"
+                    >
+                      <Link
+                        href="https://app.belvederepharmacy.net/#/auth/signin"
+                        className="flex items-center justify-center"
+                      >
+                        Order Prescriptions
+                      </Link>
+                    </Button>
                   </div>
                 </div>
               </div>
 
               {/* Mobile Navigation Links */}
-              <div className="p-6 space-y-2 h-full overflow-scroll">
-                <div className="mb-4 flex items-center justify-between pr-2.5 ">
-                  <p className="text-sm mt-1 font-semibold text-gray-400 uppercase tracking-wider w-fit">
-                    Menu
-                  </p>
-                  <ModeToggle />
-                </div>
+              <div className="p-6 space-y-2 flex-1 overflow-y-auto">
+                <p className="text-sm mb-4 font-semibold text-gray-400 uppercase tracking-wider">
+                  Menu
+                </p>
                 {MENU_LINKS.map((item) => {
                   const isActive = pathname === item.href;
                   return (
@@ -388,34 +427,6 @@ export default function Menu({ className }: { className?: string }) {
                     </SheetClose>
                   );
                 })}
-              </div>
-
-              {/* Mobile Action Buttons */}
-              <div className="max-[349px]:flex-col flex gap-2 p-2">
-                <Button
-                  asChild
-                  className="group w-fit max-[349px]:w-full max-[349px]: grow bg-primary hover:bg-primary/90 py-2 rounded-md overflow-hidden"
-                >
-                  <Link
-                    href="https://shop.belvederepharmacy.net/appointments/viewallservices/all?pharmacy=378&type=redirection"
-                    className="flex items-center justify-center gap-2 font-semibold"
-                  >
-                    Book Appointment{" "}
-                    {/* <ArrowRight className=" stroke-3 z-10 size-4 transition-transform duration-300 group-hover:translate-x-1" /> */}
-                  </Link>
-                </Button>
-                <Button
-                  asChild
-                  variant="outline"
-                  className="w-fit py-2  max-[349px]:w-full grow rounded-md border-gray-200 text-gray-700 hover:bg-gray-50 hover:border-gray-300"
-                >
-                  <Link
-                    href="https://app.belvederepharmacy.net/#/auth/signin"
-                    className="font-semibold dark:text-white"
-                  >
-                    Order Prescriptions
-                  </Link>
-                </Button>
               </div>
             </SheetContent>
           </Sheet>

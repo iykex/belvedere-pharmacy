@@ -28,11 +28,11 @@ export default function ModeToggle() {
         <Button
           variant="outline"
           size="icon"
-          className="lg:backdrop-blur-3xl group hover:text-primary hover:scale-105 border-0 w-fit h-fit lg:w-full lg:h-full shadow-none bg-background! lg:bg-transparent! rounded-none size-auto lg:p-1.5 lg:rounded-full"
+          className="lg:backdrop-blur-3xl group hover:text-primary hover:scale-105 border-0 w-fit h-fit lg:w-full lg:h-full shadow-none bg-transparent! rounded-none size-auto lg:p-1.5 lg:rounded-full"
           asChild
         >
           <Sun
-            className="lg:size-5 lg:stroke-3 bg-background lg:bg-transparent"
+            className="lg:size-5 lg:stroke-3 bg-transparent"
             onClick={() => changeTheme("dark")}
           />
         </Button>
@@ -42,11 +42,11 @@ export default function ModeToggle() {
         <Button
           variant="outline"
           size="icon"
-          className="lg:backdrop-blur-3xl group hover:text-primary hover:scale-105 border-0 w-fit h-fit lg:w-full lg:h-full shadow-none bg-background! lg:bg-transparent! rounded-none size-auto lg:p-1.5 lg:rounded-full"
+          className="lg:backdrop-blur-3xl group hover:text-primary hover:scale-105 border-0 w-fit h-fit lg:w-full lg:h-full shadow-none bg-transparent! rounded-none size-auto lg:p-1.5 lg:rounded-full"
           asChild
         >
           <Moon
-            className="lg:size-5 lg:stroke-3 bg-background lg:bg-transparent"
+            className="lg:size-5 lg:stroke-3 bg-transparent"
             onClick={() => changeTheme("light")}
           />
         </Button>

@@ -20,15 +20,15 @@ export default function CookiePolicyPage() {
             Understanding how we use cookies to enhance your experience
           </p>
           <p className="text-sm text-gray-500 dark:text-white/60 z-10">
-            Last updated: December 2024
+            Last updated: 1st May 2024
           </p>
         </WidthConstraint>
       </section>
 
       {/* Content Section */}
-      <section>
-        <WidthConstraint className="space-y-12">
-          <div className="max-w-3xl mx-auto space-y-10">
+      <section className="bg-white dark:bg-transparent">
+        <WidthConstraint className="py-8 lg:py-12">
+          <div className="max-w-4xl mx-auto space-y-12 px-6 sm:px-10 lg:px-16">
             {COOKIE_POLICY_DATA.map((section, idx) => (
               <article key={idx} className="space-y-4">
                 <h2 className="text-3xl font-bold text-gray-900 dark:text-white z-10 flex items-center gap-3">
@@ -64,18 +64,18 @@ export default function CookiePolicyPage() {
                         const textColor = isPrimary
                           ? "text-primary"
                           : isChart2
-                          ? "text-chart-2"
-                          : "text-chart-3";
+                            ? "text-chart-2"
+                            : "text-chart-3";
                         const bgColor = isPrimary
                           ? "bg-primary/10"
                           : isChart2
-                          ? "bg-chart-2/10"
-                          : "bg-chart-3/10";
+                            ? "bg-chart-2/10"
+                            : "bg-chart-3/10";
                         const borderColor = isPrimary
                           ? "border-primary/20"
                           : isChart2
-                          ? "border-chart-2/20"
-                          : "border-chart-3/20";
+                            ? "border-chart-2/20"
+                            : "border-chart-3/20";
 
                         return (
                           <div

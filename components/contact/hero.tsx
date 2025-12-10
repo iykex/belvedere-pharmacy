@@ -6,7 +6,7 @@ export default function Hero() {
   return (
     <section className="relative min-h-[50vh] flex items-center overflow-hidden bg-linear-to-br from-[#002f4b] via-[#003d5c] to-[#004a6d] dark:bg-linear-to-br dark:from-[#000b16] dark:via-[#001528] dark:to-[#00101f] ">
       {/* Background Pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,153,0,0.1),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(249,168,37,0.1),transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(0,191,255,0.08),transparent_50%)]" />
 
       {/* Decorative Elements */}

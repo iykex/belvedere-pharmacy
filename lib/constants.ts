@@ -74,15 +74,15 @@ export const MENU_LINKS = [
 ];
 
 export const ABOUT_US_INFO_BANNER = [
-  { title: "Find Us", description: "Belvedere, Kent", icon: IconMapPin },
+  { title: "Find Us", description: "Orpington, BR5 2SR", icon: IconMapPin },
   {
     title: "Opening Hours",
-    description: "Mon-Fri: 9am-6pm",
+    description: "Mon-Fri: 9am-6:30pm",
     icon: IconClockHour5,
   },
   {
     title: "Call Us",
-    description: "+44 (0) 123 456 7890",
+    description: "+44 (0) 1234 567890",
     icon: IconPhoneOutgoing,
   },
 ];
@@ -244,10 +244,10 @@ export const LEGAL_LINKS = [
 ];
 
 export const CONTACT_ITEMS = [
-  "123 High Street",
-  "Belvedere, London",
-  "DA17 6HE",
-  "020 1234 5678",
+  "OAKHURST, ST PAULS WOOD HILL",
+  "Orpington, Kent",
+  "BR5 2SR",
+  "+44 (0) 1234 567890",
   "info@belvederepharmacy.co.uk",
 ];
 
@@ -858,8 +858,8 @@ export const BELVEDERE_VALUES = [
     title: "Excellence",
     description:
       "We strive for the highest standards in everything we do, from the quality of our services to the expertise of our staff.",
-    color: "from-amber-100 to-amber-50",
-    iconColor: "text-amber-600",
+    color: "from-[#FFF9E6] to-[#FFF3CC]",
+    iconColor: "text-[#F9A825]",
   },
 ];
 
@@ -873,7 +873,7 @@ export const CTA_SECTION_FEATURES_LIST = [
 ];
 
 export const WORKING_HOURS = [
-  { days: "Monday - Friday", hours: "09:00 - 18:00" },
+  { days: "Monday - Friday", hours: "09:00 - 18:30" },
   { days: "Saturday", hours: "09:00 - 14:00" },
   { days: "Sunday", hours: "Closed" },
   { days: "Emergency Service", hours: "24/7 On Call" },
@@ -883,7 +883,7 @@ export const FAQS_CONTACTS_PAGE = [
   {
     question: "What are your opening hours?",
     answer:
-      "We are open Monday to Friday from 9am to 6pm, and Saturday from 9am to 2pm. We are closed on Sundays and Bank Holidays.",
+      "We are open Monday to Friday from 9am to 6:30pm, and Saturday from 9am to 2pm. We are closed on Sundays and Bank Holidays.",
     value: "item-1",
   },
   {
@@ -923,8 +923,8 @@ export const CONTACT_ITEMS_CONTACTS_PAGE = [
     id: "phone",
     icon: IconPhone,
     title: "Phone",
-    content: "+44 (0) 123 456 7890",
-    detail: "Mon-Fri: 9am-6pm, Sat: 9am-2pm",
+    content: "+44 (0) 1234 567890",
+    detail: "Mon-Fri: 9am-6:30pm, Sat: 9am-2pm",
     bgFrom: "from-blue-100",
     bgTo: "to-blue-50",
     bgHoverFrom: "group-hover:from-blue-50",
@@ -947,8 +947,8 @@ export const CONTACT_ITEMS_CONTACTS_PAGE = [
     id: "address",
     icon: IconMapPin,
     title: "Address",
-    content: "11 PICARDY STREET",
-    detail: "BELVEDERE, KENT DA17 5QQ",
+    content: "OAKHURST, ST PAULS WOOD HILL",
+    detail: "ORPINGTON, KENT BR5 2SR",
     bgFrom: "from-emerald-100",
     bgTo: "to-emerald-50",
     bgHoverFrom: "group-hover:from-emerald-50",
@@ -960,7 +960,7 @@ export const CONTACT_ITEMS_CONTACTS_PAGE = [
 export const OPENING_HOURS_CONTACTS_PAGE = [
   {
     day: "Mon - Fri",
-    hours: "09:00 - 18:00",
+    hours: "09:00 - 18:30",
     color: "text-gray-900 dark:text-white/60",
   },
   {
@@ -1027,7 +1027,7 @@ export const CTA_SECTION_CONTACT_INFO = [
   {
     icon: IconPhone,
     label: "Call Us",
-    value: "+44 (0) 123 456 7890",
+    value: "+44 (0) 1234 567890",
     href: "tel:+441234567890",
     isLink: true,
     bgColor: "bg-primary/5",
@@ -1053,7 +1053,7 @@ export const CTA_SECTION_CONTACT_INFO = [
   {
     icon: IconLocation,
     label: "Visit Us",
-    value: "Belvedere, Kent",
+    value: "Orpington, Kent",
     href: "#",
     isLink: false,
     bgColor: "bg-gray-50 dark:bg-primary/5",
@@ -1066,7 +1066,7 @@ export const CTA_SECTION_CONTACT_INFO = [
   {
     icon: IconClock,
     label: "Opening Hours",
-    value: "Mon-Fri: 9am - 6pm",
+    value: "Mon-Fri: 9am - 6:30pm",
     href: "#",
     isLink: false,
     bgColor: "bg-gray-50 dark:bg-primary/5",
@@ -1082,12 +1082,12 @@ export const CONTACT_LOCATION_INFO = [
   {
     icon: IconLocation,
     title: "Location",
-    details: ["11 Picardy Street", "Belvedere, Kent DA17 5QQ"],
+    details: ["Oakhurst, St Pauls Wood Hill", "Orpington, Kent BR5 2SR"],
   },
   {
     icon: IconPhone,
     title: "Phone",
-    details: ["+44 (0) 123 456 7890"],
+    details: ["+44 (0) 1234 567890"],
   },
   {
     icon: IconMail,
@@ -1127,7 +1127,7 @@ export const NOT_FOUND_NAV_ITEMS = [
 export const NOT_FOUND_CONTACT_INFO = {
   phone: {
     label: "Call us",
-    value: "+44 (0) 123 456 7890",
+    value: "+44 (0) 1234 567890",
     href: "tel:+441234567890",
     iconName: "Phone",
   },
@@ -1139,7 +1139,7 @@ export const NOT_FOUND_CONTACT_INFO = {
   },
   address: {
     label: "Visit us",
-    value: "11 Picardy Street, Belvedere, Kent DA17 5QQ",
+    value: "Oakhurst, St Pauls Wood Hill, Orpington, Kent BR5 2SR",
     href: undefined,
     iconName: "MapPin",
   },
@@ -1155,20 +1155,22 @@ export const ERROR_TROUBLESHOOTING_STEPS = [
 ];
 
 export const ERROR_SUPPORT_INFO = {
-  phone: "+44 (0) 123 456 7890",
+  phone: "+44 (0) 1234 567890",
   phoneHref: "tel:+441234567890",
   email: "info@belvederepharmacy.com",
   emailHref: "mailto:info@belvederepharmacy.com",
-  hours: "Mon-Fri: 9am-6pm, Sat: 10am-4pm",
+  hours: "Mon-Fri: 9am-6:30pm, Sat: 9am-2pm",
 };
 
 // Privacy Policy Constants
 export const PRIVACY_POLICY_PERSONAL_INFO = [
-  "Name, date of birth, and contact details (email, phone, address)",
-  "NHS number and prescription details",
-  "Medical history, allergies, and current medications",
-  "Payment information (credit/debit card details)",
-  "Information from healthcare providers with your consent",
+  "Identity data: name, age/date of birth, gender, job title, professional qualifications",
+  "Contact data: postal address, billing and delivery addresses, telephone numbers, email address",
+  "Special category data (sensitive personal data): information about your physical or mental health, health conditions, and other clinical metrics",
+  "Transaction data: purchases and/or orders which are made by you and your payment card or bank transfer details",
+  "Technical data: your online browsing activities, IP address, browser type, version and language, device identifiers",
+  "Profile data: account login details, username, password(s), interests, preferences, feedback and survey responses",
+  "Marketing and communications data: your marketing preferences, communication preferences and correspondence with us",
 ];
 
 export const PRIVACY_POLICY_AUTO_COLLECTED = [
@@ -1306,152 +1308,257 @@ export const PRIVACY_POLICY_SECTIONS = [
     title: "Introduction",
     type: "paragraphs",
     content: [
-      'Belvedere Pharmacy ("we", "us", or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, use our mobile applications, and access our pharmacy services.',
-      "Please read this Privacy Policy carefully. If you do not agree with our policies and practices, please do not use our services. Your continued use of our services signifies your acceptance of this Privacy Policy.",
+      "MECKAY LIMITED values your privacy and is strongly committed to protecting your personal information.",
+      "The purpose of this Privacy Notice is to explain how MECKAY LIMITED handles personal information about you and to outline the rights that you have under applicable data protection legislation. We respect your privacy and want to be transparent about how your personal information will be processed, stored and used when you visit our website, use our online services, our App or our Platform or otherwise engage with us as a customer, a patient, a supplier, a retailer or have any other commercial contract with us.",
+      "Please read the following carefully to understand our practices regarding your personal information and how we will treat it.",
+      "It is important that the personal information that we hold about you is accurate and current. Please keep us informed if your personal information changes during our relationship with you.",
+      "All personal information that we collect or are provided with will only be held and stored in accordance with this Privacy Notice and the UK General Data Protection Regulation (UK GDPR), the Data Protection Act 2018 and any other legislation relating to the protection of personal information (data protection laws).",
     ],
   },
   {
     number: 2,
-    title: "Information We Collect",
-    type: "complexSubsections",
-    subsections: [
-      {
-        title: "2.1 Personal Information",
-        beforeText:
-          "We collect personal information that you voluntarily provide, including:",
-        bulletPoints: PRIVACY_POLICY_PERSONAL_INFO,
-      },
-      {
-        title: "2.2 Automatically Collected Information",
-        beforeText:
-          "When you use our website or apps, we automatically collect:",
-        bulletPoints: PRIVACY_POLICY_AUTO_COLLECTED,
-      },
-      {
-        title: "2.3 Health Data",
-        description:
-          "Health information is special category data under GDPR. We only collect and process health data with your explicit consent and as necessary to provide pharmacy services. This information is handled with the highest level of confidentiality.",
-      },
+    title: "Information About Who We Are",
+    type: "paragraphs",
+    content: [
+      "We are MECKAY LIMITED ('we', 'us' or 'our').",
+      "We are registered with the Information Commissioner's Office (ICO) under reference: 06454698.",
+      "MECKAY LIMITED will be the controller of your personal data unless otherwise stated.",
+      "Postal address: Oakhurst, St. Pauls Wood Hill, Orpington, England, BR5 2SR",
+      "Email address: Belvederepharmacy@yahoo.com",
     ],
   },
   {
     number: 3,
-    title: "Legal Basis for Processing",
-    type: "bulletPointsWithTitles",
-    beforeText: "We process your data on the following legal bases:",
-    bulletPoints: PRIVACY_POLICY_LEGAL_BASIS,
+    title: "What Information Do We Collect About You?",
+    type: "bulletPoints",
+    beforeText:
+      "Personal information or personal data means any information about an individual from which that person can be identified. We may collect, use, store and transfer the following types of personal information about you:",
+    bulletPoints: [
+      "Identity data: name, age/date of birth, gender, job title, professional qualifications, work experience",
+      "Contact data: postal address including billing and delivery addresses, your location, telephone numbers and email address",
+      "Special category data (sensitive personal data): information about your physical or mental health, health conditions, and other clinical metrics including environmental, socio-economic, and behavioural information pertinent to health and wellness",
+      "Transaction data: purchases and/or orders made by you and your payment card or bank transfer details",
+      "Technical data: your online browsing activities on our website, App and Platform, profile and device information including IP address, browser type, version and language, identifiers associated with cookies",
+      "Profile data: account login details including username and password(s), your interests, preferences, feedback and survey responses",
+      "Marketing and communications data: your marketing preferences, communication preferences and correspondence with us",
+      "Publicly available personal information: any which you have shared via public platforms such as social media",
+    ],
+    afterText:
+      "All your personal information will be processed in accordance with this Privacy Notice, and in compliance with all applicable confidentiality guidelines. In some circumstances, we may anonymise your personal information so that it can no longer be associated with you, for research or statistical purposes.",
   },
   {
     number: 4,
-    title: "How We Use Your Information",
-    type: "bulletPoints",
-    beforeText: "We use your information for the following purposes:",
-    bulletPoints: PRIVACY_POLICY_USE_CASES,
-  },
-  {
-    number: 5,
-    title: "Sharing Your Information",
-    type: "bulletPointsWithTitles",
-    beforeText: "We may share your information with:",
-    bulletPoints: PRIVACY_POLICY_SHARING,
-    afterText:
-      "We never sell your personal information to third parties for marketing purposes.",
-  },
-  {
-    number: 6,
-    title: "Data Security",
-    type: "bulletPoints",
-    beforeText:
-      "We implement comprehensive security measures to protect your information:",
-    bulletPoints: PRIVACY_POLICY_SECURITY,
-    afterText:
-      "While we strive to protect your information, no method of transmission over the Internet is 100% secure. We cannot guarantee absolute security.",
-  },
-  {
-    number: 7,
-    title: "Data Retention",
-    type: "bulletPointsWithCategory",
-    beforeText:
-      "We retain your information for as long as necessary to provide services and comply with legal obligations:",
-    bulletPoints: PRIVACY_POLICY_DATA_RETENTION,
-    afterText:
-      "Once the retention period expires, we securely delete or anonymise your information.",
-  },
-  {
-    number: 8,
-    title: "Your Rights",
-    type: "bulletPointsWithTitles",
-    beforeText:
-      "Under UK data protection laws (GDPR and Data Protection Act 2018), you have the following rights:",
-    bulletPoints: PRIVACY_POLICY_USER_RIGHTS,
-    afterText:
-      "To exercise any of these rights, please contact us using the details in section 14.",
-  },
-  {
-    number: 9,
-    title: "Cookies and Tracking Technologies",
-    type: "bulletPointsWithTitles",
-    beforeText: "Our website uses cookies to enhance your experience:",
-    bulletPoints: PRIVACY_POLICY_COOKIES,
-    afterText:
-      "You can control cookies through your browser settings. Please note that disabling some cookies may affect website functionality.",
-  },
-  {
-    number: 10,
-    title: "Third-Party Links",
+    title: "If You Fail to Provide Personal Information",
     type: "paragraphs",
     content: [
-      "Our website may contain links to third-party websites and services. We are not responsible for their privacy practices. We recommend reviewing their privacy policies before providing personal information.",
+      "Where we need to collect personal information by law, legitimate interest or under the terms of a contract we have with you, and you fail to provide that data when requested, we may not be able to perform the contract we have or are trying to enter into with you (for example, to provide you with the requested services).",
+      "In this case, we may have to cancel a service you have with us, but we will notify you if this is the case at the time.",
     ],
   },
   {
-    number: 11,
-    title: "International Data Transfers",
+    number: 5,
+    title: "Third Party Links",
     type: "paragraphs",
     content: [
-      "Your information is stored in the United Kingdom. If we transfer data internationally, we ensure appropriate safeguards are in place under relevant data protection regulations.",
+      "Our website, App and/or our Platform may include links to third party websites, plug-ins and applications. Clicking on those links or enabling those connections may allow third parties to collect or share data about you.",
+      "We do not control these third-party websites and are not responsible for their privacy statements or policies. When you leave our website, App or our Platform, we encourage you to read the privacy policy or privacy notice of every website you visit.",
+    ],
+  },
+  {
+    number: 6,
+    title: "Information You Provide to Us",
+    type: "bulletPoints",
+    beforeText:
+      "Most of the personal information we process is provided to us directly by you for the purpose of providing you with our services. When you provide us with your personal information, it is for the following reasons:",
+    bulletPoints: [
+      "Account and contact details: When you create an account, you provide us with your login credentials, full name, email address, phone number, date of birth, gender, marketing preferences and profile picture",
+      "Special category personal information: Information you provide whilst using the App and/or Platform may be considered sensitive, such as information relating to your health when booking consultations or ordering prescriptions",
+      "Video consultations: Where you book a video consultation, we will not retain or record the video content, but we will be able to add notes to your account which will be retained",
+      "Billing or bank details: When you make a payment, you provide payment information including debit or credit card number, card holder name, card expiry, CVV and billing address",
+      "Customer service: When you contact our customer services team via the App, Platform, email or Chatbot, we collect the information you give us during the interaction",
+    ],
+  },
+  {
+    number: 7,
+    title: "Information We Receive From Others",
+    type: "bulletPoints",
+    beforeText:
+      "In addition to the information you provide us directly, we may receive information about you from third parties. We will only use this information where we have a lawful basis:",
+    bulletPoints: [
+      "Doctors' Surgeries / Hospitals: Surgery and/or hospital staff may provide information about you for the purposes of facilitating services",
+      "Other Partners: We may receive information from third-party partners, for instance in relation to advertising where advertisements are published on partner websites",
+    ],
+    afterText:
+      "Any data which is obtained from third parties will be kept in accordance with this Privacy Notice, and with any additional restrictions imposed by the third party that shared your personal information with us.",
+  },
+  {
+    number: 8,
+    title: "Online Account, App and Platform",
+    type: "paragraphs",
+    content: [
+      "Our website, App and Platform have been designed to improve the online accessibility of appointments, video consultations, manage prescriptions and other advice/services available to you from the comfort of your own home.",
+      "When you sign up to use our online services, App or Platform, we require some of your personal information, including your name and contact details. You are able to access your account and update your personal information within the App or Platform.",
+      "Where you have logged on via your NHS login, you can access and update your medical and/or NHS records by contacting us directly.",
+      "We may collect additional information when you provide feedback, respond to surveys and/or promotions, provide financial information, or communicate with us.",
+      "We also collect information from and about the device(s) used to access the App or Platform, and information about your activity such as how you use and interact with our services.",
+      "Please note that our App and Platform is an NHS integrated app. When you access using your NHS login details, the identity verification services are managed by NHS England.",
+    ],
+  },
+  {
+    number: 9,
+    title: "Payment Information",
+    type: "paragraphs",
+    content: [
+      "We may process your personal information to process payments made for the provision of services. This may include information for identification and verification, such as your name, credit, debit or other card number, card expiration date, and CVV code.",
+      "Any payment transactions carried out by us or our chosen third party provider will be kept secure and encrypted where possible. Our payment partners are currently Ryft Pay and Stripe (being phased out).",
+    ],
+  },
+  {
+    number: 10,
+    title: "Why Do We Process Your Information and What Is Our Legal Basis?",
+    type: "bulletPoints",
+    beforeText:
+      "We will only use your personal information if we have a proper reason to process it and the law allows us to do so. Most commonly, we will use your personal information in the following circumstances:",
+    bulletPoints: [
+      "Where you have consented before the processing",
+      "Where we need to perform a contract we are about to enter or have entered with you",
+      "Where it is necessary for our legitimate interests (or those of a third party) and your interests do not override those interests",
+      "Where it is necessary to protect your vital interests where you are physically or legally incapable of giving consent",
+      "For reasons of substantial public interest or the management of health or social care systems and services",
+      "Where we need to comply with a legal or regulatory obligation",
+    ],
+    afterText:
+      "Whenever you have given us your consent to use your personal information, you have the right to change your mind at any time and withdraw that consent. However, this will not affect the lawfulness of any processing carried out before you withdraw your consent.",
+  },
+  {
+    number: 11,
+    title: "Automated Decision Making",
+    type: "paragraphs",
+    content: [
+      "You will be notified if we make a solely automated decision which produces a legal effect or significantly affects you.",
+      "Unless otherwise agreed with you, we will not use any of your personal information for automated decision making or profiling. Please note you also have a right to object to profiling and solely automated decision making.",
     ],
   },
   {
     number: 12,
-    title: "Children's Privacy",
-    type: "paragraphs",
-    content: [
-      "Our services are intended for adults (18+). We do not knowingly collect personal information from children. If we become aware that a child has provided information, we will delete it immediately.",
+    title: "Who Do We Share Your Information With and Why?",
+    type: "bulletPoints",
+    beforeText:
+      "We sometimes share your personal information with trusted third parties. The reasons we may share your information are:",
+    bulletPoints: [
+      "To provide you with our services",
+      "If we are under a legal or regulatory duty to do so",
+      "If it is necessary to enforce our terms of use or other contractual rights",
+      "To lawfully assist the police or security services with the prevention and detection of crime or terrorist activity",
+      "Where such disclosure is necessary to protect the safety or security of any persons",
+      "Otherwise as permitted under applicable law",
     ],
+    afterText:
+      "We only provide third parties with the information they need to perform their specific services. We work closely with all third parties to ensure your personal data is secure and protected at all times. We do not allow our third-party service providers to use your personal data for their own purposes.",
   },
   {
     number: 13,
-    title: "Data Protection Officer",
+    title: "Marketing",
     type: "paragraphs",
     content: [
-      "We have appointed a Data Protection Officer to oversee our data protection practices. You can contact our DPO with any data protection concerns.",
+      "We strive to provide you with choices regarding certain personal information uses, particularly around marketing and advertising.",
+      "If you have given your consent to receive marketing emails, you can withdraw this at any time, or if we are relying on our legitimate interests to send you marketing, you can object.",
+      "If you have received a direct marketing email from us and no longer wish to receive these, the easiest way to let us know is to click on the unsubscribe link at the bottom of our marketing emails.",
     ],
   },
   {
     number: 14,
-    title: "Contact Information",
-    type: "contact",
-    beforeText:
-      "For questions about this Privacy Policy or to exercise your data rights, please contact us:",
-    contactInfo: {
-      name: "Belvedere Pharmacy",
-      address1: "11 Picardy Street",
-      address2: "Belvedere, Kent DA17 5QQ",
-      phone: "+44 (0) 123 456 7890",
-      email: "info@belvederepharmacy.com",
-      dpoEmail: "dpo@belvederepharmacy.com",
-    },
-    afterText:
-      "You also have the right to lodge a complaint with the Information Commissioner's Office (ICO) at www.ico.org.uk.",
+    title: "Where Is Your Personal Information Processed?",
+    type: "paragraphs",
+    content: [
+      "Sometimes, we will need to share your personal information with third parties and suppliers outside the UK, such as Europe and the USA.",
+      "In the event we need to transfer your personal information outside the UK, we will ensure we have in place adequate safeguards to do so. Our safeguards ensure that your personal information receives the same protection as if it were being processed inside the UK.",
+      "Any transfer of your personal information will follow applicable laws and we will follow the guiding principles of this Privacy Notice.",
+    ],
   },
   {
     number: 15,
-    title: "Changes to This Privacy Policy",
+    title: "What Are My Privacy Rights?",
+    type: "bulletPointsWithTitles",
+    beforeText:
+      "You are able to exercise your rights over the personal information which we process, including:",
+    bulletPoints: [
+      {
+        title: "Right to be informed",
+        desc: "We aim to be transparent within our Privacy Notice and provide you with information about how we use your personal information",
+      },
+      {
+        title: "Right of access",
+        desc: "You have the right to request a copy of any information that we hold about you through a subject access request",
+      },
+      {
+        title: "Right to rectification",
+        desc: "You have the right to request the correction of your personal data when it is incorrect, out of date or incomplete",
+      },
+      {
+        title: "Right to erasure",
+        desc: "You can request the erasure of your personal data when it is no longer necessary, you withdraw consent, or you object to its processing",
+      },
+      {
+        title: "Right to restrict processing",
+        desc: "You can request that we restrict the processing of your personal data in certain circumstances",
+      },
+      {
+        title: "Right to data portability",
+        desc: "Under some circumstances, you can request a copy of the personal data you provided to us in a machine-readable format",
+      },
+      {
+        title: "Right to object",
+        desc: "In some circumstances, you can stop the processing of your personal data for reasons connected to your individual situation",
+      },
+      {
+        title: "Right not to be subject to automated decision making",
+        desc: "You have the right to not be subject to solely automatic decisions that have a legal or similarly significant effect on you",
+      },
+    ],
+    afterText:
+      "You will not have to pay a fee to exercise any of these rights. However, we may charge a reasonable fee if your request is clearly unfounded or excessive. We try to respond to all legitimate requests within one month.",
+  },
+  {
+    number: 16,
+    title: "How Do We Protect Your Personal Information?",
     type: "paragraphs",
     content: [
-      'We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated "Last updated" date. We encourage you to review this policy periodically to stay informed about how we protect your information.',
+      "We have implemented, and will maintain current, reasonable physical, technical, and organisational security measures to protect your personal information from loss, misuse, and unauthorised access, disclosure, alteration, or destruction.",
+      "We use encryption to add an extra layer of protection to your data while it is stored on the App or Platform and for personal information which is transmitted.",
+      "Where we have given you (or where you have chosen) a password which enables you to access certain parts of our service, you are responsible for keeping this password confidential. We ask you not to share a password with anyone.",
+      "Unfortunately, the transmission of information via the internet is not completely secure. Although we have security measures in place to protect your personal information, we cannot guarantee the security of your data transmitted to our sites; any transmission is at your own risk.",
     ],
+  },
+  {
+    number: 17,
+    title: "How Long Do We Retain Your Personal Information?",
+    type: "paragraphs",
+    content: [
+      "Your personal information will be stored in accordance with applicable laws and kept for as long as needed to carry out the purposes described in this policy or as otherwise required by applicable law or NHS mandate.",
+    ],
+  },
+  {
+    number: 18,
+    title: "Can This Privacy Notice Change?",
+    type: "paragraphs",
+    content: [
+      "This Privacy Notice may be amended from time to time. We will post any changes we may make on this page and, where appropriate, notify you via email.",
+    ],
+  },
+  {
+    number: 19,
+    title: "How Can We Help You Further?",
+    type: "contact",
+    beforeText:
+      "If you have any questions or comments, please contact us. For further information on data protection, please visit the Information Commissioner's Office (ICO) website. The ICO regulates data protection. If you feel that your information has not been handled correctly, you have the right to lodge a complaint with the ICO. You can contact them by calling 0303 123 1113.",
+    contactInfo: {
+      name: "MECKAY LIMITED (Belvedere Pharmacy)",
+      address1: "Oakhurst, St Pauls Wood Hill",
+      address2: "Orpington, England, BR5 2SR",
+      phone: "+44 (0) 1234 567890",
+      email: "Belvederepharmacy@yahoo.com",
+    },
   },
 ];
 
@@ -1621,8 +1728,10 @@ export const COOKIE_POLICY_DATA = [
     type: "text",
     title: "What Are Cookies?",
     content: [
-      "Cookies are small text files that are stored on your device (computer, tablet, or mobile phone) when you visit a website. They allow websites to remember information about your visit, such as your preferences and login details.",
-      "Cookies serve important functions, including improving website performance, personalizing your experience, and helping us understand how our website is used.",
+      "Cookies are small text files that are sent to or accessed from your web browser or your device's memory. A cookie typically contains the name of the domain (internet location) from which the cookie originated, the lifetime of the cookie (i.e., when it expires) and a randomly generated unique number or other identifier.",
+      "There are many functions of cookies. Cookies enable you to move around our website and use its features. Without these cookies, you may experience problems using our website. Cookies can also provide us with information about how you use our website.",
+      "Cookies can be used to show you adverts that are relevant to you, based on your browsing habits, and used to personalise your user experience. For example, to personalise your experience, cookies can help us to remember your account details or username and preferences, analyse how well our website is performing or even allow us to recommend content we believe will be most relevant to you.",
+      "Certain cookies can collect personal information, other cookies used do not collect information that identifies you and will instead collect more general information such as how users arrive at and use our website or a user's general location.",
     ],
   },
   {
@@ -1724,9 +1833,9 @@ export const COOKIE_POLICY_DATA = [
     intro:
       "If you have questions about our cookie practices or how to manage your preferences, please contact us:",
     contactInfo: {
-      name: "Belvedere Pharmacy",
-      address: ["11 Picardy Street", "Belvedere, Kent DA17 5QQ"],
-      phone: "+44 (0) 123 456 7890",
+      name: "Belvedere Pharmacy (MECKAY LIMITED)",
+      address: ["Oakhurst, St Pauls Wood Hill", "Orpington, Kent BR5 2SR"],
+      phone: "+44 (0) 1234 567890",
       email: "info@belvederepharmacy.com",
     },
   },
@@ -1772,8 +1881,10 @@ export const TERMS_AND_CONDITIONS = [
     title: "Introduction",
     type: "paragraphs",
     content: [
-      'Welcome to Belvedere Pharmacy. These Terms and Conditions ("Terms") govern your use of our website, mobile applications, and pharmacy services. By accessing or using our services, you agree to be bound by these Terms. If you do not agree to any part of these Terms, you may not use our services.',
-      "Belvedere Pharmacy is a registered pharmacy located in Belvedere, Kent, UK, licensed and regulated by the General Pharmaceutical Council (GPhC).",
+      "These terms and conditions (the 'Terms') govern your use of our online platform, belvederepharmacy.net (the 'Site') and our smartphone app for iOS and Android devices (the 'App') (the Site and the App being collectively referred to as 'our Platform'), as well as the Services and Products that are made available to you via the Platform.",
+      "We are MECKAY LIMITED, a company registered in England and Wales with company number 06454698 and our registered office at Oakhurst, St. Pauls Wood Hill, Orpington, England, BR5 2SR. We operate a pharmacy which is registered with the General Pharmaceutical Council (GPhC) and our GPhC registration number is 2057431.",
+      "Our superintendent pharmacist is Michael Tweneboa-Koduah and their GPhC registration number is 2057431.",
+      "Please read these Terms carefully and make sure that you understand them. If you wish to access the Products or Services or engage with us via our Platform, you will be asked to agree to these Terms. If you do not accept these Terms, you will not be allowed to access the Products or Services or engage with us via our Platform.",
     ],
   },
   {
@@ -1906,10 +2017,10 @@ export const TERMS_AND_CONDITIONS = [
     beforeText:
       "If you have questions about these Terms and Conditions, please contact us:",
     contactInfo: {
-      name: "Belvedere Pharmacy",
-      address1: "11 Picardy Street",
-      address2: "Belvedere, Kent DA17 5QQ",
-      phone: "+44 (0) 123 456 7890",
+      name: "Belvedere Pharmacy (MECKAY LIMITED)",
+      address1: "Oakhurst, St Pauls Wood Hill",
+      address2: "Orpington, Kent BR5 2SR",
+      phone: "+44 (0) 1234 567890",
       email: "info@belvederepharmacy.com",
     },
   },
@@ -1987,10 +2098,10 @@ export const ABOUT_ACTION_BUTTONS = [
 export const ABOUT_CONTACT_INFO = [
   {
     icon: IconMapPin,
-    label: "Belvedere, Kent",
+    label: "Orpington, Kent",
   },
   {
     icon: IconPhone,
-    label: "+44 (0) 123 456 7890",
+    label: "+44 (0) 1234 567890",
   },
 ];
