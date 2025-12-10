@@ -1,13 +1,13 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { useChatbot } from "@/hooks/useChatbot";
-import { ChatToggleButton } from "./faq-chatbot/chat-toggle-button";
-import { ChatHeader } from "./faq-chatbot/chat-header";
-import { ChatMessages } from "./faq-chatbot/chat-messages";
-import { QuickActionsPanel } from "./faq-chatbot/quick-actions-panel";
-import { ContinueChatPrompt } from "./faq-chatbot/continue-chat-prompt";
-import { ChatInput } from "./faq-chatbot/chat-input";
+import { useChatbot } from "@/hooks/use-chat-bot";
+import { ChatToggleButton } from "./chat-toggle-button";
+import { ChatHeader } from "./chat-header";
+import { ChatMessages } from "./chat-messages";
+import { QuickActionsPanel } from "./quick-actions-panel";
+import { ContinueChatPrompt } from "./continue-chat-prompt";
+import { ChatInput } from "./chat-input";
 
 export default function FAQChatbot() {
   const {
@@ -30,7 +30,7 @@ export default function FAQChatbot() {
   } = useChatbot();
 
   return (
-    <>
+    <div>
       {/* Chat Toggle Button */}
       <ChatToggleButton isOpen={isOpen} onClick={toggleChat} />
 
@@ -80,6 +80,6 @@ export default function FAQChatbot() {
           isTyping={isTyping}
         />
       </div>
-    </>
+    </div>
   );
 }

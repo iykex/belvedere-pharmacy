@@ -16,7 +16,7 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import useContactForm from "@/hooks/use-contact-form";
-import { CONTACT_FORM_FIELD_ITEMS } from "@/lib/constants";
+import { CONTACT_FORM_FIELD_ITEMS } from "@/lib/constants/general";
 import { Controller } from "react-hook-form";
 import { Textarea } from "../ui/textarea";
 import EmergencyContact from "./emergency-contact";

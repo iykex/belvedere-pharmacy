@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import {
   ERROR_TROUBLESHOOTING_STEPS,
   ERROR_SUPPORT_INFO,
-} from "@/lib/constants";
+} from "@/lib/constants/general";
 
 export default function Error({
   error,

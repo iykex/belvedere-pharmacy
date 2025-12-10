@@ -6,7 +6,7 @@ import { Controller } from "react-hook-form";
 import useNewsletter from "@/hooks/use-newsletter";
 import { Button } from "../ui/button";
 import WidthConstraint from "../shared/width-constraint";
-import { NEWSLETTER_FEATURES } from "@/lib/constants";
+import { NEWSLETTER_FEATURES } from "@/lib/constants/general";
 import { Spinner } from "../ui/spinner";
 
 export default function NewsletterSection() {

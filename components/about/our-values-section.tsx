@@ -1,4 +1,4 @@
-import { BELVEDERE_VALUES } from "@/lib/constants";
+import { BELVEDERE_VALUES } from "@/lib/constants/data";
 import WidthConstraint from "../shared/width-constraint";
 import SectionHeader from "../general/section-divider-head";
 

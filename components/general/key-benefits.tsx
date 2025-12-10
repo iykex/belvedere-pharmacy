@@ -1,6 +1,6 @@
 import WidthConstraint from "@/components/shared/width-constraint";
 import { Button } from "@/components/ui/button";
-import { KEY_BENEFITS_TEXTS } from "@/lib/constants";
+import { KEY_BENEFITS_TEXTS } from "@/lib/constants/general";
 import { ArrowRight, Check, HandHelping } from "lucide-react";
 import Link from "next/link";
 

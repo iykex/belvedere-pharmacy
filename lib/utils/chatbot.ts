@@ -7,7 +7,7 @@ import {
   IDLE_THRESHOLD_MS,
   KNOWLEDGE_BASE,
 } from "@/lib/constants/chatbot";
-import { Message, ActionButton } from "@/lib/types/chatbot";
+import { Message, ActionButton } from "@/lib/types/general";
 
 // Visitor name helpers
 export function getVisitorName(): string | null {

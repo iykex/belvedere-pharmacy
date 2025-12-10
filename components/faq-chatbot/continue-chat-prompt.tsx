@@ -1,5 +1,5 @@
 import { getChatHistory, clearChatHistory } from "@/lib/utils/chatbot";
-import { Message } from "@/lib/types/chatbot";
+import { Message } from "@/lib/types/general";
 
 interface ContinueChatPromptProps {
   visitorName: string | null;

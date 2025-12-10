@@ -1,4 +1,4 @@
-import { WHY_CHOOSE_US_SERVICES } from "@/lib/constants";
+import { WHY_CHOOSE_US_SERVICES } from "@/lib/constants/general";
 import WidthConstraint from "../shared/width-constraint";
 import SectionHeader from "../general/section-divider-head";
 import { cn } from "@/lib/utils";

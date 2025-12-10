@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Bot, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ActionIcon } from "./action-icon";
-import { Message } from "@/lib/types/chatbot";
+import { Message } from "@/lib/types/general";
 
 interface ChatMessageProps {
   message: Message;

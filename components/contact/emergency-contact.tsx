@@ -6,7 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
-import { EMERGENCY_SERVICES_CONTACTS_PAGE } from "@/lib/constants";
+import { EMERGENCY_SERVICES_CONTACTS_PAGE } from "@/lib/constants/general";
 
 export default function EmergencyContact() {
   return (

@@ -6,7 +6,10 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import bannerImage from "@/public/ui/home-banner.png";
-import { LANDING_PAGE_ACTION_BUTTONS, APP_STORES } from "@/lib/constants";
+import {
+  LANDING_PAGE_ACTION_BUTTONS,
+  APP_STORES,
+} from "@/lib/constants/general";
 
 export default function Banner() {
   return (

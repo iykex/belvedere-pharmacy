@@ -1,7 +1,7 @@
 "use client";
 import { Quote, Star, ArrowRight } from "lucide-react";
 import { useTestimonial } from "@/hooks/use-testimonial";
-import { TESTIMONIALS_DEMO } from "@/lib/constants";
+import { TESTIMONIALS_DEMO } from "@/lib/constants/data";
 import WidthConstraint from "../shared/width-constraint";
 import Image from "next/image";
 import { Button } from "../ui/button";
@@ -105,10 +105,11 @@ export default function Testimonials() {
                 <button
                   key={index}
                   onClick={() => goToTestimonial(index)}
-                  className={`h-2 rounded-full transition-all duration-300 ${index === currentIndex
-                    ? "w-8 bg-primary"
-                    : "w-2 bg-white/30 hover:bg-white/50"
-                    }`}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    index === currentIndex
+                      ? "w-8 bg-primary"
+                      : "w-2 bg-white/30 hover:bg-white/50"
+                  }`}
                   aria-label={`Go to testimonial ${index + 1}`}
                 />
               ))}

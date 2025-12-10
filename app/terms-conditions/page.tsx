@@ -1,7 +1,7 @@
 import Menu from "@/components/shared/navigation-menu";
 import WidthConstraint from "@/components/shared/width-constraint";
 import CTASection from "@/components/shared/cta-section";
-import { TERMS_AND_CONDITIONS } from "@/lib/constants";
+import { TERMS_AND_CONDITIONS } from "@/lib/constants/legal";
 
 export default function TermsPage() {
   return (

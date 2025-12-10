@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import useCookiesPreferences from "@/hooks/use-cookies-preferences";
-import { COOKIE_PREFERENCES_ITEMS } from "@/lib/constants";
+import { COOKIE_PREFERENCES_ITEMS } from "@/lib/constants/cookies";
 
 export default function CookieConsentDialogue() {
   const {

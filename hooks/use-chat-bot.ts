@@ -8,7 +8,7 @@ import {
   isIdleForTooLong,
   findBestResponse,
 } from "@/lib/utils/chatbot";
-import { Message, ActionButton } from "@/lib/types/chatbot";
+import { Message, ActionButton } from "@/lib/types/general";
 
 export function useChatbot() {
   const [isOpen, setIsOpen] = useState(false);

@@ -1,7 +1,7 @@
 import { ArrowRight, Calendar, Shield, Stethoscope } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { NHS_PHARMACY_FIRST_SERVICES } from "@/lib/constants";
+import { NHS_PHARMACY_FIRST_SERVICES } from "@/lib/constants/general";
 import WidthConstraint from "../shared/width-constraint";
 
 export function NHSPharmacyFirstSection() {

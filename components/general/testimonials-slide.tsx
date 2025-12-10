@@ -2,7 +2,7 @@
 import { Quote } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { useTestimonial } from "@/hooks/use-testimonial";
-import { TESTIMONIALS_DEMO } from "@/lib/constants";
+import { TESTIMONIALS_DEMO } from "@/lib/constants/general";
 import WidthConstraint from "../shared/width-constraint";
 import Image from "next/image";
 
@@ -54,9 +54,7 @@ export default function TestimonialsSlide() {
                       <h4 className="text-xl font-bold text-white">
                         {testimonial.name}
                       </h4>
-                      <p className="text-white/60">
-                        {testimonial.role}
-                      </p>
+                      <p className="text-white/60">{testimonial.role}</p>
                     </div>
                   </div>
                 </CardContent>

@@ -1,4 +1,4 @@
-import { TEAM_MEMBERS } from "@/lib/constants";
+import { TEAM_MEMBERS } from "@/lib/constants/data";
 import WidthConstraint from "../shared/width-constraint";
 import { Calendar } from "lucide-react";
 import Image from "next/image";

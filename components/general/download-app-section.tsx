@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import WidthConstraint from "../shared/width-constraint";
-import { APP_STORES, DOWNLOAD_APP_FEATURES } from "@/lib/constants";
+import { APP_STORES, DOWNLOAD_APP_FEATURES } from "@/lib/constants/general";
 import { ArrowRight, Download, Smartphone } from "lucide-react";
 import phoneAppScreenshot from "@/public/ui/phone-app-screenshot.png";
 import mobileApp from "@/public/ui/mobile-app.png";

@@ -5,8 +5,8 @@ import {
   COOKIE_CONSENT_KEY,
   COOKIE_PREFERENCES_KEY,
   DEFAULT_PREFERENCES,
-} from "@/lib/constants";
-import { CookiePreferences } from "@/lib/types";
+} from "@/lib/constants/cookies";
+import { CookiePreferences } from "@/lib/types/general";
 
 export default function useCookiesPreferences() {
   const [mounted, setMounted] = useState(false);

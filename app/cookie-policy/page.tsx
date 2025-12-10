@@ -1,7 +1,7 @@
 import Menu from "@/components/shared/navigation-menu";
 import WidthConstraint from "@/components/shared/width-constraint";
 import CTASection from "@/components/shared/cta-section";
-import { COOKIE_POLICY_DATA } from "@/lib/constants";
+import { COOKIE_POLICY_DATA } from "@/lib/constants/legal";
 
 export default function CookiePolicyPage() {
   return (
@@ -64,18 +64,18 @@ export default function CookiePolicyPage() {
                         const textColor = isPrimary
                           ? "text-primary"
                           : isChart2
-                            ? "text-chart-2"
-                            : "text-chart-3";
+                          ? "text-chart-2"
+                          : "text-chart-3";
                         const bgColor = isPrimary
                           ? "bg-primary/10"
                           : isChart2
-                            ? "bg-chart-2/10"
-                            : "bg-chart-3/10";
+                          ? "bg-chart-2/10"
+                          : "bg-chart-3/10";
                         const borderColor = isPrimary
                           ? "border-primary/20"
                           : isChart2
-                            ? "border-chart-2/20"
-                            : "border-chart-3/20";
+                          ? "border-chart-2/20"
+                          : "border-chart-3/20";
 
                         return (
                           <div

@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { Bot } from "lucide-react";
 import { ChatMessage } from "./chat-message";
-import { Message } from "@/lib/types/chatbot";
+import { Message } from "@/lib/types/general";
 
 interface ChatMessagesProps {
   messages: Message[];

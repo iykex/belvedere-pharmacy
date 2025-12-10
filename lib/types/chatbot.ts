@@ -23,3 +23,8 @@ export interface KnowledgeBaseItem {
   answer: string;
   actions?: ActionButton[];
 }
+
+export interface ChatToggleButtonProps {
+  isOpen: boolean;
+  onClick: () => void;
+}

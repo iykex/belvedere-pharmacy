@@ -1,6 +1,6 @@
 import { CircleParking, Clock, Mail, MapPin, Phone } from "lucide-react";
 import WidthConstraint from "../shared/width-constraint";
-import { WORKING_HOURS, CONTACT_LOCATION_INFO } from "@/lib/constants";
+import { WORKING_HOURS, CONTACT_LOCATION_INFO } from "@/lib/constants/general";
 import { Badge } from "../ui/badge";
 import SectionHeader from "../general/section-divider-head";
 

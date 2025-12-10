@@ -1,5 +1,5 @@
 "use client";
-import { MENU_LINKS, ABOUT_US_INFO_BANNER } from "@/lib/constants";
+import { MENU_LINKS, ABOUT_US_INFO_BANNER } from "@/lib/constants/general";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";

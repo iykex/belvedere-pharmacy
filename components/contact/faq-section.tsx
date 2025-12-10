@@ -4,7 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { FAQS_CONTACTS_PAGE } from "@/lib/constants";
+import { FAQS_CONTACTS_PAGE } from "@/lib/constants/data";
 import WidthConstraint from "../shared/width-constraint";
 import { MessageCircle, Sparkles } from "lucide-react";
 

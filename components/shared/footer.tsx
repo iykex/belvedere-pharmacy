@@ -4,7 +4,7 @@ import {
   FOOTER_LINKS,
   LEGAL_LINKS,
   SOCIAL_LINKS,
-} from "@/lib/constants";
+} from "@/lib/constants/general";
 import WidthConstraint from "../shared/width-constraint";
 
 export function Footer() {
