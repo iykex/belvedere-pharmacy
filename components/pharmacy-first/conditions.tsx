@@ -1,4 +1,4 @@
-import { PFP_CONDITIONS } from "@/lib/constants";
+import { PFP_CONDITIONS } from "@/lib/constants/data";
 import SectionHeader from "../general/section-divider-head";
 import WidthConstraint from "../shared/width-constraint";
 import { Calendar } from "lucide-react";

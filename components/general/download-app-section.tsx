@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import WidthConstraint from "../shared/width-constraint";
-import { APP_STORES, DOWNLOAD_APP_FEATURES } from "@/lib/constants";
+import { APP_STORES, DOWNLOAD_APP_FEATURES } from "@/lib/constants/general";
 import { ArrowRight, Download, Smartphone } from "lucide-react";
 import phoneAppScreenshot from "@/public/ui/phone-app-screenshot.png";
 import mobileApp from "@/public/ui/mobile-app.png";
@@ -73,7 +73,7 @@ export default function DownloadAppSection() {
                 <Link
                   key={store.name}
                   href={store.href}
-                  className="group grow flex items-center gap-3 bg-gray-900 dark:bg-gray-800 hover:bg-gray-800 dark:hover:bg-gray-700 text-white px-6 py-4 rounded-xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1 z-10"
+                  className="group grow flex items-center gap-3 bg-gray-900  hover:bg-gray-800   dark:bg-white/10 dark:hover:bg-white/20 text-white px-6 py-4 rounded-xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1 z-10"
                 >
                   <div className="bg-white/10 p-2 rounded-lg">
                     <Image

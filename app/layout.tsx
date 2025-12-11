@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
+import "@/styles/hide-dev-overlay.css";
 import { getMetadata } from "@/lib/metadata";
 import { ReactNode } from "react";
 import { plusJakartaSans, inter } from "@/lib/fonts";
 import { Footer } from "@/components/shared/footer";
 import { ThemeProvider } from "@/components/providers/theme-provider";
-import FAQChatbot from "@/components/general/faq-chatbot";
-import CookieConsent from "@/components/general/cookie-consent";
-import './hide-dev-overlay.css';
+import FAQChatbot from "@/components/faq-chatbot/faq-chatbot";
+import CookieConsentDialogue from "@/components/general/cookie-consent";
 
 export const metadata: Metadata = getMetadata();
 
@@ -31,16 +31,10 @@ export default function RootLayout({
           <footer className="w-full bg-foreground dark:bg-background">
             <Footer />
           </footer>
-
-          {/* Global Floating Chatbot */}
           <FAQChatbot />
-
-          {/* Cookie Consent Dialog */}
-          <CookieConsent />
+          <CookieConsentDialogue bubbleStateClassName="hidden lg:block " />
         </ThemeProvider>
       </body>
     </html>
   );
 }
-
-

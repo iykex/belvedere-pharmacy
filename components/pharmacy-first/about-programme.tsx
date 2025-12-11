@@ -1,4 +1,4 @@
-import { PFP_BENEFITS } from "@/lib/constants";
+import { PFP_BENEFITS } from "@/lib/constants/general";
 import SectionHeader from "../general/section-divider-head";
 import WidthConstraint from "../shared/width-constraint";
 

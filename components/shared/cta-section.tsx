@@ -3,7 +3,7 @@ import WidthConstraint from "./width-constraint";
 import {
   CTA_SECTION_FEATURES_LIST,
   CTA_SECTION_CONTACT_INFO,
-} from "@/lib/constants";
+} from "@/lib/constants/general";
 import { Button } from "../ui/button";
 import Link from "next/link";
 
@@ -92,7 +92,9 @@ export default function CTASection() {
                       />
                     </div>
                     <div>
-                      <p className="text text-gray-500 dark:text-white/60">{contact.label}</p>
+                      <p className="text text-gray-500 dark:text-white/60">
+                        {contact.label}
+                      </p>
                       <p
                         className={`${contact.valueClass} ${contact.textColor}`}
                       >

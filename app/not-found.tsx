@@ -4,7 +4,10 @@ import Link from "next/link";
 import { Search, Home, MapPin, Phone, Mail, LucideIcon } from "lucide-react";
 import WidthConstraint from "@/components/shared/width-constraint";
 import { Button } from "@/components/ui/button";
-import { NOT_FOUND_NAV_ITEMS, NOT_FOUND_CONTACT_INFO } from "@/lib/constants";
+import {
+  NOT_FOUND_NAV_ITEMS,
+  NOT_FOUND_CONTACT_INFO,
+} from "@/lib/constants/general";
 
 // Icon mapping
 const iconMap: Record<string, LucideIcon> = {

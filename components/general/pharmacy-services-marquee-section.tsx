@@ -2,7 +2,7 @@ import { ForwardRefExoticComponent, RefAttributes } from "react";
 import { Card, CardContent } from "../ui/card";
 import { IconProps, Icon } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
-import { TRUST_BADGES_MARQUEE } from "@/lib/constants";
+import { TRUST_BADGES_MARQUEE } from "@/lib/constants/general";
 import WidthConstraint from "../shared/width-constraint";
 import SectionHeader from "./section-divider-head";
 
@@ -55,7 +55,7 @@ export default function PharmacyServicesMarquee() {
           <div className="text-center sm:max-w-3xl mx-auto mb-4">
             <SectionHeader heading="Why Choose Us" />
             <h2 className="text-section-header font-bold tracking-tight mb-4 text-gray-900 dark:text-white">
-              Trusted 
+              Trusted
               <span className="text-primary ml-1.5">Healthcare Partner</span>
             </h2>
             <p className="text-gray-600 dark:text-gray-300 text-base leading-relaxed md:text-lg">

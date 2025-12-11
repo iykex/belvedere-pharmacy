@@ -1,4 +1,4 @@
-import { TEAM_MEMBERS } from "@/lib/constants";
+import { TEAM_MEMBERS } from "@/lib/constants/data";
 import WidthConstraint from "../shared/width-constraint";
 import { Calendar } from "lucide-react";
 import Image from "next/image";
@@ -20,11 +20,11 @@ export default function TeamSection() {
         </div>
 
         {/* Team Grid */}
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 p-5">
+        <div className="grid gap-8 w-fit place-items-center mx-auto p-5">
           {TEAM_MEMBERS.map((member, index) => (
             <div
               key={index}
-              className="group relative overflow-hidden rounded-2xl bg-card shadow-sm hover:shadow-xl transition-all duration-300"
+              className="group relative overflow-hidden rounded-2xl bg-card shadow-sm hover:shadow-xl transition-all duration-300 max-w-sm"
             >
               {/* Image Area */}
               <div className="relative aspect-square overflow-hidden bg-linear-to-br from-primary/10 to-chart-2/10">

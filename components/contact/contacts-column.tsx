@@ -10,7 +10,7 @@ import { Button } from "../ui/button";
 import {
   CONTACT_ITEMS_CONTACTS_PAGE,
   OPENING_HOURS_CONTACTS_PAGE,
-} from "@/lib/constants";
+} from "@/lib/constants/general";
 import Link from "next/link";
 
 export default function ContactsColumn() {
@@ -73,7 +73,9 @@ export default function ContactsColumn() {
                       : "flex justify-between items-center"
                   }
                 >
-                  <span className="text-gray-600 dark:text-white/60">{item.day}</span>
+                  <span className="text-gray-600 dark:text-white/60">
+                    {item.day}
+                  </span>
                   <span className={`font-medium ${item.color}`}>
                     {item.hours}
                   </span>

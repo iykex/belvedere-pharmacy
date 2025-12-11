@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Service } from "@/lib/types";
+import { Service } from "@/lib/types/general";
 import { CheckCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -37,9 +37,7 @@ export default function ServiceCard({
 
       {/* Content - Always visible */}
       <CardContent className="pt-6 space-y-6">
-        <p className="text-muted-foreground leading-relaxed">
-          {description}
-        </p>
+        <p className="text-muted-foreground leading-relaxed">{description}</p>
 
         <div className="space-y-3">
           {features.map((feature, idx) => (
