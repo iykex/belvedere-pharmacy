@@ -24,7 +24,7 @@ export function ChatHeader({ visitorName, onClose }: ChatHeaderProps) {
         </div>
         <div className="flex-1">
           <div className="flex items-center gap-1">
-            <h3 className="font-bold text-lg">Mercy</h3>
+            <h3 className="font-bold text-lg">Bella</h3>
             <IconUserSearch
               stroke={3}
               className="size-4 text-yellow-300 mt-1"

@@ -45,7 +45,7 @@ export function useChatbot() {
           {
             id: "welcome",
             role: "bot",
-            content: `Welcome back, ${cachedName}! 👋 I'm Mercy, your Belvedere Pharmacy assistant. How can I help you today?`,
+            content: `Welcome back, ${cachedName}! 👋 I'm Bella, your Belvedere Pharmacy assistant. How can I help you today?`,
             timestamp: new Date(),
             actions: [
               {
@@ -69,7 +69,7 @@ export function useChatbot() {
           id: "ask-name",
           role: "bot",
           content:
-            "Hello! 👋 I'm Mercy, your Belvedere Pharmacy assistant. Before we start, may I know your name?",
+            "Hello! 👋 I'm Bella, your Belvedere Pharmacy assistant. Before we start, may I know your name?",
           timestamp: new Date(),
         },
       ]);
