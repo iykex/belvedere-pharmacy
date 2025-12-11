@@ -21,11 +21,12 @@ import {
 import useNavigationMenu from "@/hooks/use-navigation-menu";
 import { cn } from "@/lib/utils";
 import { ButtonVariants } from "@/lib/types/general";
+import CookieConsentDialogue from "../general/cookie-consent";
 
 export default function MobileMenu() {
   const { hasDarkHero, isScrolled, pathname } = useNavigationMenu();
   return (
-    <div className="lg:hidden flex items-center gap-3">
+    <div className="lg:hidden flex items-center gap-3 relative">
       <ModeToggle />
       <Sheet>
         <SheetTrigger asChild>
@@ -72,20 +73,24 @@ export default function MobileMenu() {
 
             {/* Quick Contact - In Header */}
             <div className="grid grid-cols-1 gap-3">
-              <Link
-                href="tel:+441234567890"
-                className="flex items-center gap-3 bg-white/10 hover:bg-white/20 rounded-xl p-3 transition-colors"
-              >
-                <div className="p-2 bg-primary rounded-lg">
-                  <Phone className="size-4 text-white" />
-                </div>
-                <div>
-                  <p className="text-xs text-white/60">Call Us</p>
-                  <p className="text-sm font-semibold text-white">
-                    +44 (0) 1234 567890
-                  </p>
-                </div>
-              </Link>
+              <div className="w-full bg-white/10 hover:bg-white/20 rounded-xl relative">
+                <Link
+                  href="tel:+441234567890"
+                  className="flex items-center gap-3 p-3 transition-colors w-fit"
+                >
+                  <div className="p-2 bg-primary rounded-lg">
+                    <Phone className="size-4 text-white" />
+                  </div>
+                  <div>
+                    <p className="text-xs text-white/60">Call Us</p>
+                    <p className="text-sm font-semibold text-white">
+                      +44 (0) 1234 567890
+                    </p>
+                  </div>
+                </Link>
+                <CookieConsentDialogue bubbleStateClassName="lg:hidden absolute left-[85%] bottom-2" />
+              </div>
+
               <div className="flex gap-3">
                 {CONTACT_INFO_MOBILE_MENU.map((info) => {
                   const Icon = info.icon;

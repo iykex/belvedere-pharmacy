@@ -1,14 +1,14 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import WidthConstraint from "./width-constraint";
 import useNavigationMenu from "@/hooks/use-navigation-menu";
 import InfoBar from "../navigation/info-bar";
 import Brand from "../navigation/brand";
-import DesktopMenu from "../navigation/desktop-menu";
+import { DesktopMenuButtons, DesktopMenu } from "../navigation/desktop-menu";
 import MobileMenu from "../navigation/mobile-menu";
+import WidthConstraint from "../shared/width-constraint";
 
-export default function Menu({ className }: { className?: string }) {
+export default function NavigationMenu({ className }: { className?: string }) {
   const { hasDarkHero, isScrolled, navMenu } = useNavigationMenu();
   return (
     <div
@@ -37,6 +37,7 @@ export default function Menu({ className }: { className?: string }) {
         >
           <Brand />
           <DesktopMenu />
+          <DesktopMenuButtons />
           <MobileMenu />
         </nav>
       </WidthConstraint>
