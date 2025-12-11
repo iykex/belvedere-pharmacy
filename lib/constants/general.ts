@@ -800,3 +800,35 @@ export const ABOUT_CONTACT_INFO = [
     label: "+44 (0) 1234 567890",
   },
 ];
+
+export const DARK_HERO_PAGES = ["/", "/about-us", "/contact-us"];
+
+export const CONTACT_INFO_MOBILE_MENU = [
+  {
+    icon: IconMapPin,
+    label: "Location",
+    value: "Orpington, Kent",
+  },
+  {
+    icon: IconClock,
+    label: "Hours",
+    value: "Mon-Fri 9-6:30",
+  },
+];
+
+export const ACTION_BUTTONS_MOBILE_MENU = [
+  {
+    label: "Book Appointment",
+    href: "https://shop.belvederepharmacy.net/appointments/viewallservices/all?pharmacy=378&type=redirection",
+    variant: undefined,
+    className:
+      "flex-1 bg-primary hover:bg-primary/90 py-2.5 rounded-xl overflow-hidden text-sm font-semibold",
+  },
+  {
+    label: "Order Prescriptions",
+    href: "https://app.belvederepharmacy.net/#/auth/signin",
+    variant: "outline",
+    className:
+      "flex-1 py-2.5 rounded-xl border-white/20 bg-white/10 hover:bg-white/20 text-white text-sm font-semibold",
+  },
+];
