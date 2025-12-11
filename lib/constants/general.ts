@@ -135,39 +135,39 @@ export const FOOTER_LINKS = [
 ];
 
 export const SOCIAL_LINKS = [
-  {
-    label: "Facebook",
-    href: "https://facebook.com/your-page",
-    icon: IconBrandFacebook,
-  },
-  {
-    label: "Twitter",
-    href: "https://twitter.com/your-handle",
-    icon: IconBrandX,
-  },
-  {
-    label: "Instagram",
-    href: "https://instagram.com/your-page",
-    icon: IconBrandInstagram,
-  },
-  {
-    label: "LinkedIn",
-    href: "https://linkedin.com/company/your-company",
-    icon: IconBrandLinkedin,
-  },
+  // {
+  //   label: "Facebook",
+  //   href: "https://facebook.com/your-page",
+  //   icon: IconBrandFacebook,
+  // },
+  // {
+  //   label: "Twitter",
+  //   href: "https://twitter.com/your-handle",
+  //   icon: IconBrandX,
+  // },
+  // {
+  //   label: "Instagram",
+  //   href: "https://instagram.com/your-page",
+  //   icon: IconBrandInstagram,
+  // },
+  // {
+  //   label: "LinkedIn",
+  //   href: "https://linkedin.com/company/your-company",
+  //   icon: IconBrandLinkedin,
+  // },
   {
     label: "WhatsApp",
-    href: "https://wa.me/your-phone-number",
+    href: "https://wa.me/+44(0)1234567890",
     icon: IconBrandWhatsapp,
   },
   {
     label: "Phone",
-    href: "tel:+233[your-phone-number]",
+    href: "tel:+44(0)1234567890",
     icon: IconPhone,
   },
   {
     label: "Email",
-    href: "mailto:[your-email]@example.com",
+    href: "mailto:info@belvederepharmacy.com",
     icon: IconMail,
   },
 ];
@@ -831,4 +831,12 @@ export const ACTION_BUTTONS_MOBILE_MENU = [
     className:
       "flex-1 py-2.5 rounded-xl border-white/20 bg-white/10 hover:bg-white/20 text-white text-sm font-semibold",
   },
+];
+
+// Pastel accent colors for cards
+export const CARD_COLORS_WHY_CHOOSE_US = [
+  { bg: "bg-[#FFF9E6]", icon: "text-[#F9A825]", hover: "bg-[#F9A825]" },
+  { bg: "bg-[#E8F5E9]", icon: "text-[#2E7D32]", hover: "bg-[#2E7D32]" },
+  { bg: "bg-[#FCE4EC]", icon: "text-[#C62828]", hover: "bg-[#C62828]" },
+  { bg: "bg-[#EDE7F6]", icon: "text-[#5E35B1]", hover: "bg-[#5E35B1]" },
 ];

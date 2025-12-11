@@ -1,19 +1,14 @@
-import { WHY_CHOOSE_US_SERVICES } from "@/lib/constants/general";
+import {
+  CARD_COLORS_WHY_CHOOSE_US,
+  WHY_CHOOSE_US_SERVICES,
+} from "@/lib/constants/general";
 import WidthConstraint from "../shared/width-constraint";
 import SectionHeader from "../general/section-divider-head";
 import { cn } from "@/lib/utils";
 
-// Pastel accent colors for cards
-const CARD_COLORS = [
-  { bg: "bg-[#FFF9E6]", icon: "text-[#F9A825]", hover: "bg-[#F9A825]" },
-  { bg: "bg-[#E8F5E9]", icon: "text-[#2E7D32]", hover: "bg-[#2E7D32]" },
-  { bg: "bg-[#FCE4EC]", icon: "text-[#C62828]", hover: "bg-[#C62828]" },
-  { bg: "bg-[#EDE7F6]", icon: "text-[#5E35B1]", hover: "bg-[#5E35B1]" },
-];
-
 export function WhyChooseUs() {
   return (
-    <section className="relative py-16 bg-[#FFF9E6] dark:bg-[#1a1a0a]">
+    <section className="relative py-16 bg-[#FFF9E6] dark:bg-cyan-950">
       <WidthConstraint className="relative space-y-12">
         <SectionHeader heading="Why choose us" />
         <div className="text-center max-w-3xl mx-auto space-y-2">
@@ -29,7 +24,10 @@ export function WhyChooseUs() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 pb-4">
           {WHY_CHOOSE_US_SERVICES.map((feature, index) => {
             const Icon = feature.icon;
-            const colorSet = CARD_COLORS[index % CARD_COLORS.length];
+            const colorSet =
+              CARD_COLORS_WHY_CHOOSE_US[
+                index % CARD_COLORS_WHY_CHOOSE_US.length
+              ];
 
             return (
               <div
