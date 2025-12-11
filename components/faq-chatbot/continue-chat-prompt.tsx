@@ -8,7 +8,6 @@ interface ContinueChatPromptProps {
 }
 
 export function ContinueChatPrompt({
-  visitorName,
   onContinue,
   onStartNew,
 }: ContinueChatPromptProps) {

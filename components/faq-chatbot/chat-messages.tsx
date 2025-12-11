@@ -9,7 +9,7 @@ interface ChatMessagesProps {
   onScrollEnd: (ref: HTMLDivElement | null) => void;
 }
 
-export function ChatMessages({ messages, isTyping, onScrollEnd }: ChatMessagesProps) {
+export function ChatMessages({ messages, isTyping }: ChatMessagesProps) {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

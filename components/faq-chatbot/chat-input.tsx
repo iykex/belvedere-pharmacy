@@ -30,7 +30,8 @@ export function ChatInput({
   useEffect(() => {
     if (textareaRef.current) {
       textareaRef.current.style.height = "auto";
-      textareaRef.current.style.height = Math.min(textareaRef.current.scrollHeight, 120) + "px";
+      textareaRef.current.style.height =
+        Math.min(textareaRef.current.scrollHeight, 120) + "px";
     }
   }, [input]);
 
@@ -85,9 +86,11 @@ export function ChatInput({
           value={input}
           onChange={(e) => onInputChange(e.target.value)}
           onKeyDown={handleKeyDown}
-          placeholder={isAskingName ? "Enter your name..." : "Type your message..."}
+          placeholder={
+            isAskingName ? "Enter your name..." : "Type your message..."
+          }
           rows={1}
-          className="flex-1 min-h-[40px] max-h-[120px] px-4 py-2.5 bg-white dark:bg-[#002f4b] border border-gray-200 dark:border-[#1a4d6e] rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-sm text-foreground placeholder:text-gray-400 outline-none scrollbar-hide"
+          className="flex-1 min-h-10 max-h-[120px] px-4 py-2.5 bg-white dark:bg-[#002f4b] border border-gray-200 dark:border-[#1a4d6e] rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-sm text-foreground placeholder:text-gray-400 outline-none scrollbar-hide"
         />
 
         <Button
@@ -100,7 +103,11 @@ export function ChatInput({
         </Button>
       </div>
       <p className="text-[10px] text-gray-400 dark:text-gray-500 text-center mt-2">
-        Press <kbd className="px-1 py-0.5 bg-gray-200 dark:bg-gray-700 rounded text-[9px]">Shift+Enter</kbd> for new line • Powered by Belvedere Pharmacy
+        Press{" "}
+        <kbd className="px-1 py-0.5 bg-gray-200 dark:bg-gray-700 rounded text-[9px]">
+          Shift+Enter
+        </kbd>{" "}
+        for new line • Powered by Belvedere Pharmacy
       </p>
     </div>
   );
