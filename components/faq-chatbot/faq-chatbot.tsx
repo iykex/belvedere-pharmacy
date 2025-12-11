@@ -37,7 +37,7 @@ export default function FAQChatbot() {
       {/* Chat Window */}
       <div
         className={cn(
-          "fixed bottom-24 right-6 z-50 w-[calc(100vw-3rem)] sm:w-[400px] max-h-[600px] rounded-2xl shadow-2xl transition-all duration-300 origin-bottom-right",
+          "fixed bottom-14 lg:bottom-24 right-6 z-50 w-[calc(100vw-3rem)] sm:w-[400px] max-h-[600px] rounded-2xl shadow-2xl transition-all duration-300 origin-bottom-right",
           "bg-white dark:bg-[#001d33] border border-gray-200 dark:border-[#1a4d6e]",
           "flex flex-col overflow-hidden",
           isOpen

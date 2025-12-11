@@ -4,7 +4,6 @@ import {
   setVisitorName,
   getChatHistory,
   saveChatHistory,
-  clearChatHistory,
   isIdleForTooLong,
   findBestResponse,
 } from "@/lib/utils/chatbot";
@@ -46,7 +45,7 @@ export function useChatbot() {
           {
             id: "welcome",
             role: "bot",
-            content: `Welcome back, ${cachedName}! 👋 I'm Bella, your Belvedere Pharmacy assistant. How can I help you today?`,
+            content: `Welcome back, ${cachedName}! 👋 I'm Mercy, your Belvedere Pharmacy assistant. How can I help you today?`,
             timestamp: new Date(),
             actions: [
               {
@@ -70,7 +69,7 @@ export function useChatbot() {
           id: "ask-name",
           role: "bot",
           content:
-            "Hello! 👋 I'm Bella, your Belvedere Pharmacy assistant. Before we start, may I know your name?",
+            "Hello! 👋 I'm Mercy, your Belvedere Pharmacy assistant. Before we start, may I know your name?",
           timestamp: new Date(),
         },
       ]);
@@ -101,7 +100,9 @@ export function useChatbot() {
     setShowQuickActions(false);
 
     // Simulate typing delay
-    await new Promise((resolve) => setTimeout(resolve, 800 + Math.random() * 700));
+    await new Promise((resolve) =>
+      setTimeout(resolve, 800 + Math.random() * 700)
+    );
 
     let response: { answer: string; actions?: ActionButton[] };
 
@@ -175,7 +176,6 @@ export function useChatbot() {
   const toggleQuickActions = () => setShowQuickActions(!showQuickActions);
 
   return {
-    // State
     isOpen,
     visitorName,
     isAskingName,
@@ -184,9 +184,7 @@ export function useChatbot() {
     input,
     isTyping,
     showQuickActions,
-    // Setters
     setInput,
-    // Handlers
     handleSend,
     handleQuickAction,
     handleContinueChat,

@@ -1,5 +1,5 @@
-import { Bot, Sparkles, ChevronDown } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { IconUserSearch } from "@tabler/icons-react";
+import { Bot, ChevronDown } from "lucide-react";
 
 interface ChatHeaderProps {
   visitorName: string | null;
@@ -14,7 +14,7 @@ export function ChatHeader({ visitorName, onClose }: ChatHeaderProps) {
   });
 
   return (
-    <div className="bg-gradient-to-r from-primary to-primary/80 p-4 text-white shrink-0">
+    <div className="bg-linear-to-r from-primary to-primary/80 p-4 text-white shrink-0">
       <div className="flex items-center gap-3">
         <div className="relative">
           <div className="size-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
@@ -23,9 +23,12 @@ export function ChatHeader({ visitorName, onClose }: ChatHeaderProps) {
           <span className="absolute bottom-0 right-0 size-3 bg-green-400 rounded-full border-2 border-primary" />
         </div>
         <div className="flex-1">
-          <div className="flex items-center gap-2">
-            <h3 className="font-bold text-lg">Bella</h3>
-            <Sparkles className="size-4 text-yellow-300" />
+          <div className="flex items-center gap-1">
+            <h3 className="font-bold text-lg">Mercy</h3>
+            <IconUserSearch
+              stroke={3}
+              className="size-4 text-yellow-300 mt-1"
+            />
           </div>
           <p className="text-xs text-white/70">
             {today}
