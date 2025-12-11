@@ -1,4 +1,4 @@
-import Menu from "@/components/shared/navigation-menu";
+import Menu from "@/components/navigation/navigation-menu";
 import CTASection from "@/components/shared/cta-section";
 import { HeroSection } from "@/components/pharmacy-first/hero";
 import { AboutSection } from "@/components/pharmacy-first/about-programme";

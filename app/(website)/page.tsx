@@ -1,7 +1,7 @@
 import DownloadAppSection from "@/components/general/download-app-section";
 import KeyBenefits from "@/components/general/key-benefits";
 import Banner from "@/components/general/landing-page-banner";
-import Menu from "@/components/shared/navigation-menu";
+import Menu from "@/components/navigation/navigation-menu";
 import NewsletterSection from "@/components/general/newsletter";
 import { OurProcessSection } from "@/components/general/our-process-section";
 import { NHSPharmacyFirstSection } from "@/components/general/pharmacy-first-services-section";

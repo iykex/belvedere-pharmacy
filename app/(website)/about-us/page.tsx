@@ -1,4 +1,4 @@
-import Menu from "@/components/shared/navigation-menu";
+import Menu from "@/components/navigation/navigation-menu";
 import CTASection from "@/components/shared/cta-section";
 import Banner from "@/components/about/banner";
 import OurStorySection from "@/components/about/our-story-section";

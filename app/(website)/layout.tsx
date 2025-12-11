@@ -5,7 +5,7 @@ import { ReactNode } from "react";
 import { plusJakartaSans, inter } from "@/lib/fonts";
 import { Footer } from "@/components/shared/footer";
 import { ThemeProvider } from "@/components/providers/theme-provider";
-import FAQChatbot from "@/components/general/faq-chatbot";
+import FAQChatbot from "@/components/faq-chatbot/faq-chatbot";
 import CookieConsent from "@/components/general/cookie-consent";
 import './hide-dev-overlay.css';
 
