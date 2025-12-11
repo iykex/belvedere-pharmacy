@@ -2,19 +2,19 @@
 import { Quote } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { useTestimonial } from "@/hooks/use-testimonial";
-import { TESTIMONIALS_DEMO } from "@/lib/constants/general";
 import WidthConstraint from "../shared/width-constraint";
 import Image from "next/image";
+import { TESTIMONIALS } from "@/lib/constants/data";
 
 export default function TestimonialsSlide() {
   const { currentIndex, goToTestimonial, setCarousel } = useTestimonial();
   return (
     <WidthConstraint className="min-[1070px]:p-0 h-full overflow-hidden sm:pb-10 pb-15 px-0 sm:space-y-5 relative sm:static">
       <div className="relative min-h-[300px] h-[95%] flex items-center justify-center">
-        {TESTIMONIALS_DEMO.map((testimonial, index) => {
+        {TESTIMONIALS.map((testimonial, index) => {
           const { opacity, scale, transform, zIndex } = setCarousel(
             index,
-            TESTIMONIALS_DEMO
+            TESTIMONIALS
           );
           return (
             <div
@@ -65,7 +65,7 @@ export default function TestimonialsSlide() {
       </div>
       {/* Dots Indicator */}
       <div className="flex justify-center gap-2 absolute bottom-0 right-0 left-0 sm:static">
-        {TESTIMONIALS_DEMO.map((_, index) => (
+        {TESTIMONIALS.map((_, index) => (
           <button
             key={index}
             onClick={() => goToTestimonial(index)}

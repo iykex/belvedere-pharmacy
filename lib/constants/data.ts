@@ -17,7 +17,18 @@ import weightManagementImage from "@/public/services/weight-management.jpeg";
 import travelClinicImage from "@/public/services/travel-clinic.jpg";
 import cholesterolTestsImage from "@/public/services/cholesterol-tests.jpg";
 import diabetesScreeningImage from "@/public/services/diabetes-screening.png";
-import testimonialAvatar from "@/public/ui/testimonial-avatar.png";
+import adamPeaceImage from "@/public/testimonials/adam-peace.png";
+import alfrnaThompasImage from "@/public/testimonials/alfrina-thomas.png";
+import annMarieMarcroftImage from "@/public/testimonials/ann-marie-marcroft.png";
+import colinBradburyImage from "@/public/testimonials/colin-bradbury.png";
+import elizabethVousdenImage from "@/public/testimonials/elizabeth-vousden.png";
+import jenniferStevensImage from "@/public/testimonials/jennifer-stevens.png";
+import kennethShoreImage from "@/public/testimonials/kenneth-shore.png";
+import kimberleyEllisImage from "@/public/testimonials/kimberley-ellis.png";
+import lesleySellmanImage from "@/public/testimonials/lesley-sellman.png";
+import oebrnImage from "@/public/testimonials/oeben.png";
+import sawenAliImage from "@/public/testimonials/sawen-ali.png";
+import sebastianPodbornyImage from "@/public/testimonials/sebastian_podborny.png";
 import {
   IconAward,
   IconBolt,
@@ -30,38 +41,98 @@ import {
   IconUsers,
 } from "@tabler/icons-react";
 
-export const TESTIMONIALS_DEMO = [
+export const TESTIMONIALS = [
   {
     id: 1,
-    name: "Sarah Johnson",
-    role: "CEO, TechStart Inc",
-    image: testimonialAvatar,
+    name: "Adam Pearce",
+    role: "Local Guide",
+    image: adamPeaceImage,
     content:
-      "Working with this team transformed our business. Their attention to detail and innovative approach exceeded all expectations.",
+      "Often busy but well organised, well stocked and normally pretty quick if they need to order in. Very helpful if you call regarding prescriptions.",
   },
   {
     id: 2,
-    name: "Michael Chen",
-    role: "Product Manager, InnovateCo",
-    image: testimonialAvatar,
+    name: "Elizabeth Vousden",
+    role: "Local Guide",
+    image: elizabethVousdenImage,
     content:
-      "Exceptional service and results. They delivered on time and went above and beyond to ensure our success.",
+      "Always polite, happy and they remember me by name every time. Glad they are always there for me when needed.",
   },
   {
     id: 3,
-    name: "Emily Rodriguez",
-    role: "Director of Marketing, GrowthLab",
-    image: testimonialAvatar,
+    name: "Sawen Ali",
+    role: "Customer",
+    image: sawenAliImage,
     content:
-      "The level of professionalism and expertise is unmatched. Our ROI increased by 300% within the first quarter.",
+      "They are miles better than any experience I had away from home. Especially fantastic when I've needed emergency prescriptions and they've gone out of their way to sort things out. Always kind and professional.",
   },
   {
     id: 4,
-    name: "David Kim",
-    role: "Founder, StartupHub",
-    image: testimonialAvatar,
+    name: "Lesley Sellman",
+    role: "Local Guide",
+    image: lesleySellmanImage,
     content:
-      "A game-changer for our organization. Their strategic insights helped us scale faster than we thought possible.",
+      "Absolutely brilliant staff. I regularly pick up my medication from them. Always helpful and pleasant. I also have my flu and COVID vaccinations with them.",
+  },
+  {
+    id: 5,
+    name: "Jennifer Stevens",
+    role: "Customer",
+    image: jenniferStevensImage,
+    content:
+      "I got my vaccine booster done here and the whole team were amazing. They were working incredibly hard under pressure with closing time approaching. What a lovely team!",
+  },
+  {
+    id: 6,
+    name: "Sebastian Podborny",
+    role: "Customer",
+    image: sebastianPodbornyImage,
+    content:
+      "First time I feel like someone really cares about the customer. They did more than I expected. Many thanks to Aisha and her team.",
+  },
+  {
+    id: 7,
+    name: "Colin Bradbury",
+    role: "Local Guide",
+    image: colinBradburyImage,
+    content:
+      "Went in for a COVID booster jab. I was politely directed and attended to quickly. Nice people — polite and professional.",
+  },
+  {
+    id: 8,
+    name: "Ann Marie Marcroft",
+    role: "Customer",
+    image: annMarieMarcroftImage,
+    content: "The staff are very friendly, reliable and welcoming.",
+  },
+  {
+    id: 9,
+    name: "Alfrina Thomas",
+    role: "Customer",
+    image: alfrnaThompasImage,
+    content:
+      "Top box service from a local pharmacy. Efficient, helpful and pleasant staff.",
+  },
+  {
+    id: 10,
+    name: "Kenneth Shore",
+    role: "Local Guide",
+    image: kennethShoreImage,
+    content: "Great local pharmacy with very helpful and knowledgeable staff.",
+  },
+  {
+    id: 11,
+    name: "OEBEN",
+    role: "Customer",
+    image: oebrnImage,
+    content: "Awesome environment and fast response.",
+  },
+  {
+    id: 12,
+    name: "Kimberley Ellis",
+    role: "Local Guide",
+    image: kimberleyEllisImage,
+    content: "Service was quick and friendly.",
   },
 ];
 

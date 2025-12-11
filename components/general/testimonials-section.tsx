@@ -1,7 +1,7 @@
 "use client";
 import { Quote, Star, ArrowRight } from "lucide-react";
 import { useTestimonial } from "@/hooks/use-testimonial";
-import { TESTIMONIALS_DEMO } from "@/lib/constants/data";
+import { TESTIMONIALS } from "@/lib/constants/data";
 import WidthConstraint from "../shared/width-constraint";
 import Image from "next/image";
 import { Button } from "../ui/button";
@@ -9,7 +9,7 @@ import Link from "next/link";
 
 export default function Testimonials() {
   const { currentIndex, goToTestimonial } = useTestimonial();
-  const currentTestimonial = TESTIMONIALS_DEMO[currentIndex];
+  const currentTestimonial = TESTIMONIALS[currentIndex];
 
   return (
     <section className="py-20 bg-[#002f4b] relative overflow-hidden">
@@ -101,7 +101,7 @@ export default function Testimonials() {
 
             {/* Dots Indicator */}
             <div className="flex justify-center gap-2 mt-6">
-              {TESTIMONIALS_DEMO.map((_, index) => (
+              {TESTIMONIALS.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => goToTestimonial(index)}
