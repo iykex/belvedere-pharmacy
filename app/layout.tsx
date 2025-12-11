@@ -32,7 +32,7 @@ export default function RootLayout({
             <Footer />
           </footer>
           <FAQChatbot />
-          <CookieConsentDialogue />
+          <CookieConsentDialogue bubbleStateClassName="hidden lg:block " />
         </ThemeProvider>
       </body>
     </html>

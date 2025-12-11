@@ -7,7 +7,11 @@ import Link from "next/link";
 import useCookiesPreferences from "@/hooks/use-cookies-preferences";
 import { COOKIE_PREFERENCES_ITEMS } from "@/lib/constants/cookies";
 
-export default function CookieConsentDialogue() {
+export default function CookieConsentDialogue({
+  bubbleStateClassName,
+}: {
+  bubbleStateClassName?: string;
+}) {
   const {
     mounted,
     handleAcceptAllCookies,
@@ -32,9 +36,10 @@ export default function CookieConsentDialogue() {
       <button
         onClick={handleOpenSettings}
         className={cn(
-          "hidden lg:block fixed bottom-6 left-6 z-40 p-2 rounded-full shadow-lg transition-all duration-300 hover:scale-110",
+          "fixed bottom-6 left-6 z-40 p-2 rounded-full shadow-lg transition-all duration-300 hover:scale-110",
           "bg-white dark:bg-[#002f4b] border border-gray-200 dark:border-[#1a4d6e]",
-          "hover:shadow-xl group"
+          "hover:shadow-xl group",
+          bubbleStateClassName
         )}
         aria-label="Cookie settings"
       >
