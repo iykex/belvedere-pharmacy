@@ -1,5 +1,5 @@
 import { QUICK_ACTIONS_DATA } from "@/lib/constants/chatbot";
-import { renderTablerIcon } from "@/lib/utils/icon-renderer";
+import { renderTablerIcon } from "@/components/ui/icon-renderer";
 
 interface QuickActionsPanelProps {
   onQuickAction: (query: string) => void;

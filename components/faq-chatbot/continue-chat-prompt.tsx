@@ -1,4 +1,4 @@
-import { getChatHistory, clearChatHistory } from "@/lib/utils/chatbot";
+import { getChatHistory, clearChatHistory } from "@/lib/chatbot";
 import { Message } from "@/lib/types/general";
 
 interface ContinueChatPromptProps {

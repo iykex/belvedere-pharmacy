@@ -1,11 +1,16 @@
-import { renderTablerIcon } from "@/lib/utils/icon-renderer";
+import { renderTablerIcon } from "@/components/ui/icon-renderer";
 
 interface ActionIconProps {
   icon?: "calendar" | "phone" | "location" | "external" | "prescription";
 }
 
 export function ActionIcon({ icon }: ActionIconProps) {
-  let iconName: "IconCalendar" | "IconPhone" | "IconMapPin" | "IconFileText" | "IconExternalLink";
+  let iconName:
+    | "IconCalendar"
+    | "IconPhone"
+    | "IconMapPin"
+    | "IconFileText"
+    | "IconExternalLink";
 
   switch (icon) {
     case "calendar":

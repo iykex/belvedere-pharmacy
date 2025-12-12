@@ -8,6 +8,7 @@ import { Footer } from "@/components/shared/footer";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import FAQChatbot from "@/components/faq-chatbot/faq-chatbot";
 import CookieConsentDialogue from "@/components/general/cookie-consent";
+import Tracker from "@/components/providers/analytics/tracker";
 
 export const metadata: Metadata = getMetadata();
 
@@ -27,12 +28,14 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <main className="dashed-grid-bg min-h-screen">{children}</main>
-          <footer className="w-full bg-foreground dark:bg-background">
-            <Footer />
-          </footer>
-          <FAQChatbot />
-          <CookieConsentDialogue bubbleStateClassName="hidden lg:block " />
+          <Tracker>
+            <main className="dashed-grid-bg min-h-screen">{children}</main>
+            <footer className="w-full bg-foreground dark:bg-background">
+              <Footer />
+            </footer>
+            <FAQChatbot />
+            <CookieConsentDialogue bubbleStateClassName="hidden lg:block " />
+          </Tracker>
         </ThemeProvider>
       </body>
     </html>
