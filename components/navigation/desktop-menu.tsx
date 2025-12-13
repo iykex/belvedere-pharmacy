@@ -6,6 +6,8 @@ import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
 import ModeToggle from "../shared/theme-mode-toggle";
 import useNavigationMenu from "@/hooks/use-navigation-menu";
+import { track } from "@/lib/analytics/tracker";
+import { TRACKING_EVENTS } from "@/lib/constants/analytics";
 
 export function DesktopMenu() {
   const { hasDarkHero, isScrolled, pathname } = useNavigationMenu();
@@ -61,6 +63,9 @@ export function DesktopMenuButtons() {
   return (
     <div className="hidden lg:flex items-center gap-x-3">
       <Link
+        onClick={() => {
+          track(TRACKING_EVENTS.orderPrescriptionButton, "Order Prescription");
+        }}
         href="https://app.belvederepharmacy.net/#/auth/signin"
         className={cn(
           "group relative px-4 py-2 text-sm font-semibold transition-all duration-300 overflow-hidden rounded-lg hover:text-primary",
@@ -85,6 +90,12 @@ export function DesktopMenuButtons() {
         className="group relative bg-primary hover:bg-primary text-white font-semibold px-6 rounded-lg overflow-hidden transition-all duration-300"
       >
         <Link
+          onClick={() => {
+            track(
+              TRACKING_EVENTS.bookAppointmentButton,
+              "Order Prescription"
+            );
+          }}
           href="https://shop.belvederepharmacy.net/appointments/viewallservices/all?pharmacy=378&type=redirection"
           className="flex items-center gap-2"
         >

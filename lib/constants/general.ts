@@ -1,10 +1,10 @@
 import {
   IconBell,
-  IconBrandFacebook,
-  IconBrandInstagram,
-  IconBrandLinkedin,
+  // IconBrandFacebook,
+  // IconBrandInstagram,
+  // IconBrandLinkedin,
   IconBrandWhatsapp,
-  IconBrandX,
+  // IconBrandX,
   IconBug,
   IconCalendar,
   IconChartPieFilled,
@@ -44,24 +44,94 @@ import { ContactFormFieldsMap } from "../types/general";
 import appStore from "@/public/ui/app-store.png";
 import playStore from "@/public/ui/play-store.png";
 
+export const EXTERNAL_LINKS = {
+  services: {
+    stopSmokingServices:
+      "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5341",
+
+    bloodPressureChecks:
+      "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5343",
+    fluVaccinations:
+      "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5340",
+
+    emergencyContraception:
+      "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5339",
+    covidVaccination:
+      "https://shop.belvederepharmacy.net/appointments/book/service/COVID-19%20Vaccine?pharmacy=378&originalServiceId=5342&type=redirection",
+    earPain:
+      "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5349",
+    infectedInsectBites:
+      "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5347",
+    sinusInfection:
+      "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5348",
+    urinaryTractInfection:
+      "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5344",
+  },
+  socials: {
+    facebook: "",
+    x: "",
+    instagram: "",
+    linkedIn: "",
+    whatsapp: "https://wa.me/+44(0)1234567890",
+    phone: "tel:+44(0)1234567890",
+    email: "mailto:info@belvederepharmacy.com",
+  },
+  actions: {
+    bookAppointment:
+      "https://shop.belvederepharmacy.net/appointments/viewallservices/all?pharmacy=378&type=redirection",
+    orderPrescriptions: "https://app.belvederepharmacy.net/#/auth/signin",
+  },
+  appStore: {
+    ios: "https://apps.apple.com/us/app/belvedere-pharmacy/id6670758281",
+    android:
+      "https://play.google.com/store/apps/details?id=net.belvederepharmacy.app",
+  },
+};
+
+export const INTERNAL_LINKS = {
+  homePage: "/",
+  pharmacyFirstPage: "/pharmacy-first",
+  servicesPage: "/services",
+  aboutPage: "/about-us",
+  contactPage: "/contact-us",
+  termsAndConditionsPage: "/terms-conditions",
+  privacyPolicyPage: "/privacy-policy",
+  cookiePolicyPage: "/cookie-policy",
+};
+
+export const BUSINESS_PROFILE = {
+  name: "Belvedere Pharmacy",
+  propertyName: "OAKHURST",
+  streetName: "ST PAULS WOOD HILL",
+  region: "Orpington, Kent",
+  postCode: "BR5 2SR",
+  openingHours: "Mon-Fri: 9am-6:30pm, Sat: 9am-2pm",
+  phone: "+44 (0) 1234 567890",
+  email: "info@belvederepharmacy.com",
+};
+
 export const MENU_LINKS = [
-  { label: "Home", href: "/" },
-  { label: "Pharmacy First", href: "/pharmacy-first" },
-  { label: "Services", href: "/services" },
-  { label: "About", href: "/about-us" },
-  { label: "Contact", href: "/contact-us" },
+  { label: "Home", href: INTERNAL_LINKS.homePage },
+  { label: "Pharmacy First", href: INTERNAL_LINKS.pharmacyFirstPage },
+  { label: "Services", href: INTERNAL_LINKS.servicesPage },
+  { label: "About", href: INTERNAL_LINKS.aboutPage },
+  { label: "Contact", href: INTERNAL_LINKS.contactPage },
 ];
 
 export const ABOUT_US_INFO_BANNER = [
-  { title: "Find Us", description: "Orpington, BR5 2SR", icon: IconMapPin },
+  {
+    title: "Find Us",
+    description: `${BUSINESS_PROFILE.region},${BUSINESS_PROFILE.postCode}`,
+    icon: IconMapPin,
+  },
   {
     title: "Opening Hours",
-    description: "Mon-Fri: 9am-6:30pm",
+    description: BUSINESS_PROFILE.openingHours,
     icon: IconClockHour5,
   },
   {
     title: "Call Us",
-    description: "+44 (0) 1234 567890",
+    description: BUSINESS_PROFILE.phone,
     icon: IconPhoneOutgoing,
   },
 ];
@@ -100,11 +170,11 @@ export const FOOTER_LINKS = [
   {
     title: "Quick Links",
     items: [
-      { label: "Home", href: "/" },
-      { label: "About Us", href: "/about-us" },
-      { label: "Services", href: "/services" },
-      { label: "Pharmacy First", href: "/pharmacy-first" },
-      { label: "Contact", href: "/contact-us" },
+      { label: "Home", href: INTERNAL_LINKS.homePage },
+      { label: "About", href: INTERNAL_LINKS.aboutPage },
+      { label: "Services", href: INTERNAL_LINKS.servicesPage },
+      { label: "Pharmacy First", href: INTERNAL_LINKS.pharmacyFirstPage },
+      { label: "Contact", href: INTERNAL_LINKS.contactPage },
     ],
   },
   {
@@ -112,23 +182,23 @@ export const FOOTER_LINKS = [
     items: [
       {
         label: "Stop Smoking Services",
-        href: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5341",
+        href: EXTERNAL_LINKS.services.stopSmokingServices,
       },
       {
         label: "Blood Pressure Checks",
-        href: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5343",
+        href: EXTERNAL_LINKS.services.bloodPressureChecks,
       },
       {
         label: "Flu Vaccinations",
-        href: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5340",
+        href: EXTERNAL_LINKS.services.fluVaccinations,
       },
       {
         label: "Emergency Contraception",
-        href: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5339",
+        href: EXTERNAL_LINKS.services.emergencyContraception,
       },
       {
         label: "Covid-19 Vaccination",
-        href: "https://shop.belvederepharmacy.net/appointments/book/service/COVID-19%20Vaccine?pharmacy=378&originalServiceId=5342&type=redirection",
+        href: EXTERNAL_LINKS.services.covidVaccination,
       },
     ],
   },
@@ -137,37 +207,37 @@ export const FOOTER_LINKS = [
 export const SOCIAL_LINKS = [
   // {
   //   label: "Facebook",
-  //   href: "https://facebook.com/your-page",
+  //   href: EXTERNAL_LINKS.socials.facebook,
   //   icon: IconBrandFacebook,
   // },
   // {
-  //   label: "Twitter",
-  //   href: "https://twitter.com/your-handle",
+  //   label: "x",
+  //   href: EXTERNAL_LINKS.socials.x,
   //   icon: IconBrandX,
   // },
   // {
   //   label: "Instagram",
-  //   href: "https://instagram.com/your-page",
+  //   href: EXTERNAL_LINKS.socials.instagram,
   //   icon: IconBrandInstagram,
   // },
   // {
   //   label: "LinkedIn",
-  //   href: "https://linkedin.com/company/your-company",
+  //   href: EXTERNAL_LINKS.socials.linkedIn,
   //   icon: IconBrandLinkedin,
   // },
   {
     label: "WhatsApp",
-    href: "https://wa.me/+44(0)1234567890",
+    href: EXTERNAL_LINKS.socials.whatsapp,
     icon: IconBrandWhatsapp,
   },
   {
     label: "Phone",
-    href: "tel:+44(0)1234567890",
+    href: EXTERNAL_LINKS.socials.phone,
     icon: IconPhone,
   },
   {
     label: "Email",
-    href: "mailto:info@belvederepharmacy.com",
+    href: EXTERNAL_LINKS.socials.email,
     icon: IconMail,
   },
 ];
@@ -175,24 +245,25 @@ export const SOCIAL_LINKS = [
 export const LEGAL_LINKS = [
   {
     label: "Terms & Conditions",
-    href: "/terms-conditions",
+    href: INTERNAL_LINKS.termsAndConditionsPage,
   },
   {
     label: "Privacy Policy",
-    href: "/privacy-policy",
+    href: INTERNAL_LINKS.privacyPolicyPage,
   },
   {
     label: "Cookie Policy",
-    href: "/cookie-policy",
+    href: INTERNAL_LINKS.cookiePolicyPage,
   },
 ];
 
 export const CONTACT_ITEMS = [
-  "OAKHURST, ST PAULS WOOD HILL",
-  "Orpington, Kent",
-  "BR5 2SR",
-  "+44 (0) 1234 567890",
-  "info@belvederepharmacy.co.uk",
+  BUSINESS_PROFILE.propertyName,
+  BUSINESS_PROFILE.streetName,
+  BUSINESS_PROFILE.region,
+  BUSINESS_PROFILE.postCode,
+  BUSINESS_PROFILE.phone,
+  BUSINESS_PROFILE.email,
 ];
 
 export const NEWSLETTER_FEATURES = [
@@ -283,7 +354,7 @@ export const NHS_PHARMACY_FIRST_SERVICES = [
     icon: IconEar,
     color: "text-primary",
     bgColor: "bg-primary/10",
-    href: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5349",
+    href: EXTERNAL_LINKS.services.earPain,
   },
   {
     title: "Infected Insect Bites",
@@ -291,7 +362,7 @@ export const NHS_PHARMACY_FIRST_SERVICES = [
     icon: IconBug,
     color: "text-chart-3",
     bgColor: "bg-chart-3/10",
-    href: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5347",
+    href: EXTERNAL_LINKS.services.infectedInsectBites,
   },
   {
     title: "Sinus Infection",
@@ -299,7 +370,7 @@ export const NHS_PHARMACY_FIRST_SERVICES = [
     icon: IconWind,
     color: "text-chart-2",
     bgColor: "bg-chart-2/10",
-    href: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5348",
+    href: EXTERNAL_LINKS.services.sinusInfection,
   },
   {
     title: "Urinary Tract Infection",
@@ -308,7 +379,7 @@ export const NHS_PHARMACY_FIRST_SERVICES = [
     color: "text-chart-3",
     bgColor: "bg-chart-3/10",
     badge: "Women",
-    href: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5344",
+    href: EXTERNAL_LINKS.services.urinaryTractInfection,
   },
 ];
 
@@ -482,8 +553,8 @@ export const CONTACT_ITEMS_CONTACTS_PAGE = [
     id: "phone",
     icon: IconPhone,
     title: "Phone",
-    content: "+44 (0) 1234 567890",
-    detail: "Mon-Fri: 9am-6:30pm, Sat: 9am-2pm",
+    content: BUSINESS_PROFILE.phone,
+    detail: BUSINESS_PROFILE.openingHours,
     bgFrom: "from-blue-100",
     bgTo: "to-blue-50",
     bgHoverFrom: "group-hover:from-blue-50",
@@ -494,7 +565,7 @@ export const CONTACT_ITEMS_CONTACTS_PAGE = [
     id: "email",
     icon: IconMail,
     title: "Email",
-    content: "info@belvederepharmacy.com",
+    content: BUSINESS_PROFILE.email,
     detail: "We aim to respond within 1-2 hours",
     bgFrom: "from-purple-100",
     bgTo: "to-purple-50",
@@ -506,8 +577,8 @@ export const CONTACT_ITEMS_CONTACTS_PAGE = [
     id: "address",
     icon: IconMapPin,
     title: "Address",
-    content: "OAKHURST, ST PAULS WOOD HILL",
-    detail: "ORPINGTON, KENT BR5 2SR",
+    content: `${BUSINESS_PROFILE.propertyName}, ${BUSINESS_PROFILE.streetName}`,
+    detail: `${BUSINESS_PROFILE.region},${BUSINESS_PROFILE.postCode}`,
     bgFrom: "from-emerald-100",
     bgTo: "to-emerald-50",
     bgHoverFrom: "group-hover:from-emerald-50",
@@ -586,8 +657,8 @@ export const CTA_SECTION_CONTACT_INFO = [
   {
     icon: IconPhone,
     label: "Call Us",
-    value: "+44 (0) 1234 567890",
-    href: "tel:+441234567890",
+    value: BUSINESS_PROFILE.phone,
+    href: EXTERNAL_LINKS.socials.phone,
     isLink: true,
     bgColor: "bg-primary/5",
     hoverBgColor: "hover:bg-primary/10",
@@ -599,8 +670,8 @@ export const CTA_SECTION_CONTACT_INFO = [
   {
     icon: IconMail,
     label: "Email Us",
-    value: "info@belvederepharmacy.com",
-    href: "#",
+    value: BUSINESS_PROFILE.email,
+    href: EXTERNAL_LINKS.socials.email,
     isLink: true,
     bgColor: "bg-gray-50 dark:bg-primary/5",
     hoverBgColor: "",
@@ -612,8 +683,8 @@ export const CTA_SECTION_CONTACT_INFO = [
   {
     icon: IconLocation,
     label: "Visit Us",
-    value: "Orpington, Kent",
-    href: "#",
+    value: BUSINESS_PROFILE.streetName,
+    href: INTERNAL_LINKS.aboutPage,
     isLink: false,
     bgColor: "bg-gray-50 dark:bg-primary/5",
     hoverBgColor: "",
@@ -625,8 +696,8 @@ export const CTA_SECTION_CONTACT_INFO = [
   {
     icon: IconClock,
     label: "Opening Hours",
-    value: "Mon-Fri: 9am - 6:30pm",
-    href: "#",
+    value: BUSINESS_PROFILE.openingHours,
+    href: INTERNAL_LINKS.aboutPage,
     isLink: false,
     bgColor: "bg-gray-50 dark:bg-primary/5",
     hoverBgColor: "",
@@ -641,42 +712,45 @@ export const CONTACT_LOCATION_INFO = [
   {
     icon: IconLocation,
     title: "Location",
-    details: ["Oakhurst, St Pauls Wood Hill", "Orpington, Kent BR5 2SR"],
+    details: [
+      `${BUSINESS_PROFILE.propertyName}, ${BUSINESS_PROFILE.streetName}`,
+      `${BUSINESS_PROFILE.region}, ${BUSINESS_PROFILE.postCode}`,
+    ],
   },
   {
     icon: IconPhone,
     title: "Phone",
-    details: ["+44 (0) 1234 567890"],
+    details: [BUSINESS_PROFILE.phone],
   },
   {
     icon: IconMail,
     title: "Email",
-    details: ["info@belvederepharmacy.com"],
+    details: [BUSINESS_PROFILE.email],
   },
 ];
 
 // Not Found Page Constants
 export const NOT_FOUND_NAV_ITEMS = [
   {
-    href: "/",
+    href: INTERNAL_LINKS.homePage,
     iconName: "Home",
     title: "Home",
     description: "Back to the homepage",
   },
   {
-    href: "/services",
+    href: INTERNAL_LINKS.servicesPage,
     iconName: "Search",
     title: "Services",
     description: "View our pharmacy services",
   },
   {
-    href: "/pharmacy-first",
+    href: INTERNAL_LINKS.pharmacyFirstPage,
     iconName: "MapPin",
     title: "Pharmacy First",
     description: "NHS Pharmacy First services",
   },
   {
-    href: "/contact-us",
+    href: INTERNAL_LINKS.contactPage,
     iconName: "Phone",
     title: "Contact Us",
     description: "Get in touch with us",
@@ -686,20 +760,20 @@ export const NOT_FOUND_NAV_ITEMS = [
 export const NOT_FOUND_CONTACT_INFO = {
   phone: {
     label: "Call us",
-    value: "+44 (0) 1234 567890",
-    href: "tel:+441234567890",
+    value: BUSINESS_PROFILE.phone,
+    href: EXTERNAL_LINKS.socials.phone,
     iconName: "Phone",
   },
   email: {
     label: "Email us",
-    value: "info@belvederepharmacy.com",
-    href: "mailto:info@belvederepharmacy.com",
+    value: BUSINESS_PROFILE.email,
+    href: EXTERNAL_LINKS.socials.email,
     iconName: "Mail",
   },
   address: {
     label: "Visit us",
-    value: "Oakhurst, St Pauls Wood Hill, Orpington, Kent BR5 2SR",
-    href: undefined,
+    value: `${BUSINESS_PROFILE.propertyName}, ${BUSINESS_PROFILE.streetName},${BUSINESS_PROFILE.region}, ${BUSINESS_PROFILE.postCode}`,
+    href: INTERNAL_LINKS.aboutPage,
     iconName: "MapPin",
   },
 };
@@ -714,24 +788,24 @@ export const ERROR_TROUBLESHOOTING_STEPS = [
 ];
 
 export const ERROR_SUPPORT_INFO = {
-  phone: "+44 (0) 1234 567890",
-  phoneHref: "tel:+441234567890",
-  email: "info@belvederepharmacy.com",
-  emailHref: "mailto:info@belvederepharmacy.com",
-  hours: "Mon-Fri: 9am-6:30pm, Sat: 9am-2pm",
+  phone: BUSINESS_PROFILE.phone,
+  phoneHref: EXTERNAL_LINKS.socials.phone,
+  email: BUSINESS_PROFILE.email,
+  emailHref: EXTERNAL_LINKS.socials.email,
+  hours: BUSINESS_PROFILE.openingHours,
 };
 
 // Landing Page Banner Constants
 export const LANDING_PAGE_ACTION_BUTTONS = [
   {
     text: "Book an Appointment",
-    href: "https://shop.belvederepharmacy.net/appointments/viewallservices/all?pharmacy=378&type=redirection",
+    href: EXTERNAL_LINKS.actions.bookAppointment,
     variant: "primary",
     icon: true,
   },
   {
     text: "Order Prescriptions",
-    href: "https://app.belvederepharmacy.net/#/auth/signin",
+    href: EXTERNAL_LINKS.actions.orderPrescriptions,
     variant: "secondary",
     icon: false,
   },
@@ -742,14 +816,14 @@ export const APP_STORES = [
     name: "App Store",
     label: "Download on the",
     platform: "App Store",
-    href: "https://apps.apple.com/us/app/belvedere-pharmacy/id6670758281",
+    href: EXTERNAL_LINKS.appStore.ios,
     image: appStore,
   },
   {
     name: "Google Play",
     label: "Get it on",
     platform: "Google Play",
-    href: "https://play.google.com/store/apps/details?id=net.belvederepharmacy.app",
+    href: EXTERNAL_LINKS.appStore.android,
     image: playStore,
   },
 ];
@@ -780,12 +854,12 @@ export const ABOUT_HERO_BADGES = [
 export const ABOUT_ACTION_BUTTONS = [
   {
     text: "Get in Touch",
-    href: "/contact-us",
+    href: INTERNAL_LINKS.contactPage,
     variant: "primary",
   },
   {
     text: "Our Services",
-    href: "/services",
+    href: INTERNAL_LINKS.servicesPage,
     variant: "default",
   },
 ];
@@ -793,40 +867,44 @@ export const ABOUT_ACTION_BUTTONS = [
 export const ABOUT_CONTACT_INFO = [
   {
     icon: IconMapPin,
-    label: "Orpington, Kent",
+    label: BUSINESS_PROFILE.region,
   },
   {
     icon: IconPhone,
-    label: "+44 (0) 1234 567890",
+    label: BUSINESS_PROFILE.phone,
   },
 ];
 
-export const DARK_HERO_PAGES = ["/", "/about-us", "/contact-us"];
+export const DARK_HERO_PAGES = [
+  INTERNAL_LINKS.homePage,
+  INTERNAL_LINKS.aboutPage,
+  INTERNAL_LINKS.contactPage,
+];
 
 export const CONTACT_INFO_MOBILE_MENU = [
   {
     icon: IconMapPin,
     label: "Location",
-    value: "Orpington, Kent",
+    value: BUSINESS_PROFILE.region,
   },
   {
     icon: IconClock,
     label: "Hours",
-    value: "Mon-Fri 9-6:30",
+    value: BUSINESS_PROFILE.openingHours,
   },
 ];
 
 export const ACTION_BUTTONS_MOBILE_MENU = [
   {
     label: "Book Appointment",
-    href: "https://shop.belvederepharmacy.net/appointments/viewallservices/all?pharmacy=378&type=redirection",
+    href: EXTERNAL_LINKS.actions.bookAppointment,
     variant: undefined,
     className:
       "flex-1 bg-primary hover:bg-primary/90 py-2.5 rounded-xl overflow-hidden text-sm font-semibold",
   },
   {
     label: "Order Prescriptions",
-    href: "https://app.belvederepharmacy.net/#/auth/signin",
+    href: EXTERNAL_LINKS.actions.orderPrescriptions,
     variant: "outline",
     className:
       "flex-1 py-2.5 rounded-xl border-white/20 bg-white/10 hover:bg-white/20 text-white text-sm font-semibold",

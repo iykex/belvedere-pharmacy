@@ -10,13 +10,13 @@ import covidVaccineImage from "@/public/services/covid-vaccine.jpg";
 import pressureCheckImage from "@/public/services/pressure-check.jpg";
 import stopSmokingImage from "@/public/services/stop-smoking.jpg";
 import emergencyContraceptionImage from "@/public/services/emergency-contraception.jpg";
-import minorAilmentImage from "@/public/services/minor-ailment.jpg";
-import prescriptionDispensingImage from "@/public/services/prescription-dispensing.jpg";
-import medicationReviewImage from "@/public/services/medication-review.jpg";
-import weightManagementImage from "@/public/services/weight-management.jpeg";
-import travelClinicImage from "@/public/services/travel-clinic.jpg";
-import cholesterolTestsImage from "@/public/services/cholesterol-tests.jpg";
-import diabetesScreeningImage from "@/public/services/diabetes-screening.png";
+// import minorAilmentImage from "@/public/services/minor-ailment.jpg";
+// import prescriptionDispensingImage from "@/public/services/prescription-dispensing.jpg";
+// import medicationReviewImage from "@/public/services/medication-review.jpg";
+// import weightManagementImage from "@/public/services/weight-management.jpeg";
+// import travelClinicImage from "@/public/services/travel-clinic.jpg";
+// import cholesterolTestsImage from "@/public/services/cholesterol-tests.jpg";
+// import diabetesScreeningImage from "@/public/services/diabetes-screening.png";
 import adamPeaceImage from "@/public/testimonials/adam-peace.png";
 import alfrnaThompasImage from "@/public/testimonials/alfrina-thomas.png";
 import annMarieMarcroftImage from "@/public/testimonials/ann-marie-marcroft.png";
@@ -33,7 +33,7 @@ import {
   IconAward,
   IconBolt,
   IconHeart,
-  IconPill,
+  // IconPill,
   IconShield,
   IconShieldCheck,
   IconTrendingUp,
