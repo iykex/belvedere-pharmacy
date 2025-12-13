@@ -1,5 +1,5 @@
 "use client";
-import { MENU_LINKS } from "@/lib/constants/general";
+import { EXTERNAL_LINKS, MENU_LINKS } from "@/lib/constants/general";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Button } from "../ui/button";
@@ -64,9 +64,12 @@ export function DesktopMenuButtons() {
     <div className="hidden lg:flex items-center gap-x-3">
       <Link
         onClick={() => {
-          track(TRACKING_EVENTS.orderPrescriptionButton, "Order Prescription");
+          track(
+            TRACKING_EVENTS.orderPrescriptionButton,
+            EXTERNAL_LINKS.actions.orderPrescriptions
+          );
         }}
-        href="https://app.belvederepharmacy.net/#/auth/signin"
+        href={EXTERNAL_LINKS.actions.orderPrescriptions}
         className={cn(
           "group relative px-4 py-2 text-sm font-semibold transition-all duration-300 overflow-hidden rounded-lg hover:text-primary",
           hasDarkHero
@@ -93,10 +96,10 @@ export function DesktopMenuButtons() {
           onClick={() => {
             track(
               TRACKING_EVENTS.bookAppointmentButton,
-              "Order Prescription"
+              EXTERNAL_LINKS.actions.bookAppointment
             );
           }}
-          href="https://shop.belvederepharmacy.net/appointments/viewallservices/all?pharmacy=378&type=redirection"
+          href={EXTERNAL_LINKS.actions.bookAppointment}
           className="flex items-center gap-2"
         >
           {/* Shine effect */}

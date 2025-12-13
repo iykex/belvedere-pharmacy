@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { track } from "@/lib/analytics/tracker";
 import { Service } from "@/lib/types/general";
 import { CheckCircle } from "lucide-react";
 import Image from "next/image";
@@ -13,6 +14,7 @@ export default function ServiceCard({
   features,
   image,
   link,
+  tracking,
 }: Service) {
   return (
     <Card className="max-w-lg mx-auto p-0 bg-background rounded-none relative rounded-tr-4xl rounded-bl-4xl border-0 shadow-none outline-0 overflow-hidden gap-0">
@@ -55,7 +57,14 @@ export default function ServiceCard({
             asChild
             className="w-full max-w-xs bg-primary hover:bg-primary/90 text-white font-semibold shadow-md hover:shadow-lg transition-all"
           >
-            <Link href={link}>Explore Service</Link>
+            <Link
+              href={link}
+              onClick={() => {
+                track(tracking, link);
+              }}
+            >
+              Explore Service
+            </Link>
           </Button>
         </div>
       </CardContent>

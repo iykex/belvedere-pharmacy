@@ -28,3 +28,28 @@ export interface ChatToggleButtonProps {
   isOpen: boolean;
   onClick: () => void;
 }
+
+export interface ChatInputProps {
+  input: string;
+  onInputChange: (value: string) => void;
+  onSend: () => void;
+  onToggleQuickActions: () => void;
+  isAskingName: boolean;
+  showQuickActions: boolean;
+  disabled: boolean;
+  isTyping: boolean;
+}
+
+export interface ChatMessageProps {
+  message: Message;
+}
+
+export interface ContinueChatPromptProps {
+  visitorName: string | null;
+  onContinue: (messages: Message[]) => void;
+  onStartNew: () => void;
+}
+
+export interface QuickActionsPanelProps {
+  onQuickAction: (query: string) => void;
+}

@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import {
   ERROR_TROUBLESHOOTING_STEPS,
   ERROR_SUPPORT_INFO,
+  INTERNAL_LINKS,
 } from "@/lib/constants/general";
 
 export default function Error({
@@ -99,7 +100,7 @@ export default function Error({
               variant="outline"
               className="gap-2 border-2 border-primary text-primary hover:bg-primary/5 font-semibold rounded-xl px-8"
             >
-              <Link href="/">
+              <Link href={INTERNAL_LINKS.homePage}>
                 <Home className="h-5 w-5" />
                 Back to Home
               </Link>

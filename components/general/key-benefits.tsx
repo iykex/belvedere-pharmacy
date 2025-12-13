@@ -1,6 +1,10 @@
 import WidthConstraint from "@/components/shared/width-constraint";
 import { Button } from "@/components/ui/button";
-import { KEY_BENEFITS_TEXTS } from "@/lib/constants/general";
+import {
+  EXTERNAL_LINKS,
+  INTERNAL_LINKS,
+  KEY_BENEFITS_TEXTS,
+} from "@/lib/constants/general";
 import { ArrowRight, Check, HandHelping } from "lucide-react";
 import Link from "next/link";
 
@@ -38,7 +42,10 @@ export default function KeyBenefits() {
             size="lg"
             className="group bg-primary hover:bg-primary/90 text-white font-semibold px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 z-10"
           >
-            <Link href="/services" className="flex items-center gap-2">
+            <Link
+              href={INTERNAL_LINKS.servicesPage}
+              className="flex items-center gap-2"
+            >
               Explore Services
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
             </Link>
@@ -80,7 +87,7 @@ export default function KeyBenefits() {
 
                 {/* CTA Link */}
                 <Link
-                  href="https://app.belvederepharmacy.net/#/auth/signin"
+                  href={EXTERNAL_LINKS.actions.orderPrescriptions}
                   className="group/link inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80 transition-colors mt-auto"
                 >
                   Get Started

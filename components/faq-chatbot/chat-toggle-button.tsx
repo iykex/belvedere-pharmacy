@@ -1,12 +1,18 @@
+"use client";
 import { MessageCircle, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
 import { ChatToggleButtonProps } from "@/lib/types/general";
+import { track } from "@/lib/analytics/tracker";
+import { TRACKING_EVENTS } from "@/lib/constants/analytics";
 
 export function ChatToggleButton({ isOpen, onClick }: ChatToggleButtonProps) {
   return (
     <Button
-      onClick={onClick}
+      onClick={() => {
+        onClick();
+        track(TRACKING_EVENTS.chatToggleButton, "chatbot toggled");
+      }}
       className={cn(
         "fixed bottom-4  lg:bottom-6 right-6 z-50 flex items-center justify-center size-9 lg:size-10 rounded-full shadow-2xl transition-all duration-300 hover:scale-110",
         "bg-linear-to-br from-primary to-primary/80 text-white",

@@ -50,6 +50,7 @@ export function ServicesGrid() {
                       category=""
                       color=""
                       icon={IconComponent}
+                      tracking={service.tracking}
                     />
                   );
                 })}

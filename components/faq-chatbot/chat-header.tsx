@@ -1,5 +1,7 @@
 import { IconUserSearch } from "@tabler/icons-react";
 import { Bot, ChevronDown } from "lucide-react";
+import { Button } from "../ui/button";
+import { todayDate } from "@/lib/utils";
 
 interface ChatHeaderProps {
   visitorName: string | null;
@@ -7,12 +9,6 @@ interface ChatHeaderProps {
 }
 
 export function ChatHeader({ visitorName, onClose }: ChatHeaderProps) {
-  const today = new Date().toLocaleDateString("en-GB", {
-    weekday: "short",
-    day: "numeric",
-    month: "short",
-  });
-
   return (
     <div className="bg-linear-to-r from-primary to-primary/80 p-4 text-white shrink-0">
       <div className="flex items-center gap-3">
@@ -31,17 +27,17 @@ export function ChatHeader({ visitorName, onClose }: ChatHeaderProps) {
             />
           </div>
           <p className="text-xs text-white/70">
-            {today}
+            {todayDate}
             {visitorName && <span className="ml-1">• {visitorName}</span>}
           </p>
         </div>
-        <button
+        <Button
           onClick={onClose}
           className="p-2 rounded-full hover:bg-white/20 transition-colors"
           aria-label="Close chat"
         >
           <ChevronDown className="size-5" />
-        </button>
+        </Button>
       </div>
     </div>
   );

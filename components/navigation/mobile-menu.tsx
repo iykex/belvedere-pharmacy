@@ -15,13 +15,16 @@ import Image from "next/image";
 import Link from "next/link";
 import {
   ACTION_BUTTONS_MOBILE_MENU,
+  BUSINESS_PROFILE,
   CONTACT_INFO_MOBILE_MENU,
+  EXTERNAL_LINKS,
   MENU_LINKS,
 } from "@/lib/constants/general";
 import useNavigationMenu from "@/hooks/use-navigation-menu";
 import { cn } from "@/lib/utils";
 import { ButtonVariants } from "@/lib/types/general";
 import CookieConsentDialogue from "../general/cookie-consent";
+import { track } from "@/lib/analytics/tracker";
 
 export default function MobileMenu() {
   const { hasDarkHero, isScrolled, pathname } = useNavigationMenu();
@@ -75,7 +78,7 @@ export default function MobileMenu() {
             <div className="grid grid-cols-1 gap-3">
               <div className="w-full bg-white/10 hover:bg-white/20 rounded-xl relative">
                 <Link
-                  href="tel:+441234567890"
+                  href={EXTERNAL_LINKS.socials.phone}
                   className="flex items-center gap-3 p-3 transition-colors w-fit"
                 >
                   <div className="p-2 bg-primary rounded-lg">
@@ -84,7 +87,7 @@ export default function MobileMenu() {
                   <div>
                     <p className="text-xs text-white/60">Call Us</p>
                     <p className="text-sm font-semibold text-white">
-                      +44 (0) 1234 567890
+                      {BUSINESS_PROFILE.phone}
                     </p>
                   </div>
                 </Link>
@@ -122,6 +125,9 @@ export default function MobileMenu() {
                   >
                     <Link
                       href={button.href}
+                      onClick={() => {
+                        track(button.tracking, button.href);
+                      }}
                       className="flex items-center justify-center"
                     >
                       {button.label}

@@ -1,9 +1,7 @@
 import { QUICK_ACTIONS_DATA } from "@/lib/constants/chatbot";
 import { renderTablerIcon } from "@/components/ui/icon-renderer";
-
-interface QuickActionsPanelProps {
-  onQuickAction: (query: string) => void;
-}
+import { Button } from "../ui/button";
+import { QuickActionsPanelProps } from "@/lib/types/chatbot";
 
 export function QuickActionsPanel({ onQuickAction }: QuickActionsPanelProps) {
   return (
@@ -13,14 +11,14 @@ export function QuickActionsPanel({ onQuickAction }: QuickActionsPanelProps) {
       </p>
       <div className="flex flex-wrap gap-2">
         {QUICK_ACTIONS_DATA.map((action) => (
-          <button
+          <Button
             key={action.label}
             onClick={() => onQuickAction(action.query)}
             className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-full bg-gray-100 dark:bg-[#002f4b] text-gray-700 dark:text-gray-300 hover:bg-primary/10 dark:hover:bg-primary/20 hover:text-primary transition-colors"
           >
             {renderTablerIcon({ name: action.icon, size: 14 })}
             {action.label}
-          </button>
+          </Button>
         ))}
       </div>
     </div>

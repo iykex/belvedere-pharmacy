@@ -6,6 +6,9 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import useCookiesPreferences from "@/hooks/use-cookies-preferences";
 import { COOKIE_PREFERENCES_ITEMS } from "@/lib/constants/cookies";
+import { track } from "@/lib/analytics/tracker";
+import { TRACKING_EVENTS } from "@/lib/constants/analytics";
+import { INTERNAL_LINKS } from "@/lib/constants/general";
 
 export default function CookieConsentDialogue({
   bubbleStateClassName,
@@ -33,8 +36,11 @@ export default function CookieConsentDialogue({
   // Minimized bubble state (after consent)
   if (hasConsented && !isCookieDialogueBoxVisible) {
     return (
-      <button
-        onClick={handleOpenSettings}
+      <Button
+        onClick={() => {
+          handleOpenSettings();
+          track(TRACKING_EVENTS.cookieToggleButton, "coookie button toggled");
+        }}
         className={cn(
           "fixed bottom-6 left-6 z-40 p-2 rounded-full shadow-lg transition-all duration-300 hover:scale-110",
           "bg-white dark:bg-[#002f4b] border border-gray-200 dark:border-[#1a4d6e]",
@@ -44,7 +50,7 @@ export default function CookieConsentDialogue({
         aria-label="Cookie settings"
       >
         <Cookie className="size-5 text-primary group-hover:rotate-12 transition-transform" />
-      </button>
+      </Button>
     );
   }
 
@@ -81,7 +87,7 @@ export default function CookieConsentDialogue({
                 </p>
               </div>
             </div>
-            <button
+            <Button
               onClick={() => {
                 if (hasConsented) {
                   setIsCookieDialogueBoxVisible(false);
@@ -95,7 +101,7 @@ export default function CookieConsentDialogue({
               aria-label="Minimize"
             >
               <X className="size-5 text-gray-400 dark:text-white/60" />
-            </button>
+            </Button>
           </div>
         </div>
 
@@ -120,21 +126,39 @@ export default function CookieConsentDialogue({
               </div>
               <div className="space-y-2">
                 <Button
-                  onClick={handleAcceptAllCookies}
+                  onClick={() => {
+                    handleAcceptAllCookies();
+                    track(
+                      TRACKING_EVENTS.cookieAcceptAll,
+                      "all cookies accepted"
+                    );
+                  }}
                   className="w-full bg-primary hover:bg-primary/90 text-white font-bold py-5 rounded-2xl text-base shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all"
                 >
                   Accept All Cookies
                 </Button>
                 <div className="flex gap-3">
                   <Button
-                    onClick={handleAcceptEssentialCookiesOnly}
+                    onClick={() => {
+                      handleAcceptEssentialCookiesOnly();
+                      track(
+                        TRACKING_EVENTS.cookieEssentialOnly,
+                        "accepted essential cookies only"
+                      );
+                    }}
                     variant="outline"
                     className="flex-1 py-5 rounded-2xl border-2 border-gray-200 dark:border-[#1a4d6e] font-semibold hover:bg-gray-50 dark:hover:bg-[#002f4b] transition-all"
                   >
                     Essential Only
                   </Button>
                   <Button
-                    onClick={() => setShowAllCookiePreferences(false)}
+                    onClick={() => {
+                      setShowAllCookiePreferences(false);
+                      track(
+                        TRACKING_EVENTS.cookieCustomiseView,
+                        "viewed custom cookies interface"
+                      );
+                    }}
                     variant="outline"
                     className="flex-1 py-5 rounded-2xl border-2 border-gray-200 dark:border-[#1a4d6e] font-semibold hover:bg-gray-50 dark:hover:bg-[#002f4b] transition-all"
                   >
@@ -194,7 +218,13 @@ export default function CookieConsentDialogue({
               <div>
                 <div className="grid grid-cols-2 gap-3">
                   <Button
-                    onClick={handleCustomCookies}
+                    onClick={() => {
+                      handleCustomCookies();
+                      track(
+                        TRACKING_EVENTS.cookieCustomise,
+                        "created custom cookies"
+                      );
+                    }}
                     className="w-full bg-primary hover:bg-primary/90 text-white font-bold py-5 rounded-2xl text-base shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all"
                   >
                     Save Preferences
@@ -216,14 +246,14 @@ export default function CookieConsentDialogue({
           <p className="text-center text-xs text-gray-400 dark:text-gray-500 mt-5">
             Learn more in our{" "}
             <Link
-              href="/privacy-policy"
+              href={INTERNAL_LINKS.privacyPolicyPage}
               className="text-primary hover:underline font-medium"
             >
               Privacy Policy
             </Link>{" "}
             and{" "}
             <Link
-              href="/cookie-policy"
+              href={INTERNAL_LINKS.cookiePolicyPage}
               className="text-primary hover:underline font-medium"
             >
               Cookie Policy

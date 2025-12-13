@@ -1,3 +1,4 @@
+"use client";
 import { ArrowRight, CheckCircle, Shield } from "lucide-react";
 import WidthConstraint from "../shared/width-constraint";
 import { Badge } from "../ui/badge";
@@ -5,6 +6,9 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import bannerImage from "@/public/ui/pfp-banner.png";
+import { EXTERNAL_LINKS } from "@/lib/constants/general";
+import { track } from "@/lib/analytics/tracker";
+import { TRACKING_EVENTS } from "@/lib/constants/analytics";
 
 export function HeroSection() {
   return (
@@ -44,7 +48,13 @@ export function HeroSection() {
               className="group bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-[20px] px-10 py-7 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
             >
               <Link
-                href="https://shop.belvederepharmacy.net/appointments/viewallservices/all?pharmacy=378&type=redirection"
+                href={EXTERNAL_LINKS.actions.bookAppointment}
+                onClick={() => {
+                  track(
+                    TRACKING_EVENTS.bookAppointmentButton,
+                    EXTERNAL_LINKS.actions.bookAppointment
+                  );
+                }}
                 className="flex items-center justify-center gap-3"
               >
                 <span>Book Free Consultation</span>

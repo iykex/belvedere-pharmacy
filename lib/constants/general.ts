@@ -9,8 +9,8 @@ import {
   IconCalendar,
   IconChartPieFilled,
   IconClockHour5,
-  IconDroplet,
-  IconEar,
+  // IconDroplet,
+  // IconEar,
   IconGift,
   IconHeart,
   IconMail,
@@ -21,7 +21,7 @@ import {
   IconStethoscope,
   IconUserSquareRounded,
   IconVaccine,
-  IconWind,
+  // IconWind,
   IconShieldCheck,
   IconAward,
   IconClock,
@@ -43,6 +43,7 @@ import {
 import { ContactFormFieldsMap } from "../types/general";
 import appStore from "@/public/ui/app-store.png";
 import playStore from "@/public/ui/play-store.png";
+import { TRACKING_EVENTS } from "./analytics";
 
 export const EXTERNAL_LINKS = {
   services: {
@@ -66,6 +67,12 @@ export const EXTERNAL_LINKS = {
       "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5348",
     urinaryTractInfection:
       "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5344",
+    bacterialSkinInfection:
+      "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5345",
+    shingles:
+      "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5350",
+    soreThroatConsultations:
+      "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5346",
   },
   socials: {
     facebook: "",
@@ -170,11 +177,23 @@ export const FOOTER_LINKS = [
   {
     title: "Quick Links",
     items: [
-      { label: "Home", href: INTERNAL_LINKS.homePage },
-      { label: "About", href: INTERNAL_LINKS.aboutPage },
-      { label: "Services", href: INTERNAL_LINKS.servicesPage },
-      { label: "Pharmacy First", href: INTERNAL_LINKS.pharmacyFirstPage },
-      { label: "Contact", href: INTERNAL_LINKS.contactPage },
+      { label: "Home", href: INTERNAL_LINKS.homePage, tracking: undefined },
+      { label: "About", href: INTERNAL_LINKS.aboutPage, tracking: undefined },
+      {
+        label: "Services",
+        href: INTERNAL_LINKS.servicesPage,
+        tracking: undefined,
+      },
+      {
+        label: "Pharmacy First",
+        href: INTERNAL_LINKS.pharmacyFirstPage,
+        tracking: undefined,
+      },
+      {
+        label: "Contact",
+        href: INTERNAL_LINKS.contactPage,
+        tracking: undefined,
+      },
     ],
   },
   {
@@ -183,22 +202,27 @@ export const FOOTER_LINKS = [
       {
         label: "Stop Smoking Services",
         href: EXTERNAL_LINKS.services.stopSmokingServices,
+        tracking: TRACKING_EVENTS.stopSmokingBookAppointment,
       },
       {
         label: "Blood Pressure Checks",
         href: EXTERNAL_LINKS.services.bloodPressureChecks,
+        tracking: TRACKING_EVENTS.bloodPressureCheckBookAppointment,
       },
       {
         label: "Flu Vaccinations",
         href: EXTERNAL_LINKS.services.fluVaccinations,
+        tracking: TRACKING_EVENTS.fluVaccinationBookAppointment,
       },
       {
         label: "Emergency Contraception",
         href: EXTERNAL_LINKS.services.emergencyContraception,
+        tracking: TRACKING_EVENTS.emergencyContraceptionBookAppointment,
       },
       {
         label: "Covid-19 Vaccination",
         href: EXTERNAL_LINKS.services.covidVaccination,
+        tracking: TRACKING_EVENTS.covidVaccinationBookAppointment,
       },
     ],
   },
@@ -209,36 +233,43 @@ export const SOCIAL_LINKS = [
   //   label: "Facebook",
   //   href: EXTERNAL_LINKS.socials.facebook,
   //   icon: IconBrandFacebook,
+  //   tracking: TRACKING_EVENTS.facebook,
   // },
   // {
   //   label: "x",
   //   href: EXTERNAL_LINKS.socials.x,
   //   icon: IconBrandX,
+  //   tracking: TRACKING_EVENTS.x,
   // },
   // {
   //   label: "Instagram",
   //   href: EXTERNAL_LINKS.socials.instagram,
   //   icon: IconBrandInstagram,
+  //   tracking: TRACKING_EVENTS.instagram,
   // },
   // {
   //   label: "LinkedIn",
   //   href: EXTERNAL_LINKS.socials.linkedIn,
   //   icon: IconBrandLinkedin,
+  //   tracking: TRACKING_EVENTS.linkedInLink,
   // },
   {
     label: "WhatsApp",
     href: EXTERNAL_LINKS.socials.whatsapp,
     icon: IconBrandWhatsapp,
+    tracking: TRACKING_EVENTS.whatsappLink,
   },
   {
     label: "Phone",
     href: EXTERNAL_LINKS.socials.phone,
     icon: IconPhone,
+    tracking: TRACKING_EVENTS.phoneContactClick,
   },
   {
     label: "Email",
     href: EXTERNAL_LINKS.socials.email,
     icon: IconMail,
+    tracking: TRACKING_EVENTS.emailClick,
   },
 ];
 
@@ -344,42 +375,6 @@ export const OUR_PROCESS_STEPS = [
     icon: IconUserSquareRounded,
     color: "text-primary",
     bgColor: "bg-primary/10",
-  },
-];
-
-export const NHS_PHARMACY_FIRST_SERVICES = [
-  {
-    title: "Ear Pains",
-    description: "Quick relief and treatment for ear infections and discomfort",
-    icon: IconEar,
-    color: "text-primary",
-    bgColor: "bg-primary/10",
-    href: EXTERNAL_LINKS.services.earPain,
-  },
-  {
-    title: "Infected Insect Bites",
-    description: "Expert care for insect bites showing signs of infection",
-    icon: IconBug,
-    color: "text-chart-3",
-    bgColor: "bg-chart-3/10",
-    href: EXTERNAL_LINKS.services.infectedInsectBites,
-  },
-  {
-    title: "Sinus Infection",
-    description: "Relief for sinusitis symptoms and sinus pressure",
-    icon: IconWind,
-    color: "text-chart-2",
-    bgColor: "bg-chart-2/10",
-    href: EXTERNAL_LINKS.services.sinusInfection,
-  },
-  {
-    title: "Urinary Tract Infection",
-    description: "Women's UTI treatment without GP appointment needed",
-    icon: IconDroplet,
-    color: "text-chart-3",
-    bgColor: "bg-chart-3/10",
-    badge: "Women",
-    href: EXTERNAL_LINKS.services.urinaryTractInfection,
   },
 ];
 
@@ -666,6 +661,7 @@ export const CTA_SECTION_CONTACT_INFO = [
     iconColor: "text-primary",
     textColor: "text-primary",
     valueClass: "font-bold",
+    tracking: TRACKING_EVENTS.phoneContactClick,
   },
   {
     icon: IconMail,
@@ -679,6 +675,7 @@ export const CTA_SECTION_CONTACT_INFO = [
     iconColor: "text-gray-600 dark:text-primary",
     textColor: "text-gray-900 dark:text-primary/90",
     valueClass: "font-semibold",
+    tracking: TRACKING_EVENTS.emailClick,
   },
   {
     icon: IconLocation,
@@ -692,6 +689,7 @@ export const CTA_SECTION_CONTACT_INFO = [
     iconColor: "text-gray-600 dark:text-primary",
     textColor: "text-gray-900 dark:text-primary/90",
     valueClass: "font-semibold",
+    tracking: "",
   },
   {
     icon: IconClock,
@@ -705,6 +703,7 @@ export const CTA_SECTION_CONTACT_INFO = [
     iconColor: "text-gray-600 dark:text-primary",
     textColor: "text-gray-900 dark:text-primary/90",
     valueClass: "font-semibold",
+    tracking: "",
   },
 ];
 
@@ -802,12 +801,14 @@ export const LANDING_PAGE_ACTION_BUTTONS = [
     href: EXTERNAL_LINKS.actions.bookAppointment,
     variant: "primary",
     icon: true,
+    tracking: TRACKING_EVENTS.bookAppointmentButton,
   },
   {
     text: "Order Prescriptions",
     href: EXTERNAL_LINKS.actions.orderPrescriptions,
     variant: "secondary",
     icon: false,
+    tracking: TRACKING_EVENTS.orderPrescriptionButton,
   },
 ];
 
@@ -818,6 +819,7 @@ export const APP_STORES = [
     platform: "App Store",
     href: EXTERNAL_LINKS.appStore.ios,
     image: appStore,
+    tracking: TRACKING_EVENTS.iosAppDownloadButton,
   },
   {
     name: "Google Play",
@@ -825,6 +827,7 @@ export const APP_STORES = [
     platform: "Google Play",
     href: EXTERNAL_LINKS.appStore.android,
     image: playStore,
+    tracking: TRACKING_EVENTS.androidAppDownloadButton,
   },
 ];
 
@@ -851,7 +854,7 @@ export const ABOUT_HERO_BADGES = [
   },
 ];
 
-export const ABOUT_ACTION_BUTTONS = [
+export const ABOUT_PAGE_BANNER_BUTTONS = [
   {
     text: "Get in Touch",
     href: INTERNAL_LINKS.contactPage,
@@ -899,6 +902,7 @@ export const ACTION_BUTTONS_MOBILE_MENU = [
     label: "Book Appointment",
     href: EXTERNAL_LINKS.actions.bookAppointment,
     variant: undefined,
+    tracking: TRACKING_EVENTS.bookAppointmentButton,
     className:
       "flex-1 bg-primary hover:bg-primary/90 py-2.5 rounded-xl overflow-hidden text-sm font-semibold",
   },
@@ -906,6 +910,7 @@ export const ACTION_BUTTONS_MOBILE_MENU = [
     label: "Order Prescriptions",
     href: EXTERNAL_LINKS.actions.orderPrescriptions,
     variant: "outline",
+    tracking: TRACKING_EVENTS.orderPrescriptionButton,
     className:
       "flex-1 py-2.5 rounded-xl border-white/20 bg-white/10 hover:bg-white/20 text-white text-sm font-semibold",
   },

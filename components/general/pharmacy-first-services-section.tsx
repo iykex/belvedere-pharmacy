@@ -1,8 +1,11 @@
+"use client";
 import { ArrowRight, Calendar, Shield, Stethoscope } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { NHS_PHARMACY_FIRST_SERVICES } from "@/lib/constants/general";
+import { INTERNAL_LINKS } from "@/lib/constants/general";
 import WidthConstraint from "../shared/width-constraint";
+import { NHS_PHARMACY_FIRST_SERVICES } from "@/lib/constants/data";
+import { track } from "@/lib/analytics/tracker";
 
 export function NHSPharmacyFirstSection() {
   return (
@@ -43,7 +46,10 @@ export function NHSPharmacyFirstSection() {
               size="lg"
               className="group bg-primary hover:bg-primary/90 text-white font-semibold px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              <Link href="/pharmacy-first" className="flex items-center gap-2">
+              <Link
+                href={INTERNAL_LINKS.pharmacyFirstPage}
+                className="flex items-center gap-2"
+              >
                 View All Conditions
                 <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
               </Link>
@@ -77,6 +83,7 @@ export function NHSPharmacyFirstSection() {
                   {/* Book Button */}
                   <Link
                     href={service.href}
+                    onClick={() => track(service.tracking, service.href)}
                     className="group/btn inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80 transition-colors mt-auto"
                   >
                     <Calendar className="size-4" />

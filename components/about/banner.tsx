@@ -7,8 +7,8 @@ import Image from "next/image";
 import {
   ABOUT_HERO_STATS,
   ABOUT_HERO_BADGES,
-  ABOUT_ACTION_BUTTONS,
   ABOUT_CONTACT_INFO,
+  ABOUT_PAGE_BANNER_BUTTONS,
 } from "@/lib/constants/general";
 
 export default function Banner() {
@@ -73,9 +73,9 @@ export default function Banner() {
               </p>
             </div>
 
-            {/* Quick Actions */}
+            {/* Nav buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              {ABOUT_ACTION_BUTTONS.map((btn, index) => {
+              {ABOUT_PAGE_BANNER_BUTTONS.map((btn, index) => {
                 const isPrimary = btn.variant === "primary";
                 return (
                   <Button

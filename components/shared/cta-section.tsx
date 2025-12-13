@@ -1,11 +1,16 @@
+"use client";
 import { CheckCircle, ArrowRight, Mail } from "lucide-react";
 import WidthConstraint from "./width-constraint";
 import {
   CTA_SECTION_FEATURES_LIST,
   CTA_SECTION_CONTACT_INFO,
+  EXTERNAL_LINKS,
+  INTERNAL_LINKS,
 } from "@/lib/constants/general";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import { track } from "@/lib/analytics/tracker";
+import { TRACKING_EVENTS } from "@/lib/constants/analytics";
 
 export default function CTASection() {
   return (
@@ -49,7 +54,13 @@ export default function CTASection() {
                 className="group bg-white text-primary hover:bg-white/90 font-semibold px-8 rounded-xl shadow-lg w-fit z-10"
               >
                 <Link
-                  href="https://shop.belvederepharmacy.net/appointments/viewallservices/all?pharmacy=378&type=redirection"
+                  href={EXTERNAL_LINKS.actions.bookAppointment}
+                  onClick={() =>
+                    track(
+                      TRACKING_EVENTS.bookAppointmentButton,
+                      EXTERNAL_LINKS.actions.bookAppointment
+                    )
+                  }
                   className="flex items-center gap-2"
                 >
                   Book Appointment
@@ -108,6 +119,7 @@ export default function CTASection() {
                   <Link
                     key={index}
                     href={contact.href}
+                    onClick={() => track(contact.tracking, contact.href)}
                     className={`flex items-center gap-4 p-2  sm:p-4 rounded-xl ${contact.bgColor} ${contact.hoverBgColor} transition-colors`}
                   >
                     {contactContent}
@@ -129,7 +141,7 @@ export default function CTASection() {
               className="w-full bg-primary hover:bg-primary/90 py-6 rounded-xl font-semibold"
             >
               <Link
-                href="/contact-us"
+                href={INTERNAL_LINKS.contactPage}
                 className="flex items-center justify-center gap-2"
               >
                 <Mail className="size-4" />

@@ -8,6 +8,7 @@ import phoneAppScreenshot from "@/public/ui/phone-app-screenshot.png";
 import mobileApp from "@/public/ui/mobile-app.png";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import { track } from "@/lib/analytics/tracker";
 
 export default function DownloadAppSection() {
   const { theme } = useTheme();
@@ -73,6 +74,7 @@ export default function DownloadAppSection() {
                 <Link
                   key={store.name}
                   href={store.href}
+                  onClick={() => track(store.tracking, store.href)}
                   className="group grow flex items-center gap-3 bg-gray-900  hover:bg-gray-800   dark:bg-white/10 dark:hover:bg-white/20 text-white px-6 py-4 rounded-xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1 z-10"
                 >
                   <div className="bg-white/10 p-2 rounded-lg">

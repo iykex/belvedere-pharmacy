@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { OUR_PROCESS_STEPS } from "@/lib/constants/general";
+import { INTERNAL_LINKS, OUR_PROCESS_STEPS } from "@/lib/constants/general";
 import WidthConstraint from "../shared/width-constraint";
 import SectionHeader from "./section-divider-head";
 
@@ -67,7 +67,10 @@ export function OurProcessSection() {
               size="lg"
               className="group bg-primary hover:bg-primary/90 text-white font-semibold px-8 rounded-xl shadow-md transition-all duration-300 hover:shadow-xl hover:scale-105"
             >
-              <Link href="/services" className="flex items-center gap-2">
+              <Link
+                href={INTERNAL_LINKS.servicesPage}
+                className="flex items-center gap-2"
+              >
                 Explore All Services
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
               </Link>

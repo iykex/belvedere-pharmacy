@@ -1,3 +1,4 @@
+"use client";
 import { Clock, Mail, Phone } from "lucide-react";
 import {
   Card,
@@ -9,9 +10,12 @@ import {
 import { Button } from "../ui/button";
 import {
   CONTACT_ITEMS_CONTACTS_PAGE,
+  EXTERNAL_LINKS,
   OPENING_HOURS_CONTACTS_PAGE,
 } from "@/lib/constants/general";
 import Link from "next/link";
+import { track } from "@/lib/analytics/tracker";
+import { TRACKING_EVENTS } from "@/lib/constants/analytics";
 
 export default function ContactsColumn() {
   return (
@@ -89,13 +93,29 @@ export default function ContactsColumn() {
         <div className="pt-4 border-t">
           <div className="flex flex-col gap-3">
             <Button className="w-full justify-center" variant="default" asChild>
-              <Link href="tel:+441234567890">
+              <Link
+                href={EXTERNAL_LINKS.socials.phone}
+                onClick={() => {
+                  track(
+                    TRACKING_EVENTS.phoneContactClick,
+                    EXTERNAL_LINKS.socials.phone
+                  );
+                }}
+              >
                 <Phone className="mr-2 h-4 w-4" />
                 Call Now
               </Link>
             </Button>
             <Button className="w-full justify-center" variant="outline" asChild>
-              <Link href="mailto:info@belvederepharmacy.com">
+              <Link
+                href={EXTERNAL_LINKS.socials.email}
+                onClick={() => {
+                  track(
+                    TRACKING_EVENTS.emailClick,
+                    EXTERNAL_LINKS.socials.email
+                  );
+                }}
+              >
                 <Mail className="mr-2 h-4 w-4" />
                 Send Email
               </Link>

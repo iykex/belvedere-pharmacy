@@ -18,6 +18,7 @@ export interface Service {
   icon: React.ComponentType<{ className?: string }>;
   color: string;
   borderColor: string;
+  tracking: string;
 }
 
 export interface ServicesGridProps {

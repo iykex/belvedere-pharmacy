@@ -8,6 +8,8 @@ import { ChatMessages } from "./chat-messages";
 import { QuickActionsPanel } from "./quick-actions-panel";
 import { ContinueChatPrompt } from "./continue-chat-prompt";
 import { ChatInput } from "./chat-input";
+import { track } from "@/lib/analytics/tracker";
+import { TRACKING_EVENTS } from "@/lib/constants/analytics";
 
 export default function FAQChatbot() {
   const {
@@ -32,7 +34,13 @@ export default function FAQChatbot() {
   return (
     <div>
       {/* Chat Toggle Button */}
-      <ChatToggleButton isOpen={isOpen} onClick={toggleChat} />
+      <ChatToggleButton
+        isOpen={isOpen}
+        onClick={() => {
+          toggleChat();
+          track(TRACKING_EVENTS.chatToggleButton, "chatbot toggled");
+        }}
+      />
 
       {/* Chat Window */}
       <div

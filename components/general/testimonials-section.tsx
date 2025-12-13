@@ -6,6 +6,9 @@ import WidthConstraint from "../shared/width-constraint";
 import Image from "next/image";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import { track } from "@/lib/analytics/tracker";
+import { TRACKING_EVENTS } from "@/lib/constants/analytics";
+import { INTERNAL_LINKS } from "@/lib/constants/general";
 
 export default function Testimonials() {
   const { currentIndex, goToTestimonial } = useTestimonial();
@@ -54,7 +57,10 @@ export default function Testimonials() {
               asChild
               className="group bg-primary hover:bg-primary/90 text-white font-semibold px-8 rounded-xl"
             >
-              <Link href="/contact-us" className="flex items-center gap-2">
+              <Link
+                href={INTERNAL_LINKS.contactPage}
+                className="flex items-center gap-2"
+              >
                 Leave a Review
                 <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
               </Link>
@@ -102,9 +108,15 @@ export default function Testimonials() {
             {/* Dots Indicator */}
             <div className="flex justify-center gap-2 mt-6">
               {TESTIMONIALS.map((_, index) => (
-                <button
+                <Button
                   key={index}
-                  onClick={() => goToTestimonial(index)}
+                  onClick={() => {
+                    goToTestimonial(index);
+                    track(
+                      TRACKING_EVENTS.testimonialNavigation,
+                      "interacted with testimonials"
+                    );
+                  }}
                   className={`h-2 rounded-full transition-all duration-300 ${
                     index === currentIndex
                       ? "w-8 bg-primary"

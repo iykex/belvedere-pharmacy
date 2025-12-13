@@ -1,9 +1,13 @@
+"use client";
 import Image from "next/image";
 import WidthConstraint from "../shared/width-constraint";
 import { Button } from "../ui/button";
 import { ArrowRight, Calendar, CheckCircle, Video } from "lucide-react";
 import elderlyCouple from "@/public/ui/elderly-couple.jpg";
 import Link from "next/link";
+import { EXTERNAL_LINKS } from "@/lib/constants/general";
+import { TRACKING_EVENTS } from "@/lib/constants/analytics";
+import { track } from "@/lib/analytics/tracker";
 
 export function ServicesHeading() {
   return (
@@ -27,9 +31,10 @@ export function ServicesHeading() {
 
             {/* Description */}
             <p className="text-gray-600 dark:text-white/60 text-lg leading-relaxed">
-              At Belvedere Pharmacy, our pharmacists offer a comprehensive range of NHS-commissioned
-              and private healthcare services. Get expert help from the comfort
-              of your home with our video consultation service.
+              At Belvedere Pharmacy, our pharmacists offer a comprehensive range
+              of NHS-commissioned and private healthcare services. Get expert
+              help from the comfort of your home with our video consultation
+              service.
             </p>
 
             {/* Feature Pills */}
@@ -56,7 +61,13 @@ export function ServicesHeading() {
                 className="group bg-primary hover:bg-primary/90 text-white font-semibold px-8 rounded-xl shadow-lg transition-all duration-300"
               >
                 <Link
-                  href="https://shop.belvederepharmacy.net/appointments/viewallservices/all?pharmacy=378&type=redirection"
+                  href={EXTERNAL_LINKS.actions.bookAppointment}
+                  onClick={() => {
+                    track(
+                      TRACKING_EVENTS.bookAppointmentButton,
+                      EXTERNAL_LINKS.actions.bookAppointment
+                    );
+                  }}
                   className="flex items-center gap-2"
                 >
                   <Calendar className="w-5 h-5" />

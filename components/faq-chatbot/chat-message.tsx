@@ -3,10 +3,7 @@ import { Bot, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ActionIcon } from "./action-icon";
 import { Message } from "@/lib/types/general";
-
-interface ChatMessageProps {
-  message: Message;
-}
+import { ChatMessageProps } from "@/lib/types/chatbot";
 
 export function ChatMessage({ message }: ChatMessageProps) {
   return (
@@ -50,21 +47,23 @@ export function ChatMessage({ message }: ChatMessageProps) {
         </div>
 
         {/* Action Buttons */}
-        {message.role === "bot" && message.actions && message.actions.length > 0 && (
-          <div className="flex flex-wrap gap-2">
-            {message.actions.map((action, idx) => (
-              <Link
-                key={idx}
-                href={action.href}
-                target={action.href.startsWith("http") ? "_blank" : undefined}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-full bg-primary/10 dark:bg-primary/20 text-primary hover:bg-primary hover:text-white transition-colors"
-              >
-                <ActionIcon icon={action.icon} />
-                {action.label}
-              </Link>
-            ))}
-          </div>
-        )}
+        {message.role === "bot" &&
+          message.actions &&
+          message.actions.length > 0 && (
+            <div className="flex flex-wrap gap-2">
+              {message.actions.map((action, idx) => (
+                <Link
+                  key={idx}
+                  href={action.href}
+                  target={action.href.startsWith("http") ? "_blank" : undefined}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-full bg-primary/10 dark:bg-primary/20 text-primary hover:bg-primary hover:text-white transition-colors"
+                >
+                  <ActionIcon icon={action.icon} />
+                  {action.label}
+                </Link>
+              ))}
+            </div>
+          )}
       </div>
 
       {message.role === "user" && (
