@@ -9,7 +9,7 @@ export default function UseTracker() {
 
   useEffect(() => {
     async function callTracker() {
-      await track("page-view", { pathname });
+      await track("page-view", pathname);
     }
     callTracker();
   }, [pathname]);

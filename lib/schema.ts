@@ -23,3 +23,23 @@ export const contactFormSchema = z4.object({
     .max(50, "Message must be less than 250 characters")
     .min(2, "Subject must be more than 5 characters"),
 });
+
+export const analyticsPayloadSchema = z4.object({
+  event_issue: z4.string(),
+  country: z4.string().optional(),
+  country_code: z4.string().optional(),
+  city: z4.string().optional(),
+  region: z4.string().optional(),
+  latitude: z4.number().optional(),
+  longitude: z4.number().optional(),
+  user_id: z4.string(),
+  session_id: z4.string(),
+  url: z4.string(),
+  referrer: z4.string().nullable(),
+  user_agent: z4.string(),
+  language: z4.string(),
+  screen_width: z4.number(),
+  screen_height: z4.number(),
+  ts: z4.number(),
+  event_name: z4.string(),
+});

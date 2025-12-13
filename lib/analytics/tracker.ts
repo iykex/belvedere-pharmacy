@@ -9,6 +9,8 @@ import {
   SESSION_TIMEOUT,
   USER_ID_KEY,
 } from "../constants/analytics";
+import z4 from "zod/v4";
+import { analyticsPayloadSchema } from "../schema";
 
 function getOrSetUserId() {
   let uid = localStorage.getItem(USER_ID_KEY);
@@ -19,7 +21,7 @@ function getOrSetUserId() {
   return uid;
 }
 
-function getOrSetSessionId() {
+function getOrSetSessionId(): string {
   const stored = localStorage.getItem(SESSION_ID_KEY);
   const now = Date.now();
 
@@ -50,20 +52,20 @@ export async function getTrackingContext() {
   const geolocation = await getGeolocation();
 
   return {
-    userId,
-    sessionId,
+    user_id: userId,
+    session_id: sessionId,
     url: window.location.href,
     referrer: document.referrer || null,
-    userAgent: navigator.userAgent,
+    user_agent: navigator.userAgent,
     language: navigator.language,
-    screenWidth: window.innerWidth,
-    screenHeight: window.innerHeight,
+    screen_width: window.innerWidth,
+    screen_height: window.innerHeight,
     ts: Date.now(),
     ...geolocation,
   };
 }
 
-export async function track(event: string, data: any = {}) {
+export async function track(event: string, issue: string) {
   const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
   const preferences = localStorage.getItem(COOKIE_PREFERENCES_KEY);
 
@@ -72,22 +74,23 @@ export async function track(event: string, data: any = {}) {
 
   const base = await getTrackingContext();
 
-  const payload = { event, ...base, ...data };
+  const payload: z4.infer<typeof analyticsPayloadSchema> = {
+    event_name: event,
+    ...base,
+    event_issue: issue,
+  };
 
-  return payload;
-
-  //   try {
-  //     await fetch("https://api.tinybird.co/v0/events?name=events", {
-  //       method: "POST",
-  //       headers: {
-  //         Authorization: `Bearer ${process.env.NEXT_PUBLIC_TINYBIRD_TOKEN}`,
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(payload),
-  //     });
-  //   } catch (e) {
-  //     if (e instanceof Error) {
-  //       console.log(e.message);
-  //     }
-  //   }
+  try {
+    await fetch("/api/analytics", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
+  } catch (e) {
+    if (e instanceof Error) {
+      console.log(e.message);
+    }
+  }
 }

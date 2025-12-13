@@ -1,12 +1,15 @@
-export async function getGeolocation() {
+import { GEO_LOCATION_PROVIDER } from "../constants/analytics";
+import { GeolocationData } from "../types/analytics";
+
+export async function getGeolocation(): Promise<GeolocationData | null> {
   try {
-    const res = await fetch("https://ipapi.co/json/");
+    const res = await fetch(GEO_LOCATION_PROVIDER);
     if (!res.ok) return null;
     const data = await res.json();
 
     return {
       country: data.country_name,
-      countryCode: data.country,
+      country_code: data.country,
       city: data.city,
       region: data.region,
       latitude: data.latitude,
