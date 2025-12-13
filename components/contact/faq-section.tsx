@@ -30,7 +30,7 @@ export default function FAQSection() {
 
         {/* Chatbot Prompt Card */}
         <div className="max-w-4xl mx-auto">
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary/5 via-primary/10 to-transparent dark:from-primary/10 dark:via-primary/5 dark:to-transparent border border-primary/20 p-6 mb-8">
+          <div className="relative overflow-hidden rounded-2xl bg-linear-to-br from-primary/5 via-primary/10 to-transparent dark:from-primary/10 dark:via-primary/5 dark:to-transparent border border-primary/20 p-6 mb-8">
             <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
             <div className="relative flex flex-col sm:flex-row items-start sm:items-center gap-4">
               <div className="shrink-0 p-3 bg-primary/20 dark:bg-primary/30 rounded-xl">
