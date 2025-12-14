@@ -2,6 +2,8 @@ export const USER_ID_KEY = "uid";
 export const SESSION_ID_KEY = "sid";
 export const SESSION_TIMEOUT = 30 * 60 * 1000; // 30 min
 export const GEO_LOCATION_PROVIDER = "https://ipapi.co/json/";
+export const TRACKING_ROUTE = "/api/analytics";
+export const CACHED_LOCATION_KEY = "user-location";
 export const TRACKING_EVENTS = {
   pageView: "page_view",
   phoneContactClick: "phone_contact_click",

@@ -3,14 +3,16 @@ import {
   COOKIE_CONSENT_KEY,
   COOKIE_PREFERENCES_KEY,
 } from "../constants/cookies";
-import { getGeolocation } from "./geolocation";
 import {
+  CACHED_LOCATION_KEY,
   SESSION_ID_KEY,
   SESSION_TIMEOUT,
+  TRACKING_ROUTE,
   USER_ID_KEY,
 } from "../constants/analytics";
 import z4 from "zod/v4";
 import { analyticsPayloadSchema } from "../schema";
+import { GeolocationData } from "../types/analytics";
 
 function getOrSetUserId() {
   let uid = localStorage.getItem(USER_ID_KEY);
@@ -46,10 +48,13 @@ function getOrSetSessionId(): string {
   return newSession.sessionId;
 }
 
-export async function getTrackingContext() {
+export function getTrackingContext() {
   const userId = getOrSetUserId();
   const sessionId = getOrSetSessionId();
-  const geolocation = await getGeolocation();
+  const cachedGeolocation = localStorage.getItem(CACHED_LOCATION_KEY);
+  const geolocation: GeolocationData | null = cachedGeolocation
+    ? JSON.parse(cachedGeolocation)
+    : null;
 
   return {
     user_id: userId,
@@ -61,18 +66,17 @@ export async function getTrackingContext() {
     screen_width: window.innerWidth,
     screen_height: window.innerHeight,
     ts: Date.now(),
-    ...geolocation,
+    ...(geolocation || {}),
   };
 }
 
-export async function track(event: string, issue: string) {
+export function track(event: string, issue: string) {
   const consent = localStorage.getItem(COOKIE_CONSENT_KEY);
-  const preferences = localStorage.getItem(COOKIE_PREFERENCES_KEY);
 
   // Only track if consent is granted
   if (consent !== "true") return;
 
-  const base = await getTrackingContext();
+  const base = getTrackingContext();
 
   const payload: z4.infer<typeof analyticsPayloadSchema> = {
     event_name: event,
@@ -80,17 +84,5 @@ export async function track(event: string, issue: string) {
     event_issue: issue,
   };
 
-  try {
-    await fetch("/api/analytics", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    });
-  } catch (e) {
-    if (e instanceof Error) {
-      console.log(e.message);
-    }
-  }
+  navigator.sendBeacon(TRACKING_ROUTE, JSON.stringify(payload));
 }
