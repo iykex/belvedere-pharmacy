@@ -28,14 +28,19 @@ function getOrSetSessionId(): string {
   const now = Date.now();
 
   if (stored) {
-    const session = JSON.parse(stored);
+    try {
+      const session = JSON.parse(stored);
 
-    // Check if session expired
-    if (now - session.lastActivity < SESSION_TIMEOUT) {
-      // Session is still active
-      session.lastActivity = now;
-      localStorage.setItem(SESSION_ID_KEY, JSON.stringify(session));
-      return session.sessionId;
+      // Check if session expired
+      if (now - session.lastActivity < SESSION_TIMEOUT) {
+        // Session is still active
+        session.lastActivity = now;
+        localStorage.setItem(SESSION_ID_KEY, JSON.stringify(session));
+        return session.sessionId;
+      }
+    } catch {
+      // If parsing fails, treat as invalid session and create new one
+      localStorage.removeItem(SESSION_ID_KEY);
     }
   }
 

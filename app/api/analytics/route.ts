@@ -2,8 +2,10 @@ import { analyticsPayloadSchema } from "@/lib/schema";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
-  const outcome = analyticsPayloadSchema.safeParse(request.body);
-  if (!outcome.success)
+  const beaconText = await request.text();
+  const data = JSON.parse(beaconText);
+  const outcome = analyticsPayloadSchema.safeParse(data);
+  if (!outcome.success) {
     return NextResponse.json(
       {
         status: "failed",
@@ -11,6 +13,7 @@ export async function POST(request: Request) {
       },
       { status: 400 }
     );
+  }
 
   const payload = outcome.data;
 
@@ -29,9 +32,19 @@ export async function POST(request: Request) {
     });
 
     if (!tinybirdResponse.ok) {
+      const errorText = await tinybirdResponse.text();
+      console.error(
+        "TINYBIRD INGESTION FAILED:",
+        tinybirdResponse.status,
+        errorText
+      );
       return NextResponse.json(
-        { status: "failed", message: "Server Error" },
-        { status: 500 }
+        {
+          status: "failed",
+          message: `Tinybird rejected data with status ${tinybirdResponse.status}`,
+          details: errorText,
+        },
+        { status: 502 }
       );
     }
 
@@ -42,8 +55,8 @@ export async function POST(request: Request) {
   } catch (error) {
     if (error instanceof Error) {
       return NextResponse.json(
-        { status: "success", message: error.message },
-        { status: 201 }
+        { status: "failed", message: error.message },
+        { status: 500 }
       );
     }
   }
