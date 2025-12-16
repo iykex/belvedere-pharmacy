@@ -2,14 +2,14 @@
 
 import { useState } from "react";
 import {
-    IconMail,
-    IconDownload,
-    IconTrash,
-    IconSearch,
-    IconChevronLeft,
-    IconChevronRight,
-    IconUserPlus,
-} from "@tabler/icons-react";
+    Mail as IconMail,
+    Download as IconDownload,
+    Trash as IconTrash,
+    Search as IconSearch,
+    ChevronLeft as IconChevronLeft,
+    ChevronRight as IconChevronRight,
+    UserPlus as IconUserPlus,
+} from "lucide-react";
 import { useDashboard, branchNames } from "@/components/dashboard/dashboard-provider";
 import { Button } from "@/components/ui/button";
 

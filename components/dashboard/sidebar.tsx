@@ -3,15 +3,15 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-    IconLayoutDashboard,
-    IconMessages,
-    IconMail,
-    IconChartBar,
-    IconCookie,
-    IconSettings,
-    IconLogout,
-    IconBuildingStore,
-} from "@tabler/icons-react";
+    LayoutDashboard as IconLayoutDashboard,
+    MessageSquare as IconMessages,
+    Mail as IconMail,
+    BarChart as IconChartBar,
+    Cookie as IconCookie,
+    Settings as IconSettings,
+    LogOut as IconLogout,
+    Store as IconBuildingStore,
+} from "lucide-react";
 import { useDashboard, branchNames, Branch } from "./dashboard-provider";
 
 const navigation = [

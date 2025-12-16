@@ -2,14 +2,14 @@
 
 import { useState } from "react";
 import {
-    IconCookie,
-    IconCheck,
-    IconX,
-    IconSearch,
-    IconChevronLeft,
-    IconChevronRight,
-    IconDownload,
-} from "@tabler/icons-react";
+    Cookie as IconCookie,
+    Check as IconCheck,
+    X as IconX,
+    Search as IconSearch,
+    ChevronLeft as IconChevronLeft,
+    ChevronRight as IconChevronRight,
+    Download as IconDownload,
+} from "lucide-react";
 import { useDashboard, branchNames } from "@/components/dashboard/dashboard-provider";
 import { Button } from "@/components/ui/button";
 

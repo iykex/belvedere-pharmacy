@@ -2,16 +2,16 @@
 
 import { useState } from "react";
 import {
-    IconMessages,
-    IconFilter,
-    IconDownload,
-    IconEye,
-    IconCheck,
-    IconX,
-    IconSearch,
-    IconChevronLeft,
-    IconChevronRight,
-} from "@tabler/icons-react";
+    MessageSquare as IconMessages,
+    Filter as IconFilter,
+    Download as IconDownload,
+    Eye as IconEye,
+    Check as IconCheck,
+    X as IconX,
+    Search as IconSearch,
+    ChevronLeft as IconChevronLeft,
+    ChevronRight as IconChevronRight,
+} from "lucide-react";
 import { useDashboard, branchNames } from "@/components/dashboard/dashboard-provider";
 import { Button } from "@/components/ui/button";
 

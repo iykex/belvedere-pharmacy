@@ -2,15 +2,15 @@
 
 import { useState } from "react";
 import {
-    IconSettings,
-    IconUser,
-    IconBell,
-    IconMail,
-    IconShieldCheck,
-    IconBuildingStore,
-    IconPalette,
-    IconCheck,
-} from "@tabler/icons-react";
+    Settings as IconSettings,
+    User as IconUser,
+    Bell as IconBell,
+    Mail as IconMail,
+    ShieldCheck as IconShieldCheck,
+    Store as IconBuildingStore,
+    Palette as IconPalette,
+    Check as IconCheck,
+} from "lucide-react";
 import { useDashboard } from "@/components/dashboard/dashboard-provider";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";

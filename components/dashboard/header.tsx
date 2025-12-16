@@ -1,6 +1,6 @@
 "use client";
 
-import { IconMenu2, IconBell, IconSearch, IconSun, IconMoon } from "@tabler/icons-react";
+import { Menu as IconMenu2, Bell as IconBell, Search as IconSearch, Sun as IconSun, Moon as IconMoon } from "lucide-react";
 import { useDashboard, branchNames } from "./dashboard-provider";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";

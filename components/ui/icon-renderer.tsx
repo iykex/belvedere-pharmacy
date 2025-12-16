@@ -1,12 +1,12 @@
 import {
-  IconClock,
-  IconPhone,
-  IconMapPin,
-  IconPill,
-  IconCalendar,
-  IconFileText,
-  IconExternalLink,
-} from "@tabler/icons-react";
+  Clock as IconClock,
+  Phone as IconPhone,
+  MapPin as IconMapPin,
+  Pill as IconPill,
+  Calendar as IconCalendar,
+  FileText as IconFileText,
+  ExternalLink as IconExternalLink,
+} from "lucide-react";
 
 type TablerIconName =
   | "IconClock"
