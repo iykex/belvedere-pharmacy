@@ -1,3 +1,4 @@
+"use client";
 import { PFP_CONDITIONS } from "@/lib/constants/data";
 import SectionHeader from "../general/section-divider-head";
 import WidthConstraint from "../shared/width-constraint";
@@ -7,6 +8,7 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import NHSImageSrc from "@/public/ui/nhs.jpg";
 import { Badge } from "../ui/badge";
+import { track } from "@/lib/analytics/tracker";
 
 export const ConditionsSection = () => {
   return (
@@ -48,7 +50,13 @@ export const ConditionsSection = () => {
               <div className="p-6 grow flex flex-col">
                 <p className="mb-6 grow opacity-70">{condition.description}</p>
                 <Button className="group w-fit mx-auto rounded-sm px-4">
-                  <Link href={condition.href} className="flex items-center">
+                  <Link
+                    href={condition.href}
+                    onClick={() => {
+                      track(condition.tracking, condition.href);
+                    }}
+                    className="flex items-center"
+                  >
                     <Calendar className="mr-2 size-4 transition-transform group-hover:translate-x-1" />
                     Book your Appointment
                   </Link>

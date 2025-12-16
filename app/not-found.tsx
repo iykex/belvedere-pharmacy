@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import {
   NOT_FOUND_NAV_ITEMS,
   NOT_FOUND_CONTACT_INFO,
+  INTERNAL_LINKS,
 } from "@/lib/constants/general";
 
 // Icon mapping
@@ -157,7 +158,7 @@ export default function NotFound() {
               size="lg"
               className="gap-2 bg-primary hover:bg-primary/90 text-white font-semibold rounded-xl px-8"
             >
-              <Link href="/">
+              <Link href={INTERNAL_LINKS.homePage}>
                 <Home className="h-5 w-5" />
                 Go to Homepage
               </Link>
@@ -168,7 +169,7 @@ export default function NotFound() {
               variant="outline"
               className="gap-2 border-2 border-primary text-primary hover:bg-primary/5 font-semibold rounded-xl px-8"
             >
-              <Link href="/services">
+              <Link href={INTERNAL_LINKS.servicesPage}>
                 <Search className="h-5 w-5" />
                 Browse Services
               </Link>

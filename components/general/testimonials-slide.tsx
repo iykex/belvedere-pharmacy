@@ -5,6 +5,9 @@ import { useTestimonial } from "@/hooks/use-testimonial";
 import WidthConstraint from "../shared/width-constraint";
 import Image from "next/image";
 import { TESTIMONIALS } from "@/lib/constants/data";
+import { Button } from "../ui/button";
+import { track } from "@/lib/analytics/tracker";
+import { TRACKING_EVENTS } from "@/lib/constants/analytics";
 
 export default function TestimonialsSlide() {
   const { currentIndex, goToTestimonial, setCarousel } = useTestimonial();
@@ -66,9 +69,15 @@ export default function TestimonialsSlide() {
       {/* Dots Indicator */}
       <div className="flex justify-center gap-2 absolute bottom-0 right-0 left-0 sm:static">
         {TESTIMONIALS.map((_, index) => (
-          <button
+          <Button
             key={index}
-            onClick={() => goToTestimonial(index)}
+            onClick={() => {
+              goToTestimonial(index);
+              track(
+                TRACKING_EVENTS.testimonialNavigation,
+                "interacted with testimonials"
+              );
+            }}
             className={`h-2 rounded-full transition-all duration-300 ${
               index === currentIndex
                 ? "w-8 bg-chart-3"

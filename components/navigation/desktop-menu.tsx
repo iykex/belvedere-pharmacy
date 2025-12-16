@@ -1,11 +1,13 @@
 "use client";
-import { MENU_LINKS } from "@/lib/constants/general";
+import { EXTERNAL_LINKS, MENU_LINKS } from "@/lib/constants/general";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { ArrowRight } from "lucide-react";
 import ModeToggle from "../shared/theme-mode-toggle";
 import useNavigationMenu from "@/hooks/use-navigation-menu";
+import { track } from "@/lib/analytics/tracker";
+import { TRACKING_EVENTS } from "@/lib/constants/analytics";
 
 export function DesktopMenu() {
   const { hasDarkHero, isScrolled, pathname } = useNavigationMenu();
@@ -61,7 +63,13 @@ export function DesktopMenuButtons() {
   return (
     <div className="hidden lg:flex items-center gap-x-3">
       <Link
-        href="https://app.belvederepharmacy.net/#/auth/signin"
+        onClick={() => {
+          track(
+            TRACKING_EVENTS.orderPrescriptionButton,
+            EXTERNAL_LINKS.actions.orderPrescriptions
+          );
+        }}
+        href={EXTERNAL_LINKS.actions.orderPrescriptions}
         className={cn(
           "group relative px-4 py-2 text-sm font-semibold transition-all duration-300 overflow-hidden rounded-lg hover:text-primary",
           hasDarkHero
@@ -85,7 +93,13 @@ export function DesktopMenuButtons() {
         className="group relative bg-primary hover:bg-primary text-white font-semibold px-6 rounded-lg overflow-hidden transition-all duration-300"
       >
         <Link
-          href="https://shop.belvederepharmacy.net/appointments/viewallservices/all?pharmacy=378&type=redirection"
+          onClick={() => {
+            track(
+              TRACKING_EVENTS.bookAppointmentButton,
+              EXTERNAL_LINKS.actions.bookAppointment
+            );
+          }}
+          href={EXTERNAL_LINKS.actions.bookAppointment}
           className="flex items-center gap-2"
         >
           {/* Shine effect */}

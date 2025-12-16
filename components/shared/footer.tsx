@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import {
   CONTACT_ITEMS,
@@ -6,6 +7,7 @@ import {
   SOCIAL_LINKS,
 } from "@/lib/constants/general";
 import WidthConstraint from "../shared/width-constraint";
+import { track } from "@/lib/analytics/tracker";
 
 export function Footer() {
   return (
@@ -27,6 +29,7 @@ export function Footer() {
                 <Link
                   key={item.href}
                   href={item.href}
+                  onClick={() => track(item.tracking, item.href)}
                   className="text-gray-600 hover:text-primary transition-colors"
                 >
                   <Icon className="text-ring size-5" />
@@ -50,6 +53,11 @@ export function Footer() {
                     <li key={item.label}>
                       <Link
                         href={item.href}
+                        onClick={() => {
+                          if (item.tracking) {
+                            track(item.tracking, item.href);
+                          }
+                        }}
                         className="text-ring hover:text-primary"
                       >
                         {item.label}

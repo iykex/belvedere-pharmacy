@@ -20,6 +20,8 @@ import { CONTACT_FORM_FIELD_ITEMS } from "@/lib/constants/general";
 import { Controller } from "react-hook-form";
 import { Textarea } from "../ui/textarea";
 import EmergencyContact from "./emergency-contact";
+import { track } from "@/lib/analytics/tracker";
+import { TRACKING_EVENTS } from "@/lib/constants/analytics";
 
 export function ContactForm() {
   const { control, formState, handleSubmit, onSubmit } = useContactForm();
@@ -94,6 +96,12 @@ export function ContactForm() {
         <CardFooter>
           <Field orientation="horizontal">
             <Button
+              onClick={() => {
+                track(
+                  TRACKING_EVENTS.contactFormSubmit,
+                  "contact form submitted"
+                );
+              }}
               type="submit"
               form="contact-form"
               disabled={

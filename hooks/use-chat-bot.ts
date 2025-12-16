@@ -6,7 +6,7 @@ import {
   saveChatHistory,
   isIdleForTooLong,
   findBestResponse,
-} from "@/lib/utils/chatbot";
+} from "@/lib/chatbot";
 import { Message, ActionButton } from "@/lib/types/general";
 
 export function useChatbot() {

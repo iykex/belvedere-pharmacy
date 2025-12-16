@@ -10,6 +10,7 @@ import {
   LANDING_PAGE_ACTION_BUTTONS,
   APP_STORES,
 } from "@/lib/constants/general";
+import { track } from "@/lib/analytics/tracker";
 
 export default function Banner() {
   return (
@@ -63,7 +64,13 @@ export default function Banner() {
                         : "group border-white/20 bg-white/5 text-white hover:bg-white hover:text-[#002f4b] backdrop-blur-sm px-8 py-6 text-base font-semibold transition-all duration-300"
                     }
                   >
-                    <Link href={btn.href} className="flex items-center gap-2">
+                    <Link
+                      onClick={() => {
+                        track(btn.tracking, btn.href);
+                      }}
+                      href={btn.href}
+                      className="flex items-center gap-2"
+                    >
                       {btn.text}
                       {btn.icon && (
                         <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -108,6 +115,9 @@ export default function Banner() {
                           <Link
                             key={store.name}
                             href={store.href}
+                            onClick={() => {
+                              track(store.tracking, store.href);
+                            }}
                             className="group flex items-center gap-3 bg-white/10 hover:bg-white/20 rounded-xl p-2.5 transition-all duration-300"
                           >
                             <Image

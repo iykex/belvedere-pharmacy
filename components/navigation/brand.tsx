@@ -1,5 +1,6 @@
 "use client";
 import useNavigationMenu from "@/hooks/use-navigation-menu";
+import { INTERNAL_LINKS } from "@/lib/constants/general";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,7 +10,7 @@ export default function Brand() {
   return (
     <div className="flex gap-x-2 sm:gap-x-3 items-center">
       <Link
-        href="/"
+        href={INTERNAL_LINKS.homePage}
         className="relative group flex items-center gap-2 sm:gap-3"
       >
         <Image

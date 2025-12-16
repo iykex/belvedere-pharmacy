@@ -10,13 +10,13 @@ import covidVaccineImage from "@/public/services/covid-vaccine.jpg";
 import pressureCheckImage from "@/public/services/pressure-check.jpg";
 import stopSmokingImage from "@/public/services/stop-smoking.jpg";
 import emergencyContraceptionImage from "@/public/services/emergency-contraception.jpg";
-import minorAilmentImage from "@/public/services/minor-ailment.jpg";
-import prescriptionDispensingImage from "@/public/services/prescription-dispensing.jpg";
-import medicationReviewImage from "@/public/services/medication-review.jpg";
-import weightManagementImage from "@/public/services/weight-management.jpeg";
-import travelClinicImage from "@/public/services/travel-clinic.jpg";
-import cholesterolTestsImage from "@/public/services/cholesterol-tests.jpg";
-import diabetesScreeningImage from "@/public/services/diabetes-screening.png";
+// import minorAilmentImage from "@/public/services/minor-ailment.jpg";
+// import prescriptionDispensingImage from "@/public/services/prescription-dispensing.jpg";
+// import medicationReviewImage from "@/public/services/medication-review.jpg";
+// import weightManagementImage from "@/public/services/weight-management.jpeg";
+// import travelClinicImage from "@/public/services/travel-clinic.jpg";
+// import cholesterolTestsImage from "@/public/services/cholesterol-tests.jpg";
+// import diabetesScreeningImage from "@/public/services/diabetes-screening.png";
 import adamPeaceImage from "@/public/testimonials/adam-peace.png";
 import alfrnaThompasImage from "@/public/testimonials/alfrina-thomas.png";
 import annMarieMarcroftImage from "@/public/testimonials/ann-marie-marcroft.png";
@@ -32,14 +32,20 @@ import sebastianPodbornyImage from "@/public/testimonials/sebastian_podborny.png
 import {
   IconAward,
   IconBolt,
+  IconBug,
+  IconDroplet,
+  IconEar,
   IconHeart,
-  IconPill,
+  // IconPill,
   IconShield,
   IconShieldCheck,
   IconTrendingUp,
   IconUser,
   IconUsers,
+  IconWind,
 } from "@tabler/icons-react";
+import { EXTERNAL_LINKS } from "./general";
+import { TRACKING_EVENTS } from "./analytics";
 
 export const TESTIMONIALS = [
   {
@@ -145,7 +151,8 @@ export const PFP_CONDITIONS = [
     serviceId: "ear-pain",
     badge: "Ages 1-17",
     color: "from-primary/20 to-primary/5",
-    href: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5349",
+    href: EXTERNAL_LINKS.services.earPain,
+    tracking: TRACKING_EVENTS.earPainBookAppointment,
   },
   {
     title: "Infected Insect Bites",
@@ -155,7 +162,8 @@ export const PFP_CONDITIONS = [
     serviceId: "skin-infection",
     badge: "All Ages",
     color: "from-chart-3/20 to-chart-3/5",
-    href: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5347",
+    href: EXTERNAL_LINKS.services.infectedInsectBites,
+    tracking: TRACKING_EVENTS.infectedInsectBitesBookAppointment,
   },
   {
     title: "Bacterial Skin Infection",
@@ -165,7 +173,8 @@ export const PFP_CONDITIONS = [
     serviceId: "skin-infection",
     badge: "Common",
     color: "from-chart-2/20 to-chart-2/5",
-    href: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5345",
+    href: EXTERNAL_LINKS.services.bacterialSkinInfection,
+    tracking: TRACKING_EVENTS.bacterialSkinInfectionBookAppointment,
   },
   {
     title: "Shingles",
@@ -175,7 +184,8 @@ export const PFP_CONDITIONS = [
     serviceId: "shingles",
     badge: "Urgent",
     color: "from-destructive/20 to-destructive/5",
-    href: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5350",
+    href: EXTERNAL_LINKS.services.shingles,
+    tracking: TRACKING_EVENTS.shinglesBookAppointment,
   },
   {
     title: "Sinus Infection",
@@ -185,7 +195,8 @@ export const PFP_CONDITIONS = [
     serviceId: "sinus-infection",
     badge: "Common",
     color: "from-primary/20 to-primary/5",
-    href: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5348",
+    href: EXTERNAL_LINKS.services.sinusInfection,
+    tracking: TRACKING_EVENTS.sinusInfectionBookAppointment,
   },
   {
     title: "Sore Throat Consultations",
@@ -195,7 +206,8 @@ export const PFP_CONDITIONS = [
     serviceId: "sore-throat",
     badge: "Fast Relief",
     color: "from-chart-3/20 to-chart-3/5",
-    href: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5346",
+    href: EXTERNAL_LINKS.services.soreThroatConsultations,
+    tracking: TRACKING_EVENTS.soreThroatBookAppointment,
   },
   {
     title: "Urinary Tract Infection in Women",
@@ -205,7 +217,48 @@ export const PFP_CONDITIONS = [
     badge: "Women Only",
     color: "from-chart-2/20 to-chart-2/5",
     serviceId: "uti",
-    href: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5344",
+    href: EXTERNAL_LINKS.services.urinaryTractInfection,
+    tracking: TRACKING_EVENTS.utiWomenBookAppointment,
+  },
+];
+
+export const NHS_PHARMACY_FIRST_SERVICES = [
+  {
+    title: "Ear Pains",
+    description: "Quick relief and treatment for ear infections and discomfort",
+    icon: IconEar,
+    color: "text-primary",
+    bgColor: "bg-primary/10",
+    href: EXTERNAL_LINKS.services.earPain,
+    tracking: TRACKING_EVENTS.earPainBookAppointment,
+  },
+  {
+    title: "Infected Insect Bites",
+    description: "Expert care for insect bites showing signs of infection",
+    icon: IconBug,
+    color: "text-chart-3",
+    bgColor: "bg-chart-3/10",
+    href: EXTERNAL_LINKS.services.infectedInsectBites,
+    tracking: TRACKING_EVENTS.infectedInsectBitesBookAppointment,
+  },
+  {
+    title: "Sinus Infection",
+    description: "Relief for sinusitis symptoms and sinus pressure",
+    icon: IconWind,
+    color: "text-chart-2",
+    bgColor: "bg-chart-2/10",
+    href: EXTERNAL_LINKS.services.sinusInfection,
+    tracking: TRACKING_EVENTS.sinusInfectionBookAppointment,
+  },
+  {
+    title: "Urinary Tract Infection",
+    description: "Women's UTI treatment without GP appointment needed",
+    icon: IconDroplet,
+    color: "text-chart-3",
+    bgColor: "bg-chart-3/10",
+    badge: "Women",
+    href: EXTERNAL_LINKS.services.urinaryTractInfection,
+    tracking: TRACKING_EVENTS.utiWomenBookAppointment,
   },
 ];
 
@@ -222,10 +275,11 @@ export const SERVICES_LIST = [
       "Professional administration",
     ],
     image: fluVaccineImage,
-    link: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5340",
+    link: EXTERNAL_LINKS.services.fluVaccinations,
     icon: IconShieldCheck,
     color: "from-chart-3/20 to-chart-3/5",
     borderColor: "border-chart-3/30",
+    tracking: TRACKING_EVENTS.fluVaccinationBookAppointment,
   },
   {
     title: "COVID-19 Vaccination",
@@ -239,10 +293,11 @@ export const SERVICES_LIST = [
       "Post-vaccination advice",
     ],
     image: covidVaccineImage,
-    link: "https://shop.belvederepharmacy.net/appointments/book/service/COVID-19%20Vaccine?pharmacy=378&originalServiceId=5342&type=redirection",
+    link: EXTERNAL_LINKS.services.covidVaccination,
     icon: IconShield,
     color: "from-primary/20 to-primary/5",
     borderColor: "border-primary/30",
+    tracking: TRACKING_EVENTS.covidVaccinationBookAppointment,
   },
   {
     title: "Blood Pressure Check",
@@ -256,10 +311,11 @@ export const SERVICES_LIST = [
       "Follow-up advice",
     ],
     image: pressureCheckImage,
-    link: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5343",
+    link: EXTERNAL_LINKS.services.bloodPressureChecks,
     icon: IconTrendingUp,
     color: "from-chart-2/20 to-chart-2/5",
     borderColor: "border-chart-2/30",
+    tracking: TRACKING_EVENTS.bloodPressureCheckBookAppointment,
   },
   {
     title: "Stop Smoking Service",
@@ -273,10 +329,11 @@ export const SERVICES_LIST = [
       "Personalized quit plan",
     ],
     image: stopSmokingImage,
-    link: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5341",
+    link: EXTERNAL_LINKS.services.stopSmokingServices,
     icon: IconBolt,
     color: "from-primary/20 to-primary/5",
     borderColor: "border-primary/30",
+    tracking: TRACKING_EVENTS.stopSmokingBookAppointment,
   },
   {
     title: "Emergency Contraception",
@@ -290,10 +347,11 @@ export const SERVICES_LIST = [
       "Future contraception planning",
     ],
     image: emergencyContraceptionImage,
-    link: "https://app.belvederepharmacy.net/#/guest/appointments?pharmacyId=378&serviceId=5339",
+    link: EXTERNAL_LINKS.services.emergencyContraception,
     icon: IconUser,
     color: "from-chart-2/20 to-chart-2/5",
     borderColor: "border-chart-2/30",
+    tracking: TRACKING_EVENTS.emergencyContraceptionBookAppointment,
   },
   // {
   //   title: "Minor Ailment Service",

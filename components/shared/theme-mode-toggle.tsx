@@ -4,6 +4,8 @@ import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { flushSync } from "react-dom";
+import { track } from "@/lib/analytics/tracker";
+import { TRACKING_EVENTS } from "@/lib/constants/analytics";
 
 export default function ModeToggle() {
   const { setTheme } = useTheme();
@@ -33,7 +35,10 @@ export default function ModeToggle() {
         >
           <Sun
             className="lg:size-5 bg-transparent"
-            onClick={() => changeTheme("dark")}
+            onClick={() => {
+              changeTheme("dark");
+              track(TRACKING_EVENTS.darkModeEnable, "dark mode");
+            }}
           />
         </Button>
       </div>
@@ -47,7 +52,10 @@ export default function ModeToggle() {
         >
           <Moon
             className="lg:size-5  bg-transparent dark:text-white"
-            onClick={() => changeTheme("light")}
+            onClick={() => {
+              changeTheme("light");
+              track(TRACKING_EVENTS.lightModeEnable, "light mode");
+            }}
           />
         </Button>
       </div>
