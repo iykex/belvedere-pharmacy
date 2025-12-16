@@ -7,6 +7,7 @@ import { Footer } from "@/components/shared/footer";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import FAQChatbot from "@/components/faq-chatbot/faq-chatbot";
 import CookieConsent from "@/components/general/cookie-consent";
+import PageTracker from "@/components/providers/analytics/page-tracker";
 import './hide-dev-overlay.css';
 
 export const metadata: Metadata = getMetadata();
@@ -27,16 +28,18 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <main className="dashed-grid-bg min-h-screen">{children}</main>
-          <footer className="w-full bg-foreground dark:bg-background">
-            <Footer />
-          </footer>
+          <PageTracker>
+            <main className="dashed-grid-bg min-h-screen">{children}</main>
+            <footer className="w-full bg-foreground dark:bg-background">
+              <Footer />
+            </footer>
 
-          {/* Global Floating Chatbot */}
-          <FAQChatbot />
+            {/* Global Floating Chatbot */}
+            <FAQChatbot />
 
-          {/* Cookie Consent Dialog */}
-          <CookieConsent />
+            {/* Cookie Consent Dialog */}
+            <CookieConsent />
+          </PageTracker>
         </ThemeProvider>
       </body>
     </html>
