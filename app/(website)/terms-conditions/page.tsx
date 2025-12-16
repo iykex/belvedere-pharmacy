@@ -1,13 +1,13 @@
+import Menu from "@/components/navigation/navigation-menu";
 import WidthConstraint from "@/components/shared/width-constraint";
 import CTASection from "@/components/shared/cta-section";
-import { TERMS_AND_CONDITIONS } from "@/lib/constants/legal";
-import NavigationMenu from "@/components/navigation/navigation-menu";
+import { TERMS_AND_CONDITIONS } from "@/lib/constants";
 
 export default function TermsPage() {
   return (
     <div className="overflow-hidden space-y-18 pb-30">
       <header className="fixed top-0 w-full z-50">
-        <NavigationMenu />
+        <Menu />
       </header>
 
       {/* Hero Section */}

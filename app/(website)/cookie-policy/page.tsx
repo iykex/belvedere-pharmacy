@@ -1,13 +1,13 @@
+import Menu from "@/components/navigation/navigation-menu";
 import WidthConstraint from "@/components/shared/width-constraint";
 import CTASection from "@/components/shared/cta-section";
-import { COOKIE_POLICY_DATA } from "@/lib/constants/legal";
-import NavigationMenu from "@/components/navigation/navigation-menu";
+import { COOKIE_POLICY_DATA } from "@/lib/constants";
 
 export default function CookiePolicyPage() {
   return (
     <div className="overflow-hidden space-y-18 pb-30">
       <header className="fixed top-0 w-full z-50">
-        <NavigationMenu />
+        <Menu />
       </header>
 
       {/* Hero Section */}
@@ -64,18 +64,18 @@ export default function CookiePolicyPage() {
                         const textColor = isPrimary
                           ? "text-primary"
                           : isChart2
-                          ? "text-chart-2"
-                          : "text-chart-3";
+                            ? "text-chart-2"
+                            : "text-chart-3";
                         const bgColor = isPrimary
                           ? "bg-primary/10"
                           : isChart2
-                          ? "bg-chart-2/10"
-                          : "bg-chart-3/10";
+                            ? "bg-chart-2/10"
+                            : "bg-chart-3/10";
                         const borderColor = isPrimary
                           ? "border-primary/20"
                           : isChart2
-                          ? "border-chart-2/20"
-                          : "border-chart-3/20";
+                            ? "border-chart-2/20"
+                            : "border-chart-3/20";
 
                         return (
                           <div

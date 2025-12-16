@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
-import "@/styles/hide-dev-overlay.css";
 import { getMetadata } from "@/lib/metadata";
 import { ReactNode } from "react";
 import { plusJakartaSans, inter } from "@/lib/fonts";
 import { Footer } from "@/components/shared/footer";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import FAQChatbot from "@/components/faq-chatbot/faq-chatbot";
-import CookieConsentDialogue from "@/components/general/cookie-consent";
+import CookieConsent from "@/components/general/cookie-consent";
 import PageTracker from "@/components/providers/analytics/page-tracker";
+import './hide-dev-overlay.css';
 
 export const metadata: Metadata = getMetadata();
 
@@ -33,11 +33,17 @@ export default function RootLayout({
             <footer className="w-full bg-foreground dark:bg-background">
               <Footer />
             </footer>
+
+            {/* Global Floating Chatbot */}
             <FAQChatbot />
-            <CookieConsentDialogue bubbleStateClassName="hidden lg:block " />
+
+            {/* Cookie Consent Dialog */}
+            <CookieConsent />
           </PageTracker>
         </ThemeProvider>
       </body>
     </html>
   );
 }
+
+
