@@ -33,7 +33,7 @@ const mockStats = {
         visitors: { value: 4980, trend: 2, up: true },
         cookieConsent: { value: 87, trend: 1, up: false },
     },
-    lawford: {
+    Lowfield: {
         consultations: { value: 11, trend: 8, up: true },
         subscribers: { value: 312, trend: 4, up: true },
         visitors: { value: 3600, trend: 3, up: true },
@@ -65,7 +65,7 @@ const mockRecentConsultations = [
         name: "Emma Thompson",
         email: "emma.t@outlook.com",
         service: "Travel Health Advice",
-        branch: "Lawford",
+        branch: "Lowfield",
         date: "Dec 9, 2024",
         status: "completed",
     },
@@ -321,7 +321,7 @@ export default function AdminDashboard() {
                                 <div className="flex items-center justify-between">
                                     <div className="flex items-center gap-3">
                                         <div className="w-3 h-3 rounded-full bg-[#8b5cf6]"></div>
-                                        <span className="text-sm">Lawford</span>
+                                        <span className="text-sm">Lowfield</span>
                                     </div>
                                     <div className="flex items-center gap-2">
                                         <div className="h-2 w-32 bg-accent rounded-full overflow-hidden">

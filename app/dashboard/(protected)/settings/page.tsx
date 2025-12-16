@@ -51,8 +51,8 @@ export default function SettingsPage() {
                                 key={tab.id}
                                 onClick={() => setActiveTab(tab.id)}
                                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-all ${activeTab === tab.id
-                                        ? "bg-primary/10 text-primary"
-                                        : "hover:bg-accent text-muted-foreground hover:text-foreground"
+                                    ? "bg-primary/10 text-primary"
+                                    : "hover:bg-accent text-muted-foreground hover:text-foreground"
                                     }`}
                             >
                                 <tab.icon size={20} />
@@ -134,7 +134,7 @@ export default function SettingsPage() {
                                 {[
                                     { name: "Belvedere Pharmacy", domain: "belvederepharmacy.net" },
                                     { name: "Kidbrook Pharmacy", domain: "kidbrookpharmacy.net" },
-                                    { name: "Lawford Pharmacy", domain: "lawfordpharmacy.net" },
+                                    { name: "Lowfield Pharmacy", domain: "Lowfieldpharmacy.net" },
                                 ].map((branch) => (
                                     <div
                                         key={branch.name}
@@ -264,16 +264,16 @@ export default function SettingsPage() {
                                             <button
                                                 key={theme}
                                                 className={`p-4 border rounded-lg text-center capitalize transition-all ${theme === "dark"
-                                                        ? "border-primary bg-primary/10"
-                                                        : "border-border hover:border-primary/50"
+                                                    ? "border-primary bg-primary/10"
+                                                    : "border-border hover:border-primary/50"
                                                     }`}
                                             >
                                                 <div
                                                     className={`w-8 h-8 mx-auto mb-2 rounded-full ${theme === "light"
-                                                            ? "bg-white border border-gray-200"
-                                                            : theme === "dark"
-                                                                ? "bg-gray-900"
-                                                                : "bg-gradient-to-r from-white to-gray-900"
+                                                        ? "bg-white border border-gray-200"
+                                                        : theme === "dark"
+                                                            ? "bg-gray-900"
+                                                            : "bg-gradient-to-r from-white to-gray-900"
                                                         }`}
                                                 ></div>
                                                 <span className="text-sm font-medium">{theme}</span>

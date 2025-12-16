@@ -100,7 +100,7 @@ export function DashboardSidebar() {
                         <option value="all">All Branches</option>
                         <option value="belvedere">Belvedere Pharmacy</option>
                         <option value="kidbrook">Kidbrook Pharmacy</option>
-                        <option value="lawford">Lawford Pharmacy</option>
+                        <option value="Lowfield">Lowfield Pharmacy</option>
                     </select>
                 </div>
 

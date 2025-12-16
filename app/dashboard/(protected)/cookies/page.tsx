@@ -17,13 +17,13 @@ import { Button } from "@/components/ui/button";
 const mockConsents = [
     { id: 1, ip: "192.168.1.xxx", branch: "belvedere", analytics: true, marketing: true, preferences: true, date: "2024-12-10T10:30:00" },
     { id: 2, ip: "192.168.2.xxx", branch: "kidbrook", analytics: true, marketing: false, preferences: true, date: "2024-12-10T09:15:00" },
-    { id: 3, ip: "192.168.3.xxx", branch: "lawford", analytics: false, marketing: false, preferences: true, date: "2024-12-09T16:45:00" },
+    { id: 3, ip: "192.168.3.xxx", branch: "Lowfield", analytics: false, marketing: false, preferences: true, date: "2024-12-09T16:45:00" },
     { id: 4, ip: "192.168.4.xxx", branch: "belvedere", analytics: true, marketing: true, preferences: true, date: "2024-12-09T14:20:00" },
     { id: 5, ip: "192.168.5.xxx", branch: "kidbrook", analytics: true, marketing: false, preferences: false, date: "2024-12-09T11:00:00" },
-    { id: 6, ip: "192.168.6.xxx", branch: "lawford", analytics: true, marketing: true, preferences: true, date: "2024-12-08T18:30:00" },
+    { id: 6, ip: "192.168.6.xxx", branch: "Lowfield", analytics: true, marketing: true, preferences: true, date: "2024-12-08T18:30:00" },
     { id: 7, ip: "192.168.7.xxx", branch: "belvedere", analytics: false, marketing: false, preferences: true, date: "2024-12-08T09:45:00" },
     { id: 8, ip: "192.168.8.xxx", branch: "kidbrook", analytics: true, marketing: true, preferences: true, date: "2024-12-07T15:10:00" },
-    { id: 9, ip: "192.168.9.xxx", branch: "lawford", analytics: true, marketing: false, preferences: true, date: "2024-12-07T12:25:00" },
+    { id: 9, ip: "192.168.9.xxx", branch: "Lowfield", analytics: true, marketing: false, preferences: true, date: "2024-12-07T12:25:00" },
     { id: 10, ip: "192.168.10.xxx", branch: "belvedere", analytics: true, marketing: true, preferences: true, date: "2024-12-06T10:00:00" },
 ];
 

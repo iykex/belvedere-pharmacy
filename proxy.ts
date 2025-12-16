@@ -7,12 +7,12 @@ export function proxy(request: NextRequest) {
 
     // Check if we're on the dashboard subdomain
     // Development: dashboard.localhost:3000
-    // Production: dashboard.belvederepharmacy.net, dashboard.kidbrookpharmacy.net, dashboard.lawfordpharmacy.net
+    // Production: dashboard.belvederepharmacy.net, dashboard.kidbrookpharmacy.net, dashboard.Lowfieldpharmacy.net
     const isDashboardSubdomain =
         hostname.startsWith('dashboard.localhost') ||
         hostname.startsWith('dashboard.belvederepharmacy.net') ||
         hostname.startsWith('dashboard.kidbrookpharmacy.net') ||
-        hostname.startsWith('dashboard.lawfordpharmacy.net');
+        hostname.startsWith('dashboard.lowfieldpharmacy.net');
 
     // If on dashboard subdomain, rewrite to /dashboard routes
     if (isDashboardSubdomain) {

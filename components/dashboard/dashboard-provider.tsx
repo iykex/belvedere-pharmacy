@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, ReactNode } from "react";
 
-export type Branch = "belvedere" | "kidbrook" | "lawford" | "all";
+export type Branch = "belvedere" | "kidbrook" | "Lowfield" | "all";
 
 interface DashboardContextType {
     currentBranch: Branch;
@@ -55,7 +55,7 @@ export const branchNames: Record<Branch, string> = {
     all: "All Branches",
     belvedere: "Belvedere Pharmacy",
     kidbrook: "Kidbrook Pharmacy",
-    lawford: "Lawford Pharmacy",
+    Lowfield: "Lowfield Pharmacy",
 };
 
 // Branch colors for visual distinction
@@ -63,6 +63,6 @@ export const branchColors: Record<Branch, string> = {
     all: "#3B9FE7",
     belvedere: "#3B9FE7",
     kidbrook: "#22c55e",
-    lawford: "#8b5cf6",
+    Lowfield: "#8b5cf6",
 };
 

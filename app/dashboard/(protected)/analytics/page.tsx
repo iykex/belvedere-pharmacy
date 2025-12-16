@@ -75,7 +75,7 @@ const mockAnalytics = {
             { source: "Referral", visitors: 546, percentage: 11 },
         ],
     },
-    lawford: {
+    Lowfield: {
         visitors: 3600,
         pageViews: 11250,
         avgDuration: "2:41",

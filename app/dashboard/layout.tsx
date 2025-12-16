@@ -12,7 +12,7 @@ export const metadata: Metadata = {
         template: "%s | Belvedere Pharmacy Dashboard",
         default: "Dashboard | Belvedere Pharmacy Group",
     },
-    description: "Central management dashboard for Belvedere, Kidbrook, and Lawford Pharmacies",
+    description: "Central management dashboard for Belvedere, Kidbrook, and Lowfield Pharmacies",
     robots: "noindex, nofollow",
 };
 

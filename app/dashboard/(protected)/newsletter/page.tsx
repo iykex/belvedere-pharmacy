@@ -17,14 +17,14 @@ import { Button } from "@/components/ui/button";
 const mockSubscribers = [
     { id: 1, email: "sarah.johnson@email.com", branch: "belvedere", subscribed: "2024-12-10T10:30:00", source: "Homepage" },
     { id: 2, email: "james.wilson@gmail.com", branch: "kidbrook", subscribed: "2024-12-09T14:15:00", source: "Blog" },
-    { id: 3, email: "emma.thompson@outlook.com", branch: "lawford", subscribed: "2024-12-09T09:45:00", source: "Footer" },
+    { id: 3, email: "emma.thompson@outlook.com", branch: "Lowfield", subscribed: "2024-12-09T09:45:00", source: "Footer" },
     { id: 4, email: "michael.brown@yahoo.com", branch: "belvedere", subscribed: "2024-12-08T16:00:00", source: "Popup" },
     { id: 5, email: "lisa.anderson@email.com", branch: "kidbrook", subscribed: "2024-12-08T11:30:00", source: "Homepage" },
-    { id: 6, email: "robert.davis@email.com", branch: "lawford", subscribed: "2024-12-07T10:00:00", source: "Footer" },
+    { id: 6, email: "robert.davis@email.com", branch: "Lowfield", subscribed: "2024-12-07T10:00:00", source: "Footer" },
     { id: 7, email: "jennifer.clark@gmail.com", branch: "belvedere", subscribed: "2024-12-07T15:45:00", source: "Homepage" },
     { id: 8, email: "david.miller@outlook.com", branch: "kidbrook", subscribed: "2024-12-06T09:15:00", source: "Blog" },
     { id: 9, email: "amanda.white@email.com", branch: "belvedere", subscribed: "2024-12-05T12:00:00", source: "Popup" },
-    { id: 10, email: "chris.taylor@gmail.com", branch: "lawford", subscribed: "2024-12-04T18:30:00", source: "Footer" },
+    { id: 10, email: "chris.taylor@gmail.com", branch: "Lowfield", subscribed: "2024-12-04T18:30:00", source: "Footer" },
     { id: 11, email: "kelly.martin@yahoo.com", branch: "kidbrook", subscribed: "2024-12-03T08:45:00", source: "Homepage" },
     { id: 12, email: "steve.garcia@outlook.com", branch: "belvedere", subscribed: "2024-12-02T14:20:00", source: "Blog" },
 ];
