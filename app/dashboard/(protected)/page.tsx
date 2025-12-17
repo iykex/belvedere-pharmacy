@@ -1,15 +1,15 @@
 "use client";
 
 import {
-    IconMessages,
-    IconMail,
-    IconUsers,
-    IconCookie,
-    IconArrowUpRight,
-    IconArrowDownRight,
-    IconEye,
-    IconCalendar,
-} from "@tabler/icons-react";
+    MessageSquare as IconMessages,
+    Mail as IconMail,
+    Users as IconUsers,
+    Cookie as IconCookie,
+    ArrowUpRight as IconArrowUpRight,
+    ArrowDownRight as IconArrowDownRight,
+    Eye as IconEye,
+    Calendar as IconCalendar,
+} from "lucide-react";
 import { useDashboard, branchNames } from "@/components/dashboard/dashboard-provider";
 import Link from "next/link";
 

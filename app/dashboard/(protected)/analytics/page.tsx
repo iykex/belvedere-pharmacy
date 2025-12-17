@@ -1,16 +1,16 @@
 "use client";
 
 import {
-    IconChartBar,
-    IconUsers,
-    IconEye,
-    IconClock,
-    IconDeviceDesktop,
-    IconDeviceMobile,
-    IconBrandGoogle,
-    IconWorld,
-    IconArrowUpRight,
-} from "@tabler/icons-react";
+    BarChart as IconChartBar,
+    Users as IconUsers,
+    Eye as IconEye,
+    Clock as IconClock,
+    Monitor as IconDeviceDesktop,
+    Smartphone as IconDeviceMobile,
+    Chrome as IconBrandGoogle,
+    Globe as IconWorld,
+    ArrowUpRight as IconArrowUpRight,
+} from "lucide-react";
 import { useDashboard, branchNames } from "@/components/dashboard/dashboard-provider";
 
 // Mock analytics data

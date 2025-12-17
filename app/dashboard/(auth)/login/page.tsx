@@ -3,13 +3,13 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import {
-    IconBuildingStore,
-    IconMail,
-    IconLock,
-    IconEye,
-    IconEyeOff,
-    IconLoader2,
-} from "@tabler/icons-react";
+    Store as IconBuildingStore,
+    Mail as IconMail,
+    Lock as IconLock,
+    Eye as IconEye,
+    EyeOff as IconEyeOff,
+    Loader2 as IconLoader2,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 

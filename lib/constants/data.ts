@@ -30,20 +30,19 @@ import oebrnImage from "@/public/testimonials/oeben.png";
 import sawenAliImage from "@/public/testimonials/sawen-ali.png";
 import sebastianPodbornyImage from "@/public/testimonials/sebastian_podborny.png";
 import {
-  IconAward,
-  IconBolt,
-  IconBug,
-  IconDroplet,
-  IconEar,
-  IconHeart,
-  // IconPill,
-  IconShield,
-  IconShieldCheck,
-  IconTrendingUp,
-  IconUser,
-  IconUsers,
-  IconWind,
-} from "@tabler/icons-react";
+  Award as IconAward,
+  Zap as IconBolt,
+  Bug as IconBug,
+  Droplet as IconDroplet,
+  Ear as IconEar,
+  Heart as IconHeart,
+  Shield as IconShield,
+  ShieldCheck as IconShieldCheck,
+  TrendingUp as IconTrendingUp,
+  User as IconUser,
+  Users as IconUsers,
+  Wind as IconWind,
+} from "lucide-react";
 import { EXTERNAL_LINKS } from "./general";
 import { TRACKING_EVENTS } from "./analytics";
 

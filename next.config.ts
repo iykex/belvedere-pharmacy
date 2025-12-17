@@ -48,7 +48,7 @@ const nextConfig: NextConfig = {
 
   // Experimental features for better performance
   experimental: {
-    optimizePackageImports: ['lucide-react', '@tabler/icons-react'],
+    optimizePackageImports: ['lucide-react'],
   },
 
   // Caching headers for static assets

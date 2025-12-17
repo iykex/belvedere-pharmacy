@@ -1,5 +1,4 @@
-import { IconUserSearch } from "@tabler/icons-react";
-import { Bot, ChevronDown } from "lucide-react";
+import { Bot, ChevronDown, UserSearch as IconUserSearch } from "lucide-react";
 import { Button } from "../ui/button";
 import { todayDate } from "@/lib/utils";
 
@@ -22,7 +21,7 @@ export function ChatHeader({ visitorName, onClose }: ChatHeaderProps) {
           <div className="flex items-center gap-1">
             <h3 className="font-bold text-lg">Bella</h3>
             <IconUserSearch
-              stroke={3}
+              strokeWidth="3"
               className="size-4 text-yellow-300 mt-1"
             />
           </div>

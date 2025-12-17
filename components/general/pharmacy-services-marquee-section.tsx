@@ -1,6 +1,6 @@
-import { ForwardRefExoticComponent, RefAttributes } from "react";
+import { ForwardRefExoticComponent, RefAttributes, SVGProps } from "react";
 import { Card, CardContent } from "../ui/card";
-import { IconProps, Icon } from "@tabler/icons-react";
+import { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { TRUST_BADGES_MARQUEE } from "@/lib/constants/general";
 import WidthConstraint from "../shared/width-constraint";
@@ -15,7 +15,7 @@ export const TrustBadgeCard = ({
 }: {
   title: string;
   subtitle: string;
-  icon: ForwardRefExoticComponent<IconProps & RefAttributes<Icon>>;
+  icon: LucideIcon;
   color: string;
   bgColor: string;
 }) => {
