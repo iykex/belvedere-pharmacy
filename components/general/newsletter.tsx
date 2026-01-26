@@ -8,8 +8,6 @@ import { Button } from "../ui/button";
 import WidthConstraint from "../shared/width-constraint";
 import { NEWSLETTER_FEATURES } from "@/lib/constants/general";
 import { Spinner } from "../ui/spinner";
-import { track } from "@/lib/analytics/tracker";
-import { TRACKING_EVENTS } from "@/lib/constants/analytics";
 
 export default function NewsletterSection() {
   const { isSubscribed, control, formState, handleSubmit, onSubmit } =
@@ -118,18 +116,14 @@ export default function NewsletterSection() {
                               <Button
                                 type="submit"
                                 form="email-form"
-                                onClick={() => {
-                                  track(
-                                    TRACKING_EVENTS.newsletterSubscribe,
-                                    "subscribed to newsletter"
-                                  );
-                                }}
                                 disabled={
-                                  formState.isLoading || formState.isSubmitting
+                                  formState.isLoading ||
+                                  formState.isSubmitting ||
+                                  !formState.isValid
                                 }
                                 className="px-6 rounded-r-xl rounded-l-none bg-primary hover:bg-primary/90 font-semibold text-white"
                               >
-                                {formState.isLoading ? (
+                                {formState.isSubmitting ? (
                                   <Spinner />
                                 ) : (
                                   <>
@@ -160,7 +154,7 @@ export default function NewsletterSection() {
                             {item}
                           </span>
                         </div>
-                      )
+                      ),
                     )}
                   </div>
 
