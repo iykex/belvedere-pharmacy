@@ -68,6 +68,10 @@ jobs:
             echo "Current commit (short SHA): $(git rev-parse --short HEAD)"
             echo "Circle branch: $CIRCLE_BRANCH"
             echo "Circle SHA: $CIRCLE_SHA1"
+            echo "Circle project username: $CIRCLE_PROJECT_USERNAME"
+            echo "Circle project reponame: $CIRCLE_PROJECT_REPONAME"
+            echo "Remote branches:"
+            git branch -r
 
       # Step 5: Install jq for JSON processing
       - run:
@@ -75,20 +79,50 @@ jobs:
           command: |
             sudo apt-get update && sudo apt-get install -y jq
 
-      # Step 6: Create Vercel deployment payload (Simple - no gitSource)
+      # Step 6: Create Vercel deployment payload with repoId (Production)
       - run:
           name: Prepare Vercel deployment payload
           command: |
             REPO_NAME="${CIRCLE_PROJECT_REPONAME}"
+            ORG_NAME="${CIRCLE_PROJECT_USERNAME}"
+            COMMIT_SHA="${CIRCLE_SHA1}"
+            BRANCH_NAME="${CIRCLE_BRANCH}"
 
-            echo "✅ Using repo name: $REPO_NAME"
+            echo "✅ Using org: $ORG_NAME, repo: $REPO_NAME"
+            echo "✅ Using branch: $BRANCH_NAME"
+            echo "✅ Using commit SHA: $COMMIT_SHA"
 
-            # Simple payload without gitSource - let Vercel use its GitHub integration
+            # Fetch repository ID from GitHub API
+            echo "🔍 Fetching repository ID from GitHub API..."
+            REPO_ID=$(curl -s -H "Authorization: token $GITHUB_PAT_TOKEN" \
+              https://api.github.com/repos/$ORG_NAME/$REPO_NAME | jq .id)
+
+            if [ -z "$REPO_ID" ] || [ "$REPO_ID" = "null" ]; then
+                echo "❌ Failed to fetch repository ID. Check GITHUB_PAT_TOKEN permissions."
+                exit 1
+            fi
+
+            echo "✅ Repository ID: $REPO_ID"
+
             jq -n \
               --arg name "$REPO_NAME" \
+              --arg ref "$BRANCH_NAME" \
+              --arg sha "$COMMIT_SHA" \
               --arg target "production" \
+              --arg type "github" \
+              --arg org "$ORG_NAME" \
+              --arg repo "$REPO_NAME" \
+              --argjson repoId "$REPO_ID" \
               '{
                 name: $name,
+                gitSource: {
+                  type: $type,
+                  org: $org,
+                  repo: $repo,
+                  repoId: $repoId,
+                  ref: $ref,
+                  sha: $sha
+                },
                 target: $target
               }' > payload.json
 
@@ -111,7 +145,7 @@ jobs:
             while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
                 echo "🔁 Attempt $ATTEMPT of $MAX_ATTEMPTS..."
                 RESPONSE=$(curl -s -o response.json -w "%{http_code}" \
-                  -X POST "https://api.vercel.com/v13/deployments?forceNew=1" \
+                  -X POST "https://api.vercel.com/v13/deployments?skipAutoDetectionConfirmation=1" \
                   -H "Authorization: Bearer $VERCEL_TOKEN" \
                   -H "Content-Type: application/json" \
                   -d @payload.json)
