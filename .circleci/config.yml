@@ -68,73 +68,30 @@ jobs:
             echo "Current commit (short SHA): $(git rev-parse --short HEAD)"
             echo "Circle branch: $CIRCLE_BRANCH"
             echo "Circle SHA: $CIRCLE_SHA1"
-            echo "Remote branches:"
-            git branch -r
-            echo "All refs:"
-            git show-ref
+            echo "Circle project username: $CIRCLE_PROJECT_USERNAME"
+            echo "Circle project reponame: $CIRCLE_PROJECT_REPONAME"
 
-      # Step 5: Install jq for JSON processing
+      # Step 5: Trigger Vercel Deployment via Deploy Hook
       - run:
-          name: Install jq
+          name: Trigger Vercel Deployment via Deploy Hook
           command: |
-            sudo apt-get update && sudo apt-get install -y jq
+            if [ -z "$VERCEL_DEPLOY_HOOK" ]; then
+              echo "❌ VERCEL_DEPLOY_HOOK is not set. Please create a deploy hook in Vercel."
+              echo "Go to: Project Settings > Git > Deploy Hooks"
+              exit 1
+            fi
 
-      # Step 6: Create Vercel deployment payload (Production)
-      - run:
-          name: Prepare Vercel deployment payload
-          command: |
-            ORG_NAME="${CIRCLE_PROJECT_USERNAME}"
-            REPO_NAME="${CIRCLE_PROJECT_REPONAME}"
-            # Use the full commit SHA instead of branch name
-            COMMIT_SHA="${CIRCLE_SHA1}"
-
-            echo "✅ Using org: $ORG_NAME, repo: $REPO_NAME"
-            echo "✅ Using commit SHA: $COMMIT_SHA"
-
-            jq -n \
-              --arg name "$REPO_NAME" \
-              --arg ref "$COMMIT_SHA" \
-              --arg target "production" \
-              --arg type "github" \
-              --arg org "$ORG_NAME" \
-              --arg repo "$REPO_NAME" \
-              '{
-                name: $name,
-                gitSource: {
-                  type: $type,
-                  org: $org,
-                  repo: $repo,
-                  ref: $ref
-                },
-                target: $target
-              }' > payload.json
-
-            echo "✅ Payload created"
-            cat payload.json
-
-      # Step 7: Debug payload
-      - run:
-          name: Debug payload
-          command: cat payload.json
-
-      # Step 8: Trigger Vercel Production Deployment (with retry)
-      - run:
-          name: Trigger Vercel Production Deployment (with retry)
-          command: |
             ATTEMPT=1
             MAX_ATTEMPTS=3
             SUCCESS=false
 
             while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
                 echo "🔁 Attempt $ATTEMPT of $MAX_ATTEMPTS..."
-                RESPONSE=$(curl -s -o response.json -w "%{http_code}" \
-                  -X POST "https://api.vercel.com/v13/deployments?skipAutoDetectionConfirmation=1" \
-                  -H "Authorization: Bearer $VERCEL_TOKEN" \
-                  -H "Content-Type: application/json" \
-                  -d @payload.json)
+                RESPONSE=$(curl -s -o response.json -w "%{http_code}" -X POST "$VERCEL_DEPLOY_HOOK")
 
                 if [ "$RESPONSE" -eq 200 ] || [ "$RESPONSE" -eq 201 ]; then
-                    echo "✅ Deployment successful!"
+                    echo "✅ Deployment hook triggered successfully!"
+                    cat response.json
                     SUCCESS=true
                     break
                 else
@@ -156,18 +113,18 @@ jobs:
                 exit 1
             fi
 
-      # Step 9: Notify Telegram — Deployment Success ✅
+      # Step 6: Notify Telegram — Deployment Success ✅
       - run:
           name: Notify Telegram — Deployment Success
           command: |
             REPO_NAME=$(basename $(git rev-parse --show-toplevel))
-            MESSAGE="✅ <b>Production Deployment Successful</b>%0A<b>Repository:</b> $REPO_NAME%0A<b>Status:</b> Success 🎉"
+            MESSAGE="✅ <b>Production Deployment Triggered</b>%0A<b>Repository:</b> $REPO_NAME%0A<b>Status:</b> Success 🎉%0A<b>Note:</b> Deployment is processing on Vercel"
             curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage" \
                 -d chat_id="$TELEGRAM_CHAT_ID" \
                 -d parse_mode="HTML" \
                 -d text="$MESSAGE"
 
-      # Step 10: Notify Telegram — Deployment Failed ❌
+      # Step 7: Notify Telegram — Deployment Failed ❌
       - run:
           name: Notify Telegram — Deployment Failed
           when: on_fail
