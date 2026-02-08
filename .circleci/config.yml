@@ -20,20 +20,17 @@ commands:
 jobs:
   deploy:
     docker:
-      - image: cimg/base:stable
+      - image: cimg/node:20.11
 
     steps:
-      # Step 1: Checkout the repository
       - checkout
 
-      # Step 2: Setup Git author (optional, for commit context)
       - run:
           name: Setup Git author for Vercel
           command: |
             git config user.name "iykex"
             git config user.email "aib.quame@gmail.com"
 
-      # Step 3: Notify Telegram — Deployment Started
       - run:
           name: Notify Telegram — Deployment Started
           command: |
@@ -59,117 +56,16 @@ jobs:
                  -d parse_mode="HTML" \
                  -d text="$MESSAGE"
 
-      # Step 4: Debug Git Info
       - run:
-          name: Debug Git Info
+          name: Install & Deploy to Vercel
           command: |
-            echo "Current branch: $(git rev-parse --abbrev-ref HEAD)"
-            echo "Current commit (full SHA): $(git rev-parse HEAD)"
-            echo "Current commit (short SHA): $(git rev-parse --short HEAD)"
-            echo "Circle branch: $CIRCLE_BRANCH"
-            echo "Circle SHA: $CIRCLE_SHA1"
-            echo "Circle project username: $CIRCLE_PROJECT_USERNAME"
-            echo "Circle project reponame: $CIRCLE_PROJECT_REPONAME"
-            echo "Remote branches:"
-            git branch -r
+            sudo npm install -g vercel
+            
+            # Deploy using Vercel CLI
+            # This bypasses the need for Vercel-GitHub integration
+            # --yes skips confirmation prompts and uses defaults (creates project if missing)
+            vercel deploy --prod --token $VERCEL_TOKEN --yes
 
-      # Step 5: Install jq for JSON processing
-      - run:
-          name: Install jq
-          command: |
-            sudo apt-get update && sudo apt-get install -y jq
-
-      # Step 6: Create Vercel deployment payload with repoId (Production)
-      - run:
-          name: Prepare Vercel deployment payload
-          command: |
-            REPO_NAME="${CIRCLE_PROJECT_REPONAME}"
-            ORG_NAME="${CIRCLE_PROJECT_USERNAME}"
-            COMMIT_SHA="${CIRCLE_SHA1}"
-            BRANCH_NAME="${CIRCLE_BRANCH}"
-
-            echo "✅ Using org: $ORG_NAME, repo: $REPO_NAME"
-            echo "✅ Using branch: $BRANCH_NAME"
-            echo "✅ Using commit SHA: $COMMIT_SHA"
-
-            # Fetch repository ID from GitHub API
-            echo "🔍 Fetching repository ID from GitHub API..."
-            REPO_ID=$(curl -s -H "Authorization: token $GITHUB_PAT_TOKEN" \
-              https://api.github.com/repos/$ORG_NAME/$REPO_NAME | jq .id)
-
-            if [ -z "$REPO_ID" ] || [ "$REPO_ID" = "null" ]; then
-                echo "❌ Failed to fetch repository ID. Check GITHUB_PAT_TOKEN permissions."
-                exit 1
-            fi
-
-            echo "✅ Repository ID: $REPO_ID"
-            jq -n \
-              --arg name "$REPO_NAME" \
-              --arg ref "$BRANCH_NAME" \
-              --arg target "production" \
-              --arg type "github" \
-              --arg org "$ORG_NAME" \
-              --arg repo "$REPO_NAME" \
-              --argjson repoId "$REPO_ID" \
-              '{
-                name: $name,
-                gitSource: {
-                  type: $type,
-                  repoId: $repoId,
-                  ref: $ref
-                },
-                target: $target
-              }' > payload.json
-
-            echo "✅ Payload created"
-            cat payload.json
-
-      # Step 7: Debug payload
-      - run:
-          name: Debug payload
-          command: cat payload.json
-
-      # Step 8: Trigger Vercel Production Deployment (with retry)
-      - run:
-          name: Trigger Vercel Production Deployment (with retry)
-          command: |
-            ATTEMPT=1
-            MAX_ATTEMPTS=3
-            SUCCESS=false
-
-            while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
-                echo "🔁 Attempt $ATTEMPT of $MAX_ATTEMPTS..."
-                RESPONSE=$(curl -s -o response.json -w "%{http_code}" \
-                  -X POST "https://api.vercel.com/v13/deployments?skipAutoDetectionConfirmation=1" \
-                  -H "Authorization: Bearer $VERCEL_TOKEN" \
-                  -H "Content-Type: application/json" \
-                  -d @payload.json)
-
-                if [ "$RESPONSE" -eq 200 ] || [ "$RESPONSE" -eq 201 ]; then
-                    echo "✅ Deployment successful!"
-                    cat response.json
-                    SUCCESS=true
-                    break
-                else
-                    echo "⚠️ Deployment failed with status code: $RESPONSE"
-                    echo "Response body:"
-                    cat response.json
-                    echo ""
-                    
-                    if [ $ATTEMPT -lt $MAX_ATTEMPTS ]; then
-                        echo "Retrying in 10 seconds..."
-                        sleep 10
-                    fi
-                fi
-                ATTEMPT=$((ATTEMPT+1))
-            done
-
-            if [ "$SUCCESS" = false ]; then
-                echo "❌ Deployment failed after $MAX_ATTEMPTS attempts."
-                exit 1
-            fi
-
-      # Step 9: Notify Telegram — Deployment Success ✅
       - run:
           name: Notify Telegram — Deployment Success
           command: |
@@ -180,7 +76,6 @@ jobs:
                 -d parse_mode="HTML" \
                 -d text="$MESSAGE"
 
-      # Step 10: Notify Telegram — Deployment Failed ❌
       - run:
           name: Notify Telegram — Deployment Failed
           when: on_fail
