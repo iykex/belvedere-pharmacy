@@ -69,28 +69,51 @@ jobs:
             echo "Remote branches:"
             git branch -r
 
-      # Step 5: Create Vercel deployment payload (Production)
+      # Step 5: Install jq for JSON processing
+      - run:
+          name: Install jq
+          command: |
+            sudo apt-get update && sudo apt-get install -y jq
+
+      # Step 6: Create Vercel deployment payload (Production)
       - run:
           name: Prepare Vercel deployment payload
           command: |
-            REPO_NAME=$(basename $(git rev-parse --show-toplevel))
+            set -e
+            ORG_NAME="${CIRCLE_PROJECT_USERNAME}"
+            REPO_NAME="${CIRCLE_PROJECT_REPONAME}"
 
-            # Hardcoded repo ID to avoid GitHub API auth issues
-            REPO_ID=xxxxxxxx
+            # Fetch repo ID from GitHub API
+            REPO_ID=$(curl -sS \
+              -H "Authorization: Bearer $GITHUB_TOKEN" \
+              -H "Accept: application/vnd.github+json" \
+              "https://api.github.com/repos/$ORG_NAME/$REPO_NAME" | jq -r '.id')
 
-            echo "{
-              \"name\": \"$REPO_NAME\",
-              \"gitSource\": {
-                \"type\": \"github\",
-                \"repoId\": $REPO_ID,
-                \"ref\": \"${CIRCLE_BRANCH}\"
-              },
-              \"target\": \"production\"
-            }" > payload.json
+            if [ -z "$REPO_ID" ] || [ "$REPO_ID" = "null" ]; then
+              echo "❌ Failed to fetch repoId from GitHub API."
+              exit 1
+            fi
 
-            echo "✅ Payload created for PRODUCTION deployment"
-            echo "Repo ID: $REPO_ID"
-            echo "Branch: ${CIRCLE_BRANCH}"
+            echo "✅ Repo ID: $REPO_ID"
+
+            jq -n \
+              --arg name "$REPO_NAME" \
+              --arg ref "${CIRCLE_BRANCH}" \
+              --arg target "production" \
+              --arg type "github" \
+              --argjson repoId "$REPO_ID" \
+              '{
+                name: $name,
+                gitSource: {
+                  type: $type,
+                  repoId: $repoId,
+                  ref: $ref
+                },
+                target: $target
+              }' > payload.json
+
+            echo "✅ Payload created"
+            cat payload.json
 
       # Step 6: Debug payload
       - run:
