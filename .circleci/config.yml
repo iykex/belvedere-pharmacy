@@ -103,7 +103,7 @@ jobs:
             fi
 
             echo "✅ Repository ID: $REPO_ID"
-
+            jq -n \
               --arg name "$REPO_NAME" \
               --arg ref "$BRANCH_NAME" \
               --arg target "production" \
