@@ -1,44 +1,48 @@
 version: 2.1
 
+# Define reusable commands
+commands:
+  notify_telegram:
+    description: "Send a notification to Telegram"
+    parameters:
+      message:
+        type: string
+    steps:
+      - run:
+          name: Send Telegram Notification
+          command: |
+            curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+                 -d chat_id="${TELEGRAM_CHAT_ID}" \
+                 -d parse_mode="HTML" \
+                 -d text="<< parameters.message >>"
+
 jobs:
   deploy:
     docker:
       - image: cimg/base:stable
 
     steps:
+      # Step 1: Checkout the repository
       - checkout
 
+      # Step 2: Setup Git author (optional, for commit context)
       - run:
-          name: Install jq
-          command: |
-            sudo apt-get update
-            sudo apt-get install -y jq
-
-      - run:
-          name: Setup Git author
+          name: Setup Git author for Vercel
           command: |
             git config user.name "iykex"
             git config user.email "aib.quame@gmail.com"
 
+      # Step 3: Notify Telegram — Deployment Started
       - run:
           name: Notify Telegram — Deployment Started
           command: |
-            set -e
-
             COMMIT_SHA=$(git rev-parse --short HEAD)
             LAST_COMMIT_MSG=$(git log -1 --pretty=%B)
             COMMITER_NAME=$(git log -1 --pretty=%an)
             TIMESTAMP=$(date +"%Y-%m-%d %H:%M:%S")
-            REPO_NAME=$(basename "$(git rev-parse --show-toplevel)")
+            REPO_NAME=$(basename $(git rev-parse --show-toplevel))
             BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
-
-            REMOTE_URL=$(git config --get remote.origin.url)
-            if echo "$REMOTE_URL" | grep -q "git@github.com:"; then
-              ORG_NAME=$(echo "$REMOTE_URL" | sed -E 's#git@github.com:([^/]+)/.*#\1#')
-            else
-              ORG_NAME=$(echo "$REMOTE_URL" | sed -E 's#https?://github.com/([^/]+)/.*#\1#')
-            fi
-
+            ORG_NAME=$(git config --get remote.origin.url | sed 's#.*github.com[:/]##;s#/.*##;s/\.git$//')
             COMMIT_URL="https://github.com/$ORG_NAME/$REPO_NAME/commit/$COMMIT_SHA"
 
             MESSAGE="🚀 <b>Production Deployment Started</b>%0A"
@@ -50,128 +54,106 @@ jobs:
             MESSAGE="$MESSAGE<b>Message:</b> $LAST_COMMIT_MSG"
 
             curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage" \
-              -d chat_id="$TELEGRAM_CHAT_ID" \
-              -d parse_mode="HTML" \
-              -d text="$MESSAGE"
+                 -d chat_id="$TELEGRAM_CHAT_ID" \
+                 -d parse_mode="HTML" \
+                 -d text="$MESSAGE"
 
+      # Step 4: Debug Git Info
       - run:
           name: Debug Git Info
           command: |
-            echo "CIRCLE_BRANCH: ${CIRCLE_BRANCH}"
             echo "Current branch: $(git rev-parse --abbrev-ref HEAD)"
-            echo "Remote URL: $(git config --get remote.origin.url)"
-            echo "Repo root: $(git rev-parse --show-toplevel)"
-            echo "Repo name: $(basename "$(git rev-parse --show-toplevel)")"
+            echo "Current commit (full SHA): $(git rev-parse HEAD)"
+            echo "Current commit (short SHA): $(git rev-parse --short HEAD)"
+            echo "Remote branches:"
+            git branch -r
 
+      # Step 5: Create Vercel deployment payload (Production)
       - run:
-          name: Prepare Vercel deployment payload (auto repoId)
+          name: Prepare Vercel deployment payload
           command: |
-            set -e
+            REPO_NAME=$(basename $(git rev-parse --show-toplevel))
 
-            # You can use CircleCI built-ins (more stable than parsing remote)
-            ORG_NAME="${CIRCLE_PROJECT_USERNAME}"
-            REPO_SLUG="${CIRCLE_PROJECT_REPONAME}"
+            # Hardcoded repo ID to avoid GitHub API auth issues
+            REPO_ID=xxxxxxxx
 
-            if [ -z "$ORG_NAME" ] || [ -z "$REPO_SLUG" ]; then
-              echo "❌ Missing CircleCI project env (CIRCLE_PROJECT_USERNAME / CIRCLE_PROJECT_REPONAME)."
-              exit 1
-            fi
+            echo "{
+              \"name\": \"$REPO_NAME\",
+              \"gitSource\": {
+                \"type\": \"github\",
+                \"repoId\": $REPO_ID,
+                \"ref\": \"${CIRCLE_BRANCH}\"
+              },
+              \"target\": \"production\"
+            }" > payload.json
 
-            API_URL="https://api.github.com/repos/$ORG_NAME/$REPO_SLUG"
+            echo "✅ Payload created for PRODUCTION deployment"
+            echo "Repo ID: $REPO_ID"
+            echo "Branch: ${CIRCLE_BRANCH}"
 
-            REPO_ID=$(curl -sS \
-              -H "Authorization: Bearer $GITHUB_TOKEN" \
-              -H "Accept: application/vnd.github+json" \
-              "$API_URL" | jq -r '.id')
+      # Step 6: Debug payload
+      - run:
+          name: Debug payload
+          command: cat payload.json
 
-            if [ -z "$REPO_ID" ] || [ "$REPO_ID" = "null" ]; then
-              echo "❌ Failed to fetch repoId from GitHub API."
-              echo "Response:"
-              curl -sS \
-                -H "Authorization: Bearer $GITHUB_TOKEN" \
-                -H "Accept: application/vnd.github+json" \
-                "$API_URL"
-              exit 1
-            fi
-
-            echo "✅ Repo ID: $REPO_ID"
-
-            # Build payload.json safely (no heredoc, no <<EOF)
-            jq -n \
-              --arg name "$REPO_SLUG" \
-              --arg ref "${CIRCLE_BRANCH}" \
-              --arg target "production" \
-              --arg type "github" \
-              --argjson repoId "$REPO_ID" \
-              '{
-                name: $name,
-                gitSource: {
-                  type: $type,
-                  repoId: $repoId,
-                  ref: $ref
-                },
-                target: $target
-              }' > payload.json
-
-            echo "✅ payload.json created:"
-            cat payload.json
-
+      # Step 7: Trigger Vercel Production Deployment (with retry)
       - run:
           name: Trigger Vercel Production Deployment (with retry)
           command: |
-            set -e
             ATTEMPT=1
             MAX_ATTEMPTS=2
+            SUCCESS=false
 
             while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
-              echo "🔁 Attempt $ATTEMPT of $MAX_ATTEMPTS..."
+                echo "🔁 Attempt $ATTEMPT of $MAX_ATTEMPTS..."
+                RESPONSE=$(curl -s -o response.json -w "%{http_code}" \
+                  -X POST "https://api.vercel.com/v13/deployments?skipAutoDetectionConfirmation=1" \
+                  -H "Authorization: Bearer $VERCEL_TOKEN" \
+                  -H "Content-Type: application/json" \
+                  -d @payload.json)
 
-              HTTP_CODE=$(curl -sS -o response.json -w "%{http_code}" \
-                -X POST "https://api.vercel.com/v13/deployments?skipAutoDetectionConfirmation=1" \
-                -H "Authorization: Bearer $VERCEL_TOKEN" \
-                -H "Content-Type: application/json" \
-                -d @payload.json)
-
-              if [ "$HTTP_CODE" -eq 200 ] || [ "$HTTP_CODE" -eq 201 ]; then
-                echo "✅ Deployment trigger successful!"
-                cat response.json
-                exit 0
-              fi
-
-              echo "⚠️ Deployment failed with status code: $HTTP_CODE"
-              echo "Response body:"
-              cat response.json
-              echo ""
-              echo "Retrying in 10 seconds..."
-              sleep 10
-              ATTEMPT=$((ATTEMPT + 1))
+                if [ "$RESPONSE" -eq 200 ] || [ "$RESPONSE" -eq 201 ]; then
+                    echo "✅ Deployment successful!"
+                    SUCCESS=true
+                    break
+                else
+                    echo "⚠️ Deployment failed with status code: $RESPONSE"
+                    echo "Response body:"
+                    cat response.json
+                    echo ""
+                    echo "Retrying in 10 seconds..."
+                    sleep 10
+                fi
+                ATTEMPT=$((ATTEMPT+1))
             done
 
-            echo "❌ Deployment failed after $MAX_ATTEMPTS attempts."
-            exit 1
+            if [ "$SUCCESS" = false ]; then
+                echo "❌ Deployment failed after $MAX_ATTEMPTS attempts."
+                exit 1
+            fi
 
+      # Step 8: Notify Telegram — Deployment Success ✅
       - run:
           name: Notify Telegram — Deployment Success
           command: |
-            set -e
-            REPO_NAME="${CIRCLE_PROJECT_REPONAME}"
+            REPO_NAME=$(basename $(git rev-parse --show-toplevel))
             MESSAGE="✅ <b>Production Deployment Successful</b>%0A<b>Repository:</b> $REPO_NAME%0A<b>Status:</b> Success 🎉"
             curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage" \
-              -d chat_id="$TELEGRAM_CHAT_ID" \
-              -d parse_mode="HTML" \
-              -d text="$MESSAGE"
+                -d chat_id="$TELEGRAM_CHAT_ID" \
+                -d parse_mode="HTML" \
+                -d text="$MESSAGE"
 
+      # Step 9: Notify Telegram — Deployment Failed ❌
       - run:
           name: Notify Telegram — Deployment Failed
           when: on_fail
           command: |
-            set -e
-            REPO_NAME="${CIRCLE_PROJECT_REPONAME}"
+            REPO_NAME=$(basename $(git rev-parse --show-toplevel))
             MESSAGE="❌ <b>Production Deployment Failed</b>%0A<b>Repository:</b> $REPO_NAME%0A<b>Status:</b> Failed 🚨"
             curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage" \
-              -d chat_id="$TELEGRAM_CHAT_ID" \
-              -d parse_mode="HTML" \
-              -d text="$MESSAGE"
+                -d chat_id="$TELEGRAM_CHAT_ID" \
+                -d parse_mode="HTML" \
+                -d text="$MESSAGE"
 
 workflows:
   deploy-to-vercel:
