@@ -11,7 +11,7 @@ commands:
       - run:
           name: Send Telegram Notification
           command: |
-            MESSAGE='\<< parameters.message >>'
+            MESSAGE='<< parameters.message >>'
             curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
                  -d chat_id="${TELEGRAM_CHAT_ID}" \
                  -d parse_mode="HTML" \
@@ -66,8 +66,12 @@ jobs:
             echo "Current branch: $(git rev-parse --abbrev-ref HEAD)"
             echo "Current commit (full SHA): $(git rev-parse HEAD)"
             echo "Current commit (short SHA): $(git rev-parse --short HEAD)"
+            echo "Circle branch: $CIRCLE_BRANCH"
+            echo "Circle SHA: $CIRCLE_SHA1"
             echo "Remote branches:"
             git branch -r
+            echo "All refs:"
+            git show-ref
 
       # Step 5: Install jq for JSON processing
       - run:
@@ -81,12 +85,15 @@ jobs:
           command: |
             ORG_NAME="${CIRCLE_PROJECT_USERNAME}"
             REPO_NAME="${CIRCLE_PROJECT_REPONAME}"
+            # Use the full commit SHA instead of branch name
+            COMMIT_SHA="${CIRCLE_SHA1}"
 
             echo "✅ Using org: $ORG_NAME, repo: $REPO_NAME"
+            echo "✅ Using commit SHA: $COMMIT_SHA"
 
             jq -n \
               --arg name "$REPO_NAME" \
-              --arg ref "${CIRCLE_BRANCH}" \
+              --arg ref "$COMMIT_SHA" \
               --arg target "production" \
               --arg type "github" \
               --arg org "$ORG_NAME" \
@@ -105,17 +112,17 @@ jobs:
             echo "✅ Payload created"
             cat payload.json
 
-      # Step 6: Debug payload
+      # Step 7: Debug payload
       - run:
           name: Debug payload
           command: cat payload.json
 
-      # Step 7: Trigger Vercel Production Deployment (with retry)
+      # Step 8: Trigger Vercel Production Deployment (with retry)
       - run:
           name: Trigger Vercel Production Deployment (with retry)
           command: |
             ATTEMPT=1
-            MAX_ATTEMPTS=2
+            MAX_ATTEMPTS=3
             SUCCESS=false
 
             while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
@@ -135,8 +142,11 @@ jobs:
                     echo "Response body:"
                     cat response.json
                     echo ""
-                    echo "Retrying in 10 seconds..."
-                    sleep 10
+                    
+                    if [ $ATTEMPT -lt $MAX_ATTEMPTS ]; then
+                        echo "Retrying in 10 seconds..."
+                        sleep 10
+                    fi
                 fi
                 ATTEMPT=$((ATTEMPT+1))
             done
@@ -146,7 +156,7 @@ jobs:
                 exit 1
             fi
 
-      # Step 8: Notify Telegram — Deployment Success ✅
+      # Step 9: Notify Telegram — Deployment Success ✅
       - run:
           name: Notify Telegram — Deployment Success
           command: |
@@ -157,7 +167,7 @@ jobs:
                 -d parse_mode="HTML" \
                 -d text="$MESSAGE"
 
-      # Step 9: Notify Telegram — Deployment Failed ❌
+      # Step 10: Notify Telegram — Deployment Failed ❌
       - run:
           name: Notify Telegram — Deployment Failed
           when: on_fail
