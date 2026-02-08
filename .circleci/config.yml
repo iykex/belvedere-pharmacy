@@ -104,10 +104,8 @@ jobs:
 
             echo "✅ Repository ID: $REPO_ID"
 
-            jq -n \
               --arg name "$REPO_NAME" \
               --arg ref "$BRANCH_NAME" \
-              --arg sha "$COMMIT_SHA" \
               --arg target "production" \
               --arg type "github" \
               --arg org "$ORG_NAME" \
@@ -117,11 +115,8 @@ jobs:
                 name: $name,
                 gitSource: {
                   type: $type,
-                  org: $org,
-                  repo: $repo,
                   repoId: $repoId,
-                  ref: $ref,
-                  sha: $sha
+                  ref: $ref
                 },
                 target: $target
               }' > payload.json
