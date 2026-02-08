@@ -1,6 +1,6 @@
 version: 2.1
 
-# Define reusable commands
+# Reusable commands
 commands:
   notify_telegram:
     description: "Send a notification to Telegram"
@@ -12,9 +12,9 @@ commands:
           name: Send Telegram Notification
           command: |
             curl -s -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
-                 -d chat_id="${TELEGRAM_CHAT_ID}" \
-                 -d parse_mode="HTML" \
-                 -d text="<< parameters.message >>"
+              -d chat_id="${TELEGRAM_CHAT_ID}" \
+              -d parse_mode="HTML" \
+              -d text="<< parameters.message >>"
 
 jobs:
   deploy:
@@ -22,27 +22,34 @@ jobs:
       - image: cimg/base:stable
 
     steps:
-      # Step 1: Checkout the repository
       - checkout
 
-      # Step 2: Setup Git author (optional, for commit context)
+      # Optional: git author
       - run:
-          name: Setup Git author for Vercel
+          name: Setup Git author
           command: |
             git config user.name "iykex"
             git config user.email "aib.quame@gmail.com"
 
-      # Step 3: Notify Telegram — Deployment Started
+      # Notify Telegram — Started
       - run:
           name: Notify Telegram — Deployment Started
           command: |
+            set -e
             COMMIT_SHA=$(git rev-parse --short HEAD)
             LAST_COMMIT_MSG=$(git log -1 --pretty=%B)
             COMMITER_NAME=$(git log -1 --pretty=%an)
             TIMESTAMP=$(date +"%Y-%m-%d %H:%M:%S")
-            REPO_NAME=$(basename $(git rev-parse --show-toplevel))
+            REPO_NAME=$(basename "$(git rev-parse --show-toplevel)")
             BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
-            ORG_NAME=$(git config --get remote.origin.url | sed 's#.*github.com[:/]##;s#/.*##;s/\.git$//')
+
+            REMOTE_URL=$(git config --get remote.origin.url)
+            if echo "$REMOTE_URL" | grep -q "git@github.com:"; then
+              ORG_NAME=$(echo "$REMOTE_URL" | sed -E 's#git@github.com:([^/]+)/.*#\1#')
+            else
+              ORG_NAME=$(echo "$REMOTE_URL" | sed -E 's#https?://github.com/([^/]+)/.*#\1#')
+            fi
+
             COMMIT_URL="https://github.com/$ORG_NAME/$REPO_NAME/commit/$COMMIT_SHA"
 
             MESSAGE="🚀 <b>Production Deployment Started</b>%0A"
@@ -54,106 +61,149 @@ jobs:
             MESSAGE="$MESSAGE<b>Message:</b> $LAST_COMMIT_MSG"
 
             curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage" \
-                 -d chat_id="$TELEGRAM_CHAT_ID" \
-                 -d parse_mode="HTML" \
-                 -d text="$MESSAGE"
+              -d chat_id="$TELEGRAM_CHAT_ID" \
+              -d parse_mode="HTML" \
+              -d text="$MESSAGE"
 
-      # Step 4: Debug Git Info
+      # Debug Git Info
       - run:
           name: Debug Git Info
           command: |
             echo "Current branch: $(git rev-parse --abbrev-ref HEAD)"
             echo "Current commit (full SHA): $(git rev-parse HEAD)"
             echo "Current commit (short SHA): $(git rev-parse --short HEAD)"
+            echo "Remote URL: $(git config --get remote.origin.url)"
             echo "Remote branches:"
             git branch -r
 
-      # Step 5: Create Vercel deployment payload (Production)
+      # Install jq (for reliable JSON parsing)
       - run:
-          name: Prepare Vercel deployment payload
+          name: Install jq
           command: |
-            REPO_NAME=$(basename $(git rev-parse --show-toplevel))
+            sudo apt-get update
+            sudo apt-get install -y jq
 
-            # Hardcoded repo ID to avoid GitHub API auth issues
-            REPO_ID=xxxxxxxx
+      # Prepare Vercel deployment payload (auto repoId)
+      - run:
+          name: Prepare Vercel deployment payload (auto repoId)
+          command: |
+            set -e
 
-            echo "{
-              \"name\": \"$REPO_NAME\",
-              \"gitSource\": {
-                \"type\": \"github\",
-                \"repoId\": $REPO_ID,
-                \"ref\": \"${CIRCLE_BRANCH}\"
+            REPO_NAME=$(basename "$(git rev-parse --show-toplevel)")
+            REMOTE_URL=$(git config --get remote.origin.url)
+
+            # Extract org + repo slug from GitHub remote (ssh or https)
+            if echo "$REMOTE_URL" | grep -q "git@github.com:"; then
+              # git@github.com:org/repo.git
+              ORG_NAME=$(echo "$REMOTE_URL" | sed -E 's#git@github.com:([^/]+)/.*#\1#')
+              REPO_SLUG=$(echo "$REMOTE_URL" | sed -E 's#git@github.com:[^/]+/([^\.]+)(\.git)?#\1#')
+            else
+              # https://github.com/org/repo.git
+              ORG_NAME=$(echo "$REMOTE_URL" | sed -E 's#https?://github.com/([^/]+)/.*#\1#')
+              REPO_SLUG=$(echo "$REMOTE_URL" | sed -E 's#https?://github.com/[^/]+/([^\.]+)(\.git)?#\1#')
+            fi
+
+            echo "Org: $ORG_NAME"
+            echo "Repo: $REPO_SLUG"
+
+            # Fetch repoId from GitHub API
+            API_URL="https://api.github.com/repos/$ORG_NAME/$REPO_SLUG"
+
+            REPO_ID=$(curl -sS \
+              -H "Authorization: Bearer $GITHUB_TOKEN" \
+              -H "Accept: application/vnd.github+json" \
+              "$API_URL" | jq -r '.id')
+
+            if [ -z "$REPO_ID" ] || [ "$REPO_ID" = "null" ]; then
+              echo "❌ Failed to fetch repoId from GitHub API."
+              echo "Response:"
+              curl -sS \
+                -H "Authorization: Bearer $GITHUB_TOKEN" \
+                -H "Accept: application/vnd.github+json" \
+                "$API_URL"
+              exit 1
+            fi
+
+            echo "✅ Repo ID: $REPO_ID"
+
+            cat > payload.json <<EOF
+            {
+              "name": "$REPO_NAME",
+              "gitSource": {
+                "type": "github",
+                "repoId": $REPO_ID,
+                "ref": "${CIRCLE_BRANCH}"
               },
-              \"target\": \"production\"
-            }" > payload.json
+              "target": "production"
+            }
+            EOF
 
             echo "✅ Payload created for PRODUCTION deployment"
-            echo "Repo ID: $REPO_ID"
-            echo "Branch: ${CIRCLE_BRANCH}"
+            cat payload.json
 
-      # Step 6: Debug payload
-      - run:
-          name: Debug payload
-          command: cat payload.json
-
-      # Step 7: Trigger Vercel Production Deployment (with retry)
+      # Trigger Vercel Production Deployment (with retry)
       - run:
           name: Trigger Vercel Production Deployment (with retry)
           command: |
+            set -e
             ATTEMPT=1
             MAX_ATTEMPTS=2
             SUCCESS=false
 
             while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
-                echo "🔁 Attempt $ATTEMPT of $MAX_ATTEMPTS..."
-                RESPONSE=$(curl -s -o response.json -w "%{http_code}" \
-                  -X POST "https://api.vercel.com/v13/deployments?skipAutoDetectionConfirmation=1" \
-                  -H "Authorization: Bearer $VERCEL_TOKEN" \
-                  -H "Content-Type: application/json" \
-                  -d @payload.json)
+              echo "🔁 Attempt $ATTEMPT of $MAX_ATTEMPTS..."
 
-                if [ "$RESPONSE" -eq 200 ] || [ "$RESPONSE" -eq 201 ]; then
-                    echo "✅ Deployment successful!"
-                    SUCCESS=true
-                    break
-                else
-                    echo "⚠️ Deployment failed with status code: $RESPONSE"
-                    echo "Response body:"
-                    cat response.json
-                    echo ""
-                    echo "Retrying in 10 seconds..."
-                    sleep 10
-                fi
-                ATTEMPT=$((ATTEMPT+1))
+              HTTP_CODE=$(curl -sS -o response.json -w "%{http_code}" \
+                -X POST "https://api.vercel.com/v13/deployments?skipAutoDetectionConfirmation=1" \
+                -H "Authorization: Bearer $VERCEL_TOKEN" \
+                -H "Content-Type: application/json" \
+                -d @payload.json)
+
+              if [ "$HTTP_CODE" -eq 200 ] || [ "$HTTP_CODE" -eq 201 ]; then
+                echo "✅ Deployment trigger successful!"
+                SUCCESS=true
+                break
+              else
+                echo "⚠️ Deployment failed with status code: $HTTP_CODE"
+                echo "Response body:"
+                cat response.json
+                echo ""
+                echo "Retrying in 10 seconds..."
+                sleep 10
+              fi
+
+              ATTEMPT=$((ATTEMPT+1))
             done
 
             if [ "$SUCCESS" = false ]; then
-                echo "❌ Deployment failed after $MAX_ATTEMPTS attempts."
-                exit 1
+              echo "❌ Deployment failed after $MAX_ATTEMPTS attempts."
+              exit 1
             fi
 
-      # Step 8: Notify Telegram — Deployment Success ✅
+      # Notify Telegram — Success ✅
       - run:
           name: Notify Telegram — Deployment Success
           command: |
-            REPO_NAME=$(basename $(git rev-parse --show-toplevel))
+            set -e
+            REPO_NAME=$(basename "$(git rev-parse --show-toplevel)")
             MESSAGE="✅ <b>Production Deployment Successful</b>%0A<b>Repository:</b> $REPO_NAME%0A<b>Status:</b> Success 🎉"
             curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage" \
-                -d chat_id="$TELEGRAM_CHAT_ID" \
-                -d parse_mode="HTML" \
-                -d text="$MESSAGE"
+              -d chat_id="$TELEGRAM_CHAT_ID" \
+              -d parse_mode="HTML" \
+              -d text="$MESSAGE"
 
-      # Step 9: Notify Telegram — Deployment Failed ❌
+      # Notify Telegram — Failed ❌
       - run:
           name: Notify Telegram — Deployment Failed
           when: on_fail
           command: |
-            REPO_NAME=$(basename $(git rev-parse --show-toplevel))
+            set -e
+            REPO_NAME=$(basename "$(git rev-parse --show-toplevel)")
             MESSAGE="❌ <b>Production Deployment Failed</b>%0A<b>Repository:</b> $REPO_NAME%0A<b>Status:</b> Failed 🚨"
             curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage" \
-                -d chat_id="$TELEGRAM_CHAT_ID" \
-                -d parse_mode="HTML" \
-                -d text="$MESSAGE"
+              -d chat_id="$TELEGRAM_CHAT_ID" \
+              -d parse_mode="HTML" \
+              -d text="$MESSAGE"
 
 workflows:
   deploy-to-vercel:
