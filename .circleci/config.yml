@@ -61,10 +61,15 @@ jobs:
           command: |
             sudo npm install -g vercel
             
-            # Deploy using Vercel CLI
-            # This bypasses the need for Vercel-GitHub integration
-            # --yes skips confirmation prompts and uses defaults (creates project if missing)
-            vercel deploy --prod --token $VERCEL_TOKEN --yes
+            # Generate project name from branch: belvedere-dev -> belvederepharmacy
+            # Logic: remove -dev suffix, append pharmacy
+            BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+            PROJECT_NAME="${BRANCH_NAME%-dev}pharmacy"
+            
+            echo "Deploying to Vercel project: $PROJECT_NAME"
+            
+            # Deploy using Vercel CLI with custom project name
+            vercel deploy --prod --token $VERCEL_TOKEN --yes --name "$PROJECT_NAME"
 
       - run:
           name: Notify Telegram — Deployment Success
