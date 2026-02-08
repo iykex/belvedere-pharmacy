@@ -79,34 +79,24 @@ jobs:
       - run:
           name: Prepare Vercel deployment payload
           command: |
-            set -e
             ORG_NAME="${CIRCLE_PROJECT_USERNAME}"
             REPO_NAME="${CIRCLE_PROJECT_REPONAME}"
 
-            # Fetch repo ID from GitHub API
-            REPO_ID=$(curl -sS \
-              -H "Authorization: Bearer $GITHUB_TOKEN" \
-              -H "Accept: application/vnd.github+json" \
-              "https://api.github.com/repos/$ORG_NAME/$REPO_NAME" | jq -r '.id')
-
-            if [ -z "$REPO_ID" ] || [ "$REPO_ID" = "null" ]; then
-              echo "❌ Failed to fetch repoId from GitHub API."
-              exit 1
-            fi
-
-            echo "✅ Repo ID: $REPO_ID"
+            echo "✅ Using org: $ORG_NAME, repo: $REPO_NAME"
 
             jq -n \
               --arg name "$REPO_NAME" \
               --arg ref "${CIRCLE_BRANCH}" \
               --arg target "production" \
               --arg type "github" \
-              --argjson repoId "$REPO_ID" \
+              --arg org "$ORG_NAME" \
+              --arg repo "$REPO_NAME" \
               '{
                 name: $name,
                 gitSource: {
                   type: $type,
-                  repoId: $repoId,
+                  org: $org,
+                  repo: $repo,
                   ref: $ref
                 },
                 target: $target
