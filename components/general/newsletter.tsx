@@ -6,18 +6,29 @@ import { Controller } from "react-hook-form";
 import useNewsletter from "@/hooks/use-newsletter";
 import { Button } from "../ui/button";
 import WidthConstraint from "../shared/width-constraint";
-import { NEWSLETTER_FEATURES } from "@/lib/constants/general";
+import { NEWSLETTER_FEATURE_ICONS } from "@/lib/utils/marketing-present";
+import type { MarketingBlocksDoc } from "@/lib/types/firestore";
 import { Spinner } from "../ui/spinner";
 
-export default function NewsletterSection() {
+export default function NewsletterSection({
+  marketing,
+}: {
+  marketing: MarketingBlocksDoc | null;
+}) {
   const { isSubscribed, control, formState, handleSubmit, onSubmit } =
     useNewsletter();
+
+  const featureRows = (marketing?.newsletterFeatures ?? []).map((f, i) => ({
+    title: f.title,
+    description: f.description,
+    Icon: NEWSLETTER_FEATURE_ICONS[i % NEWSLETTER_FEATURE_ICONS.length]!,
+  }));
 
   return (
     <section>
       <WidthConstraint>
         <div className="overflow-hidden">
-          <div className="grid lg:grid-cols-2 rounded-2xl shadow-lg dark:shadow-xl/30 border border-input">
+          <div className="grid lg:grid-cols-2 rounded-2xl border border-input">
             {/* Left Column - Features  */}
             <div className="bg-[#003b5c] dark:bg-transparent p-8 lg:p-12 space-y-8 md:space-y-10 rounded-2xl lg:rounded-r-none">
               <div>
@@ -39,8 +50,8 @@ export default function NewsletterSection() {
               </div>
 
               <div className="space-y-5">
-                {NEWSLETTER_FEATURES.map((item) => {
-                  const Icon = item.icon;
+                {featureRows.map((item) => {
+                  const Icon = item.Icon;
                   return (
                     <div
                       key={item.title}

@@ -4,10 +4,10 @@ import Link from "next/link";
 import { AlertCircle, Home } from "lucide-react";
 import WidthConstraint from "@/components/shared/width-constraint";
 import { Button } from "@/components/ui/button";
-import {
-  ERROR_TROUBLESHOOTING_STEPS,
-  ERROR_SUPPORT_INFO,
-} from "@/lib/constants";
+import { ERROR_TROUBLESHOOTING_STEPS } from "@/lib/constants/general";
+import { useTenantContext } from "@/components/providers/tenant-provider";
+import { ErrorSupportSkeleton } from "@/components/shared/tenant-skeletons";
+import { formatOpeningHoursSummary } from "@/lib/utils/format-tenant";
 
 export default function Error({
   error,
@@ -16,6 +16,8 @@ export default function Error({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  const { tenant, isTenantReady } = useTenantContext();
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-primary/5 via-chart-2/5 to-chart-3/5 px-4 py-20">
       <WidthConstraint className="max-w-2xl w-full">
@@ -71,7 +73,7 @@ export default function Error({
           {/* Helpful Information */}
           <div className="bg-primary/5 border border-primary/20 rounded-xl p-6 space-y-3">
             <h3 className="font-semibold text-gray-900 dark:text-white">
-              Here's what you can try:
+              Here&apos;s what you can try:
             </h3>
             <ul className="space-y-2 text-left text-gray-700 dark:text-white/60">
               {ERROR_TROUBLESHOOTING_STEPS.map((item, idx) => (
@@ -107,27 +109,35 @@ export default function Error({
           </div>
 
           {/* Support Info */}
-          <div className="space-y-3 pt-4 border-t border-gray-200">
-            <p className="text-sm text-gray-600">Need immediate assistance?</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center text-sm">
-              <a
-                href={ERROR_SUPPORT_INFO.phoneHref}
-                className="text-primary hover:text-primary/80 font-semibold transition-colors"
-              >
-                Call us: {ERROR_SUPPORT_INFO.phone}
-              </a>
-              <span className="hidden sm:block text-gray-300">•</span>
-              <a
-                href={ERROR_SUPPORT_INFO.emailHref}
-                className="text-primary hover:text-primary/80 font-semibold transition-colors"
-              >
-                Email: {ERROR_SUPPORT_INFO.email}
-              </a>
+          {isTenantReady && tenant ? (
+            <div className="space-y-3 pt-4 border-t border-gray-200 dark:border-white/10">
+              <p className="text-sm text-gray-600 dark:text-white/60">
+                Need immediate assistance?
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center text-sm">
+                <a
+                  href={`tel:${tenant.phone.replace(/\s/g, "")}`}
+                  className="text-primary hover:text-primary/80 font-semibold transition-colors"
+                >
+                  Call us: {tenant.phone}
+                </a>
+                <span className="hidden sm:block text-gray-300 dark:text-white/20">
+                  •
+                </span>
+                <a
+                  href={`mailto:${tenant.email}`}
+                  className="text-primary hover:text-primary/80 font-semibold transition-colors"
+                >
+                  Email: {tenant.email}
+                </a>
+              </div>
+              <p className="text-xs text-gray-500 dark:text-white/50">
+                We&apos;re available {formatOpeningHoursSummary(tenant)}
+              </p>
             </div>
-            <p className="text-xs text-gray-500">
-              We're available {ERROR_SUPPORT_INFO.hours}
-            </p>
-          </div>
+          ) : (
+            <ErrorSupportSkeleton />
+          )}
         </div>
       </WidthConstraint>
     </div>

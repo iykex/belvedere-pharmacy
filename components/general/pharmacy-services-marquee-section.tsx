@@ -1,8 +1,8 @@
-import { ForwardRefExoticComponent, RefAttributes, SVGProps } from "react";
 import { Card, CardContent } from "../ui/card";
 import { LucideIcon } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { TRUST_BADGES_MARQUEE } from "@/lib/constants/general";
+import { cn } from "@/lib/utils/utils";
+import { trustBadgesToView } from "@/lib/utils/marketing-present";
+import type { MarketingBlocksDoc } from "@/lib/types/firestore";
 import WidthConstraint from "../shared/width-constraint";
 import SectionHeader from "./section-divider-head";
 
@@ -42,7 +42,13 @@ export const TrustBadgeCard = ({
   );
 };
 
-export default function PharmacyServicesMarquee() {
+export default function PharmacyServicesMarquee({
+  marketing,
+}: {
+  marketing: MarketingBlocksDoc | null;
+}) {
+  const badges = trustBadgesToView(marketing?.trustBadges ?? []);
+
   return (
     <section className="relative">
       {/* Updated Background Decorations */}
@@ -71,11 +77,9 @@ export default function PharmacyServicesMarquee() {
             <div className="absolute right-0 top-0 bottom-0 w-16 md:w-24 bg-linear-to-l from-background to-transparent z-10 pointer-events-none"></div>
 
             <div className="flex w-max animate-scroll group-hover:paused gap-6 py-4">
-              {[...TRUST_BADGES_MARQUEE, ...TRUST_BADGES_MARQUEE].map(
-                (badge, i) => (
-                  <TrustBadgeCard key={i} {...badge} />
-                )
-              )}
+              {[...badges, ...badges].map((badge, i) => (
+                <TrustBadgeCard key={i} {...badge} />
+              ))}
             </div>
           </div>
 

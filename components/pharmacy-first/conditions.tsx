@@ -1,5 +1,5 @@
 "use client";
-import { PFP_CONDITIONS } from "@/lib/constants/data";
+import { usePfpConditions } from "@/hooks/use-pfp-conditions";
 import SectionHeader from "../general/section-divider-head";
 import WidthConstraint from "../shared/width-constraint";
 import { Calendar } from "lucide-react";
@@ -11,6 +11,20 @@ import { Badge } from "../ui/badge";
 import { track } from "@/lib/analytics/tracker";
 
 export const ConditionsSection = () => {
+  const { conditions, loading } = usePfpConditions();
+
+  if (loading || conditions.length === 0) {
+    return (
+      <section className="space-y-14">
+        <WidthConstraint>
+          <p className="text-center text-muted-foreground py-12">
+            Loading conditions…
+          </p>
+        </WidthConstraint>
+      </section>
+    );
+  }
+
   return (
     <section className="space-y-14">
       <WidthConstraint className="space-y-8">
@@ -26,9 +40,9 @@ export const ConditionsSection = () => {
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 pb-10">
-          {PFP_CONDITIONS.map((condition, index) => (
+          {conditions.map((condition) => (
             <div
-              key={index}
+              key={condition.serviceId}
               className="group bg-white dark:bg-[#003b5c] rounded-3xl overflow-hidden shadow-sm transition-all duration-300 hover:shadow-md hover:border-primary/20 flex flex-col h-full max-w-md relative"
             >
               <Badge className="absolute top-4 right-4 z-20 bg-[#005EB8] text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">

@@ -1,19 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { Search, Home, MapPin, Phone, Mail, LucideIcon } from "lucide-react";
+import { Search, Home } from "lucide-react";
 import WidthConstraint from "@/components/shared/width-constraint";
 import { Button } from "@/components/ui/button";
-import { NOT_FOUND_NAV_ITEMS, NOT_FOUND_CONTACT_INFO } from "@/lib/constants";
-
-// Icon mapping
-const iconMap: Record<string, LucideIcon> = {
-  Home,
-  Search,
-  MapPin,
-  Phone,
-  Mail,
-};
+import { NOT_FOUND_NAV_ITEMS } from "@/lib/constants/general";
+import { useTenantContext } from "@/components/providers/tenant-provider";
+import { NotFoundContactCardSkeleton } from "@/components/shared/tenant-skeletons";
+import { formatAddressInline } from "@/lib/utils/format-tenant";
+import { lucideIconByName } from "@/lib/utils/lucide-icon-map";
 
 // Navigation card component
 function NavCard({
@@ -27,7 +22,7 @@ function NavCard({
   title: string;
   description: string;
 }) {
-  const Icon = iconMap[iconName];
+  const Icon = lucideIconByName(iconName);
   return (
     <Link
       href={href}
@@ -62,7 +57,7 @@ function ContactItem({
   value: string;
   href?: string;
 }) {
-  const Icon = iconMap[iconName];
+  const Icon = lucideIconByName(iconName);
   const content = (
     <>
       <p className="text-sm text-gray-600 dark:text-white/60">{label}</p>
@@ -88,6 +83,11 @@ function ContactItem({
 }
 
 export default function NotFound() {
+  const { tenant, isTenantReady } = useTenantContext();
+  const phoneHref =
+    tenant ? `tel:${tenant.phone.replace(/\s/g, "")}` : undefined;
+  const emailHref = tenant ? `mailto:${tenant.email}` : undefined;
+
   return (
     <div className="min-h-screen flex items-center justify-center px-4">
       <WidthConstraint className="max-w-2xl w-full">
@@ -108,7 +108,7 @@ export default function NotFound() {
                 Page Not Found
               </h1>
               <p className="text-lg text-gray-600 dark:text-white/60 max-w-xl mx-auto leading-relaxed z-10">
-                Sorry, we couldn't find the page you're looking for. The page
+                Sorry, we couldn&apos;t find the page you&apos;re looking for. The page
                 may have been moved, deleted, or the URL might be incorrect.
               </p>
             </div>
@@ -127,23 +127,29 @@ export default function NotFound() {
               Still need help?
             </h3>
             <div className="space-y-3">
-              <ContactItem
-                iconName={NOT_FOUND_CONTACT_INFO.phone.iconName}
-                label={NOT_FOUND_CONTACT_INFO.phone.label}
-                value={NOT_FOUND_CONTACT_INFO.phone.value}
-                href={NOT_FOUND_CONTACT_INFO.phone.href}
-              />
-              <ContactItem
-                iconName={NOT_FOUND_CONTACT_INFO.email.iconName}
-                label={NOT_FOUND_CONTACT_INFO.email.label}
-                value={NOT_FOUND_CONTACT_INFO.email.value}
-                href={NOT_FOUND_CONTACT_INFO.email.href}
-              />
-              <ContactItem
-                iconName={NOT_FOUND_CONTACT_INFO.address.iconName}
-                label={NOT_FOUND_CONTACT_INFO.address.label}
-                value={NOT_FOUND_CONTACT_INFO.address.value}
-              />
+              {isTenantReady && tenant && phoneHref && emailHref ? (
+                <>
+                  <ContactItem
+                    iconName="Phone"
+                    label="Call us"
+                    value={tenant.phone}
+                    href={phoneHref}
+                  />
+                  <ContactItem
+                    iconName="Mail"
+                    label="Email us"
+                    value={tenant.email}
+                    href={emailHref}
+                  />
+                  <ContactItem
+                    iconName="MapPin"
+                    label="Visit us"
+                    value={formatAddressInline(tenant)}
+                  />
+                </>
+              ) : (
+                <NotFoundContactCardSkeleton />
+              )}
             </div>
           </div>
 

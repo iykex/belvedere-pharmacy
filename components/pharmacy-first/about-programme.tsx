@@ -1,8 +1,18 @@
-import { PFP_BENEFITS } from "@/lib/constants/general";
 import SectionHeader from "../general/section-divider-head";
 import WidthConstraint from "../shared/width-constraint";
+import { getMarketingBlocks, getTenant } from "@/lib/services/firestore/queries";
+import { getTenantSlug } from "@/lib/config/tenant";
+import { PFP_BENEFIT_ICONS } from "@/lib/utils/marketing-present";
 
-export const AboutSection = () => {
+export const AboutSection = async () => {
+  const slug = getTenantSlug();
+  const [marketing, tenant] = await Promise.all([
+    getMarketingBlocks(slug),
+    getTenant(slug),
+  ]);
+  const pfpBenefits = marketing?.pfpBenefits ?? [];
+  const pharmacyName = tenant?.displayName ?? "your local pharmacy";
+
   return (
     <section className="space-y-14">
       <WidthConstraint className="space-y-8">
@@ -15,15 +25,15 @@ export const AboutSection = () => {
             The NHS Pharmacy First programme allows patients in England and
             Scotland to receive healthcare advice and treatment for various
             common conditions directly from their local pharmacy, reducing the
-            strain on GP services. At Belvedere Pharmacy, we are committed to
+            strain on GP services. At {pharmacyName}, we are committed to
             offering this valuable service to help you access the care you need
             quickly and efficiently.
           </p>
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-          {PFP_BENEFITS.map((benefit, index) => {
-            const Icon = benefit.icon;
+          {pfpBenefits.map((benefit, index) => {
+            const Icon = PFP_BENEFIT_ICONS[index % PFP_BENEFIT_ICONS.length]!;
             return (
               <div
                 key={index}

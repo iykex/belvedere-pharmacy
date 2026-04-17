@@ -5,13 +5,15 @@ import { Button } from "../ui/button";
 import { ArrowRight, Calendar, CheckCircle, Video } from "lucide-react";
 import elderlyCouple from "@/public/ui/elderly-couple.jpg";
 import Link from "next/link";
-import { EXTERNAL_LINKS } from "@/lib/constants/general";
-import { TRACKING_EVENTS } from "@/lib/constants/analytics";
+import { TRACKING_EVENTS } from "@/lib/constants/general";
 import { track } from "@/lib/analytics/tracker";
+import { useTenantContext } from "@/components/providers/tenant-provider";
+import { PrimaryCtaSkeleton } from "@/components/shared/tenant-skeletons";
 
 export function ServicesHeading() {
+  const { tenant, isTenantReady } = useTenantContext();
   return (
-    <section className="pt-32 pb-20 bg-background">
+    <section className="pt-45 pb-20 bg-background">
       <WidthConstraint className="relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* LEFT COL - Content */}
@@ -55,26 +57,30 @@ export function ServicesHeading() {
 
             {/* CTA Button */}
             <div className="pt-2">
-              <Button
-                asChild
-                size="lg"
-                className="group bg-primary hover:bg-primary/90 text-white font-semibold px-8 rounded-xl shadow-lg transition-all duration-300"
-              >
-                <Link
-                  href={EXTERNAL_LINKS.actions.bookAppointment}
-                  onClick={() => {
-                    track(
-                      TRACKING_EVENTS.bookAppointmentButton,
-                      EXTERNAL_LINKS.actions.bookAppointment
-                    );
-                  }}
-                  className="flex items-center gap-2"
+              {!isTenantReady || !tenant ? (
+                <PrimaryCtaSkeleton className="!w-64 !h-12" />
+              ) : (
+                <Button
+                  asChild
+                  size="lg"
+                  className="group bg-primary hover:bg-primary/90 text-white font-semibold px-8 rounded-xl shadow-lg transition-all duration-300"
                 >
-                  <Calendar className="w-5 h-5" />
-                  Book an Appointment
-                  <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </Button>
+                  <Link
+                    href={tenant.bookAppointmentUrl}
+                    onClick={() => {
+                      track(
+                        TRACKING_EVENTS.bookAppointmentButton,
+                        tenant.bookAppointmentUrl
+                      );
+                    }}
+                    className="flex items-center gap-2"
+                  >
+                    <Calendar className="w-5 h-5" />
+                    Book an Appointment
+                    <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </Button>
+              )}
             </div>
           </div>
 

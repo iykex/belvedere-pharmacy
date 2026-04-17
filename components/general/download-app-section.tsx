@@ -2,21 +2,32 @@
 import Link from "next/link";
 import Image from "next/image";
 import WidthConstraint from "../shared/width-constraint";
-import { APP_STORES, DOWNLOAD_APP_FEATURES } from "@/lib/constants/general";
+import { useTenantContext } from "@/components/providers/tenant-provider";
+import { buildAppStoreLinks } from "@/lib/utils/app-store-links";
+import { AppStoreDownloadButtonsSkeleton } from "@/components/shared/tenant-skeletons";
+import { DOWNLOAD_APP_FEATURE_STYLES } from "@/lib/utils/marketing-present";
+import type { MarketingBlocksDoc } from "@/lib/types/firestore";
 import { ArrowRight, Download, Smartphone } from "lucide-react";
 import phoneAppScreenshot from "@/public/ui/phone-app-screenshot.png";
 import mobileApp from "@/public/ui/mobile-app.png";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useIsMounted } from "@/hooks/use-is-mounted";
 import { track } from "@/lib/analytics/tracker";
 
-export default function DownloadAppSection() {
+export default function DownloadAppSection({
+  marketing,
+}: {
+  marketing: MarketingBlocksDoc | null;
+}) {
+  const { tenant, isTenantReady } = useTenantContext();
   const { theme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const mounted = useIsMounted();
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const appFeatures = (marketing?.downloadAppFeatures ?? []).map((f, i) => ({
+    ...DOWNLOAD_APP_FEATURE_STYLES[i % DOWNLOAD_APP_FEATURE_STYLES.length]!,
+    title: f.title,
+    description: f.description,
+  }));
   return (
     <section className="bg-white dark:bg-background ">
       <WidthConstraint>
@@ -45,7 +56,7 @@ export default function DownloadAppSection() {
 
             {/* Features */}
             <div className="space-y-4">
-              {DOWNLOAD_APP_FEATURES.map((item) => {
+              {appFeatures.map((item) => {
                 const Icon = item.icon;
                 return (
                   <div
@@ -68,33 +79,36 @@ export default function DownloadAppSection() {
               })}
             </div>
 
-            {/* Download Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              {APP_STORES.map((store) => (
-                <Link
-                  key={store.name}
-                  href={store.href}
-                  onClick={() => track(store.tracking, store.href)}
-                  className="group grow flex items-center gap-3 bg-gray-900  hover:bg-gray-800   dark:bg-white/10 dark:hover:bg-white/20 text-white px-6 py-4 rounded-xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1 z-10"
-                >
-                  <div className="bg-white/10 p-2 rounded-lg">
-                    <Image
-                      src={store.image}
-                      alt={store.name}
-                      width={24}
-                      height={24}
-                      className="rounded-sm"
-                    />
-                  </div>
-                  <div>
-                    <p className="text-xs text-gray-400 dark:text-gray-300">
-                      {store.label}
-                    </p>
-                    <p className="font-semibold">{store.platform}</p>
-                  </div>
-                  <ArrowRight className="size-4 ml-auto opacity-50 group-hover:opacity-100 transition-all group-hover:translate-x-1" />
-                </Link>
-              ))}
+              {isTenantReady && tenant ? (
+                buildAppStoreLinks(tenant).map((store) => (
+                  <Link
+                    key={store.name}
+                    href={store.href}
+                    onClick={() => track(store.tracking, store.href)}
+                    className="group grow flex items-center gap-3 bg-gray-900  hover:bg-gray-800   dark:bg-white/10 dark:hover:bg-white/20 text-white px-6 py-4 rounded-xl transition-all duration-300 hover:shadow-xl hover:-translate-y-1 z-10"
+                  >
+                    <div className="bg-white/10 p-2 rounded-lg">
+                      <Image
+                        src={store.image}
+                        alt={store.name}
+                        width={24}
+                        height={24}
+                        className="rounded-sm"
+                      />
+                    </div>
+                    <div>
+                      <p className="text-xs text-gray-400 dark:text-gray-300">
+                        {store.label}
+                      </p>
+                      <p className="font-semibold">{store.platform}</p>
+                    </div>
+                    <ArrowRight className="size-4 ml-auto opacity-50 group-hover:opacity-100 transition-all group-hover:translate-x-1" />
+                  </Link>
+                ))
+              ) : (
+                <AppStoreDownloadButtonsSkeleton />
+              )}
             </div>
           </div>
 

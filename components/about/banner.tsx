@@ -1,17 +1,28 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, MapPin, Phone } from "lucide-react";
 import WidthConstraint from "../shared/width-constraint";
 import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
 import Link from "next/link";
 import Image from "next/image";
+import { ABOUT_PAGE_BANNER_BUTTONS } from "@/lib/constants/general";
+import { getMarketingBlocks, getTenant } from "@/lib/services/firestore/queries";
+import { getTenantSlug } from "@/lib/config/tenant";
+import { formatAddressInline } from "@/lib/utils/format-tenant";
 import {
-  ABOUT_HERO_STATS,
-  ABOUT_HERO_BADGES,
-  ABOUT_CONTACT_INFO,
-  ABOUT_PAGE_BANNER_BUTTONS,
-} from "@/lib/constants/general";
+  ABOUT_HERO_STAT_ICONS,
+  ABOUT_HERO_BADGE_STYLES,
+} from "@/lib/utils/marketing-present";
 
-export default function Banner() {
+export default async function Banner() {
+  const slug = getTenantSlug();
+  const [marketing, tenant] = await Promise.all([
+    getMarketingBlocks(slug),
+    getTenant(slug),
+  ]);
+
+  const heroStats = marketing?.aboutHeroStats ?? [];
+  const heroBadges = marketing?.aboutHeroBadges ?? [];
+
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-linear-to-br from-[#012337] via-[#033046] to-[#001924]  dark:bg-linear-to-br dark:from-[#000b16] dark:via-[#001528] dark:to-[#00101f] ">
       {/* Background Pattern */}
@@ -31,12 +42,13 @@ export default function Banner() {
           {/* Left Content */}
           <div className="space-y-8">
             <div className="flex flex-wrap gap-3">
-              {ABOUT_HERO_BADGES.map((badge, index) => {
-                const IconComponent = badge.icon;
+              {heroBadges.map((badge, index) => {
+                const style = ABOUT_HERO_BADGE_STYLES[index % ABOUT_HERO_BADGE_STYLES.length]!;
+                const IconComponent = style.icon;
                 return (
                   <Badge
                     key={index}
-                    className={`inline-flex items-center gap-2 ${badge.textColor} text-sm font-semibold ${badge.bgColor} py-2 px-4 ${badge.borderColor} backdrop-blur-sm`}
+                    className={`inline-flex items-center gap-2 ${style.textColor} text-sm font-semibold ${style.bgColor} py-2 px-4 ${style.borderColor} backdrop-blur-sm`}
                   >
                     <IconComponent className="size-4" />
                     {badge.text}
@@ -101,20 +113,18 @@ export default function Banner() {
             </div>
 
             {/* Contact Info Row */}
-            <div className="flex flex-wrap gap-6 pt-4">
-              {ABOUT_CONTACT_INFO.map((info, index) => {
-                const IconComponent = info.icon;
-                return (
-                  <div
-                    key={index}
-                    className="flex items-center gap-2 text-white/70"
-                  >
-                    <IconComponent className="size-4 text-primary" />
-                    <span className="text-sm">{info.label}</span>
-                  </div>
-                );
-              })}
-            </div>
+            {tenant && (
+              <div className="flex flex-wrap gap-6 pt-4">
+                <div className="flex items-center gap-2 text-white/70">
+                  <MapPin className="size-4 text-primary" />
+                  <span className="text-sm">{formatAddressInline(tenant)}</span>
+                </div>
+                <div className="flex items-center gap-2 text-white/70">
+                  <Phone className="size-4 text-primary" />
+                  <span className="text-sm">{tenant.phone}</span>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Right Side - Visual Card */}
@@ -133,7 +143,7 @@ export default function Banner() {
                   />
                   <div>
                     <h3 className="text-xl font-bold text-white">
-                      Belvedere Pharmacy
+                      {tenant?.displayName ?? "Belvedere Pharmacy"}
                     </h3>
                     <p className="text-white/60 text-sm">
                       Your Local Healthcare Partner
@@ -143,8 +153,8 @@ export default function Banner() {
 
                 {/* Stats */}
                 <div className="space-y-3">
-                  {ABOUT_HERO_STATS.map((stat, index) => {
-                    const Icon = stat.icon;
+                  {heroStats.map((stat, index) => {
+                    const Icon = ABOUT_HERO_STAT_ICONS[index % ABOUT_HERO_STAT_ICONS.length]!;
                     return (
                       <div
                         key={index}
@@ -167,8 +177,8 @@ export default function Banner() {
                 {/* Mission Statement */}
                 <div className="pt-4 border-t border-white/10">
                   <p className="text-white/70 text-sm italic leading-relaxed">
-                    "Our mission is to provide accessible, compassionate
-                    healthcare to every member of our community."
+                    &quot;Our mission is to provide accessible, compassionate
+                    healthcare to every member of our community.&quot;
                   </p>
                 </div>
               </div>
@@ -183,8 +193,8 @@ export default function Banner() {
 
         {/* Mobile Stats Row */}
         <div className="grid grid-cols-3 gap-4 mt-12 pb-10 lg:hidden">
-          {ABOUT_HERO_STATS.map((stat, index) => {
-            const Icon = stat.icon;
+          {heroStats.map((stat, index) => {
+            const Icon = ABOUT_HERO_STAT_ICONS[index % ABOUT_HERO_STAT_ICONS.length]!;
             return (
               <div
                 key={index}

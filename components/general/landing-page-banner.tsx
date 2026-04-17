@@ -6,15 +6,40 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import Image from "next/image";
 import bannerImage from "@/public/ui/home-banner.png";
-import {
-  LANDING_PAGE_ACTION_BUTTONS,
-  APP_STORES,
-} from "@/lib/constants/general";
 import { track } from "@/lib/analytics/tracker";
+import { buildAppStoreLinks } from "@/lib/utils/app-store-links";
+import { TRACKING_EVENTS } from "@/lib/constants/general";
+import { useTenantContext } from "@/components/providers/tenant-provider";
+import {
+  AppStoreCompactListSkeleton,
+  BannerHeroActionsSkeleton,
+} from "@/components/shared/tenant-skeletons";
 
 export default function Banner() {
+  const { tenant, isTenantReady } = useTenantContext();
+
+  const actionButtons =
+    isTenantReady && tenant
+      ? [
+          {
+            text: "Book an Appointment",
+            href: tenant.bookAppointmentUrl,
+            variant: "primary" as const,
+            icon: true,
+            tracking: TRACKING_EVENTS.bookAppointmentButton,
+          },
+          {
+            text: "Order Prescriptions",
+            href: tenant.orderPrescriptionsUrl,
+            variant: "secondary" as const,
+            icon: false,
+            tracking: TRACKING_EVENTS.orderPrescriptionButton,
+          },
+        ]
+      : null;
+
   return (
-    <section className="h-screen overflow-hidden relative">
+    <section className="h-screen overflow-hidden relative pt-20">
       {/* Background Image with CDN optimization */}
       <Image
         src={bannerImage}
@@ -36,7 +61,7 @@ export default function Banner() {
             <div className="lg:col-span-3 space-y-8">
               <Badge
                 variant="secondary"
-                className="py-1.5 px-4 text-sm font-bold bg-[#00BFFF]/10 text-[#00BFFF] border border-[#00BFFF]/20 backdrop-blur-sm"
+                className="py-1.5 px-4 text-sm font-bold bg-[#00BFFF]/10 text-white border border-[#00BFFF]/20 backdrop-blur-sm"
               >
                 <BadgeCheckIcon className="size-4 mr-2" />
                 NHS Services Available
@@ -54,30 +79,34 @@ export default function Banner() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                {LANDING_PAGE_ACTION_BUTTONS.map((btn) => (
-                  <Button
-                    key={btn.text}
-                    asChild
-                    className={
-                      btn.variant === "primary"
-                        ? "group bg-[#F9A825] text-white hover:bg-[#F9A825]/90 transition-all duration-300 shadow-lg hover:shadow-[#F9A825]/25 px-8 py-6 text-base font-semibold"
-                        : "group border-white/20 bg-white/5 text-white hover:bg-white hover:text-[#002f4b] backdrop-blur-sm px-8 py-6 text-base font-semibold transition-all duration-300"
-                    }
-                  >
-                    <Link
-                      onClick={() => {
-                        track(btn.tracking, btn.href);
-                      }}
-                      href={btn.href}
-                      className="flex items-center gap-2"
+                {actionButtons ? (
+                  actionButtons.map((btn) => (
+                    <Button
+                      key={btn.text}
+                      asChild
+                      className={
+                        btn.variant === "primary"
+                          ? "group bg-[#F9A825] text-[#00253b] hover:bg-[#F9A825]/90 transition-all duration-300 shadow-lg hover:shadow-[#F9A825]/25 px-8 py-6 text-base font-semibold"
+                          : "group border-white/20 bg-white/5 text-white hover:bg-white hover:text-[#002f4b] backdrop-blur-sm px-8 py-6 text-base font-semibold transition-all duration-300"
+                      }
                     >
-                      {btn.text}
-                      {btn.icon && (
-                        <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
-                      )}
-                    </Link>
-                  </Button>
-                ))}
+                      <Link
+                        onClick={() => {
+                          track(btn.tracking, btn.href);
+                        }}
+                        href={btn.href}
+                        className="flex items-center gap-2"
+                      >
+                        {btn.text.toUpperCase()}
+                        {btn.icon && (
+                          <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+                        )}
+                      </Link>
+                    </Button>
+                  ))
+                ) : (
+                  <BannerHeroActionsSkeleton />
+                )}
               </div>
             </div>
 
@@ -110,8 +139,8 @@ export default function Banner() {
 
                     {/* App Store Buttons */}
                     <div className="flex flex-col gap-2">
-                      {APP_STORES.map((store) => {
-                        return (
+                      {isTenantReady && tenant ? (
+                        buildAppStoreLinks(tenant).map((store) => (
                           <Link
                             key={store.name}
                             href={store.href}
@@ -138,8 +167,10 @@ export default function Banner() {
                             </div>
                             <ArrowRight className="size-3 text-white/40 transition-transform duration-300 group-hover:translate-x-1 group-hover:text-white" />
                           </Link>
-                        );
-                      })}
+                        ))
+                      ) : (
+                        <AppStoreCompactListSkeleton />
+                      )}
                     </div>
                   </div>
                 </div>
