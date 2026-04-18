@@ -291,6 +291,30 @@
   animation: bounce-slow 2s ease-in-out infinite;
 }
 
+/* Duplicated content row: -50% == one copy width; L→R drift like a slow terminal ticker */
+@keyframes infoBarScroll {
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Not named `animate-*` — Tailwind v4 reserves that prefix for @theme animations */
+.info-bar-marquee {
+  animation: infoBarScroll 50s linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .info-bar-marquee {
+    animation: none;
+    transform: none;
+  }
+}
+
 .dashed-grid-bg {
   position: relative;
   background-color: var(--background);

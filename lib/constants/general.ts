@@ -120,6 +120,14 @@ export const INTERNAL_LINKS = {
   cookiePolicyPage: "/cookie-policy",
 };
 
+/** UK Information Commissioner's Office — privacy policy supplementary links */
+export const ICO_WEBSITE_URL = "https://ico.org.uk/";
+
+export const ICO_COMPLAINTS_PHONE_DISPLAY = "0303 123 1113";
+
+/** `tel:` href derived from {@link ICO_COMPLAINTS_PHONE_DISPLAY} */
+export const ICO_COMPLAINTS_PHONE_HREF = `tel:${ICO_COMPLAINTS_PHONE_DISPLAY.replace(/\s/g, "")}`;
+
 /** Primary site nav — header and footer “Quick links” use the same order. */
 export const MENU_LINKS = [
   { label: "Home", href: INTERNAL_LINKS.homePage },

@@ -8,37 +8,37 @@ import Link from "next/link";
 export default function Brand() {
   const { hasDarkHero, isScrolled } = useNavigationMenu();
   return (
-    <div className="flex gap-x-2 sm:gap-x-3 items-center">
+    <div className="flex items-center gap-x-2">
       <Link
         href={INTERNAL_LINKS.homePage}
-        className="relative group flex items-center gap-2 sm:gap-3"
+        className="relative group flex items-center gap-2 "
       >
         <Image
           src="/logo/belvedere-logo.png"
           alt="Belvedere"
-          width={70}
-          height={70}
+          width={60}
+          height={60}
           className="relative z-10 "
         />
         <div className="flex flex-col">
           <p
             className={cn(
-              "font-bold text-md sm:text-2xl tracking-widest leading-tight transition-colors duration-300",
+              "font-bold text-md sm:text-xl tracking-widest leading-tight transition-colors duration-300",
               hasDarkHero
                 ? "text-white dark:text-foreground"
                 : "text-foreground",
-              isScrolled && "text-foreground"
+              isScrolled && "text-foreground",
             )}
           >
             Belvedere
           </p>
           <p
             className={cn(
-              "text-md sm:text-lg leading-tight transition-colors duration-300",
+              "text-md sm:text-lg leading-tight tracking-tight transition-colors duration-300",
               hasDarkHero
                 ? "text-white/80 dark:text-foreground/80"
                 : "text-foreground/80",
-              isScrolled && "text-foreground/80"
+              isScrolled && "text-foreground/80",
             )}
           >
             Pharmacy

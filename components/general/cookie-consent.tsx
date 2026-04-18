@@ -47,7 +47,7 @@ export default function CookieConsentDialogue({
           "fixed bottom-6 left-6 z-40 p-2 rounded-full shadow-lg transition-all duration-300 hover:scale-110",
           "bg-white dark:bg-[#002f4b] border border-gray-200 dark:border-[#1a4d6e]",
           "hover:shadow-xl group",
-          bubbleStateClassName
+          bubbleStateClassName,
         )}
         aria-label="Cookie settings"
       >
@@ -63,14 +63,14 @@ export default function CookieConsentDialogue({
         "fixed bottom-0 left-0 right-0 sm:bottom-6 sm:left-6 sm:right-auto z-50 transition-all duration-500",
         isCookieDialogueBoxVisible
           ? "translate-y-0 opacity-100"
-          : "translate-y-full opacity-0 pointer-events-none"
+          : "translate-y-full opacity-0 pointer-events-none",
       )}
     >
       <div
         className={cn(
           "bg-white dark:bg-[#001d33] rounded-t-3xl sm:rounded-3xl shadow-2xl border border-gray-100 dark:border-[#1a4d6e]",
           "w-full sm:w-[420px] max-h-[90vh] overflow-hidden",
-          "transition-all duration-300"
+          "transition-all duration-300",
         )}
       >
         {/* Header */}
@@ -95,14 +95,15 @@ export default function CookieConsentDialogue({
                   setIsCookieDialogueBoxVisible(false);
                 }
               }}
+              variant="ghost"
               className={cn(
-                "p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-[#003b5c] transition-colors",
-                !hasConsented && "opacity-50 cursor-not-allowed"
+                "p-2 rounded-full bg-destructive/10 hover:bg-destructive/20 hover:text-destructive transition-colors",
+                !hasConsented && "opacity-50 cursor-not-allowed",
               )}
               disabled={!hasConsented}
               aria-label="Minimize"
             >
-              <X className="size-5 text-gray-400 dark:text-white/60" />
+              <X className="size-5 text-destructive" />
             </Button>
           </div>
         </div>
@@ -132,7 +133,7 @@ export default function CookieConsentDialogue({
                     handleAcceptAllCookies();
                     track(
                       TRACKING_EVENTS.cookieAcceptAll,
-                      "all cookies accepted"
+                      "all cookies accepted",
                     );
                   }}
                   className="w-full bg-primary hover:bg-primary/90 text-white font-bold py-5 rounded-2xl text-base shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all"
@@ -145,7 +146,7 @@ export default function CookieConsentDialogue({
                       handleAcceptEssentialCookiesOnly();
                       track(
                         TRACKING_EVENTS.cookieEssentialOnly,
-                        "accepted essential cookies only"
+                        "accepted essential cookies only",
                       );
                     }}
                     variant="outline"
@@ -158,7 +159,7 @@ export default function CookieConsentDialogue({
                       setShowAllCookiePreferences(false);
                       track(
                         TRACKING_EVENTS.cookieCustomiseView,
-                        "viewed custom cookies interface"
+                        "viewed custom cookies interface",
                       );
                     }}
                     variant="outline"
@@ -209,7 +210,7 @@ export default function CookieConsentDialogue({
                       <Check
                         className={cn(
                           "size-3.5 text-primary hidden",
-                          cookiePreferences[item.key] && "block"
+                          cookiePreferences[item.key] && "block",
                         )}
                       />
                     </div>
@@ -224,7 +225,7 @@ export default function CookieConsentDialogue({
                       handleCustomCookies();
                       track(
                         TRACKING_EVENTS.cookieCustomise,
-                        "created custom cookies"
+                        "created custom cookies",
                       );
                     }}
                     className="w-full bg-primary hover:bg-primary/90 text-white font-bold py-5 rounded-2xl text-base shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all"
