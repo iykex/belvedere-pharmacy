@@ -1,4 +1,4 @@
-import type { TenantDocClient } from "@/lib/services/firestore/serialize-for-client";
+import type { TenantDocClient } from "@/lib/types/firestore-client";
 import type {
   ContactColumnRow,
   ContactsColumnData,
@@ -60,5 +60,3 @@ export function contactsColumnDataFromTenant(
     contactRows,
   };
 }
-
-export type { ContactColumnRow, ContactsColumnData } from "@/lib/types/marketing-ui";

@@ -2,7 +2,6 @@
 
 import { SkeletonTheme } from "react-loading-skeleton";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
 
 const LIGHT = { base: "#e2e8f0", highlight: "#f8fafc" };
@@ -10,15 +9,7 @@ const DARK = { base: "#1e293b", highlight: "#334155" };
 
 export function AppSkeletonTheme({ children }: { children: ReactNode }) {
   const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // Use light theme colors during SSR/hydration to avoid mismatch
-  // After mounting, use the actual resolved theme
-  const isDark = mounted && resolvedTheme === "dark";
+  const isDark = resolvedTheme === "dark";
   const { base, highlight } = isDark ? DARK : LIGHT;
 
   return (
