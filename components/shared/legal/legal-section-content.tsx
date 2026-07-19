@@ -21,7 +21,7 @@ function renderPrivacyBulletPoints(section: LegalSection) {
           {section.beforeText}
         </p>
       )}
-      <ul className="space-y-2 ml-6">
+      <ul className="space-y-2 pl-1 sm:pl-4">
         {section.bulletPoints.map((point, bIdx) => (
           <li
             key={bIdx}
@@ -49,7 +49,7 @@ function renderTermsBulletPoints(section: LegalSection) {
           {section.beforeText}
         </p>
       )}
-      <ul className="space-y-2 ml-6">
+      <ul className="space-y-2 pl-1 sm:pl-4">
         {section.bulletPoints.map((point, bIdx) => (
           <li
             key={bIdx}
@@ -110,7 +110,7 @@ function renderCookieVariant(section: LegalSection) {
             return (
               <div
                 key={cIdx}
-                className={`${bgColor} border ${borderColor} rounded-xl p-6 space-y-3 z-10`}
+                className={`${bgColor} border ${borderColor} rounded-xl p-4 sm:p-6 space-y-3 z-10`}
               >
                 <h3 className="font-semibold text-gray-900 dark:text-white text-lg">
                   {cookieType.title}
@@ -118,7 +118,7 @@ function renderCookieVariant(section: LegalSection) {
                 <p className="text-gray-700 dark:text-white/60 leading-relaxed">
                   {cookieType.description}
                 </p>
-                <ul className="space-y-2 ml-6">
+                <ul className="space-y-2 pl-1 sm:pl-4">
                   {cookieType.data.map((item, itemIdx) => (
                     <li
                       key={itemIdx}
@@ -144,7 +144,7 @@ function renderCookieVariant(section: LegalSection) {
           <p className="text-gray-700 dark:text-white/60 leading-relaxed mb-3">
             {section.intro}
           </p>
-          <ul className="space-y-3 ml-6">
+          <ul className="space-y-3 pl-1 sm:pl-4">
             {section.data.map((item, idx) => (
               <li key={idx} className="flex items-start gap-3">
                 <span className="text-primary font-bold mt-1">•</span>
@@ -166,7 +166,7 @@ function renderCookieVariant(section: LegalSection) {
           <p className="text-gray-700 dark:text-white/60 leading-relaxed mb-3">
             {section.intro}
           </p>
-          <ul className="space-y-3 ml-6">
+          <ul className="space-y-3 pl-1 sm:pl-4">
             {section.data.map((item, idx) => (
               <li key={idx} className="flex items-start gap-3">
                 <span className="text-primary font-bold mt-1">•</span>
@@ -191,7 +191,7 @@ function renderCookieVariant(section: LegalSection) {
           <p className="text-gray-700 dark:text-white/60 leading-relaxed mb-3">
             {section.intro}
           </p>
-          <ul className="space-y-2 ml-6">
+          <ul className="space-y-2 pl-1 sm:pl-4">
             {section.data.map((_, idx) => (
               <li
                 key={idx}
@@ -214,7 +214,7 @@ function renderCookieVariant(section: LegalSection) {
           <p className="text-gray-700 dark:text-white/60 leading-relaxed mb-3">
             {section.intro}
           </p>
-          <ul className="space-y-3 ml-6">
+          <ul className="space-y-3 pl-1 sm:pl-4">
             {section.data.map((item, idx) => (
               <li key={idx} className="flex items-start gap-3">
                 <span className="text-primary font-bold mt-1">•</span>
@@ -246,7 +246,7 @@ function renderCookieVariant(section: LegalSection) {
           <p className="text-gray-700 dark:text-white/60 leading-relaxed mb-3">
             {section.intro}
           </p>
-          <ul className="space-y-3 ml-6">
+          <ul className="space-y-3 pl-1 sm:pl-4">
             {section.data.map((item, idx) => (
               <li key={idx} className="flex items-start gap-3">
                 <span className="text-primary font-bold mt-1">•</span>
@@ -254,7 +254,7 @@ function renderCookieVariant(section: LegalSection) {
                   <span className="font-semibold text-gray-900 dark:text-white">
                     {item.service}:
                   </span>
-                  <p className="text-gray-700 dark:text-white/60 break-all">
+                  <p className="text-gray-700 dark:text-white/60 break-words">
                     {item.link}
                   </p>
                 </div>
@@ -270,10 +270,10 @@ function renderCookieVariant(section: LegalSection) {
           <p className="text-gray-700 dark:text-white/60 leading-relaxed mb-4">
             {section.intro}
           </p>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
+          <div className="-mx-1 overflow-x-auto rounded-xl border border-border">
+            <table className="w-full min-w-[680px] text-sm">
               <thead>
-                <tr className="border-b-2 border-primary text-center">
+                <tr className="border-b-2 border-primary text-left">
                   <th className="py-3 px-4 font-semibold text-gray-900 dark:text-white">
                     Cookie Name
                   </th>
@@ -290,7 +290,7 @@ function renderCookieVariant(section: LegalSection) {
               </thead>
               <tbody>
                 {section.tableData.map((cookie, cIdx) => (
-                  <tr key={cIdx} className="border-b border-border text-center">
+                  <tr key={cIdx} className="border-b border-border text-left last:border-b-0">
                     <td className="py-3 px-4 text-gray-900 dark:text-white font-medium">
                       {cookie.name}
                     </td>
@@ -317,7 +317,7 @@ function renderCookieVariant(section: LegalSection) {
           <p className="text-gray-700 dark:text-white/60 leading-relaxed mb-3">
             {section.intro}
           </p>
-          <ul className="space-y-2 ml-6">
+          <ul className="space-y-2 pl-1 sm:pl-4">
             {section.data.map((_, idx) => (
               <li
                 key={idx}
@@ -357,7 +357,7 @@ function renderPrivacyVariant(section: LegalSection) {
               {section.beforeText}
             </p>
           )}
-          <ul className="space-y-3 ml-6">
+          <ul className="space-y-3 pl-1 sm:pl-4">
             {section.bulletPoints.map((point, bIdx) => (
               <li key={bIdx} className="flex items-start gap-3">
                 <span className="text-primary font-bold mt-1">•</span>
@@ -387,7 +387,7 @@ function renderPrivacyVariant(section: LegalSection) {
               {section.beforeText}
             </p>
           )}
-          <ul className="space-y-3 ml-6">
+          <ul className="space-y-3 pl-1 sm:pl-4">
             {section.bulletPoints.map((point, bIdx) => (
               <li key={bIdx} className="flex items-start gap-3">
                 <span className="text-primary font-bold mt-1">•</span>
