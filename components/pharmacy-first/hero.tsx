@@ -10,6 +10,7 @@ import { track } from "@/lib/analytics/tracker";
 import { TRACKING_EVENTS } from "@/lib/constants/general";
 import { useTenantContext } from "@/components/providers/tenant-provider";
 import { PrimaryCtaSkeleton } from "@/components/shared/tenant-skeletons";
+import { externalLinkProps } from "@/lib/utils/external-link";
 
 export function HeroSection() {
   const { tenant, isTenantReady } = useTenantContext();
@@ -38,7 +39,7 @@ export function HeroSection() {
 
             {/* Description */}
             <p className="text-gray-600 dark:text-white/60 text-lg leading-relaxed max-w-xl lg:text-justify">
-              At Belvedere Pharmacy, we prioritise the patient experience in our
+              At {tenant?.displayName ?? "our pharmacy"}, we prioritise the patient experience in our
               local community. Recognising the challenges in accessing GP
               services for common health concerns, we now offer Free NHS
               Consultations for our local community.
@@ -54,6 +55,7 @@ export function HeroSection() {
               >
                 <Link
                   href={tenant.bookAppointmentUrl}
+                  {...externalLinkProps(tenant.bookAppointmentUrl)}
                   onClick={() => {
                     track(
                       TRACKING_EVENTS.bookAppointmentButton,

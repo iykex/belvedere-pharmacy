@@ -1,4 +1,4 @@
-import { CircleParking, Clock, Mail, MapPin, Phone } from "lucide-react";
+import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import WidthConstraint from "../shared/width-constraint";
 import { Badge } from "../ui/badge";
 import SectionHeader from "../general/section-divider-head";
@@ -7,9 +7,11 @@ import { getTenantSlug } from "@/lib/config/tenant";
 import {
   formatAddressLines,
 } from "@/lib/utils/format-tenant";
+import { getAddressMapSrc } from "@/lib/utils/map";
 
 export default async function ContactLocationSection() {
   const tenant = await getTenant(getTenantSlug());
+  const mapSrc = getAddressMapSrc(tenant?.address);
 
   const contactItems = tenant
     ? [
@@ -108,20 +110,27 @@ export default async function ContactLocationSection() {
           {/* Right Side - Map */}
           <div className="space-y-4">
             <div className="rounded-2xl overflow-hidden shadow-lg">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2484.9548834847816!2d0.1399!3d51.4899!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTHCsDI5JzIzLjYiTiAwwrAwOCczNS42IkU!5e0!3m2!1sen!2suk!4v1620000000000!5m2!1sen!2suk"
-                width="100%"
-                height="400"
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Belvedere Pharmacy Location"
-                className="w-full"
-              />
+              {mapSrc ? (
+                <iframe
+                  src={mapSrc}
+                  width="100%"
+                  height="400"
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title={`${tenant?.displayName ?? "Pharmacy"} location`}
+                  className="w-full"
+                />
+              ) : (
+                <div className="flex h-96 items-center justify-center bg-muted px-6 text-center text-muted-foreground">
+                  Map details are being updated. Please use the address shown on
+                  this page.
+                </div>
+              )}
             </div>
             <Badge className="w-full justify-center items-center gap-2 rounded-xl bg-[#002f4b] text-white py-3 text-base font-semibold hover:bg-[#002f4b]/90">
-              Free Parking Available
-              <CircleParking className="size-5! text-primary stroke-2" />
+              Plan your visit using the map above
+              <MapPin className="size-5! text-primary stroke-2" />
             </Badge>
           </div>
         </div>

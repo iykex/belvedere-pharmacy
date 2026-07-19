@@ -22,6 +22,10 @@ export default async function Banner() {
 
   const heroStats = marketing?.aboutHeroStats ?? [];
   const heroBadges = marketing?.aboutHeroBadges ?? [];
+  const displayName = tenant?.displayName ?? "Community Pharmacy";
+  const displayWords = displayName.split(" ");
+  const primaryName = displayWords[0] ?? "Community";
+  const secondaryName = displayWords.slice(1).join(" ") || "Pharmacy";
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-linear-to-br from-[#012337] via-[#033046] to-[#001924]  dark:bg-linear-to-br dark:from-[#000b16] dark:via-[#001528] dark:to-[#00101f] ">
@@ -61,7 +65,7 @@ export default async function Banner() {
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.1]">
                 About{" "}
                 <span className="text-primary relative inline-block">
-                  Belvedere
+                  {primaryName}
                   <svg
                     className="absolute -bottom-2 left-0 w-full"
                     viewBox="0 0 200 8"
@@ -76,7 +80,7 @@ export default async function Banner() {
                   </svg>
                 </span>
                 <br />
-                <span className="text-white/90">Pharmacy</span>
+                <span className="text-white/90">{secondaryName}</span>
               </h1>
 
               <p className="text-lg sm:text-xl text-white/70 leading-relaxed max-w-xl">
@@ -136,14 +140,14 @@ export default async function Banner() {
                 <div className="flex items-center gap-4">
                   <Image
                     src="/logo/belvedere-logo.png"
-                    alt="Belvedere Pharmacy"
+                    alt={`${displayName} logo`}
                     width={64}
                     height={64}
                     className="rounded-xl"
                   />
                   <div>
                     <h3 className="text-xl font-bold text-white">
-                      {tenant?.displayName ?? "Belvedere Pharmacy"}
+                      {displayName}
                     </h3>
                     <p className="text-white/60 text-sm">
                       Your Local Healthcare Partner
