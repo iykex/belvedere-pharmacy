@@ -478,11 +478,6 @@
   }
 }
 
-.dashed-grid-bg {
-  position: relative;
-  background-color: var(--background);
-}
-
 .dashed-grid-bg::before {
   content: "";
   position: absolute;
