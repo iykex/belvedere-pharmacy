@@ -41,32 +41,47 @@ export const DEFAULT_LEGAL_SECTION: LegalSection = {
   subsections: [],
 };
 
-export const DEFAULT_TENANT_DOC: Omit<TenantDoc, "id"> = {
-  displayName: "",
+import { PHARMACY_INFO } from "@/lib/constants/pharmacy-info";
+
+export const DEFAULT_TENANT_DOC: TenantDoc = {
+  id: "belvedere",
+  displayName: PHARMACY_INFO.name,
   address: {
-    line1: "",
-    city: "",
-    region: "",
-    postcode: "",
-    country: "United Kingdom",
+    line1: PHARMACY_INFO.address.line1,
+    city: PHARMACY_INFO.address.city,
+    region: PHARMACY_INFO.address.region,
+    postcode: PHARMACY_INFO.address.postcode,
+    country: PHARMACY_INFO.address.country,
     googleMap: "",
     latitude: 0,
     longitude: 0,
   },
-  phone: "",
-  email: "",
+  phone: PHARMACY_INFO.phone,
+  email: "info@belvederepharmacy.net",
   whatsappUrl: "",
   openingHours: [],
   specialHours: [],
-  privateBookingUrl: "",
-  bookAppointmentUrl: "",
+  privateBookingUrl: PHARMACY_INFO.pharmadoctorUrl,
+  bookAppointmentUrl: PHARMACY_INFO.pharmadoctorUrl,
   orderPrescriptionsUrl: "",
   appStoreIosUrl: "",
   appStoreAndroidUrl: "",
-  social: { sameAs: [] },
-  seo: { description: "", keywords: [], twitterHandle: "" },
+  social: { sameAs: [PHARMACY_INFO.pharmadoctorUrl] },
+  seo: {
+    description: `Belvedere Pharmacy at ${PHARMACY_INFO.address.line1}, ${PHARMACY_INFO.address.city}, ${PHARMACY_INFO.address.region} (${PHARMACY_INFO.address.postcode}). Providing NHS and private healthcare services. Tel: ${PHARMACY_INFO.phone}. Managed by ${PHARMACY_INFO.company.name}.`,
+    keywords: [
+      "Belvedere Pharmacy",
+      "Dartford",
+      "DA17 5QQ",
+      "NHS Pharmacy",
+      "Pharmadoctor",
+      "MECKAY LIMITED",
+      "Community Pharmacy",
+    ],
+    twitterHandle: "",
+  },
   commonServiceNotes: "",
-  published: false,
+  published: true,
   updatedAt: FALLBACK_UPDATED_AT,
 };
 
