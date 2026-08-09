@@ -22,6 +22,9 @@ export default function FAQChatbot() {
     input,
     isTyping,
     showQuickActions,
+    takenOverByHuman,
+    agentName,
+    agentIsTyping,
     setInput,
     handleSend,
     handleQuickAction,
@@ -56,11 +59,13 @@ export default function FAQChatbot() {
           "flex flex-col overflow-hidden",
           isOpen
             ? "scale-100 opacity-100 translate-y-0"
-            : "scale-95 opacity-0 translate-y-4 pointer-events-none"
+            : "scale-95 opacity-0 translate-y-4 pointer-events-none",
         )}
       >
         <ChatHeader
           visitorName={visitorName}
+          agentName={agentName}
+          takenOverByHuman={takenOverByHuman}
           onClose={() => setIsOpen(false)}
           onEndChat={handleEndChat}
         />
@@ -68,6 +73,9 @@ export default function FAQChatbot() {
         <ChatMessages
           messages={messages}
           isTyping={isTyping}
+          agentName={agentName}
+          takenOverByHuman={takenOverByHuman}
+          agentIsTyping={agentIsTyping}
           onScrollEnd={() => {}}
         />
 
