@@ -27,6 +27,7 @@ export default function FAQChatbot() {
     handleQuickAction,
     handleContinueChat,
     handleStartNew,
+    handleEndChat,
     toggleChat,
     toggleQuickActions,
     setIsOpen,
@@ -61,6 +62,7 @@ export default function FAQChatbot() {
         <ChatHeader
           visitorName={visitorName}
           onClose={() => setIsOpen(false)}
+          onEndChat={handleEndChat}
         />
 
         <ChatMessages
