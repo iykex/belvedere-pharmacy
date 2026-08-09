@@ -48,9 +48,9 @@ export function useChatbot() {
     knowledgeBaseRef.current = knowledgeBase;
   }, [knowledgeBase]);
 
-  // Poll for live human takeover updates from server
+  // Poll for live human takeover updates from server (only when chat window is open)
   useEffect(() => {
-    if (!sessionId) return;
+    if (!sessionId || !isOpen) return;
     let isCancelled = false;
 
     const pollSession = async () => {
@@ -89,12 +89,12 @@ export function useChatbot() {
     };
 
     void pollSession();
-    const interval = setInterval(pollSession, 3000);
+    const interval = setInterval(pollSession, 8000);
     return () => {
       isCancelled = true;
       clearInterval(interval);
     };
-  }, [sessionId, slug]);
+  }, [sessionId, slug, isOpen]);
 
   useEffect(() => {
     let cancelled = false;
