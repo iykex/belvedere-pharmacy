@@ -9,6 +9,7 @@ import Link from "next/link";
 import NHSImageSrc from "@/public/ui/nhs.jpg";
 import { Badge } from "../ui/badge";
 import { track } from "@/lib/analytics/tracker";
+import { PfpConditionsSkeleton } from "@/components/shared/tenant-skeletons";
 
 export const ConditionsSection = () => {
   const { conditions, loading } = usePfpConditions();
@@ -16,10 +17,18 @@ export const ConditionsSection = () => {
   if (loading || conditions.length === 0) {
     return (
       <section className="space-y-14">
-        <WidthConstraint>
-          <p className="text-center text-muted-foreground py-12">
-            Loading conditions…
-          </p>
+        <WidthConstraint className="space-y-8">
+          <SectionHeader heading="Health Conditions" />
+          <div className="text-center max-w-3xl mx-auto space-y-2">
+            <h2 className="text-card-title font-bold text-foreground">
+              Conditions We Can Help With
+            </h2>
+            <p className="text-gray-600 dark:text-white/60 max-w-md mx-auto">
+              Our Pharmacy First service can help you with a range of common
+              conditions without needing to see a GP.
+            </p>
+          </div>
+          <PfpConditionsSkeleton />
         </WidthConstraint>
       </section>
     );

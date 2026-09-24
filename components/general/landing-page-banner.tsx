@@ -1,4 +1,3 @@
-"use client";
 import WidthConstraint from "@/components/shared/width-constraint";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, BadgeCheckIcon, Download } from "lucide-react";
@@ -24,7 +23,7 @@ export default function Banner() {
       ? [
           {
             text: "Book an Appointment",
-            href: tenant.bookAppointmentUrl,
+            href: "/book",
             variant: "primary" as const,
             icon: true,
             tracking: TRACKING_EVENTS.bookAppointmentButton,
@@ -53,7 +52,7 @@ export default function Banner() {
       />
 
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-linear-to-r from-[#001a33]/95 via-[#001a33]/80 to-[#001a33]/40 dark:from-[#001122]/95 dark:via-[#001122]/80 dark:to-[#001122]/30" />
+      <div className="absolute inset-0 bg-linear-to-r from-[#001a33]/95 via-[#001a33]/85 to-[#001a33]/50 dark:from-[#001122]/95 dark:via-[#001122]/85 dark:to-[#001122]/40" />
       {/* Content */}
       <div className="relative w-full h-full flex items-center">
         <WidthConstraint>
@@ -62,18 +61,18 @@ export default function Banner() {
             <div className="lg:col-span-3 space-y-8">
               <Badge
                 variant="secondary"
-                className="border border-white/40 bg-[#002f4b]/75 px-5 py-2 text-base font-bold text-white shadow-sm backdrop-blur-sm sm:text-lg"
+                className="border border-white/40 bg-[#002f4b]/90 px-5 py-2 text-base font-bold text-white shadow-sm backdrop-blur-sm sm:text-lg"
               >
-                <BadgeCheckIcon className="size-4 mr-2" />
-                NHS Services Available
+                <BadgeCheckIcon className="size-4 mr-2 text-amber-300" />
+                NHS & Private Healthcare Services
               </Badge>
 
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.1]">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1]">
                 Your Trusted Partner in <br />
                 <span className="text-[#F9A825]">Community Healthcare</span>
               </h1>
 
-              <p className="text-base sm:text-lg text-gray-200 max-w-xl leading-relaxed font-light">
+              <p className="text-base sm:text-lg text-slate-100 max-w-xl leading-relaxed font-normal">
                 Experience accessible, professional healthcare with expert
                 advice, prescription services, and personalized care tailored to
                 your needs.
@@ -87,8 +86,8 @@ export default function Banner() {
                       asChild
                       className={
                         btn.variant === "primary"
-                          ? "group bg-[#F9A825] text-black hover:bg-[#FFD166] transition-all duration-300 shadow-lg hover:shadow-[#F9A825]/25 px-8 py-6 text-base font-extrabold tracking-wide focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#001a33]"
-                          : "group border-white/20 bg-white/5 text-white hover:bg-white hover:text-[#002f4b] backdrop-blur-sm px-8 py-6 text-base font-semibold transition-all duration-300"
+                          ? "group bg-[#F9A825] text-slate-950 font-black hover:bg-[#ffc107] border-2 border-amber-300 shadow-xl hover:shadow-amber-400/30 px-8 py-6 text-base tracking-wide rounded-xl focus-visible:ring-4 focus-visible:ring-amber-300 transition-all duration-300"
+                          : "group border-2 border-white/70 bg-black/50 text-white hover:bg-white hover:text-black backdrop-blur-md px-8 py-6 text-base font-bold rounded-xl shadow-lg transition-all duration-300"
                       }
                     >
                       <Link

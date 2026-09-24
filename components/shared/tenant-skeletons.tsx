@@ -261,3 +261,68 @@ export function PrimaryCtaSkeleton({ className }: { className?: string }) {
     <Skeleton height={48} borderRadius={12} className={className ?? "!w-56"} />
   );
 }
+
+/** Services Grid Skeleton when loading Firestore services */
+export function ServicesGridSkeleton() {
+  return (
+    <div className="grid gap-x-12 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+      {Array.from({ length: 6 }).map((_, i) => (
+        <div
+          key={i}
+          className="max-w-lg mx-auto w-full bg-background rounded-none rounded-tr-4xl rounded-bl-4xl overflow-hidden border border-border/40 shadow-sm p-4 space-y-4"
+        >
+          <Skeleton height={240} className="w-full !rounded-tr-3xl !rounded-bl-3xl" />
+          <div className="space-y-2 pt-2">
+            <Skeleton width="40%" height={14} />
+            <Skeleton width="80%" height={22} />
+            <Skeleton count={2} height={14} />
+          </div>
+          <div className="space-y-2 pt-2 border-t border-border/40">
+            <Skeleton width="90%" height={16} />
+            <Skeleton width="75%" height={16} />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/** Pharmacy First Conditions Skeleton */
+export function PfpConditionsSkeleton() {
+  return (
+    <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 pb-10">
+      {Array.from({ length: 6 }).map((_, i) => (
+        <div
+          key={i}
+          className="bg-white dark:bg-[#003b5c] rounded-3xl overflow-hidden shadow-sm flex flex-col h-full max-w-md border border-gray-100 dark:border-white/5"
+        >
+          <Skeleton height={216} className="w-full" />
+          <div className="p-6 grow flex flex-col space-y-4">
+            <Skeleton width="60%" height={20} />
+            <Skeleton count={2} height={14} />
+            <Skeleton height={40} width={180} borderRadius={6} className="mx-auto mt-auto" />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/** Homepage Pharmacy First Section Skeleton */
+export function HomePfpSkeleton() {
+  return (
+    <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 py-4">
+      {Array.from({ length: 4 }).map((_, i) => (
+        <div
+          key={i}
+          className="flex flex-col justify-between bg-white dark:bg-[#003b5c] rounded-2xl p-6 shadow-sm border border-gray-200 dark:border-[#1a4d6e] space-y-4"
+        >
+          <Skeleton width={48} height={48} borderRadius={12} />
+          <Skeleton width="75%" height={20} />
+          <Skeleton count={2} height={14} />
+          <Skeleton width={100} height={18} className="mt-4" />
+        </div>
+      ))}
+    </div>
+  );
+}
