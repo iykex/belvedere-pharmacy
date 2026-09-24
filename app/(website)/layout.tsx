@@ -45,9 +45,7 @@ export default async function RootLayout({
               <JsonLd data={rootJsonLd} />
               <PageTracker>
                 <main className="dashed-grid-bg min-h-screen">{children}</main>
-                <footer className="w-full bg-foreground dark:bg-background">
-                  <Footer />
-                </footer>
+                <Footer />
 
                 <FAQChatbot />
 
