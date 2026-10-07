@@ -322,7 +322,7 @@ export default function ClinicalServiceTemplate({
                 </div>
 
                 <div className="pt-2 border-t border-border/60 text-xs text-muted-foreground space-y-1">
-                  <div className="font-semibold text-foreground">Clinic Location:</div>
+                  <div className="font-semibold text-foreground">Location:</div>
                   <p>{tenant?.displayName ?? "Belvedere Pharmacy"}</p>
                   <p>{tenant?.address?.line1 ?? "11 Picardy Street"}</p>
                   <p>{tenant?.address?.postcode ?? "DA17 5QQ"}</p>
