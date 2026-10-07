@@ -191,7 +191,7 @@ export default function MobileMenu() {
               Menu
             </p>
             {MENU_LINKS.map((item) => {
-              const isActive = pathname === item.href;
+              const isActive = pathname === item.href || (item.href === "/blogs" && (pathname.startsWith("/blogs") || pathname.startsWith("/blog")));
               return (
                 <SheetClose asChild key={item.href}>
                   <Link

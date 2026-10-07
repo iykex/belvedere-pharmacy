@@ -14,16 +14,20 @@ import { externalLinkProps } from "@/lib/utils/external-link";
 export function DesktopMenu() {
   const { hasDarkHero, isScrolled, pathname } = useNavigationMenu();
   return (
-    <div className="hidden lg:flex items-center gap-x-1">
+    <div className="hidden lg:flex items-center gap-x-0.5 xl:gap-x-1">
       {MENU_LINKS.map((item) => {
-        const isActive = pathname === item.href;
+        const isActive =
+          pathname === item.href ||
+          (item.href === "/blogs" &&
+            (pathname.startsWith("/blogs") || pathname.startsWith("/blog")));
+
         return (
           <Link
             key={item.href}
             href={item.href}
             aria-current={isActive ? "page" : undefined}
             className={cn(
-              "group relative px-5 py-2.5 text-sm font-medium transition-all duration-300 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
+              "group relative px-3 xl:px-4 py-2 text-sm font-medium transition-all duration-300 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
               !isActive && "nav-link",
               hasDarkHero
                 ? "text-background dark:text-foreground hover:text-background/80 dark:hover:text-foreground/80"
@@ -33,7 +37,7 @@ export function DesktopMenu() {
             )}
           >
             {/* Text */}
-            <p className="relative text-base hover:text-inherit">
+            <p className="relative text-[15px] hover:text-inherit">
               {item.label}
             </p>
 
@@ -101,11 +105,7 @@ export function DesktopMenuButtons() {
           )}
         />
       </Link>
-
-      <Button
-        asChild
-        className="group relative bg-primary hover:bg-primary text-white font-semibold px-6 rounded-lg overflow-hidden transition-all duration-300"
-      >
+      <Button asChild size="default" className="gap-2 cursor-pointer">
         <Link
           onClick={() => {
             track(
@@ -115,12 +115,9 @@ export function DesktopMenuButtons() {
           }}
           href={tenant.bookAppointmentUrl}
           {...externalLinkProps(tenant.bookAppointmentUrl)}
-          className="flex items-center gap-2"
         >
-          {/* Shine effect */}
-          <span className="absolute inset-0 bg-linear-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
-          <span className="relative z-10">Book Now</span>
-          <ArrowRight className="relative z-10 size-4 transition-transform duration-300 group-hover:translate-x-1" />
+          Book Appointment
+          <ArrowRight className="size-4" />
         </Link>
       </Button>
       <ModeToggle />
