@@ -1,4 +1,4 @@
-import { adminDb } from "@/lib/firebase/firebase-admin";
+import { getAdminDb } from "@/lib/firebase/firebase-admin";
 import type { BlogPost } from "@/lib/types/blog";
 
 function mapDocToBlog(id: string, data: any): BlogPost {
@@ -52,7 +52,13 @@ export async function getBlogPostBySlug(
   tenantId: string = "belvedere"
 ): Promise<BlogPost | null> {
   try {
-    const snap = await adminDb
+    const db = getAdminDb();
+    if (!db) {
+      console.warn("[BlogService] Admin DB unavailable");
+      return null;
+    }
+
+    const snap = await db
       .collection("blogs")
       .where("slug", "==", slug)
       .limit(1)
@@ -85,7 +91,13 @@ export async function getPublishedBlogs(
   tenantId: string = "belvedere"
 ): Promise<BlogPost[]> {
   try {
-    const snap = await adminDb
+    const db = getAdminDb();
+    if (!db) {
+      console.warn("[BlogService] Admin DB unavailable");
+      return [];
+    }
+
+    const snap = await db
       .collection("blogs")
       .where("status", "==", "published")
       .get();

@@ -21,6 +21,8 @@ import {
 } from "@/lib/server/blog-service";
 import { getTenantSlug, TENANT_DISPLAY_NAMES } from "@/lib/config/tenant";
 
+export const dynamic = "force-dynamic";
+
 export async function generateMetadata({
   params,
 }: {

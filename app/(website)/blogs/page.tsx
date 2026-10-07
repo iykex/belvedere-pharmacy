@@ -14,6 +14,8 @@ import CTASection from "@/components/shared/cta-section";
 import { getPublishedBlogs } from "@/lib/server/blog-service";
 import { getTenantSlug, TENANT_DISPLAY_NAMES } from "@/lib/config/tenant";
 
+export const dynamic = "force-dynamic";
+
 export async function generateMetadata(): Promise<Metadata> {
   const tenantSlug = getTenantSlug();
   const pharmacyName = TENANT_DISPLAY_NAMES[tenantSlug] || "Meckay Pharmacy";
