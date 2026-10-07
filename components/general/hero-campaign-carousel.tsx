@@ -11,6 +11,8 @@ import {
   CheckCircle2,
   Quote,
 } from "lucide-react";
+import { collection, query, onSnapshot, orderBy } from "firebase/firestore";
+import { db } from "@/lib/firebase/firebase-client";
 import {
   DEFAULT_HERO_CAMPAIGNS,
   HeroCampaignSlide,
@@ -111,22 +113,83 @@ export function HeroCampaignCarousel({
   initialCampaigns = DEFAULT_HERO_CAMPAIGNS,
 }: HeroCampaignCarouselProps) {
   const { tenant } = useTenantContext();
+  const [campaignsList, setCampaignsList] = useState<HeroCampaignSlide[]>(initialCampaigns);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [fadeAnim, setFadeAnim] = useState(true);
 
-  // Filter campaigns for this tenant
+  // Live real-time Firestore sync with hero_activities collection
+  useEffect(() => {
+    try {
+      const q = query(collection(db, "hero_activities"), orderBy("priority", "asc"));
+      const unsubscribe = onSnapshot(
+        q,
+        (snapshot) => {
+          if (!snapshot.empty) {
+            const liveData: HeroCampaignSlide[] = [];
+            snapshot.forEach((docSnap) => {
+              const d = docSnap.data();
+              liveData.push({
+                id: docSnap.id,
+                badge: d.badge || "",
+                badgeVariant: d.badgeVariant || "seasonal",
+                title: d.title || "",
+                subtitle: d.subtitle || "",
+                description: d.description || "",
+                highlights: Array.isArray(d.highlights) ? d.highlights : [],
+                ctaText: d.ctaText || "Learn More",
+                ctaHref: d.ctaHref || "#",
+                ctaKind: d.ctaKind || "internal",
+                isNhsFunded: Boolean(d.isNhsFunded),
+                active: d.active !== undefined ? Boolean(d.active) : true,
+                priority: Number(d.priority) || 1,
+                tenantIds: Array.isArray(d.branches)
+                  ? d.branches
+                  : Array.isArray(d.tenantIds)
+                  ? d.tenantIds
+                  : ["belvedere", "kidbrooke", "lowfield"],
+              });
+            });
+            if (liveData.length > 0) {
+              setCampaignsList(liveData);
+            }
+          }
+        },
+        (error) => {
+          console.warn("[HeroCarousel] Firestore real-time listener fallback:", error);
+        }
+      );
+      return () => unsubscribe();
+    } catch (e) {
+      console.warn("[HeroCarousel] Firestore offline fallback:", e);
+    }
+  }, []);
+
+  // Filter campaigns for this active pharmacy tenant site
   const tenantSlug = tenant?.id;
-  const campaigns = initialCampaigns.filter(
+  const campaigns = campaignsList.filter(
     (c) =>
       c.active &&
       (!tenantSlug || !c.tenantIds || c.tenantIds.includes(tenantSlug)),
   );
 
+  // Guard index out of range if slides are added or removed
+  useEffect(() => {
+    if (currentIndex >= campaigns.length && campaigns.length > 0) {
+      setCurrentIndex(0);
+    }
+  }, [campaigns.length, currentIndex]);
+
   const activeSlide = campaigns[currentIndex] || campaigns[0];
   const theme =
     activeSlide && CAMPAIGN_THEMES[activeSlide.id]
       ? CAMPAIGN_THEMES[activeSlide.id]
+      : activeSlide?.badgeVariant === "nhs"
+      ? CAMPAIGN_THEMES["covid-booster"]
+      : activeSlide?.badgeVariant === "private"
+      ? CAMPAIGN_THEMES["meningitis-b"]
+      : activeSlide?.badgeVariant === "urgent"
+      ? CAMPAIGN_THEMES["meningitis-b"]
       : CAMPAIGN_THEMES["seasonal-flu"];
 
   const handleSlideChange = (newIndex: number) => {
@@ -199,115 +262,121 @@ export function HeroCampaignCarousel({
             }}
           />
 
-          {/* Top Row: Quote Mark, Clinical Tag, and Slide Trackers */}
-          <div className="flex items-center justify-between mb-5">
-            <div className="flex items-center gap-2">
-              <Quote className="size-5 text-white/90 fill-white/80 rotate-180 shrink-0" />
-              <span
-                className={`text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-md border backdrop-blur-xs ${theme.badgeBg} ${theme.badgeBorder} ${theme.badgeText}`}
-              >
-                {activeSlide.badge}
-              </span>
-            </div>
-
-            {/* Slide Trackers */}
-            <div className="flex items-center gap-1.5 bg-black/25 px-2.5 py-1.5 rounded-full border border-white/15 backdrop-blur-xs">
-              {campaigns.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => handleSlideChange(idx)}
-                  aria-label={`Go to note ${idx + 1}`}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    idx === currentIndex
-                      ? "w-5 bg-white shadow-[0_0_8px_rgba(255,255,255,0.9)]"
-                      : "w-2 bg-white/40 hover:bg-white/70"
-                  }`}
-                />
-              ))}
+          {/* Diagonal translucent tape ribbon at top-left corner */}
+          <div className="absolute -top-1 -left-1 z-20 pointer-events-none overflow-hidden size-32">
+            <div
+              className={`absolute top-5 -left-9 w-36 py-1 ${theme.tapeBg} ${theme.tapeText} text-[10px] font-black tracking-wider uppercase text-center -rotate-45 shadow-[0_2px_6px_rgba(0,0,0,0.35)] border-y border-black/10 select-none`}
+            >
+              {activeSlide.badgeVariant === "nhs"
+                ? "NHS SERVICE"
+                : activeSlide.badgeVariant === "private"
+                ? "PRIVATE CARE"
+                : "SEASONAL"}
             </div>
           </div>
 
-          {/* Animated Content Card */}
+          {/* Subdued watermark emblem in background */}
+          <div className="absolute -right-10 -bottom-10 pointer-events-none opacity-5">
+            <Syringe className="size-64 stroke-1 text-white" />
+          </div>
+
+          {/* Top meta row: Badge + Slide counter */}
+          <div className="flex items-center justify-between gap-3 mb-5 pl-14 sm:pl-16">
+            {/* Clinical context badge */}
+            <div
+              className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full ${theme.badgeBg} border ${theme.badgeBorder} ${theme.badgeText} text-xs font-semibold backdrop-blur-xs shadow-xs`}
+            >
+              <span className={`size-1.5 rounded-full ${theme.accentDot} animate-pulse`} />
+              <span className="line-clamp-1">{activeSlide.badge}</span>
+            </div>
+
+            {/* Slide pagination pill */}
+            <div className="flex items-center gap-1 bg-black/30 backdrop-blur-md px-2.5 py-1 rounded-full text-[11px] font-mono text-white/80 border border-white/10 shrink-0">
+              <span>{currentIndex + 1}</span>
+              <span className="opacity-40">/</span>
+              <span>{campaigns.length}</span>
+            </div>
+          </div>
+
+          {/* Main Content Area with cross-fade animation */}
           <div
-            className={`space-y-4 transition-all duration-200 ${
-              fadeAnim ? "opacity-100 translate-y-0" : "opacity-0 translate-y-1"
+            className={`transition-opacity duration-200 ${
+              fadeAnim ? "opacity-100" : "opacity-0"
             }`}
           >
-            {/* Description quote paragraph */}
-            <p className="text-sm sm:text-[15px] text-slate-100/90 font-normal leading-relaxed italic">
+            {/* Title & Subtitle */}
+            <div className="mb-3">
+              <h3 className="text-2xl sm:text-3xl font-black tracking-tight text-white drop-shadow-xs leading-[1.15]">
+                {activeSlide.title}
+              </h3>
+              <p className="text-sm sm:text-base font-semibold text-amber-300 mt-1 drop-shadow-xs">
+                {activeSlide.subtitle}
+              </p>
+            </div>
+
+            {/* Description */}
+            <p className="text-xs sm:text-sm text-slate-100/90 leading-relaxed font-normal mb-5 line-clamp-3">
               {activeSlide.description}
             </p>
 
-            {/* Big Headline with White Tape / Marker Highlight Accent Strip */}
-            <div className="space-y-2 pt-1">
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-tight">
-                {activeSlide.title}
-              </h3>
-
-              {/* Tape Highlight Strip */}
-              <div className="inline-block relative">
-                <span
-                  className={`relative z-10 block ${theme.tapeBg} ${theme.tapeText} font-black text-xs sm:text-sm tracking-wide uppercase px-3 py-1 rounded-xs shadow-md rotate-[-0.8deg]`}
-                >
-                  {activeSlide.subtitle}
-                </span>
-              </div>
-            </div>
-
-            {/* Hand-drawn style circular highlights */}
-            <div className="space-y-2 pt-1">
-              {activeSlide.highlights.slice(0, 2).map((item, i) => (
-                <div
-                  key={i}
-                  className="flex items-center gap-2.5 text-xs text-slate-100/95 font-medium"
-                >
-                  <span className="inline-flex items-center justify-center size-5 rounded-full border border-white/50 bg-white/10 text-[10px] font-bold text-amber-300 shrink-0">
-                    ✓
-                  </span>
-                  <span className="leading-snug">{item}</span>
+            {/* Key Clinical Highlights Checklist */}
+            <div className="space-y-2 mb-6 bg-black/20 backdrop-blur-xs rounded-xl p-3 border border-white/10">
+              {activeSlide.highlights.map((highlight, idx) => (
+                <div key={idx} className="flex items-start gap-2.5 text-xs text-slate-200">
+                  <CheckCircle2 className="size-4 text-emerald-300 shrink-0 mt-0.5" />
+                  <span className="leading-snug">{highlight}</span>
                 </div>
               ))}
             </div>
 
-            {/* Action CTA Button */}
-            <div className="pt-3">
-              <Link
-                href={activeSlide.ctaHref}
-                onClick={() =>
-                  track("hero_carousel_cta_click", activeSlide.ctaHref)
-                }
-                className={`group w-full flex items-center justify-between px-5 py-3.5 rounded-xl ${theme.ctaBg} active:scale-[0.99] ${theme.ctaText} font-extrabold text-sm sm:text-base shadow-[0_8px_20px_rgba(0,0,0,0.3)] transition-all duration-200`}
+            {/* High-Contrast Interactive CTA Button */}
+            <Link
+              href={activeSlide.ctaHref}
+              onClick={() => {
+                track("hero_carousel_cta_click", activeSlide.ctaHref);
+              }}
+              className={`group/cta flex items-center justify-between w-full ${theme.ctaBg} ${theme.ctaText} font-black text-sm px-5 py-3.5 rounded-xl shadow-[0_8px_20px_rgba(0,0,0,0.35)] transition-all duration-200 active:scale-[0.98] cursor-pointer`}
+            >
+              <span>{activeSlide.ctaText}</span>
+              <div
+                className={`size-7 rounded-lg ${theme.ctaArrowBg} ${theme.ctaArrowText} flex items-center justify-center transition-transform duration-200 group-hover/cta:translate-x-1`}
               >
-                <span>{activeSlide.ctaText}</span>
-                <span
-                  className={`size-7 rounded-full ${theme.ctaArrowBg} ${theme.ctaArrowText} flex items-center justify-center transition-transform group-hover:translate-x-1`}
-                >
-                  <ArrowRight className="size-4" />
-                </span>
-              </Link>
-            </div>
+                <ArrowRight className="size-4" />
+              </div>
+            </Link>
           </div>
 
-          {/* Bottom Footer Note Bar with Tenant Signoff & Arrows */}
-          <div className="mt-5 pt-3 border-t border-white/15 flex items-center justify-between text-xs text-white/75">
-            <span className="font-extrabold uppercase tracking-widest text-[11px] text-white/90">
-              {tenant?.displayName
-                ? `${tenant.displayName.toUpperCase()} CLINIC`
-                : "MECKAY HEALTH"}
-            </span>
+          {/* Bottom Navigation: Dots + Arrows */}
+          <div className="flex items-center justify-between mt-5 pt-4 border-t border-white/15">
+            {/* Slide Indicator Dots */}
+            <div className="flex items-center gap-1.5">
+              {campaigns.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => handleSlideChange(idx)}
+                  aria-label={`Go to slide ${idx + 1}`}
+                  className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                    currentIndex === idx
+                      ? "w-6 bg-white shadow-xs"
+                      : "w-2 bg-white/35 hover:bg-white/60"
+                  }`}
+                />
+              ))}
+            </div>
 
+            {/* Prev / Next Arrows */}
             <div className="flex items-center gap-1.5">
               <button
                 onClick={handlePrev}
-                aria-label="Previous Note"
-                className="size-7 rounded-lg bg-white/15 hover:bg-white/25 active:scale-95 text-white flex items-center justify-center transition-all"
+                aria-label="Previous slide"
+                className="size-8 rounded-lg bg-black/30 hover:bg-black/50 text-white flex items-center justify-center border border-white/15 backdrop-blur-xs transition-colors cursor-pointer active:scale-95"
               >
                 <ChevronLeft className="size-4" />
               </button>
               <button
                 onClick={handleNext}
-                aria-label="Next Note"
-                className="size-7 rounded-lg bg-white/15 hover:bg-white/25 active:scale-95 text-white flex items-center justify-center transition-all"
+                aria-label="Next slide"
+                className="size-8 rounded-lg bg-black/30 hover:bg-black/50 text-white flex items-center justify-center border border-white/15 backdrop-blur-xs transition-colors cursor-pointer active:scale-95"
               >
                 <ChevronRight className="size-4" />
               </button>
