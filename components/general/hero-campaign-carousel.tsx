@@ -118,6 +118,10 @@ export function HeroCampaignCarousel({
   const [isPaused, setIsPaused] = useState(false);
   const [fadeAnim, setFadeAnim] = useState(true);
 
+  // Mobile touch swipe handling
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [touchEndX, setTouchEndX] = useState<number | null>(null);
+
   // Live real-time Firestore sync with hero_activities collection
   useEffect(() => {
     try {
@@ -200,6 +204,37 @@ export function HeroCampaignCarousel({
     }, 150);
   };
 
+  const handlePrev = () => {
+    const nextIdx = (currentIndex - 1 + campaigns.length) % campaigns.length;
+    handleSlideChange(nextIdx);
+  };
+
+  const handleNext = () => {
+    const nextIdx = (currentIndex + 1) % campaigns.length;
+    handleSlideChange(nextIdx);
+  };
+
+  // Touch handlers for mobile swipe
+  const minSwipeDistance = 45;
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEndX(null);
+    setTouchStartX(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEndX(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStartX || !touchEndX) return;
+    const distance = touchStartX - touchEndX;
+    if (distance > minSwipeDistance) {
+      handleNext();
+    } else if (distance < -minSwipeDistance) {
+      handlePrev();
+    }
+  };
+
   // Auto-advance every 6.5s unless hovering
   useEffect(() => {
     if (isPaused || campaigns.length <= 1) return;
@@ -215,21 +250,14 @@ export function HeroCampaignCarousel({
 
   if (!activeSlide) return null;
 
-  const handlePrev = () => {
-    const nextIdx = (currentIndex - 1 + campaigns.length) % campaigns.length;
-    handleSlideChange(nextIdx);
-  };
-
-  const handleNext = () => {
-    const nextIdx = (currentIndex + 1) % campaigns.length;
-    handleSlideChange(nextIdx);
-  };
-
   return (
     <div
-      className="relative w-full max-w-[430px] mx-auto lg:max-w-none pt-4"
+      className="relative w-full max-w-[430px] mx-auto lg:max-w-none pt-4 touch-pan-y"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
     >
       {/* Soft floating paper drop shadow & organic tilt */}
       <div className="relative rotate-[1.5deg] hover:rotate-0 transition-all duration-500 ease-out">
@@ -249,7 +277,7 @@ export function HeroCampaignCarousel({
 
         {/* Paper Note Body - Dynamic Gradient with rich paper texture */}
         <div
-          className={`relative rounded-2xl ${theme.bgGradient} text-white p-7 sm:p-8 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.65),0_4px_16px_rgba(0,0,0,0.4)] border-t border-l border-white/25 overflow-hidden transition-colors duration-500`}
+          className={`relative rounded-2xl ${theme.bgGradient} text-white p-5 sm:p-8 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.65),0_4px_16px_rgba(0,0,0,0.4)] border-t border-l border-white/25 overflow-hidden transition-colors duration-500`}
         >
           {/* Paper fiber grain texture */}
           <div
@@ -281,10 +309,10 @@ export function HeroCampaignCarousel({
           </div>
 
           {/* Top meta row: Badge + Slide counter */}
-          <div className="flex items-center justify-between gap-3 mb-5 pl-14 sm:pl-16">
+          <div className="flex items-center justify-between gap-2 sm:gap-3 mb-4 sm:mb-5 pl-12 sm:pl-16">
             {/* Clinical context badge */}
             <div
-              className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full ${theme.badgeBg} border ${theme.badgeBorder} ${theme.badgeText} text-xs font-semibold backdrop-blur-xs shadow-xs`}
+              className={`inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full ${theme.badgeBg} border ${theme.badgeBorder} ${theme.badgeText} text-xs font-semibold backdrop-blur-xs shadow-xs`}
             >
               <span className={`size-1.5 rounded-full ${theme.accentDot} animate-pulse`} />
               <span className="line-clamp-1">{activeSlide.badge}</span>
@@ -306,21 +334,21 @@ export function HeroCampaignCarousel({
           >
             {/* Title & Subtitle */}
             <div className="mb-3">
-              <h3 className="text-2xl sm:text-3xl font-black tracking-tight text-white drop-shadow-xs leading-[1.15]">
+              <h3 className="text-xl sm:text-3xl font-black tracking-tight text-white drop-shadow-xs leading-[1.15]">
                 {activeSlide.title}
               </h3>
-              <p className="text-sm sm:text-base font-semibold text-amber-300 mt-1 drop-shadow-xs">
+              <p className="text-xs sm:text-base font-semibold text-amber-300 mt-1 drop-shadow-xs">
                 {activeSlide.subtitle}
               </p>
             </div>
 
             {/* Description */}
-            <p className="text-xs sm:text-sm text-slate-100/90 leading-relaxed font-normal mb-5 line-clamp-3">
+            <p className="text-xs sm:text-sm text-slate-100/90 leading-relaxed font-normal mb-4 sm:mb-5 line-clamp-3">
               {activeSlide.description}
             </p>
 
             {/* Key Clinical Highlights Checklist */}
-            <div className="space-y-2 mb-6 bg-black/20 backdrop-blur-xs rounded-xl p-3 border border-white/10">
+            <div className="space-y-1.5 sm:space-y-2 mb-5 sm:mb-6 bg-black/20 backdrop-blur-xs rounded-xl p-2.5 sm:p-3 border border-white/10">
               {activeSlide.highlights.map((highlight, idx) => (
                 <div key={idx} className="flex items-start gap-2.5 text-xs text-slate-200">
                   <CheckCircle2 className="size-4 text-emerald-300 shrink-0 mt-0.5" />
@@ -335,7 +363,7 @@ export function HeroCampaignCarousel({
               onClick={() => {
                 track("hero_carousel_cta_click", activeSlide.ctaHref);
               }}
-              className={`group/cta flex items-center justify-between w-full ${theme.ctaBg} ${theme.ctaText} font-black text-sm px-5 py-3.5 rounded-xl shadow-[0_8px_20px_rgba(0,0,0,0.35)] transition-all duration-200 active:scale-[0.98] cursor-pointer`}
+              className={`group/cta flex items-center justify-between w-full ${theme.ctaBg} ${theme.ctaText} font-black text-sm px-4 sm:px-5 py-3 sm:py-3.5 rounded-xl shadow-[0_8px_20px_rgba(0,0,0,0.35)] transition-all duration-200 active:scale-[0.98] cursor-pointer`}
             >
               <span>{activeSlide.ctaText}</span>
               <div
@@ -347,7 +375,7 @@ export function HeroCampaignCarousel({
           </div>
 
           {/* Bottom Navigation: Dots + Arrows */}
-          <div className="flex items-center justify-between mt-5 pt-4 border-t border-white/15">
+          <div className="flex items-center justify-between mt-4 sm:mt-5 pt-3.5 sm:pt-4 border-t border-white/15">
             {/* Slide Indicator Dots */}
             <div className="flex items-center gap-1.5">
               {campaigns.map((_, idx) => (
@@ -355,28 +383,28 @@ export function HeroCampaignCarousel({
                   key={idx}
                   onClick={() => handleSlideChange(idx)}
                   aria-label={`Go to slide ${idx + 1}`}
-                  className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                  className={`h-2.5 sm:h-2 rounded-full transition-all duration-300 cursor-pointer ${
                     currentIndex === idx
                       ? "w-6 bg-white shadow-xs"
-                      : "w-2 bg-white/35 hover:bg-white/60"
+                      : "w-2.5 sm:w-2 bg-white/35 hover:bg-white/60"
                   }`}
                 />
               ))}
             </div>
 
             {/* Prev / Next Arrows */}
-            <div className="flex items-center gap-1.5">
+            <div className="flex items-center gap-2">
               <button
                 onClick={handlePrev}
                 aria-label="Previous slide"
-                className="size-8 rounded-lg bg-black/30 hover:bg-black/50 text-white flex items-center justify-center border border-white/15 backdrop-blur-xs transition-colors cursor-pointer active:scale-95"
+                className="size-9 sm:size-8 rounded-lg bg-black/30 hover:bg-black/50 text-white flex items-center justify-center border border-white/15 backdrop-blur-xs transition-colors cursor-pointer active:scale-95"
               >
                 <ChevronLeft className="size-4" />
               </button>
               <button
                 onClick={handleNext}
                 aria-label="Next slide"
-                className="size-8 rounded-lg bg-black/30 hover:bg-black/50 text-white flex items-center justify-center border border-white/15 backdrop-blur-xs transition-colors cursor-pointer active:scale-95"
+                className="size-9 sm:size-8 rounded-lg bg-black/30 hover:bg-black/50 text-white flex items-center justify-center border border-white/15 backdrop-blur-xs transition-colors cursor-pointer active:scale-95"
               >
                 <ChevronRight className="size-4" />
               </button>

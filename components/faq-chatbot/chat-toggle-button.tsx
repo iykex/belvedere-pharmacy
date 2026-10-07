@@ -14,7 +14,7 @@ export function ChatToggleButton({ isOpen, onClick }: ChatToggleButtonProps) {
         track(TRACKING_EVENTS.chatToggleButton, "chatbot toggled");
       }}
       className={cn(
-        "fixed bottom-6 lg:bottom-8 right-6 lg:right-8 z-40 flex items-center justify-center size-11 lg:size-12 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 cursor-pointer",
+        "fixed bottom-22 lg:bottom-8 right-4 lg:right-8 z-40 flex items-center justify-center size-12 lg:size-12 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 cursor-pointer",
         "bg-gradient-to-br from-primary to-primary/90 text-white border-2 border-white/20 shadow-primary/30",
         "hover:shadow-primary/50 hover:shadow-2xl",
         isOpen && "rotate-90"

@@ -14,23 +14,26 @@ export default function Brand() {
   const words = displayName.split(" ");
   const primaryName = words[0] ?? "Pharmacy";
   const secondaryName = words.slice(1).join(" ") || "Pharmacy";
+  const logoSrc = `/logo/${slug}-logo.png`;
+
   return (
     <div className="flex items-center gap-x-2">
       <Link
         href={INTERNAL_LINKS.homePage}
-        className="relative group flex items-center gap-2 "
+        className="relative group flex items-center gap-2 sm:gap-3"
       >
         <Image
-          src="/logo/belvedere-logo.png"
+          src={logoSrc}
           alt={`${displayName} logo`}
-          width={60}
-          height={60}
-          className="relative z-10 "
+          width={56}
+          height={56}
+          className="relative z-10 size-10 sm:size-12 md:size-14 object-contain shrink-0"
+          priority
         />
         <div className="flex flex-col">
           <p
             className={cn(
-              "text-xl font-bold leading-tight tracking-wide transition-colors duration-300 sm:text-2xl",
+              "text-base sm:text-xl md:text-2xl font-bold leading-tight tracking-tight sm:tracking-wide transition-colors duration-300",
               hasDarkHero
                 ? "text-white dark:text-foreground"
                 : "text-foreground",
@@ -41,7 +44,7 @@ export default function Brand() {
           </p>
           <p
             className={cn(
-              "text-md sm:text-lg leading-tight tracking-tight transition-colors duration-300",
+              "text-[11px] sm:text-sm md:text-base leading-tight tracking-tight transition-colors duration-300",
               hasDarkHero
                 ? "text-white/80 dark:text-foreground/80"
                 : "text-foreground/80",
