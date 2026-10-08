@@ -1,6 +1,11 @@
 import WidthConstraint from "@/components/shared/width-constraint";
-import { Badge } from "@/components/ui/badge";
-import { ArrowRight, BadgeCheckIcon } from "lucide-react";
+import {
+  ArrowRight,
+  CalendarDays,
+  ClipboardList,
+  Clock3,
+  MapPin,
+} from "lucide-react";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import Image from "next/image";
@@ -11,6 +16,10 @@ import { useTenantContext } from "@/components/providers/tenant-provider";
 import { BannerHeroActionsSkeleton } from "@/components/shared/tenant-skeletons";
 import { externalLinkProps } from "@/lib/utils/external-link";
 import { HeroCampaignCarousel } from "./hero-campaign-carousel";
+import {
+  formatAddressInline,
+  formatOpeningHoursSummary,
+} from "@/lib/utils/format-tenant";
 
 export default function Banner() {
   const { tenant, isTenantReady } = useTenantContext();
@@ -36,7 +45,7 @@ export default function Banner() {
       : null;
 
   return (
-    <section className="min-h-screen lg:h-screen overflow-hidden relative pt-24 pb-12 lg:py-0 flex items-center">
+    <section className="relative flex min-h-[100svh] items-center overflow-hidden pb-12 pt-24 lg:min-h-screen lg:h-auto lg:py-16">
       {/* Background Image with CDN optimization */}
       <Image
         src={bannerImage}
@@ -54,16 +63,19 @@ export default function Banner() {
       {/* Content */}
       <div className="relative w-full h-full flex items-center">
         <WidthConstraint>
-          <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
             {/* Left Content - Takes 7 columns */}
-            <div className="lg:col-span-7 space-y-6 sm:space-y-8">
-              <Badge
-                variant="secondary"
-                className="border border-white/40 bg-[#002f4b]/90 px-5 py-2 text-sm sm:text-base font-bold text-white shadow-sm backdrop-blur-sm"
-              >
-                <BadgeCheckIcon className="size-4 mr-2 text-amber-300" />
-                NHS & Private Healthcare Services
-              </Badge>
+            <div className="space-y-7 sm:space-y-8 lg:col-span-7">
+              <div className="flex w-fit max-w-full items-center gap-3 text-sm font-semibold text-white sm:text-base">
+                <Image
+                  src="/logo/nhs-logo-white-on-blue.webp"
+                  alt="NHS"
+                  width={70}
+                  height={29}
+                  className="h-6 w-[60px] shrink-0 object-contain shadow-[0_4px_10px_rgba(0,94,184,0.2)] sm:h-7 sm:w-[70px]"
+                />
+                <span className="truncate">NHS &amp; Private healthcare services</span>
+              </div>
 
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1]">
                 Your Trusted Partner in <br />
@@ -84,8 +96,8 @@ export default function Banner() {
                       asChild
                       className={
                         btn.variant === "primary"
-                          ? "group bg-[#F9A825] text-slate-950 font-black hover:bg-[#ffc107] border-2 border-amber-300 shadow-xl hover:shadow-amber-400/30 px-8 py-6 text-base tracking-wide rounded-xl focus-visible:ring-4 focus-visible:ring-amber-300 transition-all duration-300"
-                          : "group border-2 border-white/70 bg-black/50 text-white hover:bg-white hover:text-black backdrop-blur-md px-8 py-6 text-base font-bold rounded-xl shadow-lg transition-all duration-300"
+                          ? "group min-h-14 w-full min-w-[230px] rounded-[18px] bg-[#F9A825] px-7 py-4 text-base font-black tracking-[0.015em] text-slate-950 shadow-[0_12px_26px_rgba(249,168,37,0.24)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#ffc107] hover:shadow-[0_16px_30px_rgba(249,168,37,0.32)] active:translate-y-0 focus-visible:ring-4 focus-visible:ring-amber-300 sm:w-auto"
+                          : "group min-h-14 w-full min-w-[230px] rounded-[18px] bg-[#001a33]/55 px-7 py-4 text-base font-bold tracking-[0.015em] text-white shadow-[0_10px_24px_rgba(0,0,0,0.18)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#002f4b]/80 hover:shadow-[0_14px_28px_rgba(0,0,0,0.25)] active:translate-y-0 focus-visible:ring-4 focus-visible:ring-white/60 sm:w-auto"
                       }
                     >
                       <Link
@@ -94,11 +106,16 @@ export default function Banner() {
                         }}
                         href={btn.href}
                         {...externalLinkProps(btn.href)}
-                        className="flex items-center gap-2"
+                        className="flex items-center justify-center gap-2.5"
                       >
+                        {btn.icon ? (
+                          <CalendarDays aria-hidden className="size-5" />
+                        ) : (
+                          <ClipboardList aria-hidden className="size-5" />
+                        )}
                         {btn.text.toUpperCase()}
                         {btn.icon && (
-                          <ArrowRight className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+                          <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1" />
                         )}
                       </Link>
                     </Button>
@@ -107,15 +124,43 @@ export default function Banner() {
                   <BannerHeroActionsSkeleton />
                 )}
               </div>
+
+              {isTenantReady && tenant && (
+                <div className="mt-10 grid gap-5 px-1 sm:mt-12 lg:hidden">
+                  <div className="flex items-start gap-3">
+                    <MapPin className="mt-0.5 size-4 shrink-0 text-[#6AB8F0]" />
+                    <div className="min-w-0">
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-white/55">
+                        Find us
+                      </p>
+                      <p className="mt-0.5 text-xs font-medium leading-relaxed text-white/90">
+                        {formatAddressInline(tenant)}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Clock3 className="mt-0.5 size-4 shrink-0 text-[#6AB8F0]" />
+                    <div className="min-w-0">
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-white/55">
+                        Opening hours
+                      </p>
+                      <p className="mt-0.5 text-xs font-medium leading-relaxed text-white/90">
+                        {formatOpeningHoursSummary(tenant)}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Right Side - Dynamic Hero Campaign Carousel - Takes 5 columns */}
-            <div className="lg:col-span-5 w-full flex justify-center items-center">
+            <div className="hidden w-full items-center justify-center lg:col-span-5 lg:flex">
               <HeroCampaignCarousel />
             </div>
           </div>
         </WidthConstraint>
       </div>
+
     </section>
   );
 }

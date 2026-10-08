@@ -9,6 +9,7 @@ import {
   formatOpeningHoursSummary,
 } from "@/lib/utils/format-tenant";
 import { cn } from "@/lib/utils/utils";
+import WidthConstraint from "@/components/shared/width-constraint";
 
 export default function InfoBar() {
   const { hasDarkHero, isScrolled } = useNavigationMenu();
@@ -18,19 +19,15 @@ export default function InfoBar() {
     return (
       <div
         className={cn(
-          "py-2 px-3 transition-all duration-300 ease-in-out backdrop-blur-3xl overflow-hidden",
-          hasDarkHero && "text-white",
-          isScrolled && "bg-background text-foreground"
+          "py-2.5 transition-colors duration-300",
+          isScrolled ? "bg-[#061a2a]/95 text-foreground" : "bg-transparent"
         )}
       >
-        <div className="info-bar-marquee flex w-max shrink-0 items-center gap-x-6 md:gap-x-10 whitespace-nowrap">
-          <InfoBarRowSkeleton hasDarkHero={hasDarkHero} isScrolled={isScrolled} />
-          <InfoBarRowSkeleton
-            ariaHidden
-            hasDarkHero={hasDarkHero}
-            isScrolled={isScrolled}
-          />
-        </div>
+        <WidthConstraint className="mx-0 w-full max-w-none overflow-visible px-4 sm:px-6 xl:px-8">
+          <div className="info-bar-scrollbar flex items-center gap-3 overflow-x-auto whitespace-nowrap text-white/80">
+            <InfoBarRowSkeleton hasDarkHero={hasDarkHero} isScrolled={isScrolled} />
+          </div>
+        </WidthConstraint>
       </div>
     );
   }
@@ -41,10 +38,7 @@ export default function InfoBar() {
     { title: "Call Us", description: tenant.phone, icon: PhoneOutgoing },
   ];
 
-  const textColorClass = cn(
-    hasDarkHero && "text-white",
-    isScrolled && "text-foreground"
-  );
+  const textColorClass = "text-white/80";
 
   const renderItem = (
     item: (typeof items)[number],
@@ -85,17 +79,22 @@ export default function InfoBar() {
   return (
     <div
       className={cn(
-        "py-2 px-3 transition-all duration-300 ease-in-out backdrop-blur-3xl overflow-hidden",
-        hasDarkHero && "text-white",
-        isScrolled && "bg-background text-foreground"
+        "transition-colors duration-300",
+        isScrolled ? "bg-[#061a2a]/95 text-foreground" : "bg-transparent"
       )}
     >
-      <div className="info-bar-marquee flex w-max shrink-0 items-center gap-x-6 md:gap-x-10 whitespace-nowrap">
-        {items.map((item) => renderItem(item, item.title))}
-        {items.map((item) =>
-          renderItem(item, `${item.title}-dup`, { hideFromA11y: true })
-        )}
-      </div>
+      <WidthConstraint className="mx-0 w-full max-w-none overflow-visible px-4 sm:px-6 xl:px-8">
+        <div className="info-bar-scrollbar flex items-center justify-between gap-5 overflow-x-auto py-2.5 whitespace-nowrap">
+          {items.map((item, index) => (
+            <div key={item.title} className="flex shrink-0 items-center gap-5">
+              {renderItem(item, item.title)}
+              {index < items.length - 1 && (
+                <span aria-hidden className="hidden h-4 w-px bg-white/15 sm:block" />
+              )}
+            </div>
+          ))}
+        </div>
+      </WidthConstraint>
     </div>
   );
 }

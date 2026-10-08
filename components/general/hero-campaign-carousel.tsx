@@ -227,14 +227,14 @@ export function HeroCampaignCarousel({
 
   return (
     <div
-      className="relative w-full max-w-[430px] mx-auto lg:max-w-none pt-4"
+      className="relative mx-auto w-full max-w-[calc(100vw-2rem)] pt-1 sm:max-w-[430px] lg:max-w-none lg:pt-4"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
       {/* Soft floating paper drop shadow & organic tilt */}
-      <div className="relative rotate-[1.5deg] hover:rotate-0 transition-all duration-500 ease-out">
+      <div className="relative rotate-0 transition-all duration-500 ease-out sm:rotate-[1.5deg] sm:hover:rotate-0">
         {/* Realistic 3D White Push Pin at Top Right */}
-        <div className="absolute -top-3.5 right-6 z-30 pointer-events-none drop-shadow-[0_8px_12px_rgba(0,0,0,0.5)]">
+        <div className="absolute -top-3 right-4 z-30 pointer-events-none drop-shadow-[0_5px_10px_rgba(59,159,231,0.2)] sm:-top-3.5 sm:right-6">
           <div className="relative flex items-center justify-center">
             {/* Spherical pinhead with glass specular shine */}
             <div className="size-8 rounded-full bg-radial from-white via-slate-100 to-slate-300 border border-white/95 shadow-[inset_0_2px_4px_rgba(255,255,255,0.95),inset_0_-2px_4px_rgba(0,0,0,0.3)] flex items-center justify-center">
@@ -243,13 +243,13 @@ export function HeroCampaignCarousel({
             {/* Pin base collar */}
             <div className="absolute -bottom-1 size-5 rounded-full bg-slate-300 shadow-sm -z-10" />
             {/* Cast shadow behind pin onto the note */}
-            <div className="absolute top-2.5 left-4 w-7 h-4 rounded-full bg-black/45 blur-xs -z-20 rotate-45" />
+            <div className="absolute top-2.5 left-4 w-7 h-4 rounded-full bg-[#001a33]/35 blur-xs -z-20 rotate-45" />
           </div>
         </div>
 
         {/* Paper Note Body - Dynamic Gradient with rich paper texture */}
         <div
-          className={`relative rounded-2xl ${theme.bgGradient} text-white p-7 sm:p-8 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.65),0_4px_16px_rgba(0,0,0,0.4)] border-t border-l border-white/25 overflow-hidden transition-colors duration-500`}
+          className={`relative rounded-2xl ${theme.bgGradient} p-5 text-white shadow-[0_18px_36px_-24px_rgba(59,159,231,0.45),0_4px_12px_rgba(12,44,78,0.18)] border-t border-l border-white/25 overflow-hidden transition-[box-shadow,transform,background-color] duration-500 sm:p-8`}
         >
           {/* Paper fiber grain texture */}
           <div
@@ -265,7 +265,7 @@ export function HeroCampaignCarousel({
           {/* Diagonal translucent tape ribbon at top-left corner */}
           <div className="absolute -top-1 -left-1 z-20 pointer-events-none overflow-hidden size-32">
             <div
-              className={`absolute top-5 -left-9 w-36 py-1 ${theme.tapeBg} ${theme.tapeText} text-[10px] font-black tracking-wider uppercase text-center -rotate-45 shadow-[0_2px_6px_rgba(0,0,0,0.35)] border-y border-black/10 select-none`}
+              className={`absolute top-5 -left-9 w-36 py-1 ${theme.tapeBg} ${theme.tapeText} text-[10px] font-black tracking-wider uppercase text-center -rotate-45 shadow-[0_2px_6px_rgba(0,26,51,0.24)] border-y border-black/10 select-none`}
             >
               {activeSlide.badgeVariant === "nhs"
                 ? "NHS SERVICE"
@@ -277,14 +277,14 @@ export function HeroCampaignCarousel({
 
           {/* Subdued watermark emblem in background */}
           <div className="absolute -right-10 -bottom-10 pointer-events-none opacity-5">
-            <Syringe className="size-64 stroke-1 text-white" />
+            <Syringe className="size-48 stroke-1 text-white sm:size-64" />
           </div>
 
           {/* Top meta row: Badge + Slide counter */}
-          <div className="flex items-center justify-between gap-3 mb-5 pl-14 sm:pl-16">
+          <div className="mb-4 flex items-center justify-between gap-2 pl-11 sm:mb-5 sm:gap-3 sm:pl-16">
             {/* Clinical context badge */}
             <div
-              className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full ${theme.badgeBg} border ${theme.badgeBorder} ${theme.badgeText} text-xs font-semibold backdrop-blur-xs shadow-xs`}
+              className={`inline-flex min-w-0 items-center gap-1.5 rounded-full ${theme.badgeBg} border ${theme.badgeBorder} ${theme.badgeText} px-2.5 py-1 text-[11px] font-semibold backdrop-blur-xs shadow-xs sm:px-3 sm:text-xs`}
             >
               <span className={`size-1.5 rounded-full ${theme.accentDot} animate-pulse`} />
               <span className="line-clamp-1">{activeSlide.badge}</span>
@@ -306,7 +306,7 @@ export function HeroCampaignCarousel({
           >
             {/* Title & Subtitle */}
             <div className="mb-3">
-              <h3 className="text-2xl sm:text-3xl font-black tracking-tight text-white drop-shadow-xs leading-[1.15]">
+              <h3 className="text-xl font-black leading-[1.15] tracking-tight text-white drop-shadow-xs sm:text-3xl">
                 {activeSlide.title}
               </h3>
               <p className="text-sm sm:text-base font-semibold text-amber-300 mt-1 drop-shadow-xs">
@@ -315,15 +315,15 @@ export function HeroCampaignCarousel({
             </div>
 
             {/* Description */}
-            <p className="text-xs sm:text-sm text-slate-100/90 leading-relaxed font-normal mb-5 line-clamp-3">
+            <p className="mb-4 hidden line-clamp-2 text-[11px] font-normal leading-relaxed text-slate-100/90 sm:mb-5 sm:block sm:text-sm sm:line-clamp-3">
               {activeSlide.description}
             </p>
 
             {/* Key Clinical Highlights Checklist */}
-            <div className="space-y-2 mb-6 bg-black/20 backdrop-blur-xs rounded-xl p-3 border border-white/10">
+            <div className="mb-4 hidden space-y-1.5 rounded-xl border border-white/10 bg-black/20 p-2.5 backdrop-blur-xs sm:mb-6 sm:block sm:space-y-2 sm:p-3">
               {activeSlide.highlights.map((highlight, idx) => (
-                <div key={idx} className="flex items-start gap-2.5 text-xs text-slate-200">
-                  <CheckCircle2 className="size-4 text-emerald-300 shrink-0 mt-0.5" />
+                <div key={idx} className="flex items-start gap-2 text-[11px] text-slate-200 sm:gap-2.5 sm:text-xs">
+                  <CheckCircle2 className="mt-0.5 size-3.5 shrink-0 text-emerald-300 sm:size-4" />
                   <span className="leading-snug">{highlight}</span>
                 </div>
               ))}
@@ -335,11 +335,11 @@ export function HeroCampaignCarousel({
               onClick={() => {
                 track("hero_carousel_cta_click", activeSlide.ctaHref);
               }}
-              className={`group/cta flex items-center justify-between w-full ${theme.ctaBg} ${theme.ctaText} font-black text-sm px-5 py-3.5 rounded-xl shadow-[0_8px_20px_rgba(0,0,0,0.35)] transition-all duration-200 active:scale-[0.98] cursor-pointer`}
+              className={`group/cta flex w-full items-center justify-between rounded-full ${theme.ctaBg} ${theme.ctaText} px-4 py-3 text-xs font-black shadow-[0_6px_14px_rgba(59,159,231,0.18)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_9px_18px_rgba(59,159,231,0.24)] active:translate-y-0 active:scale-[0.98] cursor-pointer sm:px-5 sm:py-3.5 sm:text-sm`}
             >
               <span>{activeSlide.ctaText}</span>
               <div
-                className={`size-7 rounded-lg ${theme.ctaArrowBg} ${theme.ctaArrowText} flex items-center justify-center transition-transform duration-200 group-hover/cta:translate-x-1`}
+                className={`size-7 rounded-full ${theme.ctaArrowBg} ${theme.ctaArrowText} flex items-center justify-center transition-transform duration-200 group-hover/cta:translate-x-1`}
               >
                 <ArrowRight className="size-4" />
               </div>
@@ -347,7 +347,7 @@ export function HeroCampaignCarousel({
           </div>
 
           {/* Bottom Navigation: Dots + Arrows */}
-          <div className="flex items-center justify-between mt-5 pt-4 border-t border-white/15">
+          <div className="mt-4 flex items-center justify-between border-t border-white/15 pt-3 sm:mt-5 sm:pt-4">
             {/* Slide Indicator Dots */}
             <div className="flex items-center gap-1.5">
               {campaigns.map((_, idx) => (
@@ -369,14 +369,14 @@ export function HeroCampaignCarousel({
               <button
                 onClick={handlePrev}
                 aria-label="Previous slide"
-                className="size-8 rounded-lg bg-black/30 hover:bg-black/50 text-white flex items-center justify-center border border-white/15 backdrop-blur-xs transition-colors cursor-pointer active:scale-95"
+                className="size-8 rounded-full bg-[#001a33]/35 text-white shadow-[0_3px_8px_rgba(59,159,231,0.16)] hover:bg-[#001a33]/55 flex items-center justify-center border border-white/15 backdrop-blur-xs transition-all cursor-pointer active:scale-95"
               >
                 <ChevronLeft className="size-4" />
               </button>
               <button
                 onClick={handleNext}
                 aria-label="Next slide"
-                className="size-8 rounded-lg bg-black/30 hover:bg-black/50 text-white flex items-center justify-center border border-white/15 backdrop-blur-xs transition-colors cursor-pointer active:scale-95"
+                className="size-8 rounded-full bg-[#001a33]/35 text-white shadow-[0_3px_8px_rgba(59,159,231,0.16)] hover:bg-[#001a33]/55 flex items-center justify-center border border-white/15 backdrop-blur-xs transition-all cursor-pointer active:scale-95"
               >
                 <ChevronRight className="size-4" />
               </button>

@@ -46,7 +46,7 @@ export default function MobileMenu() {
             size="icon"
             className={cn(
               "transition-all duration-300 h-10 w-10 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
-              hasDarkHero && !isScrolled
+              hasDarkHero || isScrolled
                 ? "text-white hover:bg-white/10"
                 : "text-foreground hover:bg-foreground/10"
             )}

@@ -310,6 +310,14 @@
   will-change: transform;
 }
 
+.info-bar-scrollbar {
+  scrollbar-width: none;
+}
+
+.info-bar-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .info-bar-marquee {
     animation: none;
