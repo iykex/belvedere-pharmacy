@@ -10,15 +10,12 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils/utils";
 
 export default function MobileActionBar() {
-  const { tenant, isTenantReady } = useTenantContext();
+  const { tenant } = useTenantContext();
   const pathname = usePathname();
 
-  // Don't render until tenant is ready
-  if (!isTenantReady || !tenant) return null;
-
-  const phoneHref = `tel:${tenant.phone.replace(/\D/g, "")}`;
-  const bookHref = tenant.bookAppointmentUrl || "/book";
-  const prescriptionsHref = tenant.orderPrescriptionsUrl || "/services";
+  const phoneHref = tenant?.phone ? `tel:${tenant.phone.replace(/\D/g, "")}` : "/contact";
+  const bookHref = tenant?.bookAppointmentUrl || "/book";
+  const prescriptionsHref = tenant?.orderPrescriptionsUrl || "/services";
 
   return (
     <aside
@@ -29,7 +26,9 @@ export default function MobileActionBar() {
         {/* 1. Call Us */}
         <a
           href={phoneHref}
-          onClick={() => track(TRACKING_EVENTS.phoneContactClick, phoneHref)}
+          onClick={() => {
+            if (tenant?.phone) track(TRACKING_EVENTS.phoneContactClick, phoneHref);
+          }}
           className="flex flex-col items-center justify-center gap-1 py-1 rounded-xl text-foreground/80 hover:text-primary active:scale-95 transition-all"
         >
           <div className="size-8 rounded-full bg-primary/10 flex items-center justify-center text-primary relative">
