@@ -28,6 +28,7 @@ import { TENANT_DISPLAY_NAMES } from "@/lib/config/tenant";
 export default function MobileMenu() {
   const { tenant, isTenantReady, slug } = useTenantContext();
   const { hasDarkHero, isScrolled, pathname } = useNavigationMenu();
+  const hasDarkMobileHeader = pathname === "/" || hasDarkHero || isScrolled;
 
   const phoneHref =
     tenant ? `tel:${tenant.phone.replace(/\D/g, "")}` : "#";
@@ -38,7 +39,13 @@ export default function MobileMenu() {
 
   return (
     <div className="lg:hidden flex items-center gap-3 relative">
-      <ModeToggle />
+      <ModeToggle
+        className={cn(
+          hasDarkMobileHeader
+            ? "text-white hover:text-white"
+            : "text-foreground hover:text-primary",
+        )}
+      />
       <Sheet>
         <SheetTrigger asChild>
           <Button
@@ -46,7 +53,7 @@ export default function MobileMenu() {
             size="icon"
             className={cn(
               "transition-all duration-300 h-10 w-10 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
-              hasDarkHero || isScrolled
+              hasDarkMobileHeader
                 ? "text-white hover:bg-white/10"
                 : "text-foreground hover:bg-foreground/10"
             )}

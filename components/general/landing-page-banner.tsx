@@ -66,23 +66,23 @@ export default function Banner() {
           <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
             {/* Left Content - Takes 7 columns */}
             <div className="space-y-7 sm:space-y-8 lg:col-span-7">
-              <div className="flex w-fit max-w-full items-center gap-3 text-sm font-semibold text-white sm:text-base">
+              <div className="flex w-fit max-w-full items-center gap-2.5 text-[clamp(0.78rem,1.6vw,1rem)] font-semibold leading-tight text-white sm:gap-3">
                 <Image
                   src="/logo/nhs-logo-white-on-blue.webp"
                   alt="NHS"
                   width={70}
                   height={29}
-                  className="h-6 w-[60px] shrink-0 object-contain shadow-[0_4px_10px_rgba(0,94,184,0.2)] sm:h-7 sm:w-[70px]"
+                  className="h-auto w-[clamp(3.75rem,9vw,4.375rem)] shrink-0 object-contain shadow-[0_4px_10px_rgba(0,94,184,0.2)]"
                 />
                 <span className="truncate">NHS &amp; Private healthcare services</span>
               </div>
 
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1]">
+              <h1 className="max-w-[13ch] text-[clamp(2rem,5vw,3.75rem)] font-black leading-[0.98] tracking-[-0.04em] text-balance text-white">
                 Your Trusted Partner in <br />
                 <span className="text-[#F9A825]">Community Healthcare</span>
               </h1>
 
-              <p className="text-base sm:text-lg text-slate-100 max-w-xl leading-relaxed font-normal">
+              <p className="max-w-[58ch] text-[clamp(0.98rem,1.45vw,1.125rem)] font-normal leading-[1.55] text-pretty text-slate-100">
                 Experience accessible, professional healthcare with expert
                 advice, prescription services, and personalized care tailored to
                 your needs.
@@ -96,8 +96,8 @@ export default function Banner() {
                       asChild
                       className={
                         btn.variant === "primary"
-                          ? "group min-h-14 w-full min-w-[230px] rounded-[18px] bg-[#F9A825] px-7 py-4 text-base font-black tracking-[0.015em] text-slate-950 shadow-[0_12px_26px_rgba(249,168,37,0.24)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#ffc107] hover:shadow-[0_16px_30px_rgba(249,168,37,0.32)] active:translate-y-0 focus-visible:ring-4 focus-visible:ring-amber-300 sm:w-auto"
-                          : "group min-h-14 w-full min-w-[230px] rounded-[18px] bg-[#001a33]/55 px-7 py-4 text-base font-bold tracking-[0.015em] text-white shadow-[0_10px_24px_rgba(0,0,0,0.18)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#002f4b]/80 hover:shadow-[0_14px_28px_rgba(0,0,0,0.25)] active:translate-y-0 focus-visible:ring-4 focus-visible:ring-white/60 sm:w-auto"
+                          ? "group min-h-13 w-full min-w-0 rounded-[18px] bg-[#F9A825] px-[clamp(1rem,3vw,1.75rem)] py-[clamp(0.8rem,1.5vw,1rem)] text-[clamp(0.82rem,1.3vw,1rem)] font-black tracking-[0.015em] text-slate-950 shadow-[0_12px_26px_rgba(249,168,37,0.24)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#ffc107] hover:shadow-[0_16px_30px_rgba(249,168,37,0.32)] active:translate-y-0 focus-visible:ring-4 focus-visible:ring-amber-300 sm:w-auto"
+                          : "group min-h-13 w-full min-w-0 rounded-[18px] bg-[#001a33]/55 px-[clamp(1rem,3vw,1.75rem)] py-[clamp(0.8rem,1.5vw,1rem)] text-[clamp(0.82rem,1.3vw,1rem)] font-bold tracking-[0.015em] text-white shadow-[0_10px_24px_rgba(0,0,0,0.18)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#002f4b]/80 hover:shadow-[0_14px_28px_rgba(0,0,0,0.25)] active:translate-y-0 focus-visible:ring-4 focus-visible:ring-white/60 sm:w-auto"
                       }
                     >
                       <Link
@@ -130,10 +130,10 @@ export default function Banner() {
                   <div className="flex items-start gap-3">
                     <MapPin className="mt-0.5 size-4 shrink-0 text-[#6AB8F0]" />
                     <div className="min-w-0">
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-white/55">
+                      <p className="text-[clamp(0.6rem,0.75vw,0.7rem)] font-semibold uppercase tracking-[0.12em] text-white/55">
                         Find us
                       </p>
-                      <p className="mt-0.5 text-xs font-medium leading-relaxed text-white/90">
+                      <p className="mt-0.5 text-[clamp(0.72rem,0.9vw,0.82rem)] font-medium leading-relaxed text-white/90">
                         {formatAddressInline(tenant)}
                       </p>
                     </div>
@@ -141,10 +141,10 @@ export default function Banner() {
                   <div className="flex items-start gap-3">
                     <Clock3 className="mt-0.5 size-4 shrink-0 text-[#6AB8F0]" />
                     <div className="min-w-0">
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-white/55">
+                      <p className="text-[clamp(0.6rem,0.75vw,0.7rem)] font-semibold uppercase tracking-[0.12em] text-white/55">
                         Opening hours
                       </p>
-                      <p className="mt-0.5 text-xs font-medium leading-relaxed text-white/90">
+                      <p className="mt-0.5 text-[clamp(0.72rem,0.9vw,0.82rem)] font-medium leading-relaxed text-white/90">
                         {formatOpeningHoursSummary(tenant)}
                       </p>
                     </div>

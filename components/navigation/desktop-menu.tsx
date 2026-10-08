@@ -39,7 +39,7 @@ export function DesktopMenu() {
                 : isActive
                 ? "bg-primary/10 text-primary"
                 : "text-foreground/75 hover:bg-primary/5 hover:text-foreground",
-              "group relative flex items-center rounded-full px-3 py-2 text-[13px] font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary xl:px-3.5 xl:text-sm",
+              "group relative flex items-center rounded-full px-[clamp(0.55rem,1vw,0.875rem)] py-2 text-[clamp(0.72rem,0.8vw,0.875rem)] font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
             )}
           >
             {item.label}
@@ -64,7 +64,7 @@ export function DesktopMenuButtons() {
       <div className="hidden lg:flex items-center">
         <Button
           asChild
-          className="h-10 rounded-full border-0 bg-primary px-6 text-sm font-bold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/30 active:scale-[0.98]"
+          className="h-10 rounded-full border-0 bg-primary px-[clamp(1rem,1.8vw,1.5rem)] text-[clamp(0.78rem,0.9vw,0.875rem)] font-bold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/30 active:scale-[0.98]"
         >
           <Link
             href={tenant.bookAppointmentUrl}
@@ -104,7 +104,7 @@ export function DesktopMenuButtons() {
         href={tenant.orderPrescriptionsUrl}
         {...externalLinkProps(tenant.orderPrescriptionsUrl)}
         className={cn(
-          "group relative rounded-full px-3 py-2 text-sm font-semibold transition-colors duration-200 hover:bg-primary/5 hover:text-primary",
+          "group relative rounded-full px-[clamp(0.55rem,1vw,0.875rem)] py-2 text-[clamp(0.72rem,0.8vw,0.875rem)] font-semibold transition-colors duration-200 hover:bg-primary/5 hover:text-primary",
           hasDarkHero
             ? "text-background dark:text-foreground"
             : "text-foreground",

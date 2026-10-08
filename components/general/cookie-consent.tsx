@@ -1,22 +1,14 @@
 "use client";
 
-import { Cookie, X, Settings, Shield, ChevronLeft, Check } from "lucide-react";
+import { Check, Cookie, Settings, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils/utils";
 import Link from "next/link";
 import useCookiesPreferences from "@/hooks/use-cookies-preferences";
-import {
-  COOKIE_PREFERENCES_ITEMS,
-  INTERNAL_LINKS,
-  TRACKING_EVENTS,
-} from "@/lib/constants/general";
+import { COOKIE_PREFERENCES_ITEMS, INTERNAL_LINKS, TRACKING_EVENTS } from "@/lib/constants/general";
 import { track } from "@/lib/analytics/tracker";
 
-export default function CookieConsentDialogue({
-  bubbleStateClassName,
-}: {
-  bubbleStateClassName?: string;
-}) {
+export default function CookieConsentDialogue({ bubbleStateClassName }: { bubbleStateClassName?: string }) {
   const {
     mounted,
     handleAcceptAllCookies,
@@ -32,238 +24,151 @@ export default function CookieConsentDialogue({
     showAllCookiePreferences,
   } = useCookiesPreferences();
 
-  // Don't render until mounted on client
   if (!mounted) return null;
 
-  // Minimized bubble state (after consent)
   if (hasConsented && !isCookieDialogueBoxVisible) {
     return (
       <Button
         onClick={() => {
           handleOpenSettings();
-          track(TRACKING_EVENTS.cookieToggleButton, "coookie button toggled");
+          track(TRACKING_EVENTS.cookieToggleButton, "cookie settings opened");
         }}
         className={cn(
-          "fixed bottom-20 lg:bottom-6 left-4 lg:left-6 z-40 p-2 rounded-full shadow-lg transition-all duration-300 hover:scale-110",
-          "bg-white dark:bg-[#002f4b] border border-gray-200 dark:border-[#1a4d6e]",
-          "hover:shadow-xl group",
+          "fixed bottom-4 left-4 z-40 size-10 rounded-full bg-card text-primary shadow-lg ring-1 ring-border transition-all duration-300 hover:scale-110 hover:shadow-xl lg:bottom-6 lg:left-6",
           bubbleStateClassName,
         )}
-        aria-label="Cookie settings"
+        aria-label="Open cookie settings"
       >
-        <Cookie className="size-5 text-primary group-hover:rotate-12 transition-transform" />
+        <Cookie className="size-5" />
       </Button>
     );
   }
 
-  // Main cookie consent dialog
+  const showOverview = !hasConsented || showAllCookiePreferences;
+
   return (
-    <div
-      className={cn(
-        "fixed bottom-0 left-0 right-0 sm:bottom-6 sm:left-6 sm:right-auto z-50 transition-all duration-500",
-        isCookieDialogueBoxVisible
-          ? "translate-y-0 opacity-100"
-          : "translate-y-full opacity-0 pointer-events-none",
-      )}
-    >
-      <div
-        className={cn(
-          "bg-white dark:bg-[#001d33] rounded-t-3xl sm:rounded-3xl shadow-2xl border border-gray-100 dark:border-[#1a4d6e]",
-          "w-full sm:w-[420px] max-h-[90vh] overflow-hidden",
-          "transition-all duration-300",
-        )}
-      >
-        {/* Header */}
-        <div className="p-6 pb-0">
-          <div className="flex items-start justify-between gap-4">
-            <div className="flex items-center gap-4">
-              <div className="p-3 bg-linear-to-br from-primary/20 to-primary/10 dark:from-primary/30 dark:to-primary/10 rounded-2xl">
-                <Cookie className="size-7 text-primary" />
-              </div>
-              <div>
-                <h3 className="font-bold text-xl text-gray-900 dark:text-white">
-                  Cookie Preferences
-                </h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
-                  Manage your privacy settings
-                </p>
-              </div>
+    <div className={cn(
+      "fixed inset-x-0 bottom-0 z-50 transition-all duration-300 sm:bottom-5 sm:left-5 sm:right-auto sm:max-w-[380px]",
+      isCookieDialogueBoxVisible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-full opacity-0",
+    )}>
+      <section aria-label="Cookie consent" className="overflow-hidden rounded-t-2xl bg-card text-card-foreground shadow-2xl ring-1 ring-border sm:rounded-2xl">
+        <div className="flex items-start justify-between gap-4 border-b border-border px-5 py-4">
+          <div className="flex items-center gap-3">
+            <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+              <Cookie className="size-5" />
+            </span>
+            <div>
+              <h2 className="text-base font-bold leading-tight">Your privacy</h2>
+              <p className="mt-0.5 text-xs text-muted-foreground">Choose how cookies help us improve the site.</p>
             </div>
-            <Button
-              onClick={() => {
-                if (hasConsented) {
-                  setIsCookieDialogueBoxVisible(false);
-                }
-              }}
-              variant="ghost"
-              className={cn(
-                "p-2 rounded-full bg-destructive/10 hover:bg-destructive/20 hover:text-destructive transition-colors",
-                !hasConsented && "opacity-50 cursor-not-allowed",
-              )}
-              disabled={!hasConsented}
-              aria-label="Minimize"
-            >
-              <X className="size-5 text-destructive" />
-            </Button>
           </div>
+          {hasConsented && (
+            <Button onClick={() => setIsCookieDialogueBoxVisible(false)} variant="ghost" size="icon" className="size-8 shrink-0 rounded-full text-muted-foreground hover:text-foreground" aria-label="Close cookie settings">
+              <X className="size-4" />
+            </Button>
+          )}
         </div>
 
-        {/* Content */}
-        <div className="p-6">
-          {showAllCookiePreferences ? (
-            <div>
-              <div>
-                <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed mb-5">
-                  We use cookies to enhance your browsing experience, analyze
-                  site traffic, and personalize content. By clicking
-                  &quot;Accept All&quot;, you consent to our use of cookies.
-                </p>
-                <div className="flex items-center gap-3 p-4 bg-linear-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/10 border border-green-100 dark:border-green-800/30 rounded-2xl mb-6">
-                  <div className="p-2 bg-green-100 dark:bg-green-900/40 rounded-xl">
-                    <Shield className="size-5 text-green-600 dark:text-green-400" />
-                  </div>
-                  <p className="text-sm text-green-800 dark:text-green-300 font-medium">
-                    Your data is protected and never sold to third parties.
-                  </p>
-                </div>
-              </div>
-              <div className="space-y-2">
+        <div className="space-y-4 px-5 py-4">
+          {showOverview ? (
+            <>
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                Essential cookies keep the pharmacy website working. Optional cookies help us understand visits and improve your experience.
+              </p>
+              <div className="grid gap-2">
                 <Button
                   onClick={() => {
                     handleAcceptAllCookies();
-                    track(
-                      TRACKING_EVENTS.cookieAcceptAll,
-                      "all cookies accepted",
-                    );
+                    track(TRACKING_EVENTS.cookieAcceptAll, "all cookies accepted");
                   }}
-                  className="w-full bg-primary hover:bg-primary/90 text-white font-bold py-5 rounded-2xl text-base shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all"
+                  className="h-11 w-full rounded-xl bg-primary text-primary-foreground shadow-sm hover:bg-primary/90"
                 >
-                  Accept All Cookies
+                  Accept all
                 </Button>
-                <div className="flex gap-3">
-                  <Button
-                    onClick={() => {
-                      handleAcceptEssentialCookiesOnly();
-                      track(
-                        TRACKING_EVENTS.cookieEssentialOnly,
-                        "accepted essential cookies only",
-                      );
-                    }}
-                    variant="outline"
-                    className="flex-1 py-5 rounded-2xl border-2 border-gray-200 dark:border-[#1a4d6e] font-semibold hover:bg-gray-50 dark:hover:bg-[#002f4b] transition-all"
-                  >
-                    Essential Only
-                  </Button>
-                  <Button
-                    onClick={() => {
-                      setShowAllCookiePreferences(false);
-                      track(
-                        TRACKING_EVENTS.cookieCustomiseView,
-                        "viewed custom cookies interface",
-                      );
-                    }}
-                    variant="outline"
-                    className="flex-1 py-5 rounded-2xl border-2 border-gray-200 dark:border-[#1a4d6e] font-semibold hover:bg-gray-50 dark:hover:bg-[#002f4b] transition-all"
-                  >
-                    <Settings className="size-4 mr-2" />
-                    Customize
-                  </Button>
-                </div>
-              </div>
-            </div>
-          ) : (
-            <div className="space-y-4 mb-6">
-              {COOKIE_PREFERENCES_ITEMS.map((item) => (
-                <label
-                  key={item.id}
-                  className="flex items-center justify-between p-4 bg-gray-50 dark:bg-[#002f4b] rounded-2xl border border-gray-100 dark:border-[#1a4d6e] cursor-pointer hover:border-primary/30 dark:hover:border-primary/30 transition-colors"
+                <Button
+                  onClick={() => {
+                    handleAcceptEssentialCookiesOnly();
+                    track(TRACKING_EVENTS.cookieEssentialOnly, "accepted essential cookies only");
+                  }}
+                  variant="outline"
+                  className="h-11 w-full rounded-xl border-border"
                 >
-                  <div className="flex-1">
-                    <p className="font-semibold text-sm text-gray-900 dark:text-white">
-                      {item.title}
-                    </p>
-                    <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
-                      {item.description}
-                    </p>
-                  </div>
-                  <div className="relative">
-                    <input
-                      type="checkbox"
-                      checked={
-                        item.id === "essential"
-                          ? true
-                          : cookiePreferences[item.key]
-                      }
-                      disabled={item.id === "essential" ? true : false}
-                      onChange={(e) => {
-                        if (item.id !== "essential") {
-                          setCookiePreferences({
-                            ...cookiePreferences,
-                            [item.key]: e.target.checked,
-                          });
-                        }
-                      }}
-                      className="sr-only peer"
-                    />
-                    <div className="w-12 h-7 bg-gray-200 dark:bg-gray-600 rounded-full peer peer-checked:bg-primary peer-disabled:opacity-50 transition-colors" />
-                    <div className="absolute top-0.5 left-0.5 w-6 h-6 bg-white rounded-full shadow-md peer-checked:translate-x-5 peer-disabled:opacity-50 transition-transform flex items-center justify-center">
-                      <Check
-                        className={cn(
-                          "size-3.5 text-primary hidden",
-                          cookiePreferences[item.key] && "block",
-                        )}
-                      />
-                    </div>
-                  </div>
-                </label>
-              ))}
-
-              <div>
-                <div className="grid grid-cols-2 gap-3">
-                  <Button
-                    onClick={() => {
-                      handleCustomCookies();
-                      track(
-                        TRACKING_EVENTS.cookieCustomise,
-                        "created custom cookies",
-                      );
-                    }}
-                    className="w-full bg-primary hover:bg-primary/90 text-white font-bold py-5 rounded-2xl text-base shadow-lg shadow-primary/20 hover:shadow-xl hover:shadow-primary/30 transition-all"
-                  >
-                    Save Preferences
-                  </Button>
-                  <Button
-                    onClick={() => setShowAllCookiePreferences(true)}
-                    variant="outline"
-                    className="w-full py-5 gap-0.5 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 font-medium"
-                  >
-                    <ChevronLeft className="size-4" />
-                    Overview
-                  </Button>
-                </div>
+                  Necessary only
+                </Button>
               </div>
-            </div>
+              <div className="flex items-center justify-between gap-3 text-xs">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setShowAllCookiePreferences(false);
+                    track(TRACKING_EVENTS.cookieCustomiseView, "viewed custom cookies interface");
+                  }}
+                  className="inline-flex items-center gap-1.5 font-semibold text-primary hover:underline"
+                >
+                  <Settings className="size-3.5" />
+                  Manage choices
+                </button>
+                <span className="text-right text-muted-foreground">You can change this later.</span>
+              </div>
+            </>
+          ) : (
+            <>
+              <div>
+                <h3 className="text-sm font-semibold">Cookie choices</h3>
+                <p className="mt-1 text-xs leading-relaxed text-muted-foreground">Essential cookies are always on. Choose whether to allow the optional categories.</p>
+              </div>
+              <div className="space-y-2">
+                {COOKIE_PREFERENCES_ITEMS.map((item) => {
+                  const enabled = item.id === "essential" ? true : cookiePreferences[item.key];
+                  return (
+                    <label key={item.id} className="flex items-center justify-between gap-3 rounded-xl border border-border bg-secondary/50 px-3 py-3">
+                      <span className="min-w-0">
+                        <span className="block text-sm font-semibold">{item.title.replace(" Cookies", "")}</span>
+                        <span className="mt-0.5 block text-xs text-muted-foreground">{item.description}</span>
+                      </span>
+                      <span className="relative shrink-0">
+                        <input
+                          type="checkbox"
+                          checked={enabled}
+                          disabled={item.id === "essential"}
+                          onChange={(event) => {
+                            if (item.id !== "essential") {
+                              setCookiePreferences({ ...cookiePreferences, [item.key]: event.target.checked });
+                            }
+                          }}
+                          className="peer sr-only"
+                        />
+                        <span className="block h-6 w-10 rounded-full bg-muted peer-checked:bg-primary peer-disabled:opacity-50" />
+                        <span className="absolute left-0.5 top-0.5 flex size-5 items-center justify-center rounded-full bg-background shadow-sm transition-transform peer-checked:translate-x-4">
+                          {enabled && <Check className="size-3 text-primary" />}
+                        </span>
+                      </span>
+                    </label>
+                  );
+                })}
+              </div>
+              <div className="flex gap-2">
+                <Button
+                  onClick={() => {
+                    handleCustomCookies();
+                    track(TRACKING_EVENTS.cookieCustomise, "created custom cookies");
+                  }}
+                  className="h-10 flex-1 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90"
+                >
+                  Save choices
+                </Button>
+                <Button onClick={() => setShowAllCookiePreferences(true)} variant="outline" className="h-10 rounded-xl border-border px-4">
+                  Back
+                </Button>
+              </div>
+            </>
           )}
-
-          {/* Privacy Link */}
-          <p className="text-center text-xs text-gray-400 dark:text-gray-500 mt-5">
-            Learn more in our{" "}
-            <Link
-              href={INTERNAL_LINKS.privacyPolicyPage}
-              className="text-primary hover:underline font-medium"
-            >
-              Privacy Policy
-            </Link>{" "}
-            and{" "}
-            <Link
-              href={INTERNAL_LINKS.cookiePolicyPage}
-              className="text-primary hover:underline font-medium"
-            >
-              Cookie Policy
-            </Link>
+          <p className="text-[11px] leading-relaxed text-muted-foreground">
+            Read our <Link href={INTERNAL_LINKS.privacyPolicyPage} className="font-medium text-primary hover:underline">Privacy Policy</Link>{" "}
+            and <Link href={INTERNAL_LINKS.cookiePolicyPage} className="font-medium text-primary hover:underline">Cookie Policy</Link>.
           </p>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

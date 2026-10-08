@@ -7,10 +7,11 @@ import { Button } from "@/components/ui/button";
 import { flushSync } from "react-dom";
 import { track } from "@/lib/analytics/tracker";
 import { TRACKING_EVENTS } from "@/lib/constants/general";
+import { cn } from "@/lib/utils/utils";
 
 const emptySubscribe = () => () => {};
 
-export default function ModeToggle() {
+export default function ModeToggle({ className }: { className?: string }) {
   const { theme, setTheme, resolvedTheme } = useTheme();
   const mounted = useSyncExternalStore(
     emptySubscribe,
@@ -75,7 +76,7 @@ export default function ModeToggle() {
       <Button
         variant="outline"
         size="icon"
-        className="lg:backdrop-blur-3xl group hover:text-primary hover:scale-105 border-0 w-9 h-9 shadow-none bg-transparent! rounded-full p-1.5"
+        className={cn("lg:backdrop-blur-3xl group hover:text-primary hover:scale-105 border-0 w-9 h-9 shadow-none bg-transparent! rounded-full p-1.5", className)}
         disabled
       >
         <Sun className="size-5 bg-transparent opacity-50" />
@@ -90,7 +91,7 @@ export default function ModeToggle() {
     <Button
       variant="outline"
       size="icon"
-      className="lg:backdrop-blur-3xl group hover:text-primary hover:scale-105 border-0 w-9 h-9 shadow-none bg-transparent! rounded-full p-1.5 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+      className={cn("lg:backdrop-blur-3xl group hover:text-primary hover:scale-105 border-0 w-9 h-9 shadow-none bg-transparent! rounded-full p-1.5 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary", className)}
       onClick={(e) => {
         const nextTheme = isDark ? "light" : "dark";
         changeTheme(nextTheme, e);
@@ -114,4 +115,3 @@ export default function ModeToggle() {
     </Button>
   );
 }
-
