@@ -15,7 +15,6 @@ import { AppSkeletonTheme } from "@/components/providers/app-skeleton-theme";
 import JsonLd from "@/components/shared/json-ld";
 import { buildRootLayoutJsonLd } from "@/lib/config/json-ld";
 import { getSiteUrl, getTenantSeoProfile } from "@/lib/config/tenant-seo";
-import MobileActionBar from "@/components/navigation/mobile-action-bar";
 
 export async function generateMetadata(): Promise<Metadata> {
   return getMetadata();
@@ -45,13 +44,12 @@ export default async function RootLayout({
             <TenantProvider>
               <JsonLd data={rootJsonLd} />
               <PageTracker>
-                <main className="dashed-grid-bg min-h-screen pb-16 lg:pb-0">{children}</main>
+                <main className="dashed-grid-bg min-h-screen">{children}</main>
                 <Footer />
 
                 <FAQChatbot />
 
                 <CookieConsent />
-                <MobileActionBar />
               </PageTracker>
               <Toaster />
             </TenantProvider>
