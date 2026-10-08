@@ -22,23 +22,21 @@ export default function Brand() {
         href={INTERNAL_LINKS.homePage}
         className="relative group flex items-center gap-2.5 sm:gap-3"
       >
-        {/* Modern circular brand emblem container matching MediWise design */}
-        <div className="size-10 sm:size-11 rounded-full bg-gradient-to-br from-[#73d2c0] to-[#5ec4b6] p-1 flex items-center justify-center shadow-xs shrink-0 ring-2 ring-[#5ec4b6]/25 transition-transform duration-300 group-hover:scale-105">
-          <Image
-            src={logoSrc}
-            alt={`${displayName} logo`}
-            width={40}
-            height={40}
-            className="size-full object-contain"
-            priority
-          />
-        </div>
+        {/* Natural unrounded pharmacy brand logo */}
+        <Image
+          src={logoSrc}
+          alt={`${displayName} logo`}
+          width={44}
+          height={44}
+          className="relative z-10 h-9 sm:h-10 w-auto object-contain shrink-0 transition-transform duration-300 group-hover:scale-105"
+          priority
+        />
 
-        {/* Brand Typography */}
-        <div className="flex items-baseline gap-1">
+        {/* Clean brand typography */}
+        <div className="flex items-baseline gap-1.5">
           <span
             className={cn(
-              "text-lg sm:text-2xl font-black tracking-tight transition-colors duration-300",
+              "text-xl sm:text-2xl font-black tracking-tight transition-colors duration-300",
               hasDarkHero
                 ? "text-white"
                 : "text-slate-900 dark:text-white",
@@ -49,7 +47,7 @@ export default function Brand() {
           </span>
           <span
             className={cn(
-              "text-lg sm:text-2xl font-normal tracking-tight transition-colors duration-300",
+              "text-xl sm:text-2xl font-light tracking-tight transition-colors duration-300",
               hasDarkHero
                 ? "text-white/80"
                 : "text-slate-600 dark:text-slate-300",

@@ -1,7 +1,7 @@
 "use client";
+
 import { MENU_LINKS, TRACKING_EVENTS } from "@/lib/constants/general";
 import { useTenantContext } from "@/components/providers/tenant-provider";
-import { DesktopNavActionsSkeleton } from "@/components/shared/tenant-skeletons";
 import ModeToggle from "../shared/theme-mode-toggle";
 import { cn } from "@/lib/utils/utils";
 import Link from "next/link";
@@ -11,103 +11,70 @@ import { track } from "@/lib/analytics/tracker";
 import { externalLinkProps } from "@/lib/utils/external-link";
 
 export function DesktopMenu() {
-  const { hasDarkHero, isScrolled, pathname } = useNavigationMenu();
+  const { pathname } = useNavigationMenu();
+  const { tenant } = useTenantContext();
+
+  const contactHref = "/contact-us";
+  const bookHref = tenant?.bookAppointmentUrl ?? "/book";
+
   return (
-    <div className="hidden lg:flex items-center gap-x-1 xl:gap-x-2">
-      {MENU_LINKS.map((item) => {
-        const isActive =
-          pathname === item.href ||
-          (item.href === "/blogs" &&
-            (pathname.startsWith("/blogs") || pathname.startsWith("/blog")));
+    <div className="hidden lg:flex items-center">
+      {/* Floating White Pill Navbar matching reference design */}
+      <nav
+        aria-label="Main Navigation"
+        className="flex items-center bg-white/95 dark:bg-[#002238]/95 backdrop-blur-md border border-slate-200/80 dark:border-slate-800/80 shadow-[0_4px_22px_rgba(0,0,0,0.06)] rounded-full pl-5 pr-2 py-1.5 gap-x-5 xl:gap-x-7"
+      >
+        {/* Navigation Links */}
+        <div className="flex items-center gap-x-4 xl:gap-x-6">
+          {MENU_LINKS.map((item) => {
+            const isActive =
+              pathname === item.href ||
+              (item.href === "/blogs" &&
+                (pathname.startsWith("/blogs") || pathname.startsWith("/blog")));
 
-        return (
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={isActive ? "page" : undefined}
+                className={cn(
+                  "relative text-sm xl:text-[14.5px] font-medium transition-colors duration-200 py-1",
+                  isActive
+                    ? "text-[#2ca594] font-bold"
+                    : "text-slate-700 dark:text-slate-200 hover:text-[#2ca594] dark:hover:text-[#74cfbf]"
+                )}
+              >
+                <span>{item.label}</span>
+                {isActive && (
+                  <span className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 size-1.5 rounded-full bg-[#74cfbf]" />
+                )}
+              </Link>
+            );
+          })}
+        </div>
+
+        {/* Contact CTA Button inside the Pill Navbar */}
+        <Button
+          asChild
+          className="rounded-full bg-[#74cfbf] hover:bg-[#5ec4b6] text-white px-6 py-2 text-sm font-semibold shadow-xs transition-all border-0 cursor-pointer"
+        >
           <Link
-            key={item.href}
-            href={item.href}
-            aria-current={isActive ? "page" : undefined}
-            className={cn(
-              "group relative px-3 xl:px-4 py-2 text-sm xl:text-[15px] font-medium transition-colors duration-200 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5ec4b6]",
-              isActive
-                ? "text-[#2ca594] font-bold"
-                : hasDarkHero
-                ? "text-white/90 hover:text-white"
-                : "text-slate-700 dark:text-slate-200 hover:text-[#2ca594] dark:hover:text-[#5ec4b6]",
-              isScrolled &&
-                (isActive
-                  ? "text-[#2ca594] font-bold"
-                  : "text-slate-700 dark:text-slate-200 hover:text-[#2ca594]")
-            )}
+            href={contactHref}
+            onClick={() => {
+              track(TRACKING_EVENTS.bookAppointmentButton, contactHref);
+            }}
           >
-            {/* Text */}
-            <span className="relative">
-              {item.label}
-            </span>
-
-            {/* Active indicator dot */}
-            {isActive && (
-              <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 size-1.5 rounded-full bg-[#5ec4b6]" />
-            )}
+            Contact
           </Link>
-        );
-      })}
+        </Button>
+
+        <ModeToggle />
+      </nav>
     </div>
   );
 }
 
+// Keep DesktopMenuButtons export for backward compatibility if imported elsewhere
 export function DesktopMenuButtons() {
-  const { hasDarkHero, isScrolled } = useNavigationMenu();
-  const { tenant, isTenantReady } = useTenantContext();
-
-  if (!isTenantReady || !tenant) {
-    return (
-      <div className="hidden lg:flex items-center gap-x-3">
-        <DesktopNavActionsSkeleton />
-        <ModeToggle />
-      </div>
-    );
-  }
-
-  return (
-    <div className="hidden lg:flex items-center gap-x-3">
-      <Link
-        onClick={() => {
-          track(
-            TRACKING_EVENTS.orderPrescriptionButton,
-            tenant.orderPrescriptionsUrl
-          );
-        }}
-        href={tenant.orderPrescriptionsUrl}
-        {...externalLinkProps(tenant.orderPrescriptionsUrl)}
-        className={cn(
-          "text-sm font-semibold transition-colors duration-200 hover:text-[#2ca594] px-2",
-          hasDarkHero
-            ? "text-white/90 hover:text-white"
-            : "text-slate-700 dark:text-slate-200",
-          isScrolled && "text-slate-700 dark:text-slate-200 hover:text-[#2ca594]"
-        )}
-      >
-        Prescriptions
-      </Link>
-
-      {/* Rounded-full Pill Button matching MediWise Contact CTA */}
-      <Button
-        asChild
-        className="rounded-full bg-[#5ec4b6] hover:bg-[#4ab4a5] text-white px-7 py-2.5 font-bold text-sm shadow-sm hover:shadow-md transition-all cursor-pointer border-0"
-      >
-        <Link
-          onClick={() => {
-            track(
-              TRACKING_EVENTS.bookAppointmentButton,
-              tenant.bookAppointmentUrl
-            );
-          }}
-          href={tenant.bookAppointmentUrl}
-          {...externalLinkProps(tenant.bookAppointmentUrl)}
-        >
-          Book Now
-        </Link>
-      </Button>
-      <ModeToggle />
-    </div>
-  );
+  return null;
 }
