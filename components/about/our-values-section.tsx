@@ -38,9 +38,9 @@ export default async function OurValuesSection() {
                 className="group relative bg-card border border-input rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1.5 hover:rotate-1"
               >
                 <div
-                  className={`mb-6 inline-flex items-center justify-center rounded-xl bg-linear-to-br ${presentation.color} p-4`}
+                  className={`mb-6 inline-flex size-12 items-center justify-center rounded-full bg-linear-to-br ${presentation.color}`}
                 >
-                  <Icon className={`size-6 ${presentation.iconColor}`} />
+                  <Icon className={`size-5 ${presentation.iconColor}`} />
                 </div>
 
                 <h3 className="mb-3 text-xl font-bold text-gray-900 dark:text-white">

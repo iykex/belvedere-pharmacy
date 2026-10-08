@@ -75,10 +75,10 @@ export function WhyChooseUs() {
 
                 <div className="relative z-10 p-8">
                   <div className="mb-6">
-                    <div className="size-16 bg-white dark:bg-[#055482] rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+                    <div className="size-12 bg-white dark:bg-[#055482] rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                       <Icon
                         className={cn(
-                          "size-8 transition-all duration-300 ease-linear",
+                          "size-6 transition-all duration-300 ease-linear",
                           colorSet.icon,
                         )}
                       />

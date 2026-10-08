@@ -164,8 +164,8 @@ export default async function Banner() {
                         key={index}
                         className="flex items-center gap-4 bg-white/5 rounded-xl p-4 hover:bg-white/10 transition-colors"
                       >
-                        <div className="p-3 bg-primary/20 rounded-lg">
-                          <Icon className="size-5 text-primary" />
+                        <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/20">
+                          <Icon className="size-4 text-primary" />
                         </div>
                         <div>
                           <p className="text-2xl font-bold text-white">

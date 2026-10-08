@@ -33,8 +33,8 @@ export default function NewsletterSection({
             <div className="bg-[#003b5c] dark:bg-transparent p-8 lg:p-12 space-y-8 md:space-y-10 rounded-2xl lg:rounded-r-none">
               <div>
                 <div className="flex items-center gap-3 mb-5">
-                  <div className="p-2 bg-primary/20 rounded-lg">
-                    <Mail className="size-5 text-primary" />
+                  <div className="flex size-9 items-center justify-center rounded-full bg-primary/20">
+                    <Mail className="size-4 text-primary" />
                   </div>
                   <span className="text-primary font-semibold text-sm uppercase tracking-wider">
                     Newsletter
@@ -57,8 +57,8 @@ export default function NewsletterSection({
                       key={item.title}
                       className="flex items-start gap-4 bg-white/10 dark:bg-white/5 rounded-xl p-5 group hover:bg-white/15 dark:hover:bg-white/10 transition-all duration-300"
                     >
-                      <div className="shrink-0 p-2.5 bg-primary/20 rounded-lg group-hover:scale-110 transition-transform duration-300">
-                        <Icon className="size-5 text-primary" />
+                      <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/20 group-hover:scale-110 transition-transform duration-300">
+                        <Icon className="size-4 text-primary" />
                       </div>
                       <div>
                         <h3 className="font-semibold text-white mb-2 group-hover:text-primary/90 transition-colors">

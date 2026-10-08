@@ -37,8 +37,8 @@ export default function DownloadAppSection({
           <div className="space-y-8 md:space-y-10">
             <div>
               <div className="flex items-center gap-3 mb-5">
-                <div className="p-2 bg-primary/10 dark:bg-primary/20 rounded-lg">
-                  <Smartphone className="size-5 text-primary" />
+                <div className="flex size-9 items-center justify-center rounded-full bg-primary/10 dark:bg-primary/20">
+                  <Smartphone className="size-4 text-primary" />
                 </div>
                 <span className="text-primary font-semibold text-sm uppercase tracking-wider">
                   Mobile App
@@ -64,8 +64,8 @@ export default function DownloadAppSection({
                     key={item.description}
                     className="flex items-start gap-4 p-4 rounded-xl bg-gray-50 dark:bg-[#003b5c] hover:bg-gray-100 dark:hover:bg-[#004d73] transition-all duration-300 border border-gray-200 dark:border-[#1a4d6e] group hover:-translate-y-1 z-10"
                   >
-                    <div className="p-2.5 bg-primary/10 dark:bg-primary/20 rounded-lg shrink-0 group-hover:scale-110 transition-transform duration-300">
-                      <Icon className="size-5 text-primary" />
+                    <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary/10 dark:bg-primary/20 group-hover:scale-110 transition-transform duration-300">
+                      <Icon className="size-4 text-primary" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900 dark:text-white mb-1 group-hover:text-primary transition-colors">

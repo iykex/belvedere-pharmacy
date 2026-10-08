@@ -25,11 +25,11 @@ export const TrustBadgeCard = ({
       <CardContent className="p-6 flex flex-col items-center text-center">
         <div
           className={cn(
-            "mb-3 size-16 rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg",
+            "mb-3 size-12 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg",
             bgColor
           )}
         >
-          <Icon className={cn("size-8", color)} />
+          <Icon className={cn("size-6", color)} />
         </div>
         <h3 className="text-base font-bold text-gray-900 dark:text-white mb-1 transition-colors group-hover:text-primary">
           {title}

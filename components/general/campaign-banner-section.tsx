@@ -24,10 +24,7 @@ export default function CampaignBannerSection() {
   return (
     <section className="relative w-full py-6">
       <WidthConstraint>
-        <div className="relative overflow-hidden rounded-3xl border border-primary/20 bg-linear-to-br from-primary/10 via-background to-accent/40 p-6 sm:p-10 shadow-xl">
-          {/* Subtle decorative glow */}
-          <div className="absolute -right-20 -top-20 size-72 rounded-full bg-primary/15 blur-3xl pointer-events-none" />
-
+        <div className="relative overflow-hidden py-2 sm:py-4">
           <div className="relative z-10 flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             {/* Left Column: Heading and description */}
             <div className="max-w-2xl space-y-4">

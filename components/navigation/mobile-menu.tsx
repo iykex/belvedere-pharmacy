@@ -52,7 +52,7 @@ export default function MobileMenu() {
             variant="ghost"
             size="icon"
             className={cn(
-              "transition-all duration-300 h-10 w-10 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
+              "transition-all duration-300 h-10 w-10 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
               hasDarkMobileHeader
                 ? "text-white hover:bg-white/10"
                 : "text-foreground hover:bg-foreground/10"
@@ -106,7 +106,7 @@ export default function MobileMenu() {
                       href={phoneHref}
                       className="flex items-center gap-3 p-3 transition-colors w-fit"
                     >
-                      <div className="p-2 bg-primary rounded-lg">
+                      <div className="flex size-9 items-center justify-center rounded-full bg-primary">
                         <Phone className="size-4 text-white" />
                       </div>
                       <div>

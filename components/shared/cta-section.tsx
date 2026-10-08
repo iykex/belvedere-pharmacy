@@ -178,10 +178,10 @@ export default function CTASection() {
                 const contactContent = (
                   <div className="space-y-2">
                     <div
-                      className={`p-3 w-fit ${contact.iconBgColor} rounded-lg`}
+                      className={`flex size-12 shrink-0 items-center justify-center ${contact.iconBgColor} rounded-full sm:size-14`}
                     >
                       <IconComponent
-                        className={`size-5 ${contact.iconColor}`}
+                        className={`size-5 ${contact.iconColor} sm:size-6`}
                       />
                     </div>
                     <div>

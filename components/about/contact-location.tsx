@@ -52,8 +52,8 @@ export default async function ContactLocationSection() {
               const IconComponent = info.icon;
               return (
                 <div key={index} className="flex items-start gap-4 group">
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                    <IconComponent className="h-6 w-6 text-primary" />
+                  <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                    <IconComponent className="size-5 text-primary" />
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
@@ -72,8 +72,8 @@ export default async function ContactLocationSection() {
             {/* Opening Hours */}
             {tenant && (
               <div className="flex items-start gap-4">
-                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-primary/10">
-                  <Clock className="h-6 w-6 text-primary" />
+                <div className="flex size-12 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                  <Clock className="size-5 text-primary" />
                 </div>
                 <div className="flex-1">
                   <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">

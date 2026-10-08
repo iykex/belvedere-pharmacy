@@ -77,7 +77,7 @@ export function Footer() {
                     href={item.href}
                     {...externalLinkProps(item.href)}
                     onClick={() => track(item.tracking, item.href)}
-                    className="size-11 rounded-2xl bg-white/10 hover:bg-white/20 active:scale-95 flex items-center justify-center text-white/90 hover:text-white transition-all duration-200 border border-white/10 shadow-sm"
+                    className="size-11 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 flex items-center justify-center text-white/90 hover:text-white transition-all duration-200 border border-white/10 shadow-sm"
                     title={item.label}
                     aria-label={item.label}
                   >
@@ -129,7 +129,7 @@ export function Footer() {
         {/* Giant Monolithic Hero Brand Typography across the base */}
         <div className="pt-4 pb-2 w-full flex items-center justify-center select-none overflow-hidden pointer-events-none">
           <div className="flex items-center justify-center w-full">
-            <span className="text-center font-extrabold tracking-tighter text-white uppercase text-[clamp(2.75rem,11vw,10.5rem)] leading-none select-none font-sans drop-shadow-2xl">
+            <span className="!text-transparent text-center font-extrabold tracking-tighter uppercase text-[clamp(2.75rem,11vw,10.5rem)] leading-none select-none font-sans [color:transparent!important] [-webkit-text-fill-color:transparent!important] [-webkit-text-stroke:2px_rgba(248,250,252,0.94)]">
               {megaBrandName}
             </span>
           </div>
