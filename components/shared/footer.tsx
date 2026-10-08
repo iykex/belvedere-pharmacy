@@ -24,7 +24,7 @@ export function Footer() {
   const megaBrandName = (tenant.displayName || "PHARMACY").toUpperCase();
 
   return (
-    <footer className="w-full bg-[#0a0d12] text-white pt-16 pb-6 overflow-hidden select-none border-t border-white/5">
+    <footer className="w-full bg-[#0a0d12] text-white pt-16 pb-24 lg:pb-8 overflow-hidden select-none border-t border-white/5">
       <WidthConstraint className="space-y-16">
         {/* Top 3-Column Layout */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 items-start">
