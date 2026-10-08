@@ -23,7 +23,7 @@ export default function MobileActionBar() {
   return (
     <aside
       aria-label="Mobile quick actions"
-      className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-background/95 dark:bg-[#001d33]/95 backdrop-blur-xl border-t border-border/80 shadow-[0_-6px_20px_rgba(0,0,0,0.08)] px-3 py-1.5 pb-[max(0.6rem,env(safe-area-inset-bottom))] transition-transform duration-300"
+      className="lg:hidden fixed inset-x-0 bottom-0 z-[60] bg-background/95 dark:bg-[#001d33]/95 backdrop-blur-xl border-t border-border/80 shadow-[0_-6px_20px_rgba(0,0,0,0.08)] px-3 py-1.5 pb-[max(0.6rem,env(safe-area-inset-bottom))] transition-transform duration-300"
     >
       <div className="grid grid-cols-4 items-center gap-2 max-w-md mx-auto">
         {/* 1. Call Us */}
