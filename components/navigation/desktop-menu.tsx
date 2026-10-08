@@ -12,8 +12,7 @@ import { track } from "@/lib/analytics/tracker";
 import { externalLinkProps } from "@/lib/utils/external-link";
 
 export function DesktopMenu() {
-  const { hasDarkHero, pathname } = useNavigationMenu();
-  const isHomePage = pathname === "/";
+  const { pathname } = useNavigationMenu();
   return (
     <div className="hidden lg:flex items-center gap-x-0.5 xl:gap-x-1">
       {MENU_LINKS.map((item) => {
@@ -28,15 +27,7 @@ export function DesktopMenu() {
             href={item.href}
             aria-current={isActive ? "page" : undefined}
             className={cn(
-              isHomePage
-                ? isActive
-                  ? "bg-primary/10 text-primary"
-                  : "text-muted-foreground hover:bg-accent hover:text-primary"
-                : hasDarkHero
-                ? isActive
-                  ? "bg-white/15 text-white"
-                  : "text-white/80 hover:bg-white/10 hover:text-white"
-                : isActive
+              isActive
                 ? "bg-primary/10 text-primary"
                 : "text-foreground/75 hover:bg-primary/5 hover:text-foreground",
               "group relative flex items-center rounded-full px-[clamp(0.55rem,1vw,0.875rem)] py-2 text-[clamp(0.72rem,0.8vw,0.875rem)] font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
@@ -64,7 +55,7 @@ export function DesktopMenuButtons() {
       <div className="hidden lg:flex items-center">
         <Button
           asChild
-          className="h-10 rounded-full border-0 bg-primary px-[clamp(1rem,1.8vw,1.5rem)] text-[clamp(0.78rem,0.9vw,0.875rem)] font-bold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/30 active:scale-[0.98]"
+          className="group h-11 rounded-full border border-primary/65 bg-background px-1.5 pl-5 pr-1.5 text-[clamp(0.78rem,0.9vw,0.875rem)] font-bold text-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary hover:shadow-md active:translate-y-0 focus-visible:ring-2 focus-visible:ring-primary/40"
         >
           <Link
             href={tenant.bookAppointmentUrl}
@@ -76,7 +67,10 @@ export function DesktopMenuButtons() {
               );
             }}
           >
-            Book Appointment
+            <span>Book Appointment</span>
+            <span className="grid size-8 place-items-center rounded-full bg-primary text-primary-foreground transition-transform duration-200 group-hover:translate-x-0.5">
+              <ArrowRight aria-hidden className="size-4" />
+            </span>
           </Link>
         </Button>
       </div>
@@ -116,7 +110,7 @@ export function DesktopMenuButtons() {
       <Button
         asChild
         size="default"
-        className="h-10 rounded-full bg-primary px-5 font-semibold text-primary-foreground shadow-lg shadow-primary/25 transition-all hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/30 active:scale-[0.98]"
+        className="group h-11 rounded-full border border-primary/65 bg-background px-1.5 pl-5 pr-1.5 font-semibold text-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary hover:shadow-md active:translate-y-0 focus-visible:ring-2 focus-visible:ring-primary/40"
       >
         <Link
           onClick={() => {
@@ -128,8 +122,10 @@ export function DesktopMenuButtons() {
           href={tenant.bookAppointmentUrl}
           {...externalLinkProps(tenant.bookAppointmentUrl)}
         >
-          Book Appointment
-          <ArrowRight className="size-4" />
+          <span>Book Appointment</span>
+          <span className="grid size-8 place-items-center rounded-full bg-primary text-primary-foreground transition-transform duration-200 group-hover:translate-x-0.5">
+            <ArrowRight aria-hidden className="size-4" />
+          </span>
         </Link>
       </Button>
       <ModeToggle />

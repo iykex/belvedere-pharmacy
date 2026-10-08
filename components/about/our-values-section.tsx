@@ -18,7 +18,7 @@ export default async function OurValuesSection() {
       <WidthConstraint className="space-y-12">
         <SectionHeader heading="Our Values" />
         <div className="text-center max-w-2xl mx-auto space-y-4">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">
+          <h2 className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Our <span className="text-primary">Guiding</span> Principles
           </h2>
           <p className="text-gray-600 dark:text-white/60 text-lg">
@@ -43,7 +43,7 @@ export default async function OurValuesSection() {
                   <Icon className={`size-5 ${presentation.iconColor}`} />
                 </div>
 
-                <h3 className="mb-3 text-xl font-bold text-gray-900 dark:text-white">
+                <h3 className="mb-3 text-xl font-semibold text-gray-900 dark:text-white">
                   {value.title}
                 </h3>
                 <p className="text-gray-600 dark:text-white/60 leading-relaxed">

@@ -41,7 +41,7 @@ export default async function Banner() {
         }}
       />
 
-      <WidthConstraint className="relative z-10  mt-34 sm:mt-[5%]">
+      <WidthConstraint className="relative z-10 py-8 sm:py-12">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Content */}
           <div className="space-y-8">
@@ -62,7 +62,7 @@ export default async function Banner() {
             </div>
 
             <div className="space-y-6">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.1]">
+              <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl leading-[1.1]">
                 About{" "}
                 <span className="text-primary relative inline-block">
                   {primaryName}
@@ -101,11 +101,11 @@ export default async function Banner() {
                     size="lg"
                     className={
                       isPrimary
-                        ? "group bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-6 rounded-xl shadow-lg shadow-primary/30 transition-all duration-300 hover:scale-95"
-                        : "bg-white/10 border-white/20 text-white hover:bg-white hover:text-[#002f4b] backdrop-blur-sm px-8 py-6 rounded-xl font-semibold transition-all duration-300"
+                        ? "group min-h-13 rounded-full bg-primary px-6 text-primary-foreground shadow-lg shadow-primary/25 transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/30 active:translate-y-0"
+                        : "rounded-full border border-white/25 bg-white/10 px-6 py-3 text-white backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-[#002f4b] active:translate-y-0"
                     }
                   >
-                    <Link href={btn.href} className="flex items-center gap-2">
+                    <Link href={btn.href} className="flex items-center justify-center gap-2">
                       {btn.text}
                       {isPrimary && (
                         <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
@@ -139,14 +139,14 @@ export default async function Banner() {
                 {/* Pharmacy Image/Logo */}
                 <div className="flex items-center gap-4">
                   <Image
-                    src="/logo/belvedere-logo.png"
+                    src={`/logo/${slug}-logo.png`}
                     alt={`${displayName} logo`}
                     width={64}
                     height={64}
                     className="rounded-xl"
                   />
                   <div>
-                    <h3 className="text-xl font-bold text-white">
+                    <h3 className="text-xl font-semibold text-white">
                       {displayName}
                     </h3>
                     <p className="text-white/60 text-sm">
@@ -168,7 +168,7 @@ export default async function Banner() {
                           <Icon className="size-4 text-primary" />
                         </div>
                         <div>
-                          <p className="text-2xl font-bold text-white">
+                          <p className="text-2xl font-semibold text-white">
                             {stat.value}
                           </p>
                           <p className="text-white/60 text-sm">{stat.label}</p>
@@ -188,7 +188,7 @@ export default async function Banner() {
               </div>
 
               {/* Floating Badge */}
-              <div className="absolute top-11 right-10 bg-primary text-white px-4 py-2 rounded-xl shadow-lg shadow-primary/30">
+              <div className="absolute right-8 top-8 rounded-full bg-primary px-4 py-2 text-primary-foreground shadow-lg shadow-primary/30">
                 <p className="text-sm font-semibold">NHS Accredited</p>
               </div>
             </div>
@@ -205,7 +205,7 @@ export default async function Banner() {
                 className="bg-white/10 backdrop-blur-sm border border-white/10 rounded-xl p-4 text-center"
               >
                 <Icon className="size-5 text-primary mx-auto mb-2" />
-                <p className="text-xl font-bold text-white">{stat.value}</p>
+                <p className="text-xl font-semibold text-white">{stat.value}</p>
                 <p className="text-xs text-white/60">{stat.label}</p>
               </div>
             );

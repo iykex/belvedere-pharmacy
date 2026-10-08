@@ -39,7 +39,7 @@ export default async function ContactLocationSection() {
         <SectionHeader heading="Visit Us" />
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto space-y-4">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">
+          <h2 className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Visit <span className="text-primary">Our</span> Pharmacy
           </h2>
         </div>
@@ -56,7 +56,7 @@ export default async function ContactLocationSection() {
                     <IconComponent className="size-5 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
+                    <h3 className="mb-1 text-lg font-semibold text-gray-900 dark:text-white">
                       {info.title}
                     </h3>
                     {info.details.map((detail, idx) => (
@@ -76,7 +76,7 @@ export default async function ContactLocationSection() {
                   <Clock className="size-5 text-primary" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4">
+                  <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-white">
                     Opening Hours
                   </h3>
                   <div className="space-y-3 max-w-xs">

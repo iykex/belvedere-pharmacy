@@ -18,7 +18,7 @@ export default function OurStorySection() {
               <span className="text-primary font-semibold tracking-wide uppercase text-sm">
                 Our Journey
               </span>
-              <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 dark:text-white leading-tight">
+              <h2 className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white sm:text-4xl leading-tight">
                 A Story of <span className="text-primary">Community Care</span>
               </h2>
               <div className="h-1 w-20 rounded-full bg-linear-to-r from-primary to-primary/50" />
@@ -69,7 +69,7 @@ export default function OurStorySection() {
 
               {/* Floating Badge */}
               <div className="absolute -bottom-6 sm:-left-6 bg-white p-2 sm:p-5 rounded-2xl shadow-xl border-l-4 border-primary">
-                <p className="font-bold text-gray-900 sm:text-lg">
+                <p className="font-semibold text-gray-900 sm:text-lg">
                   Community First
                 </p>
                 <p className="text-sm text-gray-500">

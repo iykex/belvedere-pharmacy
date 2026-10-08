@@ -15,7 +15,7 @@ export function ServicesHeading() {
   const { tenant, isTenantReady } = useTenantContext();
   const pharmacyName = tenant?.displayName ?? "Your local pharmacy";
   return (
-    <section className="pt-45 pb-20 bg-background">
+    <section className="bg-background pb-20 pt-32 sm:pt-40">
       <WidthConstraint className="relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* LEFT COL - Content */}
@@ -28,7 +28,7 @@ export function ServicesHeading() {
             </div>
 
             {/* Heading */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white leading-tight">
+            <h1 className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white sm:text-4xl lg:text-5xl leading-tight">
               Find the Right <span className="text-primary">Service</span> for
               Your Health
             </h1>
@@ -65,7 +65,7 @@ export function ServicesHeading() {
                 <Button
                   asChild
                   size="lg"
-                  className="group bg-primary hover:bg-primary/90 text-white font-semibold px-8 rounded-xl shadow-lg transition-all duration-300"
+                  className="group min-h-14 rounded-full bg-primary px-6 text-primary-foreground shadow-lg shadow-primary/20 transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-xl hover:shadow-primary/25 active:translate-y-0"
                 >
                   <Link
                     href={tenant.bookAppointmentUrl}
@@ -76,7 +76,7 @@ export function ServicesHeading() {
                         tenant.bookAppointmentUrl
                       );
                     }}
-                    className="flex items-center gap-2"
+                    className="flex items-center justify-center gap-2"
                   >
                     <Calendar className="w-5 h-5" />
                     Book an Appointment

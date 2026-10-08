@@ -58,7 +58,7 @@ export default function Banner() {
       />
 
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-linear-to-r from-[#001a33]/95 via-[#001a33]/85 to-[#001a33]/50 dark:from-[#001122]/95 dark:via-[#001122]/85 dark:to-[#001122]/40" />
+      <div className="absolute inset-0 bg-linear-to-r from-[#001a33]/82 via-[#001a33]/68 to-[#001a33]/30 dark:from-[#001122]/82 dark:via-[#001122]/68 dark:to-[#001122]/28" />
 
       {/* Content */}
       <div className="relative w-full h-full flex items-center">
@@ -96,8 +96,8 @@ export default function Banner() {
                       asChild
                       className={
                         btn.variant === "primary"
-                          ? "group min-h-13 w-full min-w-0 rounded-[18px] bg-[#F9A825] px-[clamp(1rem,3vw,1.75rem)] py-[clamp(0.8rem,1.5vw,1rem)] text-[clamp(0.82rem,1.3vw,1rem)] font-black tracking-[0.015em] text-slate-950 shadow-[0_12px_26px_rgba(249,168,37,0.24)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#ffc107] hover:shadow-[0_16px_30px_rgba(249,168,37,0.32)] active:translate-y-0 focus-visible:ring-4 focus-visible:ring-amber-300 sm:w-auto"
-                          : "group min-h-13 w-full min-w-0 rounded-[18px] bg-[#001a33]/55 px-[clamp(1rem,3vw,1.75rem)] py-[clamp(0.8rem,1.5vw,1rem)] text-[clamp(0.82rem,1.3vw,1rem)] font-bold tracking-[0.015em] text-white shadow-[0_10px_24px_rgba(0,0,0,0.18)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#002f4b]/80 hover:shadow-[0_14px_28px_rgba(0,0,0,0.25)] active:translate-y-0 focus-visible:ring-4 focus-visible:ring-white/60 sm:w-auto"
+                          ? "group min-h-14 w-full min-w-0 rounded-full bg-[#F9A825] px-2 py-2 text-[clamp(0.82rem,1.3vw,1rem)] font-black tracking-[0.01em] text-slate-950 shadow-[0_14px_30px_rgba(249,168,37,0.28)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#ffc107] hover:shadow-[0_18px_34px_rgba(249,168,37,0.36)] active:translate-y-0 focus-visible:ring-4 focus-visible:ring-amber-300 sm:w-auto"
+                          : "group min-h-14 w-full min-w-0 rounded-full bg-[#001a33]/70 px-[clamp(1rem,3vw,1.5rem)] py-3 text-[clamp(0.82rem,1.3vw,1rem)] font-bold tracking-[0.01em] text-white shadow-[0_12px_26px_rgba(0,0,0,0.2)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#002f4b]/85 hover:shadow-[0_16px_30px_rgba(0,0,0,0.28)] active:translate-y-0 focus-visible:ring-4 focus-visible:ring-white/60 sm:w-auto"
                       }
                     >
                       <Link
@@ -106,16 +106,18 @@ export default function Banner() {
                         }}
                         href={btn.href}
                         {...externalLinkProps(btn.href)}
-                        className="flex items-center justify-center gap-2.5"
+                        className="flex w-full items-center justify-center gap-3"
                       >
                         {btn.icon ? (
-                          <CalendarDays aria-hidden className="size-5" />
+                          <CalendarDays aria-hidden className="size-[1.15em] shrink-0" />
                         ) : (
                           <ClipboardList aria-hidden className="size-5" />
                         )}
-                        {btn.text.toUpperCase()}
+                        <span className="whitespace-nowrap">{btn.text}</span>
                         {btn.icon && (
-                          <ArrowRight className="size-5 transition-transform duration-300 group-hover:translate-x-1" />
+                          <span className="ml-auto grid size-9 shrink-0 place-items-center rounded-full bg-slate-950/10 transition-colors duration-300 group-hover:bg-slate-950/15">
+                            <ArrowRight aria-hidden className="size-5 transition-transform duration-300 group-hover:translate-x-0.5" />
+                          </span>
                         )}
                       </Link>
                     </Button>
@@ -123,6 +125,25 @@ export default function Banner() {
                 ) : (
                   <BannerHeroActionsSkeleton />
                 )}
+              </div>
+
+              <div className="flex items-center gap-3 pt-1 sm:pt-2">
+                <div className="flex -space-x-2" aria-hidden="true">
+                  {["colin-bradbury", "alfrina-thomas", "lesley-sellman", "oeben"].map((name) => (
+                    <Image
+                      key={name}
+                      src={`/testimonials/${name}.png`}
+                      alt=""
+                      width={40}
+                      height={40}
+                      className="size-9 rounded-full border-2 border-[#001a33] object-cover sm:size-10"
+                    />
+                  ))}
+                </div>
+                <div className="leading-tight">
+                  <p className="text-base font-bold text-white sm:text-lg">Thousands</p>
+                  <p className="text-xs font-medium text-white/65 sm:text-sm">of patients trust our care</p>
+                </div>
               </div>
 
               {isTenantReady && tenant && (

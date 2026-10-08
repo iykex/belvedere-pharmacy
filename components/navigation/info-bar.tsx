@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils/utils";
 import WidthConstraint from "@/components/shared/width-constraint";
 
 export default function InfoBar() {
-  const { hasDarkHero, isScrolled } = useNavigationMenu();
+  const { hasDarkHero, isScrolled, pathname } = useNavigationMenu();
   const { tenant, isTenantReady } = useTenantContext();
 
   if (!isTenantReady || !tenant) {
@@ -38,7 +38,8 @@ export default function InfoBar() {
     { title: "Call Us", description: tenant.phone, icon: PhoneOutgoing },
   ];
 
-  const textColorClass = "text-white/80";
+  const darkHeaderText = isScrolled || ((pathname === "/" || hasDarkHero) && !isScrolled);
+  const textColorClass = darkHeaderText ? "text-white/80" : "text-foreground/75";
 
   const renderItem = (
     item: (typeof items)[number],
@@ -89,7 +90,7 @@ export default function InfoBar() {
             <div key={item.title} className="flex shrink-0 items-center gap-5">
               {renderItem(item, item.title)}
               {index < items.length - 1 && (
-                <span aria-hidden className="hidden h-4 w-px bg-white/15 sm:block" />
+                <span aria-hidden className={cn("hidden h-4 w-px sm:block", darkHeaderText ? "bg-white/15" : "bg-foreground/10")} />
               )}
             </div>
           ))}

@@ -23,7 +23,7 @@ export default function TeamSection() {
       <WidthConstraint className="space-y-12">
         <SectionHeader heading="Our Team" />
         <div className="text-center max-w-2xl mx-auto space-y-4">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">
+          <h2 className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Meet Our <span className="text-primary">Healthcare</span> Family
           </h2>
           <p className="text-gray-600 dark:text-white/60 text-lg">
@@ -31,13 +31,13 @@ export default function TeamSection() {
           </p>
         </div>
 
-        <div className="grid gap-8 w-fit place-items-center mx-auto p-5">
+        <div className="grid w-full gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {members.map((member) => {
             const src = `/${member.assetKey.replace(/^\//, "")}`;
             return (
               <div
                 key={member.id ?? member.name}
-                className="group relative overflow-hidden rounded-2xl bg-card shadow-sm hover:shadow-xl transition-all duration-300 max-w-sm"
+                className="group relative overflow-hidden rounded-3xl bg-card shadow-sm ring-1 ring-border/60 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
               >
                 <div className="relative aspect-square overflow-hidden bg-linear-to-br from-primary/10 to-chart-2/10">
                   <Image
@@ -51,7 +51,7 @@ export default function TeamSection() {
                 </div>
 
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-1">
+                  <h3 className="mb-1 text-xl font-semibold text-gray-900 dark:text-white">
                     {member.name}
                   </h3>
                   <p className="text-primary font-semibold mb-3">{member.role}</p>

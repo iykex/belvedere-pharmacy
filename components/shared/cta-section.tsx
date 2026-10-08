@@ -21,11 +21,11 @@ export default function CTASection() {
   if (!isTenantReady || !tenant) {
     return (
       <section className="overflow-hidden">
-        <WidthConstraint className="relative p-6 md:p-20 bg-[#002f4b] rounded-2xl">
+        <WidthConstraint className="relative rounded-[2rem] bg-[#002f4b] p-6 md:p-20">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-size-[40px_40px]" />
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <CtaTenantBlockSkeleton />
-            <div className="bg-white dark:bg-[#03456a] rounded-2xl p-4 sm:p-8 shadow-2xl z-10">
+            <div className="z-10 rounded-3xl bg-white p-4 shadow-2xl dark:bg-[#03456a] sm:p-8">
               <CtaContactCardSkeleton />
             </div>
           </div>
@@ -48,7 +48,7 @@ export default function CTASection() {
       iconBgColor: "bg-primary/10",
       iconColor: "text-primary",
       textColor: "text-primary",
-      valueClass: "font-bold",
+      valueClass: "font-semibold",
       tracking: TRACKING_EVENTS.phoneContactClick,
     },
     {
@@ -97,7 +97,7 @@ export default function CTASection() {
 
   return (
     <section className="overflow-hidden">
-      <WidthConstraint className="relative p-6 md:p-20 bg-[#002f4b] rounded-2xl">
+      <WidthConstraint className="relative rounded-[2rem] bg-[#002f4b] p-6 md:p-20">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-size-[40px_40px]" />
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Column - Content */}
@@ -106,7 +106,7 @@ export default function CTASection() {
               <span className="text-white/80 font-semibold text-sm uppercase tracking-wider">
                 Ready to Get Started
               </span>
-              <h2 className="text-xl sm:text-4xl font-bold tracking-tight mt-4 mb-4">
+              <h2 className="mt-4 mb-4 text-xl font-semibold tracking-tight sm:text-4xl">
                 Experience care with {tenant.displayName}
               </h2>
               <p className="text-white/80 sm:text-lg leading-relaxed max-w-lg pr-4 sm:pr-0">
@@ -133,7 +133,7 @@ export default function CTASection() {
               <Button
                 asChild
                 size="lg"
-                className="group bg-white text-primary hover:bg-white/90 font-semibold px-8 rounded-xl shadow-lg w-fit z-10"
+                className="group z-10 min-h-13 w-fit rounded-full bg-white px-6 font-semibold text-primary shadow-lg transition-all hover:-translate-y-0.5 hover:bg-white/90 active:translate-y-0"
               >
                 <Link
                   href={tenant.bookAppointmentUrl}
@@ -153,7 +153,7 @@ export default function CTASection() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-0 text-foreground hover:bg-foreground hover:text-white hover:scale-105 hover:shadow-xs hover:shadow-background font-semibold px-8 rounded-xl transition-all ease-in-out duration-500 w-fit z-10"
+                className="z-10 min-h-13 w-fit rounded-full border border-white/25 bg-white/10 px-6 font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-white hover:text-primary active:translate-y-0"
               >
                 <Link href="/contact-us">Contact Us</Link>
               </Button>
@@ -161,9 +161,9 @@ export default function CTASection() {
           </div>
 
           {/* Right Column - Contact Card */}
-          <div className="bg-white dark:bg-[#03456a] rounded-2xl p-4 sm:p-8 shadow-2xl z-10">
+          <div className="z-10 rounded-3xl bg-white p-4 shadow-2xl dark:bg-[#03456a] sm:p-8">
             <div className="mb-6">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+              <h3 className="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
                 Get In Touch
               </h3>
               <p className="text-gray-600 dark:text-white/60">
@@ -220,7 +220,7 @@ export default function CTASection() {
             {/* CTA Button */}
             <Button
               asChild
-              className="w-full bg-primary hover:bg-primary/90 py-6 rounded-xl font-semibold"
+              className="w-full rounded-full bg-primary py-6 font-semibold text-primary-foreground hover:bg-primary/90"
             >
               <Link
                 href={INTERNAL_LINKS.contactPage}
