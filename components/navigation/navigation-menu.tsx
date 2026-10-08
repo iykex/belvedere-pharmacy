@@ -4,12 +4,14 @@ import { cn } from "@/lib/utils/utils";
 import useNavigationMenu from "@/hooks/use-navigation-menu";
 import InfoBar from "../navigation/info-bar";
 import Brand from "../navigation/brand";
-import { DesktopMenuButtons, DesktopMenu } from "../navigation/desktop-menu";
+import { DesktopMenu } from "../navigation/desktop-menu";
 import MobileMenu from "../navigation/mobile-menu";
 import WidthConstraint from "../shared/width-constraint";
 
 export default function NavigationMenu({ className }: { className?: string }) {
-  const { hasDarkHero, isScrolled, navMenu } = useNavigationMenu();
+  const { hasDarkHero, isScrolled, pathname, navMenu } = useNavigationMenu();
+  const isHome = pathname === "/";
+
   return (
     <div
       className={cn(
@@ -19,7 +21,9 @@ export default function NavigationMenu({ className }: { className?: string }) {
       )}
       ref={navMenu}
     >
-      <InfoBar />
+      {/* On homepage hero, hide InfoBar so the header starts clean at y=0 matching the reference design */}
+      {(!isHome || isScrolled) && <InfoBar />}
+
       <WidthConstraint className="px-4 sm:px-6">
         <nav
           onClick={(e) => {
@@ -28,7 +32,7 @@ export default function NavigationMenu({ className }: { className?: string }) {
             }
           }}
           className={cn(
-            "w-full flex justify-between items-center gap-x-6 py-3.5 font-medium z-50 transition-all duration-300 cursor-pointer",
+            "w-full flex justify-between items-center gap-x-6 py-4 font-medium z-50 transition-all duration-300 cursor-pointer",
             hasDarkHero
               ? "text-white"
               : "text-slate-900 dark:text-white",
@@ -37,7 +41,6 @@ export default function NavigationMenu({ className }: { className?: string }) {
         >
           <Brand />
           <DesktopMenu />
-          <DesktopMenuButtons />
           <MobileMenu />
         </nav>
       </WidthConstraint>
