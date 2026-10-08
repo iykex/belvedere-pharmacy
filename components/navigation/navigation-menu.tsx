@@ -14,13 +14,13 @@ export default function NavigationMenu({ className }: { className?: string }) {
     <div
       className={cn(
         "w-full z-50 transition-all duration-500 ease-out",
-        isScrolled && "bg-background text-foreground",
+        isScrolled && "bg-background/95 backdrop-blur-md shadow-xs",
         className
       )}
       ref={navMenu}
     >
       <InfoBar />
-      <WidthConstraint className="px-0">
+      <WidthConstraint className="px-4 sm:px-6">
         <nav
           onClick={(e) => {
             if (e.target === e.currentTarget) {
@@ -28,11 +28,11 @@ export default function NavigationMenu({ className }: { className?: string }) {
             }
           }}
           className={cn(
-            "w-full flex justify-between items-center gap-x-6 py-3 font-medium z-50 transition-all duration-300 cursor-pointer",
+            "w-full flex justify-between items-center gap-x-6 py-3.5 font-medium z-50 transition-all duration-300 cursor-pointer",
             hasDarkHero
-              ? "text-background dark:text-foreground"
-              : "text-foreground dark:text-background",
-            isScrolled && "bg-background text-foreground"
+              ? "text-white"
+              : "text-slate-900 dark:text-white",
+            isScrolled && "text-slate-900 dark:text-white"
           )}
         >
           <Brand />

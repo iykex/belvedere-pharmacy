@@ -6,7 +6,6 @@ import ModeToggle from "../shared/theme-mode-toggle";
 import { cn } from "@/lib/utils/utils";
 import Link from "next/link";
 import { Button } from "../ui/button";
-import { ArrowRight } from "lucide-react";
 import useNavigationMenu from "@/hooks/use-navigation-menu";
 import { track } from "@/lib/analytics/tracker";
 import { externalLinkProps } from "@/lib/utils/external-link";
@@ -14,7 +13,7 @@ import { externalLinkProps } from "@/lib/utils/external-link";
 export function DesktopMenu() {
   const { hasDarkHero, isScrolled, pathname } = useNavigationMenu();
   return (
-    <div className="hidden lg:flex items-center gap-x-0.5 xl:gap-x-1">
+    <div className="hidden lg:flex items-center gap-x-1 xl:gap-x-2">
       {MENU_LINKS.map((item) => {
         const isActive =
           pathname === item.href ||
@@ -27,35 +26,26 @@ export function DesktopMenu() {
             href={item.href}
             aria-current={isActive ? "page" : undefined}
             className={cn(
-              "group relative px-3 xl:px-4 py-2 text-sm font-medium transition-all duration-300 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
-              !isActive && "nav-link",
-              hasDarkHero
-                ? "text-background dark:text-foreground hover:text-background/80 dark:hover:text-foreground/80"
-                : "text-foreground hover:text-gray-900 dark:hover:text-foreground/90",
+              "group relative px-3 xl:px-4 py-2 text-sm xl:text-[15px] font-medium transition-colors duration-200 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5ec4b6]",
+              isActive
+                ? "text-[#2ca594] font-bold"
+                : hasDarkHero
+                ? "text-white/90 hover:text-white"
+                : "text-slate-700 dark:text-slate-200 hover:text-[#2ca594] dark:hover:text-[#5ec4b6]",
               isScrolled &&
-                "bg-background text-foreground hover:text-foreground"
+                (isActive
+                  ? "text-[#2ca594] font-bold"
+                  : "text-slate-700 dark:text-slate-200 hover:text-[#2ca594]")
             )}
           >
             {/* Text */}
-            <p className="relative text-[15px] hover:text-inherit">
+            <span className="relative">
               {item.label}
-            </p>
+            </span>
 
-            {/* Active indicator - bottom line */}
-            <span
-              className={cn(
-                "absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-primary transition-all duration-300 ease-out",
-                isActive ? "w-6" : "w-0"
-              )}
-            />
-
-            {/* Hover dot indicator */}
-            {!isActive && (
-              <span
-                className={cn(
-                  "absolute top-1 right-1 size-1.5 rounded-full bg-primary opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300"
-                )}
-              />
+            {/* Active indicator dot */}
+            {isActive && (
+              <span className="absolute bottom-0.5 left-1/2 -translate-x-1/2 size-1.5 rounded-full bg-[#5ec4b6]" />
             )}
           </Link>
         );
@@ -89,23 +79,21 @@ export function DesktopMenuButtons() {
         href={tenant.orderPrescriptionsUrl}
         {...externalLinkProps(tenant.orderPrescriptionsUrl)}
         className={cn(
-          "group relative px-4 py-2 text-sm font-semibold transition-all duration-300 overflow-hidden rounded-lg hover:text-primary",
+          "text-sm font-semibold transition-colors duration-200 hover:text-[#2ca594] px-2",
           hasDarkHero
-            ? "text-background dark:text-foreground"
-            : "text-foreground",
-          isScrolled && "bg-background text-foreground"
+            ? "text-white/90 hover:text-white"
+            : "text-slate-700 dark:text-slate-200",
+          isScrolled && "text-slate-700 dark:text-slate-200 hover:text-[#2ca594]"
         )}
       >
-        {/* Sliding underline */}
-        <p className="relative text-base">Order Prescriptions</p>
-        <span
-          className={cn(
-            "absolute bottom-1 left-0 right-0 bg-primary h-px mx-auto transition-all duration-500 ease-in-out origin-center",
-            "w-0 group-hover:w-1/2"
-          )}
-        />
+        Prescriptions
       </Link>
-      <Button asChild size="default" className="gap-2 cursor-pointer">
+
+      {/* Rounded-full Pill Button matching MediWise Contact CTA */}
+      <Button
+        asChild
+        className="rounded-full bg-[#5ec4b6] hover:bg-[#4ab4a5] text-white px-7 py-2.5 font-bold text-sm shadow-sm hover:shadow-md transition-all cursor-pointer border-0"
+      >
         <Link
           onClick={() => {
             track(
@@ -116,8 +104,7 @@ export function DesktopMenuButtons() {
           href={tenant.bookAppointmentUrl}
           {...externalLinkProps(tenant.bookAppointmentUrl)}
         >
-          Book Appointment
-          <ArrowRight className="size-4" />
+          Book Now
         </Link>
       </Button>
       <ModeToggle />

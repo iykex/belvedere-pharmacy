@@ -20,39 +20,44 @@ export default function Brand() {
     <div className="flex items-center gap-x-2">
       <Link
         href={INTERNAL_LINKS.homePage}
-        className="relative group flex items-center gap-2 sm:gap-3"
+        className="relative group flex items-center gap-2.5 sm:gap-3"
       >
-        <Image
-          src={logoSrc}
-          alt={`${displayName} logo`}
-          width={56}
-          height={56}
-          className="relative z-10 size-10 sm:size-12 md:size-14 object-contain shrink-0"
-          priority
-        />
-        <div className="flex flex-col">
-          <p
+        {/* Modern circular brand emblem container matching MediWise design */}
+        <div className="size-10 sm:size-11 rounded-full bg-gradient-to-br from-[#73d2c0] to-[#5ec4b6] p-1 flex items-center justify-center shadow-xs shrink-0 ring-2 ring-[#5ec4b6]/25 transition-transform duration-300 group-hover:scale-105">
+          <Image
+            src={logoSrc}
+            alt={`${displayName} logo`}
+            width={40}
+            height={40}
+            className="size-full object-contain"
+            priority
+          />
+        </div>
+
+        {/* Brand Typography */}
+        <div className="flex items-baseline gap-1">
+          <span
             className={cn(
-              "text-base sm:text-xl md:text-2xl font-bold leading-tight tracking-tight sm:tracking-wide transition-colors duration-300",
+              "text-lg sm:text-2xl font-black tracking-tight transition-colors duration-300",
               hasDarkHero
-                ? "text-white dark:text-foreground"
-                : "text-foreground",
-              isScrolled && "text-foreground",
+                ? "text-white"
+                : "text-slate-900 dark:text-white",
+              isScrolled && "text-slate-900 dark:text-white"
             )}
           >
             {primaryName}
-          </p>
-          <p
+          </span>
+          <span
             className={cn(
-              "text-[11px] sm:text-sm md:text-base leading-tight tracking-tight transition-colors duration-300",
+              "text-lg sm:text-2xl font-normal tracking-tight transition-colors duration-300",
               hasDarkHero
-                ? "text-white/80 dark:text-foreground/80"
-                : "text-foreground/80",
-              isScrolled && "text-foreground/80",
+                ? "text-white/80"
+                : "text-slate-600 dark:text-slate-300",
+              isScrolled && "text-slate-600 dark:text-slate-300"
             )}
           >
             {secondaryName}
-          </p>
+          </span>
         </div>
       </Link>
     </div>
