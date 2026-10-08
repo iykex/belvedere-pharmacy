@@ -18,8 +18,8 @@ export default function InfoBar() {
     return (
       <div
         className={cn(
-          "py-2 px-3 transition-all duration-300 ease-in-out backdrop-blur-3xl overflow-hidden",
-          hasDarkHero && "text-white",
+          "py-1.5 sm:py-2 px-3 transition-all duration-300 ease-in-out border-b border-slate-100/80 dark:border-slate-800/80 overflow-hidden bg-slate-50/80 dark:bg-[#001d33]/80 backdrop-blur-md",
+          hasDarkHero && "bg-transparent text-white border-white/10",
           isScrolled && "bg-background text-foreground"
         )}
       >
@@ -42,8 +42,10 @@ export default function InfoBar() {
   ];
 
   const textColorClass = cn(
-    hasDarkHero && "text-white",
-    isScrolled && "text-foreground"
+    hasDarkHero
+      ? "text-white"
+      : "text-slate-700 dark:text-slate-200",
+    isScrolled && "text-slate-800 dark:text-slate-100"
   );
 
   const renderItem = (
@@ -57,14 +59,14 @@ export default function InfoBar() {
         key={key}
         aria-hidden={opts?.hideFromA11y ? true : undefined}
         className={cn(
-          "flex shrink-0 items-center gap-1 sm:gap-2 transition-colors duration-300",
+          "flex shrink-0 items-center gap-1.5 sm:gap-2 transition-colors duration-300",
           textColorClass
         )}
       >
-        <Icon className="size-3 sm:size-4 text-primary shrink-0" />
+        <Icon className="size-3 sm:size-3.5 text-[#2da594] shrink-0" />
         <span
           className={cn(
-            "hidden sm:inline font-medium text-xs",
+            "font-semibold text-[11px] sm:text-xs",
             textColorClass
           )}
         >
@@ -72,7 +74,7 @@ export default function InfoBar() {
         </span>
         <span
           className={cn(
-            "text-[10px] sm:text-xs font-semibold",
+            "text-[11px] sm:text-xs font-normal text-slate-600 dark:text-slate-300",
             textColorClass
           )}
         >
@@ -85,9 +87,9 @@ export default function InfoBar() {
   return (
     <div
       className={cn(
-        "py-2 px-3 transition-all duration-300 ease-in-out backdrop-blur-3xl overflow-hidden",
-        hasDarkHero && "text-white",
-        isScrolled && "bg-background text-foreground"
+        "py-1.5 sm:py-2 px-3 transition-all duration-300 ease-in-out border-b border-slate-100/80 dark:border-slate-800/80 overflow-hidden bg-slate-50/80 dark:bg-[#001d33]/80 backdrop-blur-md",
+        hasDarkHero && "bg-transparent text-white border-white/10",
+        isScrolled && "bg-background/95 text-foreground"
       )}
     >
       <div className="info-bar-marquee flex w-max shrink-0 items-center gap-x-6 md:gap-x-10 whitespace-nowrap">

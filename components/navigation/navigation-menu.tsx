@@ -9,8 +9,7 @@ import MobileMenu from "../navigation/mobile-menu";
 import WidthConstraint from "../shared/width-constraint";
 
 export default function NavigationMenu({ className }: { className?: string }) {
-  const { hasDarkHero, isScrolled, pathname, navMenu } = useNavigationMenu();
-  const isHome = pathname === "/";
+  const { hasDarkHero, isScrolled, navMenu } = useNavigationMenu();
 
   return (
     <div
@@ -21,8 +20,8 @@ export default function NavigationMenu({ className }: { className?: string }) {
       )}
       ref={navMenu}
     >
-      {/* On homepage hero, hide InfoBar so the header starts clean at y=0 matching the reference design */}
-      {(!isHome || isScrolled) && <InfoBar />}
+      {/* Top Info Bar with Location, Hours, and Phone */}
+      <InfoBar />
 
       <WidthConstraint className="px-4 sm:px-6">
         <nav
@@ -32,7 +31,7 @@ export default function NavigationMenu({ className }: { className?: string }) {
             }
           }}
           className={cn(
-            "w-full flex justify-between items-center gap-x-6 py-4 font-medium z-50 transition-all duration-300 cursor-pointer",
+            "w-full flex justify-between items-center gap-x-6 py-3 sm:py-4 font-medium z-50 transition-all duration-300 cursor-pointer",
             hasDarkHero
               ? "text-white"
               : "text-slate-900 dark:text-white",
