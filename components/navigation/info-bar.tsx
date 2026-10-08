@@ -63,7 +63,7 @@ export default function InfoBar() {
           textColorClass
         )}
       >
-        <Icon className="size-3 sm:size-3.5 text-[#2da594] shrink-0" />
+        <Icon className="size-3 sm:size-3.5 text-[#259b8b] dark:text-[#50D3C5] shrink-0" />
         <span
           className={cn(
             "font-semibold text-[11px] sm:text-xs",

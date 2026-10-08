@@ -22,7 +22,7 @@ export default function Brand() {
         href={INTERNAL_LINKS.homePage}
         className="relative group flex items-center gap-2.5 sm:gap-3"
       >
-        {/* Natural unrounded pharmacy brand logo */}
+        {/* Natural unrounded pharmacy logo per user instruction */}
         <Image
           src={logoSrc}
           alt={`${displayName} logo`}
@@ -32,15 +32,15 @@ export default function Brand() {
           priority
         />
 
-        {/* Clean brand typography */}
+        {/* Brand name typography: Deep charcoal #1E293B & muted grey #64748B */}
         <div className="flex items-baseline gap-1.5">
           <span
             className={cn(
               "text-xl sm:text-2xl font-black tracking-tight transition-colors duration-300",
               hasDarkHero
                 ? "text-white"
-                : "text-slate-900 dark:text-white",
-              isScrolled && "text-slate-900 dark:text-white"
+                : "text-[#1E293B] dark:text-white",
+              isScrolled && "text-[#1E293B] dark:text-white"
             )}
           >
             {primaryName}
@@ -50,8 +50,8 @@ export default function Brand() {
               "text-xl sm:text-2xl font-light tracking-tight transition-colors duration-300",
               hasDarkHero
                 ? "text-white/80"
-                : "text-slate-600 dark:text-slate-300",
-              isScrolled && "text-slate-600 dark:text-slate-300"
+                : "text-[#64748B] dark:text-slate-300",
+              isScrolled && "text-[#64748B] dark:text-slate-300"
             )}
           >
             {secondaryName}
