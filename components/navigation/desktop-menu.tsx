@@ -2,7 +2,6 @@
 import { MENU_LINKS, TRACKING_EVENTS } from "@/lib/constants/general";
 import { useTenantContext } from "@/components/providers/tenant-provider";
 import { DesktopNavActionsSkeleton } from "@/components/shared/tenant-skeletons";
-import ModeToggle from "../shared/theme-mode-toggle";
 import { cn } from "@/lib/utils/utils";
 import Link from "next/link";
 import { Button } from "../ui/button";
@@ -89,7 +88,6 @@ export function DesktopMenuButtons() {
     return (
       <div className="hidden lg:flex items-center gap-x-3">
         <DesktopNavActionsSkeleton />
-        <ModeToggle />
       </div>
     );
   }
@@ -134,7 +132,6 @@ export function DesktopMenuButtons() {
           </span>
         </Link>
       </Button>
-      <ModeToggle />
     </div>
   );
 }

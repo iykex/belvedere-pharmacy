@@ -1,6 +1,5 @@
 "use client";
 
-import ModeToggle from "../shared/theme-mode-toggle";
 import {
   Sheet,
   SheetContent,
@@ -39,15 +38,6 @@ export default function MobileMenu() {
 
   return (
     <div className="lg:hidden flex items-center gap-3 relative">
-      {pathname !== "/" && (
-        <ModeToggle
-          className={cn(
-            hasDarkMobileHeader
-              ? "text-white hover:text-white"
-              : "text-foreground hover:text-primary",
-          )}
-        />
-      )}
       <Sheet>
         <SheetTrigger asChild>
           <Button
@@ -90,7 +80,6 @@ export default function MobileMenu() {
                   </SheetTitle>
                 </div>
                 <div className="flex items-center gap-2">
-                  {pathname === "/" && <ModeToggle className="text-white hover:text-white" />}
                   <SheetClose className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
                     <X className="size-5 text-white" />
                   </SheetClose>
