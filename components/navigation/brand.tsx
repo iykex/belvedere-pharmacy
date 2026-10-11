@@ -8,13 +8,12 @@ import { useTenantContext } from "@/components/providers/tenant-provider";
 import { TENANT_DISPLAY_NAMES } from "@/lib/config/tenant";
 
 export default function Brand() {
-  const { hasDarkHero, isScrolled, pathname } = useNavigationMenu();
+  const { hasDarkHero, isScrolled } = useNavigationMenu();
   const { tenant, slug } = useTenantContext();
   const displayName = tenant?.displayName ?? TENANT_DISPLAY_NAMES[slug];
   const words = displayName.split(" ");
   const primaryName = words[0] ?? "Pharmacy";
   const secondaryName = words.slice(1).join(" ") || "Pharmacy";
-  const isHomePage = pathname === "/";
   return (
     <div className="flex items-center gap-x-2">
       <Link
@@ -32,7 +31,7 @@ export default function Brand() {
           <p
             className={cn(
               "text-xl font-bold leading-tight tracking-wide transition-colors duration-300 sm:text-2xl",
-              isHomePage || hasDarkHero || isScrolled
+              hasDarkHero || isScrolled
                 ? "text-white"
                 : "text-foreground",
             )}
@@ -42,7 +41,7 @@ export default function Brand() {
           <p
             className={cn(
               "text-md sm:text-lg leading-tight tracking-tight transition-colors duration-300",
-              isHomePage || hasDarkHero || isScrolled
+              hasDarkHero || isScrolled
                 ? "text-white/80"
                 : "text-foreground/80",
             )}

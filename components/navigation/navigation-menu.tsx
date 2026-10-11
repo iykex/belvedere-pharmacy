@@ -15,8 +15,12 @@ export default function NavigationMenu({ className }: { className?: string }) {
     <div
       className={cn(
         "w-full z-50 transition-all duration-300 ease-out",
-        isHomePage && !isScrolled && "bg-transparent",
-        isScrolled && "bg-[#061a2a]/95 text-foreground shadow-[0_8px_24px_rgba(0,16,32,0.18)] backdrop-blur-md",
+        isHomePage && "bp-home-nav",
+        isHomePage && !isScrolled && "bp-home-nav--top",
+        isScrolled &&
+          (isHomePage
+            ? "bp-home-nav--scrolled text-foreground"
+            : "bg-[#10283b]/95 text-foreground shadow-[0_8px_24px_rgba(0,16,32,0.18)] backdrop-blur-md"),
         className
       )}
       ref={navMenu}
@@ -33,6 +37,7 @@ export default function NavigationMenu({ className }: { className?: string }) {
           }}
           className={cn(
             "w-full flex items-center justify-between gap-x-6 py-3.5 font-medium transition-all duration-300",
+            isHomePage && "bp-home-nav__row",
             hasDarkHero
               ? "text-background dark:text-foreground"
               : "text-foreground dark:text-background",
@@ -40,7 +45,7 @@ export default function NavigationMenu({ className }: { className?: string }) {
           )}
           >
           <Brand />
-          <div className="hidden lg:flex items-center gap-x-1 rounded-full border border-slate-200/90 bg-white py-1.5 pl-3 pr-2 shadow-[0_12px_32px_rgba(4,31,49,0.16)] backdrop-blur-md">
+          <div className={cn("hidden lg:flex items-center gap-x-1 rounded-full border border-slate-200/90 bg-white py-1.5 pl-3 pr-2 shadow-[0_12px_32px_rgba(4,31,49,0.16)] backdrop-blur-md", isHomePage && "dark:border-white/10 dark:bg-[#09263d]")}>
             <DesktopMenu />
             <DesktopMenuButtons />
           </div>

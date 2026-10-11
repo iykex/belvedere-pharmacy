@@ -13,6 +13,8 @@ import { externalLinkProps } from "@/lib/utils/external-link";
 
 export function DesktopMenu() {
   const { pathname } = useNavigationMenu();
+  const isHomePage = pathname === "/";
+
   return (
     <div className="hidden lg:flex items-center gap-x-0.5 xl:gap-x-1">
       {MENU_LINKS.map((item) => {
@@ -28,9 +30,13 @@ export function DesktopMenu() {
             aria-current={isActive ? "page" : undefined}
             className={cn(
               isActive
-                ? "bg-primary/10 text-primary"
-                : "text-foreground/75 hover:bg-primary/5 hover:text-foreground",
-              "group relative flex items-center rounded-full px-[clamp(0.55rem,1vw,0.875rem)] py-2 text-[clamp(0.72rem,0.8vw,0.875rem)] font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
+                ? isHomePage
+                  ? "bg-[#e5f1ff] text-[#0875ff] font-bold dark:bg-[#0d3b66] dark:text-[#52a5ff]"
+                  : "bg-primary/10 text-primary font-semibold"
+                : isHomePage
+                  ? "text-[#1e293b] font-medium hover:text-[#0875ff] dark:text-slate-200 dark:hover:text-white"
+                  : "text-foreground/75 hover:bg-primary/5 hover:text-foreground font-semibold",
+              "group relative flex items-center rounded-full px-3.5 py-1.5 text-[clamp(0.78rem,0.85vw,0.875rem)] transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
             )}
           >
             {item.label}
@@ -48,14 +54,16 @@ export function DesktopMenuButtons() {
 
   if (isHomePage) {
     if (!isTenantReady || !tenant) {
-      return <div className="hidden lg:block h-10 w-32 animate-pulse rounded-full bg-slate-200" />;
+      return (
+        <div className="hidden lg:block h-10 w-32 animate-pulse rounded-full bg-slate-200" />
+      );
     }
 
     return (
       <div className="hidden lg:flex items-center">
         <Button
           asChild
-          className="group h-11 rounded-full border border-primary/65 bg-background px-1.5 pl-5 pr-1.5 text-[clamp(0.78rem,0.9vw,0.875rem)] font-bold text-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary hover:shadow-md active:translate-y-0 focus-visible:ring-2 focus-visible:ring-primary/40"
+          className="group h-10 rounded-full border-0 bg-[#1b365d] px-1 pl-4 pr-1 text-[clamp(0.78rem,0.88vw,0.875rem)] font-bold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-[#0e2850] hover:shadow-md active:translate-y-0 focus-visible:ring-2 focus-visible:ring-primary/40"
         >
           <Link
             href={tenant.bookAppointmentUrl}
@@ -63,13 +71,13 @@ export function DesktopMenuButtons() {
             onClick={() => {
               track(
                 TRACKING_EVENTS.bookAppointmentButton,
-                tenant.bookAppointmentUrl
+                tenant.bookAppointmentUrl,
               );
             }}
           >
             <span>Book Appointment</span>
-            <span className="grid size-8 place-items-center rounded-full bg-primary text-primary-foreground transition-transform duration-200 group-hover:translate-x-0.5">
-              <ArrowRight aria-hidden className="size-4" />
+            <span className="grid size-7.5 place-items-center rounded-full bg-[#0875ff] text-white transition-transform duration-200 group-hover:translate-x-0.5 ml-2.5">
+              <ArrowRight aria-hidden className="size-3.5" />
             </span>
           </Link>
         </Button>
@@ -92,38 +100,36 @@ export function DesktopMenuButtons() {
         onClick={() => {
           track(
             TRACKING_EVENTS.orderPrescriptionButton,
-            tenant.orderPrescriptionsUrl
+            tenant.orderPrescriptionsUrl,
           );
         }}
         href={tenant.orderPrescriptionsUrl}
         {...externalLinkProps(tenant.orderPrescriptionsUrl)}
         className={cn(
-          "group relative rounded-full px-[clamp(0.55rem,1vw,0.875rem)] py-2 text-[clamp(0.72rem,0.8vw,0.875rem)] font-semibold transition-colors duration-200 hover:bg-primary/5 hover:text-primary",
+          "relative flex items-center rounded-full px-4 py-2 text-sm font-semibold transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
           hasDarkHero
-            ? "text-background dark:text-foreground"
-            : "text-foreground",
-          isScrolled && "text-foreground"
+            ? "border border-white/40 text-white hover:bg-white/10"
+            : "border border-primary/20 text-foreground hover:bg-primary/5",
         )}
       >
         Order Prescriptions
       </Link>
       <Button
         asChild
-        size="default"
-        className="group h-11 rounded-full border border-primary/65 bg-background px-1.5 pl-5 pr-1.5 font-semibold text-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary hover:shadow-md active:translate-y-0 focus-visible:ring-2 focus-visible:ring-primary/40"
+        className="group h-11 rounded-full border-0 bg-[#1b365d] px-1.5 pl-5 pr-1.5 text-sm font-bold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:bg-[#0e2850] hover:shadow-md active:translate-y-0 focus-visible:ring-2 focus-visible:ring-primary/40"
       >
         <Link
+          href={tenant.bookAppointmentUrl}
+          {...externalLinkProps(tenant.bookAppointmentUrl)}
           onClick={() => {
             track(
               TRACKING_EVENTS.bookAppointmentButton,
-              tenant.bookAppointmentUrl
+              tenant.bookAppointmentUrl,
             );
           }}
-          href={tenant.bookAppointmentUrl}
-          {...externalLinkProps(tenant.bookAppointmentUrl)}
         >
           <span>Book Appointment</span>
-          <span className="grid size-8 place-items-center rounded-full bg-primary text-primary-foreground transition-transform duration-200 group-hover:translate-x-0.5">
+          <span className="grid size-8 place-items-center rounded-full bg-[#0875ff] text-white transition-transform duration-200 group-hover:translate-x-0.5">
             <ArrowRight aria-hidden className="size-4" />
           </span>
         </Link>

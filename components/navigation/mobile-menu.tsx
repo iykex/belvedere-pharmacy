@@ -28,7 +28,7 @@ import { TENANT_DISPLAY_NAMES } from "@/lib/config/tenant";
 export default function MobileMenu() {
   const { tenant, isTenantReady, slug } = useTenantContext();
   const { hasDarkHero, isScrolled, pathname } = useNavigationMenu();
-  const hasDarkMobileHeader = pathname === "/" || hasDarkHero || isScrolled;
+  const hasDarkMobileHeader = hasDarkHero || isScrolled;
 
   const phoneHref =
     tenant ? `tel:${tenant.phone.replace(/\D/g, "")}` : "#";
@@ -39,13 +39,15 @@ export default function MobileMenu() {
 
   return (
     <div className="lg:hidden flex items-center gap-3 relative">
-      <ModeToggle
-        className={cn(
-          hasDarkMobileHeader
-            ? "text-white hover:text-white"
-            : "text-foreground hover:text-primary",
-        )}
-      />
+      {pathname !== "/" && (
+        <ModeToggle
+          className={cn(
+            hasDarkMobileHeader
+              ? "text-white hover:text-white"
+              : "text-foreground hover:text-primary",
+          )}
+        />
+      )}
       <Sheet>
         <SheetTrigger asChild>
           <Button
@@ -87,9 +89,12 @@ export default function MobileMenu() {
                     </span>
                   </SheetTitle>
                 </div>
-                <SheetClose className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
-                  <X className="size-5 text-white" />
-                </SheetClose>
+                <div className="flex items-center gap-2">
+                  {pathname === "/" && <ModeToggle className="text-white hover:text-white" />}
+                  <SheetClose className="p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
+                    <X className="size-5 text-white" />
+                  </SheetClose>
+                </div>
               </div>
             </SheetHeader>
 
