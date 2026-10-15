@@ -103,8 +103,8 @@ export default function Banner() {
             <span>NHS &amp; Private healthcare services</span>
           </div>
           <h1 id="bp-hero-title" className="bp-hero__title">
-            Your Trusted<br />Partner in<br />
-            <span>Community<br />Healthcare</span>
+            Your Trusted<br />Pharmacy in<br />
+            <span>Belvedere</span>
           </h1>
           {/* Subtle curved underline smile matching reference */}
           <svg
@@ -120,8 +120,7 @@ export default function Banner() {
             />
           </svg>
           <p className="bp-hero__description">
-            Experience accessible, professional healthcare with expert advice,
-            prescription services, and personalized care tailored to your needs.
+            Accredited NHS repeat prescriptions, walk-in flu jabs, COVID boosters, Meningitis B clinic, and NHS Pharmacy First consultations in Belvedere, Kent.
           </p>
 
           <div className="bp-hero__highlights" aria-label="How we help">
@@ -185,24 +184,6 @@ export default function Banner() {
 
         <div className="bp-hero__carousel">
           <HeroCampaignCarousel />
-        </div>
-
-        <div className="bp-hero__trust">
-          <div className="bp-hero__avatars" aria-hidden="true">
-            <span>C</span>
-            <span>A</span>
-            <span>L</span>
-            <Image
-              src="/testimonials/colin-bradbury.png"
-              alt=""
-              width={44}
-              height={44}
-            />
-          </div>
-          <p>
-            <strong>Thousands</strong>
-            <span>of patients trust our care</span>
-          </p>
         </div>
 
         {isTenantReady && tenant && (

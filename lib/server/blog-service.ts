@@ -1,5 +1,6 @@
 import { getAdminDb } from "@/lib/firebase/firebase-admin";
 import type { BlogPost } from "@/lib/types/blog";
+import { CURATED_BLOG_POSTS } from "@/lib/data/curated-blogs";
 
 function mapDocToBlog(id: string, data: any): BlogPost {
   const publishedAt = data.publishedAt?.toDate
@@ -53,79 +54,79 @@ export async function getBlogPostBySlug(
 ): Promise<BlogPost | null> {
   try {
     const db = getAdminDb();
-    if (!db) {
-      console.warn("[BlogService] Admin DB unavailable");
-      return null;
+    if (db) {
+      const snap = await db
+        .collection("blogs")
+        .where("slug", "==", slug)
+        .limit(1)
+        .get();
+
+      if (!snap.empty) {
+        const doc = snap.docs[0];
+        const blog = mapDocToBlog(doc.id, doc.data());
+
+        if (
+          blog.status === "published" &&
+          (!tenantId || blog.tenantIds.length === 0 || blog.tenantIds.includes(tenantId))
+        ) {
+          return blog;
+        }
+      }
     }
-
-    const snap = await db
-      .collection("blogs")
-      .where("slug", "==", slug)
-      .limit(1)
-      .get();
-
-    if (snap.empty) {
-      return null;
-    }
-
-    const doc = snap.docs[0];
-    const blog = mapDocToBlog(doc.id, doc.data());
-
-    // Check if the article is published and targeted to this tenant
-    if (blog.status !== "published") {
-      return null;
-    }
-
-    if (tenantId && blog.tenantIds.length > 0 && !blog.tenantIds.includes(tenantId)) {
-      return null;
-    }
-
-    return blog;
   } catch (error) {
-    console.error(`[BlogService] Failed to load blog slug "${slug}":`, error);
-    return null;
+    console.warn(`[BlogService] Firestore check failed for slug "${slug}", checking curated blogs:`, error);
   }
+
+  // Fallback to high-authority curated guides
+  const curated = CURATED_BLOG_POSTS.find(
+    (b) => b.slug === slug && (!tenantId || b.tenantIds.includes(tenantId))
+  );
+
+  return curated || null;
 }
 
 export async function getPublishedBlogs(
   tenantId: string = "belvedere"
 ): Promise<BlogPost[]> {
+  const blogsMap = new Map<string, BlogPost>();
+
+  // First populate curated blogs
+  CURATED_BLOG_POSTS.forEach((curated) => {
+    if (!tenantId || curated.tenantIds.includes(tenantId)) {
+      blogsMap.set(curated.slug, curated);
+    }
+  });
+
   try {
     const db = getAdminDb();
-    if (!db) {
-      console.warn("[BlogService] Admin DB unavailable");
-      return [];
+    if (db) {
+      const snap = await db
+        .collection("blogs")
+        .where("status", "==", "published")
+        .get();
+
+      snap.forEach((doc) => {
+        const blog = mapDocToBlog(doc.id, doc.data());
+        if (!tenantId || blog.tenantIds.includes(tenantId)) {
+          // Firestore document overrides curated post with matching slug
+          blogsMap.set(blog.slug, blog);
+        }
+      });
     }
-
-    const snap = await db
-      .collection("blogs")
-      .where("status", "==", "published")
-      .get();
-
-    if (snap.empty) {
-      return [];
-    }
-
-    const blogs: BlogPost[] = [];
-    snap.forEach((doc) => {
-      const blog = mapDocToBlog(doc.id, doc.data());
-      if (!tenantId || blog.tenantIds.includes(tenantId)) {
-        blogs.push(blog);
-      }
-    });
-
-    // Sort by publishedAt desc
-    blogs.sort((a, b) => {
-      const timeA = a.publishedAt ? new Date(a.publishedAt).getTime() : 0;
-      const timeB = b.publishedAt ? new Date(b.publishedAt).getTime() : 0;
-      return timeB - timeA;
-    });
-
-    return blogs;
   } catch (error) {
-    console.error("[BlogService] Failed to load published blogs:", error);
-    return [];
+    console.warn("[BlogService] Firestore published blogs lookup failed, serving curated blogs:", error);
   }
+
+  const blogs = Array.from(blogsMap.values());
+
+  // Sort by publishedAt desc
+  blogs.sort((a, b) => {
+    const timeA = a.publishedAt ? new Date(a.publishedAt).getTime() : 0;
+    const timeB = b.publishedAt ? new Date(b.publishedAt).getTime() : 0;
+    return timeB - timeA;
+  });
+
+  return blogs;
 }
 
 export async function getRelatedBlogs(

@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
+  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -27,16 +28,32 @@ import {
   ArrowRight,
   Info,
   Syringe,
+  Building2,
+  BookOpen,
 } from "lucide-react";
 import Link from "next/link";
 import { externalLinkProps } from "@/lib/utils/external-link";
 import { track } from "@/lib/analytics/tracker";
 import { TRACKING_EVENTS } from "@/lib/constants/general";
+import JsonLd from "@/components/shared/json-ld";
 
 export interface ScheduleItem {
   ageGroup: string;
   schedule: string;
   booster?: string;
+}
+
+export interface RelatedServiceItem {
+  title: string;
+  href: string;
+  badge: string;
+  desc: string;
+}
+
+export interface RelatedGuideItem {
+  title: string;
+  href: string;
+  readTime: string;
 }
 
 export interface ServiceTemplateProps {
@@ -52,7 +69,54 @@ export interface ServiceTemplateProps {
   whatToExpect: string[];
   faqs: { question: string; answer: string }[];
   nhsNbsUrl?: string;
+  relatedServices?: RelatedServiceItem[];
+  relatedGuides?: RelatedGuideItem[];
 }
+
+const DEFAULT_RELATED_SERVICES: RelatedServiceItem[] = [
+  {
+    title: "Seasonal Flu Vaccination",
+    href: "/services/flu-vaccination",
+    badge: "NHS Free & Private",
+    desc: "Annual quadrivalent flu jabs for seniors 65+, medical risk groups, pregnant women, and private walk-ins.",
+  },
+  {
+    title: "COVID-19 Seasonal Booster",
+    href: "/services/covid-vaccination",
+    badge: "NHS Free Service",
+    desc: "Official JCVI-approved variant boosters for older adults, immunocompromised patients, and healthcare carers.",
+  },
+  {
+    title: "Meningitis B (MenB) Vaccination",
+    href: "/services/meningitis-b-vaccination",
+    badge: "Private Clinic",
+    desc: "Bexsero immunisation protecting adolescents, university students, and toddlers under accredited PGD.",
+  },
+  {
+    title: "NHS Pharmacy First",
+    href: "/pharmacy-first",
+    badge: "NHS Treatment",
+    desc: "Immediate clinical consultations and prescription treatments for 7 common conditions without GP wait times.",
+  },
+];
+
+const DEFAULT_RELATED_GUIDES: RelatedGuideItem[] = [
+  {
+    title: "Who is Eligible for the Free NHS Flu Jab? (2026/27 Guidance)",
+    href: "/blogs/who-is-eligible-for-the-nhs-flu-jab",
+    readTime: "4 min read",
+  },
+  {
+    title: "Can I Have Flu and COVID Vaccinations Together? Clinical Evidence",
+    href: "/blogs/can-i-have-flu-and-covid-vaccinations-together",
+    readTime: "4 min read",
+  },
+  {
+    title: "MenB Vaccination: Who is Eligible in 2026? NHS & Private Guide",
+    href: "/blogs/menb-vaccine-eligibility-2026",
+    readTime: "5 min read",
+  },
+];
 
 export default function ClinicalServiceTemplate({
   title,
@@ -67,13 +131,29 @@ export default function ClinicalServiceTemplate({
   whatToExpect,
   faqs,
   nhsNbsUrl,
+  relatedServices = DEFAULT_RELATED_SERVICES,
+  relatedGuides = DEFAULT_RELATED_GUIDES,
 }: ServiceTemplateProps) {
   const { tenant } = useTenantContext();
   const privateBookingUrl =
     tenant?.privateBookingUrl || "https://www.phdr.co.uk/2483";
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: f.answer,
+      },
+    })),
+  };
+
   return (
     <div className="space-y-12 sm:space-y-16 py-8">
+      <JsonLd data={faqJsonLd} />
       <WidthConstraint>
         {/* Breadcrumb / Back Link */}
         <div className="pb-2">
@@ -169,7 +249,7 @@ export default function ClinicalServiceTemplate({
               )}
 
               <Button asChild size="lg" variant="ghost" className="font-semibold">
-                <Link href="/book">Booking Hub & Walk-ins →</Link>
+                <Link href="/book">Booking Hub &amp; Walk-ins →</Link>
               </Button>
             </div>
           </div>
@@ -180,7 +260,7 @@ export default function ClinicalServiceTemplate({
           <ShieldCheck className="size-5 shrink-0 text-primary mt-0.5" />
           <div>
             <strong>Single Source of Truth Safeguard: </strong>
-            To prevent calendar slot conflicts and ensure immediate clinical capacity, private bookings are allocated live via our accredited PharmaDoctor clinical dispensary system. Walk-in patients are also welcome during opening hours.
+            To prevent calendar slot conflicts and ensure immediate clinical capacity, private bookings are allocated live via our accredited PharmaDoctor clinical dispensary system. Walk-in patients are also welcome during pharmacy opening hours.
           </div>
         </div>
 
@@ -191,7 +271,7 @@ export default function ClinicalServiceTemplate({
             {/* Clinical Overview */}
             <section className="space-y-4">
               <h2 className="text-2xl font-bold text-foreground">
-                Clinical Overview & Importance
+                Clinical Overview &amp; Importance
               </h2>
               <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
                 {overview}
@@ -228,7 +308,7 @@ export default function ClinicalServiceTemplate({
             {scheduleItems && scheduleItems.length > 0 && (
               <section className="space-y-4">
                 <h2 className="text-2xl font-bold text-foreground">
-                  Recommended Dosing & Schedule
+                  Recommended Dosing &amp; Schedule
                 </h2>
                 <div className="overflow-x-auto rounded-xl border border-border">
                   <table className="w-full text-left text-xs sm:text-sm">
@@ -277,6 +357,77 @@ export default function ClinicalServiceTemplate({
                 ))}
               </Accordion>
             </section>
+
+            {/* Related Clinical Health Guides */}
+            {relatedGuides.length > 0 && (
+              <section className="space-y-4 pt-6 border-t border-border">
+                <div className="flex items-center justify-between">
+                  <h2 className="text-xl font-bold text-foreground flex items-center gap-2">
+                    <BookOpen className="size-5 text-primary" />
+                    Clinical Health Guides &amp; Advice
+                  </h2>
+                  <Link
+                    href="/blogs"
+                    className="text-xs font-semibold text-primary hover:underline"
+                  >
+                    All Health Guides →
+                  </Link>
+                </div>
+                <div className="grid gap-3 sm:grid-cols-3">
+                  {relatedGuides.map((guide, idx) => (
+                    <Link
+                      key={idx}
+                      href={guide.href}
+                      className="p-4 rounded-xl border border-border bg-card hover:border-primary/50 transition-all flex flex-col justify-between group"
+                    >
+                      <h3 className="text-xs sm:text-sm font-bold text-foreground group-hover:text-primary transition-colors line-clamp-2">
+                        {guide.title}
+                      </h3>
+                      <span className="mt-2 text-[11px] text-muted-foreground font-medium">
+                        {guide.readTime}
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* Related Clinical Services */}
+            {relatedServices.length > 0 && (
+              <section className="space-y-4 pt-6 border-t border-border">
+                <h2 className="text-xl font-bold text-foreground">
+                  Related Healthcare Services
+                </h2>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {relatedServices.map((svc, idx) => (
+                    <div
+                      key={idx}
+                      className="p-4 rounded-xl border border-border bg-card hover:border-primary/40 transition-all flex flex-col justify-between"
+                    >
+                      <div className="space-y-1.5">
+                        <Badge className="bg-primary/10 text-primary hover:bg-primary/20 text-[10px] font-bold uppercase tracking-wider font-mono">
+                          {svc.badge}
+                        </Badge>
+                        <h3 className="font-bold text-sm text-foreground">
+                          {svc.title}
+                        </h3>
+                        <p className="text-xs text-muted-foreground leading-relaxed">
+                          {svc.desc}
+                        </p>
+                      </div>
+                      <div className="mt-3 pt-2 border-t border-border/60">
+                        <Link
+                          href={svc.href}
+                          className="text-xs font-bold text-primary hover:underline inline-flex items-center gap-1"
+                        >
+                          View Details <ArrowRight className="size-3" />
+                        </Link>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
           </div>
 
           {/* Sidebar (1 Column) */}
@@ -294,7 +445,7 @@ export default function ClinicalServiceTemplate({
               <CardContent className="space-y-4">
                 {pricingNotes && (
                   <div className="rounded-lg bg-muted/60 p-3 text-xs text-muted-foreground">
-                    <strong className="text-foreground">Pricing & Clinical Consultation: </strong>
+                    <strong className="text-foreground">Pricing &amp; Clinical Consultation: </strong>
                     {pricingNotes}
                   </div>
                 )}
@@ -322,7 +473,7 @@ export default function ClinicalServiceTemplate({
                 </div>
 
                 <div className="pt-2 border-t border-border/60 text-xs text-muted-foreground space-y-1">
-                  <div className="font-semibold text-foreground">Location:</div>
+                  <div className="font-semibold text-foreground">Current Clinic Location:</div>
                   <p>{tenant?.displayName ?? "Belvedere Pharmacy"}</p>
                   <p>{tenant?.address?.line1 ?? "11 Picardy Street"}</p>
                   <p>{tenant?.address?.postcode ?? "DA17 5QQ"}</p>
@@ -336,6 +487,65 @@ export default function ClinicalServiceTemplate({
                     </a>
                   </p>
                 </div>
+              </CardContent>
+            </Card>
+
+            {/* Our Community Branches */}
+            <Card className="border border-border">
+              <CardHeader className="space-y-1">
+                <CardTitle className="text-base font-bold flex items-center gap-2">
+                  <Building2 className="size-4 text-primary" />
+                  Available at All Branches
+                </CardTitle>
+                <CardDescription className="text-xs">
+                  Walk in or book across any Meckay Pharmacy branch
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-2 text-xs">
+                <Link
+                  href="/pharmacies/belvedere"
+                  className="p-2.5 rounded-lg border border-border/60 hover:border-primary/40 flex items-center justify-between group block"
+                >
+                  <div>
+                    <div className="font-bold text-foreground group-hover:text-primary transition-colors">
+                      Belvedere Pharmacy
+                    </div>
+                    <div className="text-[11px] text-muted-foreground">
+                      11 Picardy Street, Belvedere DA17
+                    </div>
+                  </div>
+                  <ArrowRight className="size-3 text-muted-foreground group-hover:text-primary transition-transform group-hover:translate-x-0.5" />
+                </Link>
+
+                <Link
+                  href="/pharmacies/kidbrooke"
+                  className="p-2.5 rounded-lg border border-border/60 hover:border-primary/40 flex items-center justify-between group block"
+                >
+                  <div>
+                    <div className="font-bold text-foreground group-hover:text-primary transition-colors">
+                      Kidbrooke Pharmacy
+                    </div>
+                    <div className="text-[11px] text-muted-foreground">
+                      134 Rochester Way, London SE3
+                    </div>
+                  </div>
+                  <ArrowRight className="size-3 text-muted-foreground group-hover:text-primary transition-transform group-hover:translate-x-0.5" />
+                </Link>
+
+                <Link
+                  href="/pharmacies/lowfield"
+                  className="p-2.5 rounded-lg border border-border/60 hover:border-primary/40 flex items-center justify-between group block"
+                >
+                  <div>
+                    <div className="font-bold text-foreground group-hover:text-primary transition-colors">
+                      Lowfield Pharmacy
+                    </div>
+                    <div className="text-[11px] text-muted-foreground">
+                      63 Lowfield Street, Dartford DA1
+                    </div>
+                  </div>
+                  <ArrowRight className="size-3 text-muted-foreground group-hover:text-primary transition-transform group-hover:translate-x-0.5" />
+                </Link>
               </CardContent>
             </Card>
 

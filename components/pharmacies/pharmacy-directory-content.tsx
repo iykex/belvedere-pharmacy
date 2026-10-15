@@ -21,6 +21,7 @@ import {
   CalendarCheck,
   CheckCircle2,
   Navigation,
+  ArrowRight,
 } from "lucide-react";
 import Link from "next/link";
 import { externalLinkProps } from "@/lib/utils/external-link";
@@ -71,7 +72,7 @@ export const PHARMACY_BRANCHES = [
       { days: "Saturday – Sunday", time: "Closed" },
     ],
     websiteUrl: "https://www.kidbrookepharmacy.com",
-    bookUrl: "https://www.kidbrookepharmacy.com/book",
+    bookUrl: "/book",
     pharmadoctorUrl: "https://www.phdr.co.uk/500",
     mapUrl: "https://maps.google.com/?q=134+Rochester+Way+London+SE3+8AR",
     gphcNumber: "1040316",
@@ -100,7 +101,7 @@ export const PHARMACY_BRANCHES = [
       { days: "Saturday – Sunday", time: "Closed" },
     ],
     websiteUrl: "https://www.lowfieldpharmacy.com",
-    bookUrl: "https://www.lowfieldpharmacy.com/book",
+    bookUrl: "/book",
     pharmadoctorUrl: "https://www.phdr.co.uk/6430",
     mapUrl: "https://maps.google.com/?q=63+Lowfield+Street+Dartford+DA1+1HP",
     gphcNumber: "1032871",
@@ -126,10 +127,10 @@ export default function PharmacyDirectoryContent() {
             Meckay Pharmacy Group
           </Badge>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-foreground tracking-tight">
-            Our Community Pharmacies
+            Our Community Pharmacies &amp; Clinics
           </h1>
           <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">
-            Providing accessible, professional NHS and private healthcare services across South East London and Kent. Find your nearest clinic branch below.
+            Accessible, professional NHS and private healthcare clinics across South East London and Kent. Select a branch below for full address, opening hours, parking, transit directions, and service booking.
           </p>
         </div>
 
@@ -164,7 +165,12 @@ export default function PharmacyDirectoryContent() {
                     </span>
                   </div>
                   <CardTitle className="text-xl font-bold text-foreground">
-                    {branch.name}
+                    <Link
+                      href={`/pharmacies/${branch.slug}`}
+                      className="hover:text-primary transition-colors"
+                    >
+                      {branch.name}
+                    </Link>
                   </CardTitle>
                   <CardDescription className="flex items-start gap-1.5 text-xs text-muted-foreground">
                     <MapPin className="size-4 text-primary shrink-0 mt-0.5" />
@@ -220,13 +226,26 @@ export default function PharmacyDirectoryContent() {
                   asChild
                   className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold shadow-sm"
                 >
-                  <Link href={branch.bookUrl} className="flex items-center justify-center gap-2">
-                    <CalendarCheck className="size-4" />
-                    Book Service at this Branch
+                  <Link
+                    href={`/pharmacies/${branch.slug}`}
+                    className="flex items-center justify-center gap-2"
+                  >
+                    <Building2 className="size-4" />
+                    View Branch Details &amp; Services
+                    <ArrowRight className="size-3.5" />
                   </Link>
                 </Button>
 
                 <div className="grid grid-cols-2 gap-2 w-full">
+                  <Button asChild variant="outline" size="sm" className="text-xs font-semibold">
+                    <Link
+                      href={branch.bookUrl}
+                      className="flex items-center justify-center gap-1"
+                    >
+                      <CalendarCheck className="size-3" />
+                      Book Service
+                    </Link>
+                  </Button>
                   <Button asChild variant="outline" size="sm" className="text-xs">
                     <a
                       href={branch.mapUrl}
@@ -235,16 +254,6 @@ export default function PharmacyDirectoryContent() {
                     >
                       <Navigation className="size-3" />
                       Directions
-                    </a>
-                  </Button>
-                  <Button asChild variant="outline" size="sm" className="text-xs">
-                    <a
-                      href={branch.pharmadoctorUrl}
-                      {...externalLinkProps(branch.pharmadoctorUrl)}
-                      className="flex items-center justify-center gap-1"
-                    >
-                      <ExternalLink className="size-3" />
-                      PharmaDoctor
                     </a>
                   </Button>
                 </div>

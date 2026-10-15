@@ -6,30 +6,45 @@ import CTASection from "@/components/shared/cta-section";
 import JsonLd from "@/components/shared/json-ld";
 
 export const metadata: Metadata = {
-  title: "Meningitis B Vaccination (Bexsero) Clinic | Belvedere Pharmacy",
+  title: "MenB Vaccination Belvedere | Meningitis B Jab | Belvedere Pharmacy",
   description:
-    "Protect against invasive Meningococcal B disease with the Bexsero vaccine at Belvedere Pharmacy. Suitable for infants, adolescents, and university students. Private clinical service with accredited PharmaDoctor booking.",
+    "Protect against invasive Meningococcal B disease with the Bexsero vaccine at Belvedere Pharmacy, 11 Picardy Street, Belvedere DA17 5QQ. Private clinical immunisation service for infants, teenagers, and university students. Accredited PharmaDoctor clinic.",
+  keywords: [
+    "MenB Vaccination Belvedere",
+    "meningitis b jab Belvedere",
+    "bexsero vaccine Belvedere",
+    "menb vaccine university",
+    "private meningitis b clinic DA17",
+    "Belvedere Pharmacy MenB",
+  ],
   alternates: {
     canonical: "/services/meningitis-b-vaccination",
+  },
+  openGraph: {
+    title: "MenB Vaccination Belvedere | Meningitis B Jab | Belvedere Pharmacy",
+    description:
+      "Private Bexsero Meningitis B vaccination clinic at Belvedere Pharmacy, Kent. Protecting babies, adolescents, and university students.",
+    url: "/services/meningitis-b-vaccination",
+    type: "website",
   },
 };
 
 const MEN_B_PROPS = {
-  title: "Meningitis B Vaccination Clinic (Bexsero)",
+  title: "Meningitis B (MenB) Vaccination & Jab at Belvedere Pharmacy",
   subtitle:
-    "Comprehensive protection against invasive Meningococcal B bacteria for infants, teenagers, university students, and high-risk travellers.",
+    "Comprehensive protection against invasive Meningococcal B bacteria with the Bexsero vaccine for infants, teenagers, university students, and high-risk travellers in Belvedere, Kent.",
   category: "private" as const,
   fundingBadge: "Private Clinical Service",
   overview:
-    "Meningococcal group B (MenB) is the most common cause of bacterial meningitis and septicaemia (blood poisoning) in the United Kingdom. MenB disease is life-threatening and progresses rapidly within 24 hours, presenting with high fever, stiff neck, sensitivity to light, confusion, and a non-blanching purpuric rash. Vaccination with Bexsero stimulates the immune system to produce antibodies against MenB surface proteins, providing proven clinical protection.",
+    "Meningococcal group B (MenB) is the most frequent cause of life-threatening bacterial meningitis and septicaemia (blood poisoning) in the United Kingdom. MenB disease progresses aggressively within 24 hours, presenting with fever, severe headache, neck stiffness, light sensitivity, confusion, and a non-blanching purpuric rash. Vaccination with Bexsero stimulates high-affinity bactericidal antibodies against MenB surface proteins, providing proven clinical protection.",
   clinicalImportance:
-    "While the NHS routine childhood immunisation programme covers MenB for infants born after May 2015, older children, teenagers, and young adults entering university or communal living are at elevated risk of contracting MenB and are not routinely covered by NHS programmes. Our private clinical service bridges this vital protection gap under accredited Patient Group Directions (PGD).",
+    "While the routine NHS childhood immunisation programme covers MenB for infants born after May 2015, older children, teenagers, and young adults entering university or communal living are at elevated transmission risk and are not routinely covered by NHS programmes. Our private clinical service bridges this vital protection gap under accredited Patient Group Directions (PGD).",
   whoIsEligible: [
     "Infants and toddlers from 8 weeks of age not covered by routine NHS scheduling",
-    "Adolescents and young adults (ages 14 to 25), particularly new university students in shared halls of residence",
+    "Adolescents and young adults (ages 14 to 25), particularly university freshers in shared halls of residence",
     "Adults with asplenia, splenic dysfunction, or complement deficiency disorders",
-    "Travellers visiting high-prevalence areas or sub-Saharan meningitis belt regions",
-    "Occupational healthcare and laboratory workers exposed to meningococcal isolates",
+    "Travellers visiting high-prevalence areas or the sub-Saharan meningitis belt",
+    "Occupational healthcare, emergency, and laboratory workers exposed to meningococcal isolates",
   ],
   scheduleItems: [
     {
@@ -54,7 +69,7 @@ const MEN_B_PROPS = {
     },
   ],
   pricingNotes:
-    "Administered as a course of 2 doses. Price per dose includes clinical pre-screening, private consultation room fee, vaccine supply, injection administration, and post-vaccination observation.",
+    "Administered as a 2-dose course. Price per dose includes clinical pre-screening, private consultation suite fee, vaccine cold-chain supply, injection administration, and post-vaccination observation.",
   whatToExpect: [
     "One-on-one pre-vaccination clinical assessment with our trained duty pharmacist.",
     "Verification of medical history, allergies, and concurrent medications.",
@@ -66,17 +81,22 @@ const MEN_B_PROPS = {
     {
       question: "Why is the MenB vaccine recommended for university students?",
       answer:
-        "University freshers living in shared accommodation, colleges, and university halls are at significantly increased risk of meningococcal transmission due to close contact, social mixing, and respiratory droplet spread. Vaccination ensures robust immunity against both meningitis and meningococcal sepsis.",
+        "University freshers living in shared accommodation, halls of residence, and colleges are at significantly higher risk of meningococcal carriage and transmission due to dense communal mixing. Vaccination protects against meningitis and meningococcal sepsis.",
+    },
+    {
+      question: "Does the MenACWY school vaccine protect against Meningitis B?",
+      answer:
+        "No. The routine MenACWY vaccine given in secondary school protects against strains A, C, W, and Y, but offers NO protection against Meningococcal B. Bexsero is required for MenB immunity.",
     },
     {
       question: "Can MenB be administered alongside other vaccines?",
       answer:
-        "Yes, Bexsero can be safely administered alongside most routine vaccines, including MenACWY, HPV, and seasonal influenza, provided separate injection sites are used.",
+        "Yes, Bexsero can be safely administered alongside routine vaccines, including seasonal flu, COVID-19 boosters, HPV, and travel vaccines, using separate injection sites.",
     },
     {
-      question: "Are there any side effects?",
+      question: "Are there any side effects with Bexsero?",
       answer:
-        "Common reactions include mild soreness or redness at the injection site, transient low-grade fever, irritability in infants, and mild headache or fatigue in adults. These typically resolve within 24 to 48 hours.",
+        "Common reactions include mild tenderness or redness at the injection site, transient low-grade fever, irritability in infants, and mild headache or fatigue in adults. These typically resolve within 24 to 48 hours.",
     },
   ],
 };
@@ -85,9 +105,9 @@ export default function MeningitisBPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "MedicalProcedure",
-    name: "Meningitis B Vaccination (Bexsero)",
+    name: "Meningitis B Vaccination (Bexsero) & MenB Jab",
     description:
-      "Immunisation service against Neisseria meningitidis serogroup B for children and adults at Belvedere Pharmacy.",
+      "Immunisation service against Neisseria meningitidis serogroup B for adolescents, students, and children at Belvedere Pharmacy, Kent.",
     procedureType: "https://schema.org/PercutaneousProcedure",
     provider: {
       "@type": "Pharmacy",

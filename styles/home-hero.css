@@ -211,64 +211,6 @@
   height: 19px;
 }
 
-.bp-hero__trust {
-  position: absolute;
-  z-index: 4;
-  bottom: 58px;
-  left: 4.5%;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.bp-hero__avatars {
-  display: flex;
-  align-items: center;
-}
-
-.bp-hero__avatars > * {
-  display: grid;
-  place-items: center;
-  width: 42px;
-  height: 42px;
-  margin-left: -7px;
-  border: 2px solid #eef6ff;
-  border-radius: 50%;
-  color: white;
-  font-size: 17px;
-  object-fit: cover;
-}
-
-.bp-hero__avatars > :first-child {
-  margin-left: 0;
-  background: #038eae;
-}
-
-.bp-hero__avatars > :nth-child(2) {
-  background: #ff9e00;
-}
-
-.bp-hero__avatars > :nth-child(3) {
-  background: #5e83b9;
-}
-
-.bp-hero__trust p {
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  line-height: 1.13;
-}
-
-.bp-hero__trust strong {
-  font-size: 21px;
-  letter-spacing: -.035em;
-}
-
-.bp-hero__trust p span {
-  color: #627897;
-  font-size: 13px;
-}
-
 .bp-hero__visual {
   position: absolute;
   z-index: 3;
@@ -657,14 +599,12 @@
 }
 
 .dark .bp-hero__title,
-.dark .bp-hero__highlight,
-.dark .bp-hero__trust strong {
+.dark .bp-hero__highlight {
   color: #f7fbff;
 }
 
 .dark .bp-hero__description,
-.dark .bp-hero__eyebrow,
-.dark .bp-hero__trust p span {
+.dark .bp-hero__eyebrow {
   color: #c6d5e7;
 }
 
@@ -682,9 +622,6 @@
   .bp-hero__carousel {
     right: 1%;
     width: 31%;
-  }
-  .bp-hero__trust {
-    left: 4%;
   }
   .bp-hero__highlights {
     gap: 10px;
@@ -765,12 +702,6 @@
     max-width: 650px;
     justify-self: center;
   }
-  .bp-hero__trust {
-    position: relative;
-    bottom: auto;
-    left: auto;
-    grid-column: 1 / -1;
-  }
   .bp-hero__title {
     font-size: clamp(40px, 5vw, 58px);
   }
@@ -795,9 +726,6 @@
   }
   .bp-hero__carousel {
     order: 2;
-  }
-  .bp-hero__trust {
-    order: 3;
   }
 }
 
@@ -900,24 +828,13 @@
     width: 32px;
     height: 32px;
   }
-  .bp-hero__trust {
-    order: 3;
-    margin-top: 22px;
-  }
-  .bp-hero__trust strong {
-    font-size: 17px;
-  }
-  .bp-hero__avatars > * {
-    width: 35px;
-    height: 35px;
-  }
   .bp-hero__carousel {
     order: 2;
     margin-top: 25px;
   }
   .bp-hero__mobile-details {
     display: grid;
-    order: 4;
+    order: 3;
     gap: 9px;
     margin-top: 24px;
     font-size: 11px;

@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import Menu from "@/components/navigation/navigation-menu";
 import { BreadcrumbJsonLd } from "@/components/shared/seo/breadcrumb-jsonld";
+import JsonLd from "@/components/shared/json-ld";
 import CTASection from "@/components/shared/cta-section";
 import { BlogContentRenderer } from "@/components/blog/blog-content-renderer";
 import {
@@ -20,8 +21,16 @@ import {
   getRelatedBlogs,
 } from "@/lib/server/blog-service";
 import { getTenantSlug, TENANT_DISPLAY_NAMES } from "@/lib/config/tenant";
+import { CURATED_BLOG_POSTS } from "@/lib/data/curated-blogs";
 
-export const dynamic = "force-dynamic";
+export const dynamicParams = true;
+
+export function generateStaticParams() {
+  const tenantSlug = getTenantSlug();
+  return CURATED_BLOG_POSTS.filter(
+    (b) => !tenantSlug || b.tenantIds.includes(tenantSlug)
+  ).map((b) => ({ slug: b.slug }));
+}
 
 export async function generateMetadata({
   params,
@@ -47,6 +56,7 @@ export async function generateMetadata({
   return {
     title,
     description,
+    keywords: blog.seo?.keywords,
     alternates: {
       canonical: canonicalUrl,
     },
@@ -100,6 +110,29 @@ export default async function BlogPostPage({
       })
     : "Recently Published";
 
+  const articleJsonLd: any = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: blog.title,
+    description: blog.excerpt,
+    ...(blog.coverImage ? { image: [blog.coverImage] } : {}),
+    datePublished: blog.publishedAt,
+    dateModified: blog.updatedAt || blog.publishedAt,
+    author: {
+      "@type": "Person",
+      name: blog.author?.name || `${pharmacyName} Team`,
+      jobTitle: blog.author?.role || "Superintendent Pharmacist",
+    },
+    publisher: {
+      "@type": "Pharmacy",
+      name: pharmacyName,
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `/blogs/${blog.slug}`,
+    },
+  };
+
   return (
     <div className="overflow-hidden space-y-12 sm:space-y-16 pb-28 pt-24 sm:pt-28 bg-background">
       <BreadcrumbJsonLd
@@ -109,6 +142,7 @@ export default async function BlogPostPage({
           { name: blog.title, path: `/blogs/${blog.slug}` },
         ]}
       />
+      <JsonLd data={articleJsonLd} />
 
       <header className="fixed top-0 w-full z-50">
         <Menu />
@@ -223,10 +257,10 @@ export default async function BlogPostPage({
               Consult Our Pharmacists
             </span>
             <h3 className="text-2xl font-black tracking-tight">
-              Need Treatment or Consultation?
+              Need Treatment or Vaccination?
             </h3>
             <p className="text-sm text-slate-200 max-w-lg leading-relaxed">
-              Visit {pharmacyName} or book an accredited NHS Pharmacy First clinical assessment with our registered pharmacists today.
+              Visit {pharmacyName} or book an accredited NHS or private vaccination appointment with our registered pharmacists today.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 shrink-0">
@@ -234,7 +268,7 @@ export default async function BlogPostPage({
               href="/book"
               className="px-6 py-3.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-sm text-center shadow-md transition-all active:scale-95"
             >
-              Book Clinical Assessment
+              Book Appointment
             </Link>
             <Link
               href="/pharmacies"

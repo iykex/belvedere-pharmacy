@@ -12,6 +12,19 @@ export const STATIC_BASE_SEO_KEYWORDS = [
   "Pharmacy First",
   "Prescription Delivery",
   "Health Consultation",
+  "Flu Jab",
+  "Flu Vaccination",
+  "NHS Flu Jab",
+  "Private Flu Jab",
+  "COVID-19 Vaccination",
+  "COVID Booster",
+  "Meningitis B Vaccination",
+  "MenB Jab",
+  "Bexsero",
+  "Pharmacy Near Me",
+  "Walk-in Clinic",
+  "Travel Clinic",
+  "Blood Pressure Check",
 ] as const;
 
 export const SCHEMA_DAY_OF_WEEK: Record<string, string> = {
